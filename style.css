@@ -1,0 +1,42 @@
+
+/*******************/
+/* General Styling */
+/*******************/
+
+body {
+	background-color:#FF3355;
+}
+
+#main {
+	width: 350px;
+	margin: 0 auto;
+	background-color: #556600;
+}
+/**************/
+/* The Header */
+/**************/
+.header {
+	text-align: center;
+	margin-top: 150px;
+	margin-bottom: 50px;
+	padding-top: 25px;
+}
+
+/***************/
+/* The Buttons */
+/***************/
+.button_bodies {
+	padding-bottom: 50px;
+}
+
+.button {
+	width:60%;
+	text-align: center;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	margin: 0 auto;
+	margin-bottom: 25px;
+	border: 6px solid blue;
+	border-radius: 25px;
+	background-color: yellow;
+}
