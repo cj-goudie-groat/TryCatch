@@ -1,0 +1,61 @@
+<html>
+   
+   <head>
+      <title></title>
+      
+      <script type="text/javascript">
+       
+            var ship = null;
+            var imgObj1 = null;
+            
+            function move(){
+               ship = document.getElementById('myImage');
+               ship.style.position= 'relative'; 
+               ship.style.left = '0px'; 
+               
+            }
+             function init1(){
+               imgObj1 = document.getElementById('myImage');
+               imgObj1.style.position= 'relative'; 
+               imgObj1.style.right = '0px'; 
+               
+            }
+            
+            function moveRight(){
+               ship.style.left = parseInt(ship.style.left) + 150 + 'px';
+            }
+            
+             function moveLeft(){
+               imgObj1.style.right = parseInt(imgObj1.style.right) + 60 + 'px';
+            }
+            onload =move;
+           
+         //-->
+      </script>
+      
+   </head>
+   
+   <body
+   style="background-color:black;">
+
+   
+      <form>
+         <img id="myImage" src="Spaceship.png" />
+         <br>
+         
+       
+       <div id="Right"> 
+       
+      <input type="button" src="Spaceship.png" onkeydown="moveLeft();" />
+      </div> 
+    
+        <input type="button" src="Spaceship.png" onkeydown="moveRight();" />
+      </form>
+      
+   </body>
+   <style>
+   
+   
+   
+   </style>
+</html>
