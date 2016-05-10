@@ -10,27 +10,40 @@
 </head>
 <body>
 	<canvas id="canvas" width="500" height="500">
-	shit broke yo
+		your browser does not support this game, get rekt nerd
 	</canvas>
 	<script type="text/javascript">
 	
-	var canvas, ctx;
-	var letterArray = new Array();
-	var letterSpeedTimer = null;
+	var canvas, ctx; //canvas, canvas context
+	var letterArray = new Array(); // array of letter image sprites
+	var letterSpeedTimer = null; //timer
 	
-	var letterX = Math.floor(Math.random() * 481);
-	var letter1X = Math.floor(Math.random() * 481);
-	var letter2X = Math.floor(Math.random() * 481);
-	
-	var letterY = 0;
+	/**
+	 * X value for the image, random number between 40 and 455
+	 */
+	var letterX = Math.floor(Math.random() * 455) + 40; 
+	var letter1X = Math.floor(Math.random() * 455) + 40;
+	var letter2X = Math.floor(Math.random() * 455) + 40;
+	var letter3X = Math.floor(Math.random() * 455) + 40;
+	/**
+	 * Y value for images, letterY at -50 will spawn it first so the game starts
+	 * immediately.
+	 */
+	var letterY = -50;
 	var letter1Y = (Math.floor(Math.random() * -600));
 	var letter2Y = (Math.floor(Math.random() * -600));
-	
+	var letter3Y = (Math.floor(Math.random() * -600));
+	/**
+	 * Decides which letter drops. 0=A, 1=B etc.
+	 */
 	var letterIndex = Math.floor(Math.random() * 27);
 	var letter1Index = Math.floor(Math.random() * 27);
 	var letter2Index = Math.floor(Math.random() * 27);
+	var letter3Index = Math.floor(Math.random() * 27);
 	
 	var letterVal;
+	var letterSpeed = 3;
+	var letterTickRate = 30;
 	
 	function clearRect() {
 		ctx.clearRect(0,0,500,500);
@@ -53,6 +66,11 @@
 			letter2Y = (Math.floor(Math.random() * -100));
 			letter2Index = Math.floor(Math.random() * 26);
 		}
+		if (letterVal == 4) {
+			letter3X = Math.floor(Math.random() * 420) + 40;
+			letter3Y = (Math.floor(Math.random() * -100));
+			letter3Index = Math.floor(Math.random() * 26);
+		}
 	}
 	
 	function drawLetter() {
@@ -61,10 +79,12 @@
 			ctx.drawImage(letterArray[letterIndex], letterX, letterY);
 			ctx.drawImage(letterArray[letter1Index], letter1X, letter1Y);
 			ctx.drawImage(letterArray[letter2Index], letter2X, letter2Y);
+			ctx.drawImage(letterArray[letter3Index], letter3X, letter3Y);
 
-			letterY += 3;
-			letter1Y +=3;
-			letter2Y +=3;
+			letterY += letterSpeed;
+			letter1Y += letterSpeed;
+			letter2Y += letterSpeed;
+			letter3Y += letterSpeed;
 			
 			if (letterY > 500) {
 				letterVal = 1;
@@ -80,11 +100,15 @@
 				letterVal = 3;
 				newValues();
 			}
+			if (letter3Y > 500) {
+				letterVal = 4;
+				newValues();
+			}
 	}
 
 	function draw() {
 		clearRect();
-		letterSpeedTimer = setInterval('drawLetter();', 10);
+		letterSpeedTimer = setInterval('drawLetter();', letterTickRate);
 	}
 	
 	function addletter() {
