@@ -264,3 +264,21 @@ window.requestAnimFrame = (function(){
 				window.setTimeout(callback, 1000 / 60);
 			};
 })();
+
+
+/**
+ * This where the variables and declarations of the working
+ * scoreboard, life system, and levels are. They are variables in javascript 
+ * and can be updated as such, allowing a user to progress through the game.
+ * They are located in a div (#game) in the HTML and are being referenced as 
+ * #level_Counter, #life_Counter, and #score_Counter accordingly
+ */
+
+var current_Lives = 10;
+document.getElementById("life_Counter").innerHTML = "Lives: " + current_Lives;
+
+var current_Score = 0; 
+document.getElementById("score_Counter").innerHTML = "Score: " + current_Score;
+
+var current_Level = 1;
+document.getElementById("level_Counter").innerHTML = "Level: " + current_Level;

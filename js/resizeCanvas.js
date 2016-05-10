@@ -10,7 +10,7 @@ function resizeCanvas() {
   bg.height = window.innerHeight;
   tempPlayer.width = player.width;
   tempPlayer.height = window.innerHeight;
-  tempPlayer.drawImage(player, 0, 0);
+//  tempPlayer.drawImage(player, 0, 0);
   tempPlayerCtx.drawImage(tempPlayer, 0, 0);
 }
 resizeCanvas();
