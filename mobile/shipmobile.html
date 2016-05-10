@@ -1,5 +1,5 @@
-<html>
 
+<html>
 <head>
   <style>
     canvas {
@@ -51,14 +51,20 @@
       e.keyCode = 39;
       jQuery("body").trigger(e);
     }
-    function clearClick() {
-      var e = jQuery.Event("keydown");
-      e.which = 44; // # Some key code value
-      e.keyCode = 44;
+    function leftClear() {
+      var e = jQuery.Event("keyup");
+      e.which = 37; // # Some key code value
+      e.keyCode = 37;
+      jQuery("body").trigger(e);
+    }
+    function rightClear() {
+      var e = jQuery.Event("keyup");
+      e.which = 39; // # Some key code value
+      e.keyCode = 39;
       jQuery("body").trigger(e);
     }
   </script>
-  <div id="buttons"><button id="left-button" onclick="leftClick()">&lt;</button><button id="right-button" onclick="rightClick()">&gt;</button></div>
+  <div id="buttons"><button id="left-button" onmousedown="leftClick()" onmouseup="leftClear()">&lt;</button><button id="right-button" onmousedown="rightClick()" onmouseup="rightClear()">&gt;</button></div>
 </body>
 
 </html>
