@@ -38,7 +38,7 @@ var imageRepository = new function () {
   }
 
   // Set images src
-  this.background.src = "../images/background2.png";
+  this.background.src = "../images/background.png";
   this.spaceship.src = "../images/Spaceship.png";
 }
 
