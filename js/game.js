@@ -274,11 +274,11 @@ window.requestAnimFrame = (function(){
  * #level_Counter, #life_Counter, and #score_Counter accordingly
  */
 
-var current_Lives = 10;
+var current_Lives = 69;
 document.getElementById("life_Counter").innerHTML = "Lives: " + current_Lives;
 
-var current_Score = 0; 
+var current_Score = 420; 
 document.getElementById("score_Counter").innerHTML = "Score: " + current_Score;
 
-var current_Level = 1;
+var current_Level = "blzit";
 document.getElementById("level_Counter").innerHTML = "Level: " + current_Level;
