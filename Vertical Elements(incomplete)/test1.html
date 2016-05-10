@@ -30,28 +30,32 @@
 	var letter1Index = Math.floor(Math.random() * 27);
 	var letter2Index = Math.floor(Math.random() * 27);
 	
+	var letterVal;
+	
 	function clearRect() {
 		ctx.clearRect(0,0,500,500);
 	}
 	
 	function newValues() {
-		
-		letterX = Math.floor(Math.random() * 481);
-		letter1X = Math.floor(Math.random() * 481);
-		letter2X = Math.floor(Math.random() * 481);
-		
-		letterY = 0;
-		letter1Y = (Math.floor(Math.random() * -601));
-		letter2Y = (Math.floor(Math.random() * -601));
-		
-		letterIndex = Math.floor(Math.random() * 27);
-		letter1Index = Math.floor(Math.random() * 27);
-		letter2Index = Math.floor(Math.random() * 27);
-
+	
+		if (letterVal == 1) {
+			letterX = Math.floor(Math.random() * 481);
+			letterY = -49;
+			letterIndex = Math.floor(Math.random() * 27);
+		}
+		if (letterVal == 2) {
+			letter1X = Math.floor(Math.random() * 481);
+			letter1Y = (Math.floor(Math.random() * -1000));
+			letter1Index = Math.floor(Math.random() * 27);
+		}
+		if (letterVal == 3) {
+			letter2X = Math.floor(Math.random() * 481);
+			letter2Y = (Math.floor(Math.random() * -1000));
+			letter2Index = Math.floor(Math.random() * 27);
+		}
 	}
 	
 	function drawletter() {
-		if(letterY < 500  || letter1Y < 500 || letter2Y < 500) {
 			clearRect();
 
 			letterY += 3;
@@ -59,26 +63,22 @@
 			letter2Y +=3;
 
 			ctx.drawImage(letterArray[letterIndex], letterX, letterY);
-			ctx.drawImage(letterArray[letterIndex], letter1X, letter1Y);
-			ctx.drawImage(letterArray[letterIndex], letter2X, letter2Y)
-			
-			if (letterY > 500 && letter1Y < 500 && letter2Y < 500) {
-				letterY = 0;
-				letterX = Math.floor(Math.random() * 481);
+			ctx.drawImage(letterArray[letter1Index], letter1X, letter1Y);
+			ctx.drawImage(letterArray[letter2Index], letter2X, letter2Y)
+			if (letterY > 500) {
+				letterVal = 1;
+				newValues();
 			}
 			
-			if (letterY > 500 && letter1Y > 500 && letter2Y < 500) {
-				letter1Y = (Math.floor(Math.random() * -601));
-				letter1X = Math.floor(Math.random() * 481);
+			if (letter1Y > 500) {
+				letterVal = 2;
+				newValues();
 			}
 			
-			if (letterY < 500 && letter1Y > 500 && letter2Y > 500) {
-				letter2Y = (Math.floor(Math.random() * -601));
-				letter2X = Math.floor(Math.random() * 481);
+			if (letter2Y > 500) {
+				letterVal = 3;
+				newValues();
 			}
-		} else {
-			newValues();
-		}
 	}
 
 	function draw() {
@@ -87,9 +87,11 @@
 	}
 	
 	function addletter() {
+	
 		var randomLetter = Math.floor(Math.random() * 27)
+		
 		for (var i = 0; i < 26; i++) {
-			switch(i) {
+			switch(randomLetter) {
 				case 0:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/A.png';
