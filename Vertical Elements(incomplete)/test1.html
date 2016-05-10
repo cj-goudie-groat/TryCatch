@@ -1,0 +1,76 @@
+<html>
+<head>
+	<style>
+		#canvas {
+			top:0;
+			left: 0;
+			border:3px solid #000000;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="500">
+	shit broke yo
+	</canvas>
+	<script type="text/javascript">
+	
+	var canvas, ctx;
+	var domoX = Math.floor(Math.random() * 481);
+	var domoY = 0;
+	var domoArray = new Array();
+	var numDomos = 1;
+	var domoSpeedTimer = null;
+	var wat = -100;
+	
+	function clearRect() {
+		ctx.clearRect(0,0,500,500);
+	}
+	
+	function newXValue() {
+		domoX = Math.floor(Math.random() * 480);
+	}
+	
+	function drawDomo() {
+		if(domoY < 500) {
+			clearRect();
+			domoY += 3;
+			wat +=3;
+			ctx.drawImage(domoArray[1], domoX, domoY);
+			ctx.drawImage(domoArray[2], Math.floor(domoX/2), wat);
+		} if (wat > 500){
+			wat = -100;
+			newXValue();
+		} if (domoY > 500) {
+			domoY = 0;
+			newXValue();
+		}
+	}
+
+	function draw() {
+		clearRect();
+		domoSpeedTimer = setInterval('drawDomo();', 10);
+	}
+	
+	function addDomo() {
+		for (var i = 0; i < 26; i++) {
+			domoArray[numDomos] = new Image();
+			domoArray[numDomos].src = './domo.png';
+			++numDomos;
+		}
+		drawDomo();
+	}
+	
+	function init() {
+		canvas = document.getElementById('canvas');
+		ctx = canvas.getContext('2d');
+		draw();
+		addDomo();
+		drawDomo();
+	}
+
+	window.onload = init();
+	
+	
+	</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<html>
+<head>
+	<style>
+		#canvas {
+			width: 400px;
+			height: 400px;
+			top:0;
+			left: 0;
+			border:1px solid #000000;
+			background-color: #000000;
+		}
+	</style>
+	<script>
+/*		var myTimer = null;
+
+		function move(){
+			var square = document.getElementById('x');
+			
+			square.style.top = parseInt(square.style.top) + 1 + "px";	
+		}
+
+		
+		function moveAccordingToKeyPressed(e){
+			if(e.event){
+				theKeyPressed = e.keyCode;
+			}else if(e.which){
+				theKeyPressed = e.which;
+			}
+			//alert(theKeyPressed);
+			if(theKeyPressed == 40){
+				if(myTimer == null){
+					myTimer = setInterval('move();', 10);
+				}else{
+					clearInterval(myTimer);
+					myTimer = null;
+				}
+			}
+		}
+
+		window.onload=function(){
+			var square = document.getElementById('x');
+		
+			window.onkeydown=moveAccordingToKeyPressed;
+		
+			square.onclick=function(){
+				if(myTimer == null){
+					myTimer = setInterval('move();', 10);
+				}else{
+					clearInterval(myTimer);
+					myTimer = null;
+				}
+			};
+		}
+*/
+	</script>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="500" style="border: solid; #000000;">
+	</canvas>
+	<script type="text/javascript">
+/*		var myTimer = null;
+		var squareX = 0;
+		var squareY = 0;
+		var c = document.getElementById("x");
+		var ctx = c.getContext("2d");
+		
+		square = {x:10,y:10,w:20,h:20};
+		ctx.fillStyle = "#FF0000";
+		ctx.fillRect(squareX,squareY,25,25);
+
+		
+		function move(){
+				ctx.clearRect;
+				ctx.fillRect(squareX,squareY++,25,25);
+		}
+*/
+	var canvas, ctx, loop, square2;
+
+	function init() {
+		canvas = document.getElementById('canvas');
+		ctx = canvas.getContext('2d');
+		square2 = {x:400,y:-20,w:20,h:20};
+		draw();
+	}
+	function clearRect() {
+		ctx.clearRect(square2.x,square2.y,square2.w,square2.h);
+	}
+	function drawSquare() {
+		ctx.fillStyle = '#0f0';
+		if(square2.y < 400) {
+			square2.y += 1;
+			ctx.fillRect(square2.x,square2.y,square2.w,square2.h);
+		}
+	}
+
+	function draw() {
+		clearRect();
+		drawSquare();
+		loop = setTimeout(draw, 1000/90);
+	}
+
+	window.onload = init;
+	</script>
+</body>
+</html>
