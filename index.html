@@ -1,58 +1,61 @@
-
+<!doctype html>
 <html>
+<head>
+  <meta charset="utf-8">
+  <title>TryCatch - Home</title>
+  <link href="style/style.css" rel="stylesheet" type="text/css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+      $("#play").click(function() {
+        $("#main-menu").fadeOut(1000);
+        $("#game").fadeIn(2000);
+      });
+    });
+  </script>
+</head>
 
-   <head>
-       <meta charset="utf-8">
-       <title>TryCatch - Menu</title>
-       <link href="style/reset.css" rel="stylesheet" type="text/css"/>
-       <link href="style/style.css" rel="stylesheet" type="text/css"/>
-   </head>
-
-
-   <body>
-
-   		<div id="main">
-
-	   	<!-- this is the header section-->
-	        <div class="header">
-	        	<div>
-	                <h1> TryCatch
-	                </h1>
-	            </div>
-	        </div>
-
-	    <!-- This is the button body -->
-	        <div class="game_collection">
-	        	<button class="game_choice"> 
-	        		<img src="SpaceGame.svg">
-
-	        	</button>
-	        	<button class="game_choice">
-	        		<img src="MathGame.svg">
-	        	
-	        	</button>
-	        	<button class="game_choice">
-	        		<img src="GeoGame.svg">
-	        	
-	        	</button>
-	        </div>
-
-
-	        <div class="button_collection">
-	        	<button class="button"> Play Game
-	        	</button>
-
-	        	<button class="button"> High Score (Coming soon!)
-	        	</button>
-
-				<button class="button"> Options
-				</button>
-	        </div>
-
-
-	    </div>
- 	
-
-   </body>
+<body>
+  <div id="wrapper">
+    <!-- This is the main menu section -->
+    <div id="main-menu">
+      <div id="title">
+        <h1>TryCatch</h1>
+      </div>
+      
+      <div id="buttons">
+        <div id="game-collection">
+          <button class="theme">Spelling</button>
+          <button class="theme">Math</button>
+          <button class="theme">Shapes</button>
+        </div>
+        
+        <div id="button-collection">
+          <button id="play" class="button">Start Game</button>
+          <button class="button">Difficult (Coming Soon!)</button>
+        </div>
+      </div>
+    </div>
+    <div id="game">
+      <canvas id="background" width="1000">
+      </canvas>
+      <canvas id="ship" width="1000" height="209">
+      </canvas>
+      <div id="top-menu">
+        <div id="left">
+          <p class="left-text">Level: 1</p>
+          <p class="left-text">Pause</p>
+        </div>
+        <div id="right">
+          <p class="right-text">Score: 9846</p>
+          <p class="right-text">Lives: 5</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/game.js"></script>
+  <script src="js/resizeCanvas.js"></script>
+</body>
 
 </html>

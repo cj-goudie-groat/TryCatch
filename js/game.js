@@ -1,22 +1,3 @@
-/***************
- * PART TWO - Create the player controlled ship and it's
- * properties (move and shoot)
- ***************/
-
-/* NOTES TO REMEMBER
- * 1. Drawing to the canvas is expensive. Try to reuse as much as the image as you can for each frame.
- */
-
-/* RESOURCES
- * 1. http://gamedev.tutsplus.com/tutorials/implementation/object-pools-help-you-reduce-lag-in-resource-intensive-games/
- * 2. http://gameprogrammingpatterns.com/object-pool.html
- * 3. http://www.slideshare.net/ernesto.jimenez/5-tips-for-your-html5-games
- * 4. http://www.kontain.com/fi/entries/94636/ (quote on performace)
- * 5. http://code.bytespider.eu/post/21438674255/dirty-rectangles
- * 6. http://www.html5rocks.com/en/tutorials/canvas/performance/
- */
-
-
 /**
  * Initialize the Game and start it.
  */
@@ -48,6 +29,7 @@ var imageRepository = new function () {
       window.init();
     }
   }
+  
   this.background.onload = function () {
     imageLoaded();
   }
@@ -56,10 +38,9 @@ var imageRepository = new function () {
   }
 
   // Set images src
-  this.background.src = "imgs/bg.png";
-  this.spaceship.src = "imgs/ship.png";
+  this.background.src = "../images/background2.png";
+  this.spaceship.src = "../images/Spaceship.png";
 }
-
 
 /**
  * Creates the Drawable object which will be the base class for
@@ -85,7 +66,6 @@ function Drawable() {
   this.move = function () {};
 }
 
-
 /**
  * Creates the Background object which will become a child of
  * the Drawable object. The background is drawn on the "background"
@@ -97,9 +77,8 @@ function Background() {
   // Implement abstract function
   this.draw = function () {
     // Pan background
-    this.y += this.speed;
     this.context.drawImage(imageRepository.background, this.x, this.y);
-
+    this.y += this.speed;
     // Draw another image at the top edge of the first image
     this.context.drawImage(imageRepository.background, this.x, this.y - this.canvasHeight);
 
@@ -178,12 +157,11 @@ function Game() {
       // information
       Background.prototype.context = this.bgContext;
       Background.prototype.canvasWidth = this.bgCanvas.width;
-      Background.prototype.canvasHeight = this.bgCanvas.height;
+      Background.prototype.canvasHeight = imageRepository.spaceship.height;
 
       Ship.prototype.context = this.shipContext;
       Ship.prototype.canvasWidth = this.shipCanvas.width;
       Ship.prototype.canvasHeight = this.shipCanvas.height;
-
 
       // Initialize the background object
       this.background = new Background();
@@ -193,9 +171,8 @@ function Game() {
       this.ship = new Ship();
       // Set the ship to start near the bottom middle of the canvas
       var shipStartX = this.shipCanvas.width / 2 - imageRepository.spaceship.width;
-      //var shipStartY = this.shipCanvas.height / 4 * 3 + imageRepository.spaceship.height * 2;
-      this.ship.init(shipStartX, 300, imageRepository.spaceship.width,
-        imageRepository.spaceship.height);
+      var shipStartY = 0;
+      this.ship.init(shipStartX, shipStartY, imageRepository.spaceship.width, imageRepository.spaceship.height);
 
       return true;
     } else {

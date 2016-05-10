@@ -37,7 +37,7 @@ var imageRepository = new function () {
   // Define images
   this.background = new Image();
   this.spaceship = new Image();
-
+  
   // Ensure all images have loaded before starting the game
   var numImages = 2;
   var numLoaded = 0;
@@ -119,6 +119,7 @@ Background.prototype = new Drawable();
  * around the screen.
  */
 function Ship() {
+  
   this.speed = 3;
 
   this.draw = function () {
@@ -144,8 +145,6 @@ function Ship() {
 					this.x = this.canvasWidth - this.width;
 			}
       
-  
-
       // Finish by redrawing the ship
       this.draw();
     }
@@ -177,6 +176,20 @@ function Ship() {
   } */
 }
 Ship.prototype = new Drawable();
+
+/* function Buttons() {
+  this.init = function (x, y, width, height) {
+    // Defualt variables
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
+  }
+  this.draw = function() {
+    this.context.drawImage(imageRepository.leftarrow, this.x, this.y);
+  }
+
+} */
 
 
 /**
@@ -211,12 +224,11 @@ function Game() {
       Ship.prototype.context = this.shipContext;
       Ship.prototype.canvasWidth = this.shipCanvas.width;
       Ship.prototype.canvasHeight = this.shipCanvas.height;
-
-
+      
       // Initialize the background object
       this.background = new Background();
       this.background.init(0, 0); // Set draw point to 0,0
-
+      
       // Initialize the ship object
       this.ship = new Ship();
       // Set the ship to start near the bottom middle of the canvas
