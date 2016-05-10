@@ -39,7 +39,7 @@ var imageRepository = new function () {
 
   // Set images src
   this.background.src = "images/background.png";
-  this.spaceship.src = "images/Spaceship.png";
+  this.spaceship.src = "images/spaceship.png";
 }
 
 /**
@@ -96,7 +96,7 @@ Background.prototype = new Drawable();
  * around the screen.
  */
 function Ship() {
-  this.speed = 3;
+  this.speed = 10;
 
   this.draw = function () {
     this.context.drawImage(imageRepository.spaceship, this.x, this.y);
