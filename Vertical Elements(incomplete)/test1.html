@@ -3,9 +3,57 @@
 	<style>
 		#canvas {
 			top:0;
-			left: 0;
-			border:3px solid #000000;
+			padding-left: 0px;
+			border:1px solid #000000;
 		}
+		/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
 	</style>
 </head>
 <body>
@@ -13,7 +61,10 @@
 		your browser does not support this game, get rekt nerd
 	</canvas>
 	<script type="text/javascript">
-	
+	/*************************************************************************
+	 A LOT OF (READ ALMOST ALL) OF MY STUFF IS BASED ON A 500X500 BOARD SO THIS 
+	 MIGHT BE HARD TO GET TO WORK WITH A VARIABLE SIZED CANVAS
+	 *************************************************************************/
 	var canvas, ctx; //canvas, canvas context
 	var letterArray = new Array(); // array of letter image sprites
 	var letterSpeedTimer = null; //timer
@@ -21,10 +72,10 @@
 	/**
 	 * X value for the image, random number between 40 and 455
 	 */
-	var letterX = Math.floor(Math.random() * 455) + 40; 
-	var letter1X = Math.floor(Math.random() * 455) + 40;
-	var letter2X = Math.floor(Math.random() * 455) + 40;
-	var letter3X = Math.floor(Math.random() * 455) + 40;
+	var letterX = Math.floor(Math.random() * 460); 
+	var letter1X = Math.floor(Math.random() * 460);
+	var letter2X = Math.floor(Math.random() * 460);
+	var letter3X = Math.floor(Math.random() * 460);
 	/**
 	 * Y value for images, letterY at -50 will spawn it first so the game starts
 	 * immediately.
@@ -34,45 +85,52 @@
 	var letter2Y = (Math.floor(Math.random() * -600));
 	var letter3Y = (Math.floor(Math.random() * -600));
 	/**
-	 * Decides which letter drops. 0=A, 1=B etc.
+	 * Decides which letter drops. 0=A, 1=B 24= Y, etc.
 	 */
-	var letterIndex = Math.floor(Math.random() * 27);
-	var letter1Index = Math.floor(Math.random() * 27);
-	var letter2Index = Math.floor(Math.random() * 27);
-	var letter3Index = Math.floor(Math.random() * 27);
+	var letterIndex = Math.floor(Math.random() * 26);
+	var letter1Index = Math.floor(Math.random() * 26);
+	var letter2Index = Math.floor(Math.random() * 26);
+	var letter3Index = Math.floor(Math.random() * 26);
 	
-	var letterVal;
-	var letterSpeed = 3;
-	var letterTickRate = 30;
+	var letterVal; //decides which image is respawned
+	var letterSpeed = 3; //moves 3px down every timer tick
+	var letterTickRate = 25; //timer tick every 25ms
 	
+	/**
+	 * Clears the whole canvas, cause I'm lazy
+	 */
 	function clearRect() {
 		ctx.clearRect(0,0,500,500);
 	}
-	
+	/**
+	 * 
+	 */
 	function newValues() {
 	
 		if (letterVal == 1 ) {
-			letterX = Math.floor(Math.random() * 420) + 40;
+			letterX = Math.floor(Math.random() * 460);
 			letterY = -49;
 			letterIndex = Math.floor(Math.random() * 26);
 		}
 		if (letterVal == 2) {
-			letter1X = Math.floor(Math.random() * 420) + 40;
+			letter1X = Math.floor(Math.random() * 460);
 			letter1Y = (Math.floor(Math.random() * -100));
 			letter1Index = Math.floor(Math.random() * 26);
 		}
 		if (letterVal == 3) {
-			letter2X = Math.floor(Math.random() * 420) + 40;
+			letter2X = Math.floor(Math.random() * 460);
 			letter2Y = (Math.floor(Math.random() * -100));
 			letter2Index = Math.floor(Math.random() * 26);
 		}
 		if (letterVal == 4) {
-			letter3X = Math.floor(Math.random() * 420) + 40;
+			letter3X = Math.floor(Math.random() * 420);
 			letter3Y = (Math.floor(Math.random() * -100));
 			letter3Index = Math.floor(Math.random() * 26);
 		}
 	}
-	
+	/**
+	 * 
+	 */
 	function drawLetter() {
 			clearRect();
 
@@ -105,12 +163,16 @@
 				newValues();
 			}
 	}
-
+	/**
+	 * 
+	 */
 	function draw() {
 		clearRect();
 		letterSpeedTimer = setInterval('drawLetter();', letterTickRate);
 	}
-	
+	/**
+	 * 
+	 */
 	function addletter() {
 		for (var i = 0; i < 26; i++) {
 			switch(i) {
@@ -223,6 +285,9 @@
 		drawLetter();
 	}
 	
+	/**
+	 * 
+	 */
 	function init() {
 		canvas = document.getElementById('canvas');
 		ctx = canvas.getContext('2d');
