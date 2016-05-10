@@ -1,89 +1,129 @@
-
 /*******************/
 /* General Styling */
 /*******************/
 
 body {
-	background-color:#FF3355;
+  margin: 0;
+  padding: 0;
+  background-color:#ffffff;
 }
 
-#main {
-	position: relative;
-	min-width: 320px;
-	width: 100%;
-	margin: 0 auto;
-	height: 100%;
-	background-color: #556600;
-
-}
-/**************/
-/* The Header */
-/**************/
-.header {
-	position: relative;
-	text-align: center;
-	height: 20%;
-	font-size: 50px;
-	text-align: center;
-	padding-top: 25%;
+#wrapper {
+  position: relative;
+  width: 1000px;
+  height: 100vh;
+  margin: auto;
 }
 
-h1 {
-	font-size: 2.5em;
+canvas {
+  position: absolute;
+  background: transparent;
+}
+
+/*******************/
+/* The Menu Header */
+/*******************/
+
+#header-title {
 	text-align: center;
-	color: #FF3355;
+	padding-top: 20%;
+}
+/*****************/
+/* The Main Menu */
+/*****************/
+
+#main-menu {
+  position: absolute;
+  width: 100%;
 }
 
 /***************/
 /* The Buttons */
 /***************/
+#game-collection {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#button-collection {
+    display: flex;
+    flex-direction: column;
+}
+
+.theme {
+    width: 150px;
+    height: 150px;
+	padding-top: 3em;
+	padding-bottom: 3em;
+	margin: 0 1em 2em 1em;
+	border: 6px solid #EDF259;
+	border-radius: 2em;
+	background-color: #0AAFF1;
+}
+
 .button {
-	position: relative;
-	width:70%;
-	height: 10%;
-		
-	text-align: center;
-	font-size: 2.5em;
-	
-	padding-top: 25px;
-	padding-bottom: 25px;
-	
-	margin: 0 auto;
-	margin-bottom: 55px;
-	
-	border: 6px solid blue;
-	border-radius: 25px;
-
-	background-color: yellow;
+    width: 30%;
+	padding-top: 2em;
+	padding-bottom: 2em;
+	margin-bottom: 2em;
+    margin: 0 auto 2em auto;
+	border: 6px solid #EDF259;
+	border-radius: 2em;
+	background-color: #0AAFF1;
 }
 
-.button_collection {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-
-	padding-bottom: 50px;
-
+#background {
+  z-index: 0;
 }
 
-/*******************/
-/* Game Collection */
-/*******************/
-.game_choice {
-	position: relative;
-	margin: 0 auto;	
-	width: 27%;
+#ship {
+  bottom: 0;
+  z-index: 1;
 }
 
-.game_choice img {
-	width: 100%;
+#top-menu {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  width: 100%;
 }
 
-.game_collection {
-	display: flex;
-	flex-direction: row;
+#left {
+  flex-grow: 1;
+  background-color: cadetblue;
+}
 
-	margin: 0 auto;
-	margin-bottom: 8%;
+.left-text {
+  position: relative;
+  margin: 10px 0 10px 20px;
+  font-family: fantasy, sans-serif;
+  font-size: 40px;
+  color: white;
+}
 
+#right {
+  flex-grow: 2;
+  background-color: darksalmon;
+}
+
+.right-text {
+  position: relative;
+  margin: 10px 0 10px 20px;
+  font-family: fantasy, sans-serif;
+  font-size: 40px;
+  color: white;
+}
+
+p {
+  margin: 0;
+}
+
+#game {
+  display: none;
+  position: relative;
+  height: 100%;
+  top: 0;
 }
