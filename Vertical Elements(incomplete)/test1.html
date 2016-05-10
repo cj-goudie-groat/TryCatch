@@ -23,8 +23,8 @@
 	var letter2X = Math.floor(Math.random() * 481);
 	
 	var letterY = 0;
-	var letter1Y = -138;
-	var letter2Y = -294;
+	var letter1Y = (Math.floor(Math.random() * -600));
+	var letter2Y = (Math.floor(Math.random() * -600));
 	
 	var letterIndex = Math.floor(Math.random() * 27);
 	var letter1Index = Math.floor(Math.random() * 27);
@@ -38,33 +38,34 @@
 	
 	function newValues() {
 	
-		if (letterVal == 1) {
-			letterX = Math.floor(Math.random() * 481);
+		if (letterVal == 1 ) {
+			letterX = Math.floor(Math.random() * 420) + 40;
 			letterY = -49;
-			letterIndex = Math.floor(Math.random() * 27);
+			letterIndex = Math.floor(Math.random() * 26);
 		}
 		if (letterVal == 2) {
-			letter1X = Math.floor(Math.random() * 481);
-			letter1Y = (Math.floor(Math.random() * -1000));
-			letter1Index = Math.floor(Math.random() * 27);
+			letter1X = Math.floor(Math.random() * 420) + 40;
+			letter1Y = (Math.floor(Math.random() * -100));
+			letter1Index = Math.floor(Math.random() * 26);
 		}
 		if (letterVal == 3) {
-			letter2X = Math.floor(Math.random() * 481);
-			letter2Y = (Math.floor(Math.random() * -1000));
-			letter2Index = Math.floor(Math.random() * 27);
+			letter2X = Math.floor(Math.random() * 420) + 40;
+			letter2Y = (Math.floor(Math.random() * -100));
+			letter2Index = Math.floor(Math.random() * 26);
 		}
 	}
 	
-	function drawletter() {
+	function drawLetter() {
 			clearRect();
+
+			ctx.drawImage(letterArray[letterIndex], letterX, letterY);
+			ctx.drawImage(letterArray[letter1Index], letter1X, letter1Y);
+			ctx.drawImage(letterArray[letter2Index], letter2X, letter2Y);
 
 			letterY += 3;
 			letter1Y +=3;
 			letter2Y +=3;
-
-			ctx.drawImage(letterArray[letterIndex], letterX, letterY);
-			ctx.drawImage(letterArray[letter1Index], letter1X, letter1Y);
-			ctx.drawImage(letterArray[letter2Index], letter2X, letter2Y)
+			
 			if (letterY > 500) {
 				letterVal = 1;
 				newValues();
@@ -83,110 +84,119 @@
 
 	function draw() {
 		clearRect();
-		letterSpeedTimer = setInterval('drawletter();', 10);
+		letterSpeedTimer = setInterval('drawLetter();', 10);
 	}
 	
 	function addletter() {
-	
-		var randomLetter = Math.floor(Math.random() * 27)
-		
 		for (var i = 0; i < 26; i++) {
-			switch(randomLetter) {
-				case 0:
+			switch(i) {
+			case 0:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/A.png';
 			break;
-				case 1:
+			case 1:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/B.png';
-			break;case 2:
+			break;
+			case 2:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/C.png';
 			break;
-				case 3:
+			case 3:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/D.png';
-			break;case 4:
+			break;
+			case 4:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/E.png';
 			break;
-				case 5:
+			case 5:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/F.png';
-			break;case 6:
+			break;
+			case 6:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/G.png';
 			break;
-				case 7:
+			case 7:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/H.png';
-			break;case 8:
+			break;
+			case 8:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/I.png';
 			break;
-				case 9:
+			case 9:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/J.png';
-			break;case 10:
+			break;
+			case 10:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/K.png';
 			break;
-				case 11:
+			case 11:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/L.png';
-			break;case 12:
+			break;
+			case 12:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/M.png';
 			break;
-				case 13:
+			case 13:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/N.png';
-			break;case 14:
+			break;
+			case 14:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/O.png';
 			break;
-				case 15:
+			case 15:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/P.png';
-			break;case 16:
+			break;
+			case 16:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/Q.png';
 			break;
-				case 17:
+			case 17:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/R.png';
-			break;case 18:
+			break;
+			case 18:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/S.png';
 			break;
-				case 19:
+			case 19:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/T.png';
-			break;case 20:
+			break;
+			case 20:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/U.png';
 			break;
-				case 21:
+			case 21:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/V.png';
-			break;case 22:
+			break;
+			case 22:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/W.png';
 			break;
-				case 23:
+			case 23:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/X.png';
-			break;case 24:
+			break;
+			case 24:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/Y.png';
 			break;
-				case 25:
+			case 25:
 				letterArray[i] = new Image();
 				letterArray[i].src = './Letters/Z.png';
 			break;
 			}
 		}
-		drawletter();
+		drawLetter();
 	}
 	
 	function init() {
@@ -194,7 +204,6 @@
 		ctx = canvas.getContext('2d');
 		draw();
 		addletter();
-		drawletter();
 	}
 
 	window.onload = init();
