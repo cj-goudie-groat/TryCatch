@@ -7,6 +7,10 @@
   <link href="style/style.css" rel="stylesheet" type="text/css"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   
+  <!-- REMOVE DIS AFTER -->
+  <!--<script src="Vertical Elements(incomplete)/test1.js" type="text/js" > </script>-->
+  <!-- REMOVE DIS AFTER -->
+  
   <script>
     window.addEventListener("load", function() {
     var leftButton = document.getElementById("left-button");
@@ -78,8 +82,14 @@
       <div id="top-menu">
         <div id="left">
           <p id="level_Counter"></p>
-          <p class="left-text">Pause</p>
+          <button id="pause" onclick="pause()">Pause</button>
         </div>
+		<script>
+			function pause() {
+				document.getElementById("pause-menu").style.display = "block";
+				document.getElementById("pause-menu-screen-darken").style.display = "block";
+			}
+		</script>
         <div id="right">
           <p id="life_Counter"></p>          
           <p id="score_Counter"></p>
