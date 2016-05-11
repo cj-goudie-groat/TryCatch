@@ -24,10 +24,15 @@ var letter3Index = Math.floor(Math.random() * letterAmount);
 var letter4Index = Math.floor(Math.random() * letterAmount);
 
 /**
- * Clears the whole canvas so there aren't image trails.
+ * Clears the canvas [letterSpeed]px above the letter sprites to remove trails.
  */
 function clearRect() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+	ctx.clearRect(letter1X, letter1Y -letterSpeed, 40, 40);
+	ctx.clearRect(letter2X, letter2Y -letterSpeed, 40, 40);
+	ctx.clearRect(letter3X, letter3Y -letterSpeed, 40, 40);
+	ctx.clearRect(letter4X, letter4Y -letterSpeed, 40, 40);
+	
+	ctx.clearRect(0, canvas.height-3, canvas.width, 3);
 }
 
 /**
@@ -63,8 +68,8 @@ function newValues(letterVal) {
  * newValues() to spawn a new random letter.
  */
 function drawLetter() {
-  clearRect();
   
+  clearRect();
   ctx.drawImage(letterArray[letter1Index], letter1X, letter1Y);
   ctx.drawImage(letterArray[letter2Index], letter2X, letter2Y);
   ctx.drawImage(letterArray[letter3Index], letter3X, letter3Y);
