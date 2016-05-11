@@ -136,7 +136,9 @@ function checkCollision() {
     (window.innerHeight - imageRepository.spaceship.height) < letterRect4.y + letterRect4.height &&
     60 + (window.innerHeight - imageRepository.spaceship.height) > letterRect4.y)) {
     
-    console.log("shit");
+    console.log("ow that hurts");
+  } else {
+    console.log("HIT ME BITCH");
   }
 }
 
