@@ -99,7 +99,15 @@ canvas {
 .left-text {
   position: relative;
   margin: 10px 0 10px 20px;
-  font-family: fantasy, sans-serif;
+  font-family: sans-serif;
+  font-size: 40px;
+  color: white;
+}
+
+#level_Counter {
+  position: relative;
+  margin: 10px 0 10px 20px;
+  font-family: sans-serif;
   font-size: 40px;
   color: white;
 }
@@ -113,6 +121,22 @@ canvas {
   position: relative;
   margin: 10px 0 10px 20px;
   font-family: fantasy, sans-serif;
+  font-size: 40px;
+  color: white;
+}
+
+#life_Counter {
+  position: relative;
+  margin: 10px 0 10px 20px;
+  font-family: sans-serif;
+  font-size: 40px;
+  color: white;
+}
+
+#score_Counter {
+  position: relative;
+  margin: 10px 0 10px 20px;
+  font-family: sans-serif;
   font-size: 40px;
   color: white;
 }

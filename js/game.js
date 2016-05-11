@@ -8,7 +8,6 @@ function init() {
     game.start();
 }
 
-
 /**
  * Define an object to hold all our images for the game so images
  * are only ever created once. This type of object is known as a 
@@ -151,7 +150,6 @@ function Ship() {
 }
 Ship.prototype = new Drawable();
 
-
 /**
  * Creates the Game object which will hold all objects and data for
  * the game.
@@ -209,7 +207,6 @@ function Game() {
   };
 }
 
-
 /**
  * The animation loop. Calls the requestAnimationFrame shim to
  * optimize the game loop and draws all game objects. This
@@ -221,12 +218,6 @@ function animate() {
   game.background.draw();
   game.ship.move();
 }
-
-function shipAnim() {
-  requestAnimFrame(shipAnim);
-
-}
-
 
 // The keycodes that will be mapped when a user presses a button.
 // Original code by Doug McInnes
@@ -275,7 +266,6 @@ document.onkeyup = function (e) {
   }
 }
 
-
 /**	
  * requestAnim shim layer by Paul Irish
  * Finds the first API that works to optimize the animation loop, 
@@ -291,3 +281,19 @@ window.requestAnimFrame = (function () {
       window.setTimeout(callback, 1000 / 60);
     };
 })();
+
+/**
+ * This where the variables and declarations of the working
+ * scoreboard, life system, and levels are. They are variables in javascript 
+ * and can be updated as such, allowing a user to progress through the game.
+ * They are located in a div (#game) in the HTML and are being referenced as 
+ * #level_Counter, #life_Counter, and #score_Counter accordingly
+ */
+var current_Lives = 69;
+document.getElementById("life_Counter").innerHTML = "Lives: " + current_Lives;
+
+var current_Score = 420; 
+document.getElementById("score_Counter").innerHTML = "Score: " + current_Score;
+
+var current_Level = "blzit";
+document.getElementById("level_Counter").innerHTML = "Level: " + current_Level;
