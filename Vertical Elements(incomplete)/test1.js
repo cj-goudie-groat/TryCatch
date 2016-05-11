@@ -3,7 +3,7 @@
 	 MIGHT BE HARD TO GET TO WORK WITH A VARIABLE SIZED CANVAS
 	 *************************************************************************/
 	var canvas, ctx; //canvas, canvas context
-	var letterArray = new Array(); // array of letter image sprites
+	var letterArray = []; // array of letter image sprites
 	var letterSpeedTimer = null; //timer
 	var letterVal; //decides which image is respawned
 	var letterSpeed = 3; //moves 3px down every timer tick

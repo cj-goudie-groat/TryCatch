@@ -77,9 +77,13 @@ canvas {
   z-index: 0;
 }
 
+#elements {
+  z-index: 1;
+}
+
 #ship {
   bottom: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 #top-menu {
@@ -143,6 +147,22 @@ canvas {
 
 p {
   margin: 0;
+}
+
+#buttons {
+  z-index: 0;
+}
+    
+#left-button {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+    
+#right-button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 #game {

@@ -4,8 +4,16 @@
 var game = new Game();
 
 function init() {
-  if (game.init())
+  if (game.init()) {
     game.start();
+    
+    // load letters game
+    var script = document.createElement("script");
+    script.src = "js/letters.js";
+    script.type = "text/javascript";
+    var head = document.getElementsByTagName("head")[0];
+    head.appendChild(script);
+  }
 }
 
 /**
@@ -17,7 +25,7 @@ var imageRepository = new function () {
   // Define images
   this.background = new Image();
   this.spaceship = new Image();
-
+  
   // Ensure all images have loaded before starting the game
   var numImages = 2;
   var numLoaded = 0;
@@ -39,7 +47,7 @@ var imageRepository = new function () {
   // Set images src
   this.background.src = "images/background.png";
   this.spaceship.src = "images/shipanim/ship0.png";
-}
+};
 
 /**
  * Creates the Drawable object which will be the base class for
@@ -96,32 +104,44 @@ Background.prototype = new Drawable();
  */
 function Ship() {
   this.speed = 10;
-  shipL = 1;
-  shipR = 1;
-
+  //this.shipL = 1;
+  //this.shipR = 1;
+  //this.shipAnim = new Image();
+  
+  this.leftButton = document.getElementById("left-button");
+  this.rightButton = document.getElementById("right-button");
+  
   this.draw = function () {
     this.context.drawImage(imageRepository.spaceship, this.x, this.y);
   };
   
-  this.draw();
+  /*
   this.drawLeft = function () {
-    shipAnim = new Image();
-    shipAnim.src = "images/shipanim/shipl" + shipL + ".png";
-    if(shipL < 5) {
-      shipL++;
+    this.shipAnim.src = "images/shipanim/shipl" + this.shipL + ".png";
+    if (this.shipL < 5) {
+      this.shipL++;
     }
-    this.context.drawImage(shipAnim, this.x, this.y);
+    this.context.drawImage(this.shipAnim, this.x, this.y);
   };
   
   this.drawRight = function () {
-    shipAnim = new Image();
-    shipAnim.src = "images/shipanim/shipr" + shipR + ".png";
-    if(shipR < 5) {
-      shipR++;
+    this.shipAnim.src = "images/shipanim/shipr" + this.shipR + ".png";
+    if (this.shipR < 5) {
+      this.shipR++;
     }
-    this.context.drawImage(shipAnim, this.x, this.y);
+    this.context.drawImage(this.shipAnim, this.x, this.y);
   };
+  */
   this.move = function () {
+    this.leftButton.addEventListener("onmousedown", function () {
+      this.shipR = 1;
+      this.x -= this.speed
+
+      if (this.x <= 0) { // Keep player within the screen
+        this.x = 0;
+      }
+      this.draw();
+    }, false);
     // Determine if the action is move action
     if (KEY_STATUS.left || KEY_STATUS.right) {
       // The ship moved, so erase it's current image so it can
@@ -132,20 +152,25 @@ function Ship() {
       // redraw the ship. Change the else if's to if statements
       // to have diagonal movement.
       if (KEY_STATUS.left) {
-        shipR = 1;
+        this.shipR = 1;
         this.x -= this.speed
-        this.animTimer = setInterval(this.drawLeft(), 1000)
-        if (this.x <= 0) // Keep player within the screen
+        
+        // this.animTimer = setInterval(this.drawLeft(), 1000)
+        if (this.x <= 0) { // Keep player within the screen
           this.x = 0;
+        }
+        
       } else if (KEY_STATUS.right) {
-        shipL = 1;
+        this.shipL = 1;
         this.x += this.speed
-        this.animTimer = setInterval(this.drawRight(), 1000);
-        if (this.x >= this.canvasWidth - this.width)
+        
+        // this.animTimer = setInterval(this.drawRight(), 1000);
+        if (this.x >= this.canvasWidth - this.width) {
           this.x = this.canvasWidth - this.width;
+        }
       }
+      this.draw();
     }
-
   };
 }
 Ship.prototype = new Drawable();
@@ -155,7 +180,7 @@ Ship.prototype = new Drawable();
  * the game.
  */
 function Game() {
-  /*
+  /**
    * Gets canvas information and context and sets up all game
    * objects. 
    * Returns true if the canvas is supported and false if it
@@ -164,14 +189,14 @@ function Game() {
    */
   this.init = function () {
     // Get the canvas elements
-    this.bgCanvas = document.getElementById('background');
-    this.shipCanvas = document.getElementById('ship');
+    this.bgCanvas = document.getElementById("background");
+    this.shipCanvas = document.getElementById("ship");
 
     // Test to see if canvas is supported. Only need to
     // check one canvas
     if (this.bgCanvas.getContext) {
-      this.bgContext = this.bgCanvas.getContext('2d');
-      this.shipContext = this.shipCanvas.getContext('2d');
+      this.bgContext = this.bgCanvas.getContext("2d");
+      this.shipContext = this.shipCanvas.getContext("2d");
 
       // Initialize objects to contain their context and canvas
       // information
@@ -182,7 +207,7 @@ function Game() {
       Ship.prototype.context = this.shipContext;
       Ship.prototype.canvasWidth = this.shipCanvas.width;
       Ship.prototype.canvasHeight = this.shipCanvas.height;
-
+      
       // Initialize the background object
       this.background = new Background();
       this.background.init(0, 0); // Set draw point to 0,0
@@ -193,7 +218,7 @@ function Game() {
       var shipStartX = this.shipCanvas.width / 2 - imageRepository.spaceship.width;
       var shipStartY = 0;
       this.ship.init(shipStartX, shipStartY, imageRepository.spaceship.width, imageRepository.spaceship.height);
-
+      
       return true;
     } else {
       return false;
@@ -219,20 +244,19 @@ function animate() {
   game.ship.move();
 }
 
-// The keycodes that will be mapped when a user presses a button.
-// Original code by Doug McInnes
+/** The keycodes that will be mapped when a user presses a button.
+ * Original code by Doug McInnes
+ */
 KEY_CODES = {
-  32: 'space',
-  37: 'left',
-  38: 'up',
-  39: 'right',
-  40: 'down',
+  37: "left",
+  39: "right",
 }
 
-// Creates the array to hold the KEY_CODES and sets all their values
-// to false. Checking true/flase is the quickest way to check status
-// of a key press and which one was pressed when determining
-// when to move and which direction.
+/** Creates the array to hold the KEY_CODES and sets all their values
+ * to false. Checking true/flase is the quickest way to check status
+ * of a key press and which one was pressed when determining
+ * when to move and which direction.
+ */
 KEY_STATUS = {};
 for (code in KEY_CODES) {
   KEY_STATUS[KEY_CODES[code]] = false;

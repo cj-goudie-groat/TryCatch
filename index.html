@@ -2,19 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="apple-mobile-web-app-capable" content="yes">
+  
   <title>TryCatch - Home</title>
   <link href="style/style.css" rel="stylesheet" type="text/css"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-  
-  <script>
-    $(document).ready(function() {
-      $("#play").click(function() {
-        $("#main-menu").fadeOut(1000);
-        $("#game").fadeIn(2000);
-      });
-    });
-  </script>
 </head>
 
 <body>
@@ -39,10 +30,13 @@
       </div>
     </div>
     <div id="game">
-      <canvas id="background" width="1000">
-      </canvas>
-      <canvas id="ship" width="1000" height="209">
-      </canvas>
+      <canvas id="background" width="1000"></canvas>
+      <canvas id="elements" width="1000"></canvas>
+      <canvas id="ship" width="1000" height="209"></canvas>
+      <div id="buttons">
+        <button id="left-button">&lt;</button>
+        <button id="right-button">&gt;</button>
+      </div>
       <div id="top-menu">
         <div id="left">
           <p id="level_Counter"></p>
@@ -55,8 +49,23 @@
       </div>
     </div>
   </div>
-  <script src="js/game.js"></script>
   <script src="js/resizeCanvas.js"></script>
+  <script>
+    <!--
+    $(document).ready(function() {
+      $("#play").click(function() {
+        $("#main-menu").fadeOut(1000);
+        $("#game").fadeIn(2000);
+        
+        var script = document.createElement("script");
+        script.src = "js/game.js";
+        script.type = "text/javascript";
+        var head = document.getElementsByTagName("head")[0];
+        head.appendChild(script);
+      });
+    });
+    -->
+  </script>
 </body>
 
 </html>
