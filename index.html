@@ -6,57 +6,53 @@
   <title>TryCatch - Home</title>
   <link href="style/style.css" rel="stylesheet" type="text/css"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-  
-  <!-- REMOVE DIS AFTER -->
-  <!--<script src="Vertical Elements(incomplete)/test1.js" type="text/js" > </script>-->
-  <!-- REMOVE DIS AFTER -->
-  
+
   <script>
     window.addEventListener("load", function() {
-    var leftButton = document.getElementById("left-button");
-    var rightButton = document.getElementById("right-button");
-    
-    leftButton.addEventListener("touchstart", function(e){
-      var press = $.Event("keydown");
-      press.which = 37; // # Some key code value
-      press.keyCode = 37;
-      $("body").trigger(press);
-    
-    }, false);
-    
-    leftButton.addEventListener("touchend", function(e){
-      var press = $.Event("keyup");
-      press.which = 37; // # Some key code value
-      press.keyCode = 37;
-      $("body").trigger(press);
-    
-    }, false);
-    
-    rightButton.addEventListener("touchstart", function(e){
-      var press = $.Event("keydown");
-      press.which = 39; // # Some key code value
-      press.keyCode = 39;
-      $("body").trigger(press);
-    
-    }, false);
+      var leftButton = document.getElementById("left-button");
+      var rightButton = document.getElementById("right-button");
 
-    rightButton.addEventListener("touchend", function(e){
-      var press = $.Event("keyup");
-      press.which = 39; // # Some key code value
-      press.keyCode = 39;
-      $("body").trigger(press);
+      leftButton.addEventListener("touchstart", function(e){
+        var press = $.Event("keydown");
+        press.which = 37; // # Some key code value
+        press.keyCode = 37;
+        $("body").trigger(press);
+
+      }, false);
+
+      leftButton.addEventListener("touchend", function(e){
+        var press = $.Event("keyup");
+        press.which = 37; // # Some key code value
+        press.keyCode = 37;
+        $("body").trigger(press);
+
+      }, false);
+
+      rightButton.addEventListener("touchstart", function(e){
+        var press = $.Event("keydown");
+        press.which = 39; // # Some key code value
+        press.keyCode = 39;
+        $("body").trigger(press);
+
+      }, false);
+
+      rightButton.addEventListener("touchend", function(e){
+        var press = $.Event("keyup");
+        press.which = 39; // # Some key code value
+        press.keyCode = 39;
+        $("body").trigger(press);
+      }, false);
     }, false);
-  }, false);
   
-  /** TEMPORARY FUNCTIONS FOR PAUSE MENU **/
-  function pause() {
-		document.getElementById("pause-menu").style.display = "block";
-		document.getElementById("pause-menu-screen-darken").style.display = "block";
-	}
-  function resume() {
-	document.getElementById("pause-menu").style.display = "none";
-	document.getElementById("pause-menu-screen-darken").style.display = "none";
-	}
+    /** TEMPORARY FUNCTIONS FOR PAUSE MENU **/
+    function pause() {
+          document.getElementById("pause-menu").style.display = "block";
+          document.getElementById("pause-menu-screen-darken").style.display = "block";
+      }
+    function resume() {
+      document.getElementById("pause-menu").style.display = "none";
+      document.getElementById("pause-menu-screen-darken").style.display = "none";
+      }
   </script>
 </head>
 
@@ -98,6 +94,9 @@
           <p id="life_Counter"></p>          
           <p id="score_Counter"></p>
         </div>
+      </div>
+      <div id="word-section">
+        <h1 id="word">STAR</h1>
       </div>
     </div>
 	<div id="pause-menu">

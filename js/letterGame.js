@@ -19,6 +19,9 @@ var timerTick = 20; // Timer tick every [n]ms
 var letterAmount = 3; // Amount of letters to continuously spawn
 var imageWidth = 40; // Width of the image
 var imageHeight = 40; // Height of the image
+var letterCount = 0;
+
+var wordList = ["MARS", "STAR", "SHIP", "HALO", "MOON"];
 
 /**
  * Clears the canvas [letterSpeed]px above the letter sprites to remove trails.
@@ -82,6 +85,10 @@ function checkCollision(i) {
     console.log("");
   }
 
+}
+
+function drawWord() {
+  var randomWord = Math.floor(Math.random() * wordList.length);
 }
 
 /**

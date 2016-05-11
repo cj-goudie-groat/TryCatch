@@ -152,6 +152,15 @@ p {
   margin: 0;
 }
 
+#word-section {
+  position: absolute;
+  top: 100px;
+  text-align: center;
+  width: 100%;
+  color: #FFFFFF;
+  font-size: 1.5em;
+}
+
 #mobile-buttons {
   position: absolute;
   width: 100%;
