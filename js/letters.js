@@ -157,7 +157,7 @@ function checkCollision() {
 function draw() {
   clearRect();
   spawnTimer = setInterval("drawLetter();", timerTick);
-  spawnTimer = setInterval("checkCollision();", timerTick);
+  collisionTimer = setInterval("checkCollision();", timerTick);
 }
 /**
  * Populates the letterArray with images, if there's a better way to do this than
