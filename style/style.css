@@ -215,3 +215,20 @@ p {
     filter: alpha(opacity=40); /* For IE8 and earlier */
 	z-index: 9;
 }
+#resume{
+	position: absolute;
+	left:42.75%;
+	right:50%;
+}
+
+#return-to-main-menu{
+	position: relative;
+	left:40.75%;
+	right:50%;
+}
+
+#mute{
+	position: relative;
+	left:40.5%;
+	right:50%;
+{
