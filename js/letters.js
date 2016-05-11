@@ -94,6 +94,52 @@ function drawLetter() {
   }
 }
 
+function checkCollision() {
+  var letterRect1 = {
+    x: letter1X,
+    y: letter1Y,
+    width: 40,
+    height: 40
+  };
+  var letterRect2 = {
+    x: letter2X,
+    y: letter2Y,
+    width: 40,
+    height: 40
+  };
+  var letterRect3 = {
+    x: letter3X,
+    y: letter3Y,
+    width: 40,
+    height: 40
+  };
+  var letterRect4 = {
+    x: letter4X,
+    y: letter4Y,
+    width: 40,
+    height: 40
+  };
+  
+  if ((game.ship.x < letterRect1.x + letterRect1.width && game.ship.x + 24 > letterRect1.x &&
+    (window.innerHeight - imageRepository.spaceship.height) < letterRect1.y + letterRect1.height &&
+    60 + (window.innerHeight - imageRepository.spaceship.height) > letterRect1.y) ||
+    
+    (game.ship.x < letterRect2.x + letterRect2.width && game.ship.x + 24 > letterRect1.x &&
+    (window.innerHeight - imageRepository.spaceship.height) < letterRect2.y + letterRect2.height &&
+    60 + (window.innerHeight - imageRepository.spaceship.height) > letterRect2.y) ||
+    
+    (game.ship.x < letterRect2.x + letterRect3.width && game.ship.x + 24 > letterRect3.x &&
+    (window.innerHeight - imageRepository.spaceship.height) < letterRect3.y + letterRect3.height &&
+    60 + (window.innerHeight - imageRepository.spaceship.height) > letterRect3.y) ||
+    
+    (game.ship.x < letterRect4.x + letterRect4.width && game.ship.x + 24 > letterRect4.x &&
+    (window.innerHeight - imageRepository.spaceship.height) < letterRect4.y + letterRect4.height &&
+    60 + (window.innerHeight - imageRepository.spaceship.height) > letterRect4.y)) {
+    
+    console.log("shit");
+  }
+}
+
 /**
  * Calls draw letter every letterTickRate, and moves them 
  * setInterval pixels.
@@ -101,6 +147,7 @@ function drawLetter() {
 function draw() {
   clearRect();
   spawnTimer = setInterval("drawLetter();", timerTick);
+  spawnTimer = setInterval("checkCollision();", timerTick);
 }
 /**
  * Populates the letterArray with images, if there's a better way to do this than
