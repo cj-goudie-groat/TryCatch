@@ -9,7 +9,6 @@ var tempPlayerCtx = tempPlayer.getContext("2d");
 function resizeCanvas() {
   bg.height = window.innerHeight;
   elements.height = window.innerHeight;
-  tempPlayer.width = player.width;
   tempPlayer.height = window.innerHeight;
   tempPlayerCtx.drawImage(tempPlayer, 0, 0);
 }
