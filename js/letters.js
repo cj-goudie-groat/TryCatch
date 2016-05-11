@@ -24,13 +24,13 @@ var letter3Index = Math.floor(Math.random() * letterAmount);
 var letter4Index = Math.floor(Math.random() * letterAmount);
 
 /**
- * Clears the whole canvas so there aren't image trails.
+ * Clears the canvas [letterSpeed]px above the letter sprites to remove trails.
  */
 function clearRect() {
-	ctx.clearRect(letter1X, letter1Y -3, 40, 40);
-	ctx.clearRect(letter2X, letter2Y -3, 40, 40);
-	ctx.clearRect(letter3X, letter3Y -3, 40, 40);
-	ctx.clearRect(letter4X, letter4Y -3, 40, 40);
+	ctx.clearRect(letter1X, letter1Y -letterSpeed, 40, 40);
+	ctx.clearRect(letter2X, letter2Y -letterSpeed, 40, 40);
+	ctx.clearRect(letter3X, letter3Y -letterSpeed, 40, 40);
+	ctx.clearRect(letter4X, letter4Y -letterSpeed, 40, 40);
 	
 	ctx.clearRect(0, canvas.height-3, canvas.width, 3);
 }
