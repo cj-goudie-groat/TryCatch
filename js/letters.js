@@ -3,7 +3,7 @@ var ctx = canvas.getContext("2d"); // Canvas context
 var letterAmount = 26; // Amount of letters
 var letterArray = []; // Array of letter image sprites
 var spawnTimer = null; // Spawn timer
-var letterSpeed = 3; // Moves [n]px down every timer tick
+var letterSpeed = 2; // Moves [n]px down every timer tick
 var timerTick = 25; // Timer tick every [n]ms
 var imageWidth = 40; // Width of letter sprite
 var imageHeight = 40; // Height of letter sprite
@@ -120,21 +120,29 @@ function checkCollision() {
     height: 40
   };
   
-  if ((game.ship.x < letterRect1.x + letterRect1.width && game.ship.x + 24 > letterRect1.x &&
+  var shipRect = {
+    x: shipX,
+    y: game.ship.y,
+    widthOffset: 48,
+    heightOffset: 59,
+    height: imageRepository.spaceship.height
+  }
+  
+  if ((shipRect.x < letterRect1.x + letterRect1.width && shipRect.x + shipRect.widthOffset > letterRect1.x &&
     (window.innerHeight - imageRepository.spaceship.height) < letterRect1.y + letterRect1.height &&
-    60 + (window.innerHeight - imageRepository.spaceship.height) > letterRect1.y) ||
+    shipRect.heightOffset + (window.innerHeight - shipRect.height) > letterRect1.y) ||
     
-    (game.ship.x < letterRect2.x + letterRect2.width && game.ship.x + 24 > letterRect1.x &&
+    (shipRect.x < letterRect2.x + letterRect2.width && shipRect.x + shipRect.widthOffset > letterRect1.x &&
     (window.innerHeight - imageRepository.spaceship.height) < letterRect2.y + letterRect2.height &&
-    60 + (window.innerHeight - imageRepository.spaceship.height) > letterRect2.y) ||
+    shipRect.heightOffset + (window.innerHeight - imageRepository.spaceship.height) > letterRect2.y) ||
     
-    (game.ship.x < letterRect2.x + letterRect3.width && game.ship.x + 24 > letterRect3.x &&
+    (shipRect.x < letterRect2.x + letterRect3.width && shipRect.x + shipRect.widthOffset > letterRect3.x &&
     (window.innerHeight - imageRepository.spaceship.height) < letterRect3.y + letterRect3.height &&
-    60 + (window.innerHeight - imageRepository.spaceship.height) > letterRect3.y) ||
+    shipRect.heightOffset + (window.innerHeight - imageRepository.spaceship.height) > letterRect3.y) ||
     
-    (game.ship.x < letterRect4.x + letterRect4.width && game.ship.x + 24 > letterRect4.x &&
+    (shipRect.x < letterRect4.x + letterRect4.width && shipRect.x + shipRect.widthOffset > letterRect4.x &&
     (window.innerHeight - imageRepository.spaceship.height) < letterRect4.y + letterRect4.height &&
-    60 + (window.innerHeight - imageRepository.spaceship.height) > letterRect4.y)) {
+    shipRect.heightOffset + (window.innerHeight - imageRepository.spaceship.height) > letterRect4.y)) {
     
     console.log("ow that hurts");
   } else {

@@ -2,6 +2,7 @@
  * Initialize the Game and start it.
  */
 var game = new Game();
+var shipX;
 
 function init() {
   if (game.init()) {
@@ -160,22 +161,28 @@ function Ship() {
       if (KEY_STATUS.left) {
         this.shipR = 1;
         this.x -= this.speed
+        shipX = this.x;
         
         // this.animTimer = setInterval(this.drawLeft(), 1000)
         if (this.x <= 0) { // Keep player within the screen
           this.x = 0;
+          shipX = this.x;
         }
         
       } else if (KEY_STATUS.right) {
         this.shipL = 1;
         this.x += this.speed
+        shipX = this.x;
         
         // this.animTimer = setInterval(this.drawRight(), 1000);
         if (this.x >= this.canvasWidth - this.width) {
           this.x = this.canvasWidth - this.width;
+          shipX = this.x;
         }
       }
       this.draw();
+    } else {
+      shipX = this.x;
     }
   };
 }
