@@ -47,6 +47,16 @@
       $("body").trigger(press);
     }, false);
   }, false);
+  
+  /** TEMPORARY FUNCTIONS FOR PAUSE MENU **/
+  function pause() {
+		document.getElementById("pause-menu").style.display = "block";
+		document.getElementById("pause-menu-screen-darken").style.display = "block";
+	}
+  function resume() {
+	document.getElementById("pause-menu").style.display = "none";
+	document.getElementById("pause-menu-screen-darken").style.display = "none";
+	}
   </script>
 </head>
 
@@ -84,12 +94,6 @@
           <p id="level_Counter"></p>
           <button id="pause" onclick="pause()">Pause</button>
         </div>
-		<script>
-			function pause() {
-				document.getElementById("pause-menu").style.display = "block";
-				document.getElementById("pause-menu-screen-darken").style.display = "block";
-			}
-		</script>
         <div id="right">
           <p id="life_Counter"></p>          
           <p id="score_Counter"></p>
@@ -97,10 +101,12 @@
       </div>
     </div>
 	<div id="pause-menu">
-		ay
+		<!-- function names probably need to be changed -->
+		<button id="resume" onclick="resume()">Resume</button><br>
+		<button id="return-to-main-menu" onclick="">Main Menu</button><br>
+		<button id="mute" onclick="">Mute sound</button>
 	</div>
 	<div id="pause-menu-screen-darken">
-		huh
 	</div>
   </div>
   <script src="js/resizeCanvas.js"></script>
