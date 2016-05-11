@@ -1,7 +1,10 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<style>
 		#canvas {
 			top:0;
@@ -15,7 +18,17 @@
 		your browser does not support this game, get rekt nerd
 	</canvas>
 	<script src="test1.js"></script>
-	<button id="pause" class="button">Pause</button>
-	<button id="resume" class="button">Resume</button>
+	  <div id="pageone" data-role="main" class="ui-content">
+    
+    <a href="#myPopup" data-rel="popup" data-position-to="window">
+    <img src="31.jpeg" alt="" style="width:200px;" onclick="pauseThisShit()"></a>
+
+    <div data-role="popup" id="myPopup" data-overlay-theme="b">
+
+      <a href="#pageone" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img src="12.jpg" style="width:800px;height:400px;" alt="Skaret View"  onunload="pauseThisShit()">
+    </div>
+  </div>
+	<button id="pause" onclick="pauseThisShit()">Pause</button>
+	<button id="resume" onclick="resumeThisShit()">Resume</button>
 </body>
 </html>
