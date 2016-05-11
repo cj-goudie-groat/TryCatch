@@ -8,6 +8,9 @@
 	var letterVal; //decides which image is respawned
 	var letterSpeed = 3; //moves 3px down every timer tick
 	var letterTickRate = 25; //timer tick every 25ms
+	var pauseGame = document.getElementById("pause");
+	var resumeGame = document.getElementById("resume");
+	var pauseTemp = 0;
 	
 	/**
 	 * X value for the image, random number between 0 and 460
@@ -35,7 +38,11 @@
 	 * Clears the whole canvas so there aren't image trails, cause I'm lazy.
 	 */
 	function clearRect() {
-		ctx.clearRect(0,0,500,500);
+		ctx.clearRect(letterX, letterY -3, 40, 40);
+		ctx.clearRect(letter1X, letter1Y-3, 40, 40);
+		ctx.clearRect(letter2X, letter2Y-3, 40, 40);
+		ctx.clearRect(letter3X, letter3Y-3, 40, 40);
+		ctx.clearRect(0, 498, 500, 3);
 	}
 	/**
 	 * Based on letterVal, the letter image will be replaced with a new letter,
@@ -70,17 +77,19 @@
 	 * newValues() to spawn a new random letter.
 	 */
 	function drawLetter() {
+			
 			clearRect();
-
 			ctx.drawImage(letterArray[letterIndex], letterX, letterY);
 			ctx.drawImage(letterArray[letter1Index], letter1X, letter1Y);
 			ctx.drawImage(letterArray[letter2Index], letter2X, letter2Y);
 			ctx.drawImage(letterArray[letter3Index], letter3X, letter3Y);
+			
 
 			letterY += letterSpeed;
 			letter1Y += letterSpeed;
 			letter2Y += letterSpeed;
 			letter3Y += letterSpeed;
+			
 			
 			if (letterY > 500) {
 				letterVal = 1;
@@ -233,5 +242,17 @@
 		draw();
 		addletter();
 	}
-
+	
+	/*function pause() {
+		pauseGame.onmousedown {
+			pauseTemp = letterTickRate;
+			letterTickRate = 0;
+		}
+	}
+	
+	function resume() {
+		resumeGame.onmousedown {
+			letterTickRate = pauseTemp;
+		}
+	}*/
 	window.onload = init();
