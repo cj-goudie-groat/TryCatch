@@ -8,9 +8,8 @@
 	var letterVal; //decides which image is respawned
 	var letterSpeed = 3; //moves 3px down every timer tick
 	var letterTickRate = 25; //timer tick every 25ms
-	var pauseGame = document.getElementById("pause");
-	var resumeGame = document.getElementById("resume");
 	var pauseTemp = 0;
+	var paused= false;
 	
 	/**
 	 * X value for the image, random number between 0 and 460
@@ -38,6 +37,9 @@
 	 * Clears the whole canvas so there aren't image trails, cause I'm lazy.
 	 */
 	function clearRect() {
+	
+	
+	
 		ctx.clearRect(letterX, letterY -3, 40, 40);
 		ctx.clearRect(letter1X, letter1Y-3, 40, 40);
 		ctx.clearRect(letter2X, letter2Y-3, 40, 40);
@@ -77,6 +79,10 @@
 	 * newValues() to spawn a new random letter.
 	 */
 	function drawLetter() {
+	
+	if(paused){
+	return;
+	}
 			
 			clearRect();
 			ctx.drawImage(letterArray[letterIndex], letterX, letterY);
@@ -115,6 +121,11 @@
 	 * setInterval pixels(3).
 	 */
 	function draw() {
+	
+	if(paused){
+	return;
+	}
+	
 		clearRect();
 		letterSpeedTimer = setInterval('drawLetter();', letterTickRate);
 	}
@@ -123,6 +134,8 @@
 	 * 26 cases, pls change.
 	 */
 	function addletter() {
+	
+	
 		for (var i = 0; i < 26; i++) {
 			switch(i) {
 			case 0:
@@ -233,26 +246,36 @@
 		}
 		drawLetter();
 	}
+	
+	document.onkeydown = function(event){
+		if(event.keyCode === 80) //p
+		paused = !paused;
+	
+	
+	
+	}
+	
+	function pauseThisShit(){
+	  paused = true;
+	}
+	  
+	function resumeThisShit(){
+	  paused = false;
+	}
+	
+	
+	
 	/**
 	 * "Driver" for the falling letters, starts on page load. 
 	 */
 	function init() {
+	
 		canvas = document.getElementById('canvas');
 		ctx = canvas.getContext('2d');
 		draw();
 		addletter();
 	}
 	
-	/*function pause() {
-		pauseGame.onmousedown {
-			pauseTemp = letterTickRate;
-			letterTickRate = 0;
-		}
-	}
 	
-	function resume() {
-		resumeGame.onmousedown {
-			letterTickRate = pauseTemp;
-		}
-	}*/
+	
 	window.onload = init();
