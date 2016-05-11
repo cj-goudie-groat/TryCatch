@@ -29,7 +29,7 @@ var imageRepository = new function () {
       window.init();
     }
   }
-  
+
   this.background.onload = function () {
     imageLoaded();
   }
@@ -39,7 +39,7 @@ var imageRepository = new function () {
 
   // Set images src
   this.background.src = "images/background.png";
-  this.spaceship.src = "images/spaceship.png";
+  this.spaceship.src = "images/shipanim/ship0.png";
 }
 
 /**
@@ -97,32 +97,54 @@ Background.prototype = new Drawable();
  */
 function Ship() {
   this.speed = 10;
+  shipL = 1;
+  shipR = 1;
 
   this.draw = function () {
     this.context.drawImage(imageRepository.spaceship, this.x, this.y);
   };
+  
+  this.draw();
+  this.drawLeft = function () {
+    shipAnim = new Image();
+    shipAnim.src = "images/shipanim/shipl" + shipL + ".png";
+    if(shipL < 5) {
+      shipL++;
+    }
+    this.context.drawImage(shipAnim, this.x, this.y);
+  };
+  
+  this.drawRight = function () {
+    shipAnim = new Image();
+    shipAnim.src = "images/shipanim/shipr" + shipR + ".png";
+    if(shipR < 5) {
+      shipR++;
+    }
+    this.context.drawImage(shipAnim, this.x, this.y);
+  };
   this.move = function () {
     // Determine if the action is move action
     if (KEY_STATUS.left || KEY_STATUS.right) {
-			// The ship moved, so erase it's current image so it can
-			// be redrawn in it's new location
-			this.context.clearRect(this.x, this.y, this.width, this.height);
-			
-			// Update x and y according to the direction to move and
-			// redraw the ship. Change the else if's to if statements
-			// to have diagonal movement.
-			if (KEY_STATUS.left) {
-				this.x -= this.speed
-				if (this.x <= 0) // Keep player within the screen
-					this.x = 0;
-			} else if (KEY_STATUS.right) {
-				this.x += this.speed
-				if (this.x >= this.canvasWidth - this.width)
-					this.x = this.canvasWidth - this.width;
-			}
+      // The ship moved, so erase it's current image so it can
+      // be redrawn in it's new location
+      this.context.clearRect(this.x, this.y, this.width, this.height);
 
-      // Finish by redrawing the ship
-      this.draw();
+      // Update x and y according to the direction to move and
+      // redraw the ship. Change the else if's to if statements
+      // to have diagonal movement.
+      if (KEY_STATUS.left) {
+        shipR = 1;
+        this.x -= this.speed
+        this.animTimer = setInterval(this.drawLeft(), 1000)
+        if (this.x <= 0) // Keep player within the screen
+          this.x = 0;
+      } else if (KEY_STATUS.right) {
+        shipL = 1;
+        this.x += this.speed
+        this.animTimer = setInterval(this.drawRight(), 1000);
+        if (this.x >= this.canvasWidth - this.width)
+          this.x = this.canvasWidth - this.width;
+      }
     }
 
   };
@@ -200,6 +222,11 @@ function animate() {
   game.ship.move();
 }
 
+function shipAnim() {
+  requestAnimFrame(shipAnim);
+
+}
+
 
 // The keycodes that will be mapped when a user presses a button.
 // Original code by Doug McInnes
@@ -225,22 +252,22 @@ for (code in KEY_CODES) {
  * it sets the appropriate direction to true to let us know which
  * key it was.
  */
-document.onkeydown = function(e) {
-  // Firefox and opera use charCode instead of keyCode to
-  // return which key was pressed.
-  var keyCode = (e.keyCode) ? e.keyCode : e.charCode;
-  if (KEY_CODES[keyCode]) {
-	e.preventDefault();
-	KEY_STATUS[KEY_CODES[keyCode]] = true;
+document.onkeydown = function (e) {
+    // Firefox and opera use charCode instead of keyCode to
+    // return which key was pressed.
+    var keyCode = (e.keyCode) ? e.keyCode : e.charCode;
+    if (KEY_CODES[keyCode]) {
+      e.preventDefault();
+      KEY_STATUS[KEY_CODES[keyCode]] = true;
+    }
   }
-}
-/**
- * Sets up the document to listen to ownkeyup events (fired when
- * any key on the keyboard is released). When a key is released,
- * it sets teh appropriate direction to false to let us know which
- * key it was.
- */
-document.onkeyup = function(e) {
+  /**
+   * Sets up the document to listen to ownkeyup events (fired when
+   * any key on the keyboard is released). When a key is released,
+   * it sets teh appropriate direction to false to let us know which
+   * key it was.
+   */
+document.onkeyup = function (e) {
   var keyCode = (e.keyCode) ? e.keyCode : e.charCode;
   if (KEY_CODES[keyCode]) {
     e.preventDefault();
@@ -254,13 +281,13 @@ document.onkeyup = function(e) {
  * Finds the first API that works to optimize the animation loop, 
  * otherwise defaults to setTimeout().
  */
-window.requestAnimFrame = (function(){
-	return  window.requestAnimationFrame       || 
-			window.webkitRequestAnimationFrame || 
-			window.mozRequestAnimationFrame    || 
-			window.oRequestAnimationFrame      || 
-			window.msRequestAnimationFrame     || 
-			function(/* function */ callback, /* DOMElement */ element){
-				window.setTimeout(callback, 1000 / 60);
-			};
+window.requestAnimFrame = (function () {
+  return window.requestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    window.mozRequestAnimationFrame ||
+    window.oRequestAnimationFrame ||
+    window.msRequestAnimationFrame ||
+    function ( /* function */ callback, /* DOMElement */ element) {
+      window.setTimeout(callback, 1000 / 60);
+    };
 })();
