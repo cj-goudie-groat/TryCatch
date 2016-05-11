@@ -10,7 +10,7 @@ function init() {
     
     // load letters game
     var script = document.createElement("script");
-    script.src = "js/letters.js";
+    script.src = "js/letterGame.js";
     script.type = "text/javascript";
     var head = document.getElementsByTagName("head")[0];
     head.appendChild(script);
