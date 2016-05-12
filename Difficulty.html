@@ -65,15 +65,12 @@
       </div>
       
       <div id="buttons">
-        <div id="game-collection">
-          <button class="theme">Spelling</button>
-          <button class="theme">Math</button>
-          <button class="theme">Shapes</button>
-        </div>
+       
         
         <div id="button-collection">
-          <button id="play" class="button">Start Game</button>
-          <button onclick="location.href = 'Difficulty.html';" class="button" >Difficulty (Coming Soon!)</button>
+          <button id="" class="button">Easy</button>
+          <button id="" class="button">Medium</button>
+          <button id="" class="button">Hard</button>
         </div>
       </div>
     </div>
@@ -100,56 +97,12 @@
         <h1 id="collected-word"></h1>
       </div>
     </div>
-	<div id="pause-menu">
-		<!-- function names probably need to be changed -->
-		<button id="resume" onclick="resume()">Resume</button><br>
-		<button id="return-to-main-menu" onclick="location.reload()">Main Menu</button><br>
-		<button id="mute" onclick="">Mute sound</button>
-	</div>
-	<div id="pause-menu-screen-darken">
-	</div>
+	
+	
   </div>
   <script src="js/resizeCanvas.js"></script>
   <script>
-    <!--
-    function leftClick() {
-      var e = $.Event("keydown");
-      e.which = 37; // # Some key code value
-      e.keyCode = 37;
-      $("body").trigger(e);
-    }
-    function rightClick() {
-      var e = $.Event("keydown");
-      e.which = 39; // # Some key code value
-      e.keyCode = 39;
-      $("body").trigger(e);
-    }
-    function leftClear() {
-      var e = $.Event("keyup");
-      e.which = 37; // # Some key code value
-      e.keyCode = 37;
-      $("body").trigger(e);
-    }
-    function rightClear() {
-      var e = $.Event("keyup");
-      e.which = 39; // # Some key code value
-      e.keyCode = 39;
-      $("body").trigger(e);
-    }
     
-    $(document).ready(function() {
-      $("#play").click(function() {
-        $("#main-menu").fadeOut(1000);
-        $("#game").fadeIn(2000);
-        
-        var script = document.createElement("script");
-        script.src = "js/game.js";
-        script.type = "text/javascript";
-        var head = document.getElementsByTagName("head")[0];
-        head.appendChild(script);
-      });
-    });
-    -->
   </script>
 </body>
 
