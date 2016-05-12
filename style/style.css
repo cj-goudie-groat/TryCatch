@@ -157,9 +157,16 @@ p {
   top: 100px;
   text-align: center;
   width: 100%;
-  color: #FFFFFF;
   font-size: 1.5em;
   z-index: 4;
+}
+
+#word {
+  color: #FFFFFF;
+}
+
+#collected-word {
+  color: #FF0000;
 }
 
 #mobile-buttons {

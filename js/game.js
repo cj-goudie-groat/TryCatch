@@ -3,9 +3,13 @@
  */
 var game = new Game();
 var shipX;
+var paused = false;
 
 function init() {
+			
+
   if (game.init()) {
+  
     game.start();
     
     // load letters game
@@ -23,6 +27,9 @@ function init() {
  * singleton.
  */
 var imageRepository = new function () {
+
+
+			
   // Define images
   this.background = new Image();
   this.spaceship = new Image();
@@ -32,6 +39,9 @@ var imageRepository = new function () {
   var numLoaded = 0;
 
   function imageLoaded() {
+  
+  
+			
     numLoaded++;
     if (numLoaded === numImages) {
       window.init();
@@ -57,6 +67,9 @@ var imageRepository = new function () {
  * functions. 
  */
 function Drawable() {
+
+	
+			
   this.init = function (x, y, width, height) {
     // Defualt variables
     this.x = x;
@@ -86,10 +99,21 @@ function Drawable() {
  * canvas and creates the illusion of moving by panning the image.
  */
 function Background() {
+
+	if(paused){
+	return;
+	}
+			
   this.speed = 1; // Redefine speed of the background for panning
 
-  // Implement abstract function
+  // Implement abstract function 
   this.draw = function () {
+  
+  	//pauses the background
+  	if(paused){
+	return;
+	}
+			
     // Pan background
     this.context.drawImage(imageRepository.background, this.x, this.y);
     this.y += this.speed;
@@ -110,6 +134,8 @@ Background.prototype = new Drawable();
  * around the screen.
  */
 function Ship() {
+
+	
   this.speed = 10;
   //this.shipL = 1;
   //this.shipR = 1;
@@ -119,6 +145,11 @@ function Ship() {
   this.rightButton = document.getElementById("right-button");
   
   this.draw = function () {
+  //this sort of pauses the ship, but ship disappears
+  	if(paused){
+	return;
+	}
+			
     this.context.drawImage(imageRepository.spaceship, this.x, this.y);
   };
   
@@ -140,6 +171,12 @@ function Ship() {
   };
   */
   this.move = function () {
+  	
+  	// Stops the ship from moving when paused!
+  	if(paused){
+	return;
+	}
+			
     this.leftButton.addEventListener("onmousedown", function () {
       this.shipR = 1;
       this.x -= this.speed
@@ -334,3 +371,18 @@ document.getElementById("score_Counter").innerHTML = "Score: " + current_Score;
 
 var current_Level = "blzit";
 document.getElementById("level_Counter").innerHTML = "Level: " + current_Level;
+
+	
+	function pause(){
+	  paused = true;
+	  document.getElementById("pause-menu").style.display = "block";
+      document.getElementById("pause-menu-screen-darken").style.display = "block";
+	}
+	  
+	function resume(){
+	  paused = false;
+	  document.getElementById("pause-menu").style.display = "none";
+      document.getElementById("pause-menu-screen-darken").style.display = "none";
+	}
+	
+	

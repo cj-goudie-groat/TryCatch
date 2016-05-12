@@ -15,12 +15,13 @@ var canvas = document.getElementById("elements"); // Canvas
 var ctx = canvas.getContext("2d"); // Canvas context
 var spawnTimer = null; // Spawn timer
 var letterSpeed = 4; // Moves [n]px down every timer tick
-var timerTick = 20; // Timer tick every [n]ms
-var letterAmount = 3; // Amount of letters to continuously spawn
+var timerTick = 8; // Timer tick every [n]ms
+var letterAmount = 10; // Amount of letters to continuously spawn
 var imageWidth = 40; // Width of the image
 var imageHeight = 40; // Height of the image
-var letterCount = 0;
+var letterCount = 0; // Amount of letter collected in the word
 
+var currentWord; // Current word to find
 var wordList = ["MARS", "STAR", "SHIP", "HALO", "MOON"];
 
 /**
@@ -39,11 +40,10 @@ function clearRect() {
  * be set to 50 so it always has 1 image on the screen.
  */
 function newValues(index) {
-  var randomChar = randomLetter();
+  var randomChar = Math.floor(Math.random() * characters.length);
   letters[index].img.src = characters[randomChar].img.src;
   letters[index].xPos = Math.floor(Math.random() * (canvas.width - imageWidth));
   letters[index].letter = characters[randomChar].letter;
-  console.log(letters[index].letter);
 
   if (index == 0) {
     letters[0].yPos = -50;
@@ -53,42 +53,61 @@ function newValues(index) {
 };
 
 /**
- * Gives a random number between 0 and 25.
+ * Checks for a collision between the ship and a letter.
  */
-function randomLetter() {
-  return Math.floor(Math.random() * characters.length);
-};
-
 function checkCollision(i) {
+  var collectedWord = document.getElementById("collected-word");
   var letterRect = {
     x: letters[i].xPos,
     y: letters[i].yPos,
-    width: 40,
-    height: 40
+    width: imageWidth,
+    height: imageWidth
   };
   
   var shipRect = {
-    x: shipX,
+    x: game.ship.x,
     y: game.ship.y,
     widthOffset: 48,
     heightOffset: 59,
+    width: imageRepository.spaceship.width,
     height: imageRepository.spaceship.height
   }
 
-  if (shipRect.x < letterRect.x + letterRect.width &&
-    shipRect.x + shipRect.widthOffset > letterRect.x &&
+  if (shipRect.x + shipRect.widthOffset < letterRect.x + letterRect.width &&
+    shipRect.x + (shipRect.width - shipRect.widthOffset) > letterRect.x &&
     (window.innerHeight - imageRepository.spaceship.height) < letterRect.y + letterRect.height &&
     shipRect.heightOffset + (window.innerHeight - shipRect.height) > letterRect.y) {
-
-    console.log("" + letters[i].letter);
-  } else {
-    console.log("");
+    
+    if(letters[i].letter.toUpperCase() == currentWord.charAt(letterCount)) {
+      current_Score += 100;
+        document.getElementById("score_Counter").innerHTML = "Score: " + current_Score;
+      letterCount++;
+      collectedWord.innerHTML += letters[i].letter.toUpperCase();
+      
+      if(letterCount == currentWord.length) {
+        letterCount = 0;
+        current_Score += 500;
+        document.getElementById("score_Counter").innerHTML = "Score: " + current_Score;
+        collectedWord.innerHTML = "";
+        drawWord();
+      }
+    }
+    else {
+      current_Lives--;
+      document.getElementById("life_Counter").innerHTML = "Lives: " + current_Lives;
+    }
+    newValues(i);
   }
-
 }
 
+/**
+ * Draw a random word at the top.
+ */
 function drawWord() {
-  var randomWord = Math.floor(Math.random() * wordList.length);
+  var randomIndex = Math.floor(Math.random() * wordList.length);
+  var word = document.getElementById("word");
+  currentWord = wordList[randomIndex];
+  word.innerHTML = currentWord;
 }
 
 /**
@@ -98,9 +117,9 @@ function drawWord() {
 function drawLetter() {
   clearRect();
   for (var i = 0; i < letterAmount; i++) {
+    checkCollision(i);
     ctx.drawImage(letters[i].img, letters[i].xPos, letters[i].yPos);
     letters[i].yPos += letterSpeed;
-    checkCollision(i);
     if (letters[i].yPos > canvas.height) {
       newValues(i);
     }
@@ -125,11 +144,10 @@ function addLetters() {
     characters[i] = new Letter();
     characters[i].img.src = "images/letters/" + String.fromCharCode(i + 97) + ".png";
     characters[i].letter = String.fromCharCode(i + 97);
-    console.log(characters[i].letter);
   }
 
   for (var i = 0; i < letterAmount; i++) {
-    var randomChar = randomLetter();
+    var randomChar = Math.floor(Math.random() * characters.length);
     letters[i] = new Letter();
     letters[i].img.src = characters[randomChar].img.src;
     letters[i].xPos = Math.floor(Math.random() * (canvas.width - imageWidth));
@@ -139,11 +157,12 @@ function addLetters() {
 }
 
 /**
- * Sets up the arrays and starts the program
+ * Sets up the arrays and starts the program.
  */
 function init() {
   addLetters();
   draw();
+  drawWord();
 }
 
 window.onload = init();
