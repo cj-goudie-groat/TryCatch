@@ -59,12 +59,15 @@ function randomLetter() {
   return Math.floor(Math.random() * characters.length);
 };
 
+/**
+ * Checks for a collision between the ship and a letter.
+ */
 function checkCollision(i) {
   var letterRect = {
     x: letters[i].xPos,
     y: letters[i].yPos,
-    width: 40,
-    height: 40
+    width: imageWidth,
+    height: imageWidth
   };
   
   var shipRect = {
@@ -79,7 +82,10 @@ function checkCollision(i) {
     shipRect.x + shipRect.widthOffset > letterRect.x &&
     (window.innerHeight - imageRepository.spaceship.height) < letterRect.y + letterRect.height &&
     shipRect.heightOffset + (window.innerHeight - shipRect.height) > letterRect.y) {
-
+    
+    if(letters[i].letter = String.charAt(i)) {
+      letterCount++;
+    }
     console.log("" + letters[i].letter);
   } else {
     console.log("");
@@ -87,8 +93,13 @@ function checkCollision(i) {
 
 }
 
+/**
+ * Draw a random word at the top.
+ */
 function drawWord() {
-  var randomWord = Math.floor(Math.random() * wordList.length);
+  var randomIndex = Math.floor(Math.random() * wordList.length);
+  var word = document.getElementById("word");
+  word.innerHTML = wordList[randomIndex];
 }
 
 /**
@@ -144,6 +155,7 @@ function addLetters() {
 function init() {
   addLetters();
   draw();
+  drawWord();
 }
 
 window.onload = init();
