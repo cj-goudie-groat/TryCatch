@@ -14,8 +14,8 @@ var letters = []; // Array for spawning letters
 var canvas = document.getElementById("elements"); // Canvas
 var ctx = canvas.getContext("2d"); // Canvas context
 var spawnTimer = null; // Spawn timer
-var letterSpeed = 4; // Moves [n]px down every timer tick
-var timerTick = 8; // Timer tick every [n]ms
+var letterSpeed = 3; // Moves [n]px down every timer tick
+var timerTick = 12; // Timer tick every [n]ms
 var letterAmount = 10; // Amount of letters to continuously spawn
 var imageWidth = 40; // Width of the image
 var imageHeight = 40; // Height of the image
@@ -56,6 +56,9 @@ function newValues(index) {
  * Checks for a collision between the ship and a letter.
  */
 function checkCollision(i) {
+	if(paused) {
+		return;
+	}
   var collectedWord = document.getElementById("collected-word");
   var letterRect = {
     x: letters[i].xPos,
@@ -104,6 +107,9 @@ function checkCollision(i) {
  * Draw a random word at the top.
  */
 function drawWord() {
+	if(paused) {
+		return;
+	}
   var randomIndex = Math.floor(Math.random() * wordList.length);
   var word = document.getElementById("word");
   currentWord = wordList[randomIndex];
@@ -115,6 +121,9 @@ function drawWord() {
  * newValues() to spawn a new random letter.
  */
 function drawLetter() {
+	if(paused) {
+		return;
+	}
   clearRect();
   for (var i = 0; i < letterAmount; i++) {
     checkCollision(i);
@@ -131,6 +140,9 @@ function drawLetter() {
  * setInterval pixels.
  */
 function draw() {
+	if(paused) {
+		return;
+	}
   clearRect();
   spawnTimer = setInterval("drawLetter();", timerTick);
 }
