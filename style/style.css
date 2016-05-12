@@ -216,7 +216,7 @@ p {
 	z-index: 9;
 }
 #resume{
-	position: absolute;
+	position: relative;
 	left:42.75%;
 	right:50%;
 }
