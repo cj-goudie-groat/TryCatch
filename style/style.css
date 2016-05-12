@@ -239,3 +239,13 @@ p {
 	left:40.5%;
 	right:50%;
 {
+.dbutton {
+    width: 30%;
+	padding-top: 2em;
+	padding-bottom: 2em;
+	margin-bottom: 2em;
+    margin: 0 auto 2em auto;
+	border: 6px solid #EDF259;
+	border-radius: 2em;
+	background-color: #CCFFFF;
+}
