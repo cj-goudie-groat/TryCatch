@@ -17,8 +17,8 @@ var spawnTimer = null; // Spawn timer
 var letterSpeed = 3; // Moves [n]px down every timer tick
 var timerTick = 12; // Timer tick every [n]ms
 var letterAmount = 10; // Amount of letters to continuously spawn
-var imageWidth = 40; // Width of the image
-var imageHeight = 40; // Height of the image
+var imageWidth = 70; // Width of the image
+var imageHeight = 70; // Height of the image
 var letterCount = 0; // Amount of letter collected in the word
 
 var currentWord; // Current word to find

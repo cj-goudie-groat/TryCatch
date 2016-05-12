@@ -56,8 +56,8 @@ var imageRepository = new function () {
   }
 
   // Set images src
-  this.background.src = "images/background.png";
-  this.spaceship.src = "images/shipanim/ship0.png";
+  this.background.src = "images/OGostrich.jpg";
+  this.spaceship.src = "images/shipanim/nate0.png";
 };
 
 /**
