@@ -300,6 +300,7 @@ function animate() {
 KEY_CODES = {
   37: "left",
   39: "right",
+  80: "pause",
 }
 
 /** Creates the array to hold the KEY_CODES and sets all their values
@@ -324,6 +325,24 @@ document.onkeydown = function (e) {
     if (KEY_CODES[keyCode]) {
       e.preventDefault();
       KEY_STATUS[KEY_CODES[keyCode]] = true;
+      
+      if(event.keyCode === 80){//p
+      if(paused){
+      document.getElementById("pause-menu").style.display = "none";
+      document.getElementById("pause-menu-screen-darken").style.display = "none";
+      
+      }
+      else{
+      document.getElementById("pause-menu").style.display = "block";
+      document.getElementById("pause-menu-screen-darken").style.display = "block";
+      
+      }
+       
+		paused = !paused;
+	}
+      
+      
+      
     }
   }
   /**
@@ -384,5 +403,4 @@ document.getElementById("level_Counter").innerHTML = "Level: " + current_Level;
 	  document.getElementById("pause-menu").style.display = "none";
       document.getElementById("pause-menu-screen-darken").style.display = "none";
 	}
-	
 	
