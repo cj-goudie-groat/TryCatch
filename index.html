@@ -44,7 +44,7 @@
       }, false);
     }, false);
   
-    /** TEMPORARY FUNCTIONS FOR PAUSE MENU **/
+    /** TEMPORARY FUNCTIONS FOR PAUSE MENU 
     function pause() {
           document.getElementById("pause-menu").style.display = "block";
           document.getElementById("pause-menu-screen-darken").style.display = "block";
@@ -52,7 +52,7 @@
     function resume() {
       document.getElementById("pause-menu").style.display = "none";
       document.getElementById("pause-menu-screen-darken").style.display = "none";
-      }
+      }*/
   </script>
 </head>
 
@@ -103,7 +103,7 @@
 	<div id="pause-menu">
 		<!-- function names probably need to be changed -->
 		<button id="resume" onclick="resume()">Resume</button><br>
-		<button id="return-to-main-menu" onclick="">Main Menu</button><br>
+		<button id="return-to-main-menu" onclick="location.reload()">Main Menu</button><br>
 		<button id="mute" onclick="">Mute sound</button>
 	</div>
 	<div id="pause-menu-screen-darken">
