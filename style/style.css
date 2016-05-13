@@ -111,7 +111,7 @@ canvas {
   color: white;
 }
 
-#level_Counter {
+#level-counter {
   position: relative;
   margin: 10px 0 10px 20px;
   font-family: sans-serif;
@@ -132,7 +132,7 @@ canvas {
   color: white;
 }
 
-#life_Counter {
+#life-counter {
   position: relative;
   margin: 10px 0 10px 20px;
   font-family: sans-serif;
@@ -140,7 +140,7 @@ canvas {
   color: white;
 }
 
-#score_Counter {
+#score-counter {
   position: relative;
   margin: 10px 0 10px 20px;
   font-family: sans-serif;
@@ -199,53 +199,55 @@ p {
 }
 
 #pause-menu {
-	display: none;
-	position: absolute;
-	left: 30%;
-	right: 30%;
-	top: 12.5%;
-	background-color: #ccffff;
-	width: 400px;
-	height: 500px;
-	z-index: 10;
+  display: none;
+  position: absolute;
+  left: 30%;
+  right: 30%;
+  top: 12.5%;
+  background-color: #ccffff;
+  width: 400px;
+  height: 500px;
+  z-index: 10;
 }
 
 #pause-menu-screen-darken {
 	display: none;
 	position: absolute;
-	top:0;
-	left:0;
+	top: 0;
+	left: 0;
 	width: 100%;
 	height: 100%;
 	background-color: black;
-	opacity: .5;
+	opacity: 0.5;
     filter: alpha(opacity=40); /* For IE8 and earlier */
 	z-index: 9;
 }
-#resume{
+
+#resume {
 	position: relative;
-	left:42.75%;
-	right:50%;
+	left: 42.75%;
+	right: 50%;
 }
 
-#return-to-main-menu{
+#return-to-main-menu {
 	position: relative;
-	left:40.75%;
-	right:50%;
+	left: 40.75%;
+	right: 50%;
 }
 
-#mute{
-	position: relative;
-	left:40.5%;
-	right:50%;
-{
+#mute {
+  position: relative;
+  left: 40.5%;
+  right: 50%;
+}
+
 .dbutton {
-    width: 30%;
-	padding-top: 2em;
-	padding-bottom: 2em;
-	margin-bottom: 2em;
-    margin: 0 auto 2em auto;
-	border: 6px solid #EDF259;
-	border-radius: 2em;
-	background-color: #CCFFFF;
+  width: 30%;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  margin-bottom: 2em;
+  margin: 0 auto 2em auto;
+  border: 6px solid #EDF259;
+  border-radius: 2em;
+  background-color: #CCFFFF;
 }

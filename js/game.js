@@ -2,14 +2,11 @@
  * Initialize the Game and start it.
  */
 var game = new Game();
-var shipX;
 var paused = false;
+var bonusActive = false;
 
 function init() {
-			
-
   if (game.init()) {
-  
     game.start();
     
     // load letters game
@@ -26,22 +23,18 @@ function init() {
  * are only ever created once. This type of object is known as a 
  * singleton.
  */
-var imageRepository = new function () {
-
-
-			
+var imageRepository = new function () {	
   // Define images
   this.background = new Image();
   this.spaceship = new Image();
+  this.bonusLevelBg = new Image();
+  this.bonusLevelPlayer = new Image();
   
   // Ensure all images have loaded before starting the game
-  var numImages = 2;
+  var numImages = 4;
   var numLoaded = 0;
 
   function imageLoaded() {
-  
-  
-			
     numLoaded++;
     if (numLoaded === numImages) {
       window.init();
@@ -54,10 +47,18 @@ var imageRepository = new function () {
   this.spaceship.onload = function () {
     imageLoaded();
   }
+  this.bonusLevelBg.onload = function () {
+    imageLoaded();
+  }
+  this.bonusLevelPlayer.onload = function () {
+    imageLoaded();
+  }
 
   // Set images src
-  this.background.src = "images/OGostrich.jpg";
-  this.spaceship.src = "images/shipanim/nate0.png";
+  this.background.src = "images/background.png";
+  this.spaceship.src = "images/shipanim/ship0.png";
+  this.bonusLevelBg.src = "images/special/OGostrich2.jpg";
+  this.bonusLevelPlayer.src = "images/special/bonusplayer.png";
 };
 
 /**
@@ -67,9 +68,6 @@ var imageRepository = new function () {
  * functions. 
  */
 function Drawable() {
-
-	
-			
   this.init = function (x, y, width, height) {
     // Defualt variables
     this.x = x;
@@ -99,30 +97,31 @@ function Drawable() {
  * canvas and creates the illusion of moving by panning the image.
  */
 function Background() {
-
-	if(paused){
-	return;
-	}
-			
-  this.speed = 1; // Redefine speed of the background for panning
+  this.speed = 0; // Redefine speed of the background for panning
 
   // Implement abstract function 
   this.draw = function () {
   
   	//pauses the background
-  	if(paused){
-	return;
+    if (paused) {
+	   return;
 	}
-			
-    // Pan background
-    this.context.drawImage(imageRepository.background, this.x, this.y);
-    this.y += this.speed;
-    // Draw another image at the top edge of the first image
-    this.context.drawImage(imageRepository.background, this.x, this.y - this.canvasHeight);
-
-    // If the image scrolled off the screen, reset
-    if (this.y >= this.canvasHeight)
-      this.y = 0;
+    
+    if (bonusActive) {
+      this.context.drawImage(imageRepository.bonusLevelBg, this.x, this.y);
+    } else {
+      // Pan background
+      this.context.drawImage(imageRepository.background, this.x, this.y);
+    
+      this.y += this.speed;
+      // Draw another image at the top edge of the first image
+      this.context.drawImage(imageRepository.background, this.x, this.y - this.canvasHeight);
+      
+      // If the image scrolled off the screen, reset
+      if (this.y >= this.canvasHeight) {
+        this.y = 0;
+      }
+    }
   };
 }
 // Set Background to inherit properties from Drawable
@@ -134,8 +133,6 @@ Background.prototype = new Drawable();
  * around the screen.
  */
 function Ship() {
-
-	
   this.speed = 10;
   //this.shipL = 1;
   //this.shipR = 1;
@@ -146,11 +143,15 @@ function Ship() {
   
   this.draw = function () {
   //this sort of pauses the ship, but ship disappears
-  	if(paused){
-	return;
+  	if (paused) {
+	   return;
 	}
-			
-    this.context.drawImage(imageRepository.spaceship, this.x, this.y);
+    
+    if (bonusActive) {
+      this.context.drawImage(imageRepository.bonusLevelPlayer, this.x, this.y);
+    } else {
+      this.context.drawImage(imageRepository.spaceship, this.x, this.y);
+    }
   };
   
   /*
@@ -319,38 +320,33 @@ for (code in KEY_CODES) {
  * key it was.
  */
 document.onkeydown = function (e) {
-    // Firefox and opera use charCode instead of keyCode to
-    // return which key was pressed.
-    var keyCode = (e.keyCode) ? e.keyCode : e.charCode;
-    if (KEY_CODES[keyCode]) {
-      e.preventDefault();
-      KEY_STATUS[KEY_CODES[keyCode]] = true;
-      
-      if(event.keyCode === 80){//p
-      if(paused){
-      document.getElementById("pause-menu").style.display = "none";
-      document.getElementById("pause-menu-screen-darken").style.display = "none";
-      
+  // Firefox and opera use charCode instead of keyCode to
+  // return which key was pressed.
+  var keyCode = (e.keyCode) ? e.keyCode : e.charCode;
+  if (KEY_CODES[keyCode]) {
+    e.preventDefault();
+    KEY_STATUS[KEY_CODES[keyCode]] = true;
+    
+    if (e.keyCode === 80) { // p
+      if (paused) {
+        document.getElementById("pause-menu").style.display = "none";
+        document.getElementById("pause-menu-screen-darken").style.display = "none";
+
+      } else{
+        document.getElementById("pause-menu").style.display = "block";
+        document.getElementById("pause-menu-screen-darken").style.display = "block";
       }
-      else{
-      document.getElementById("pause-menu").style.display = "block";
-      document.getElementById("pause-menu-screen-darken").style.display = "block";
-      
-      }
-       
-		paused = !paused;
-	}
-      
-      
-      
+      paused = !paused;
     }
   }
-  /**
-   * Sets up the document to listen to ownkeyup events (fired when
-   * any key on the keyboard is released). When a key is released,
-   * it sets teh appropriate direction to false to let us know which
-   * key it was.
-   */
+}
+
+/**
+ * Sets up the document to listen to ownkeyup events (fired when
+ * any key on the keyboard is released). When a key is released,
+ * it sets teh appropriate direction to false to let us know which
+ * key it was.
+ */
 document.onkeyup = function (e) {
   var keyCode = (e.keyCode) ? e.keyCode : e.charCode;
   if (KEY_CODES[keyCode]) {
@@ -382,25 +378,30 @@ window.requestAnimFrame = (function () {
  * They are located in a div (#game) in the HTML and are being referenced as 
  * #level_Counter, #life_Counter, and #score_Counter accordingly
  */
-var current_Lives = 69;
-document.getElementById("life_Counter").innerHTML = "Lives: " + current_Lives;
+var currentLives = 10;
+document.getElementById("life-counter").innerHTML = "Lives: " + currentLives;
 
-var current_Score = 420; 
-document.getElementById("score_Counter").innerHTML = "Score: " + current_Score;
+var currentScore = 420; 
+document.getElementById("score-counter").innerHTML = "Score: " + currentScore;
 
-var current_Level = "blzit";
-document.getElementById("level_Counter").innerHTML = "Level: " + current_Level;
+var currentLevel = 1;
+document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
 
-	
-	function pause(){
-	  paused = true;
-	  document.getElementById("pause-menu").style.display = "block";
-      document.getElementById("pause-menu-screen-darken").style.display = "block";
-	}
-	  
-	function resume(){
-	  paused = false;
-	  document.getElementById("pause-menu").style.display = "none";
-      document.getElementById("pause-menu-screen-darken").style.display = "none";
-	}
+/**
+ * Pauses the game.
+ */
+function pause() {
+  paused = true;
+  document.getElementById("pause-menu").style.display = "block";
+  document.getElementById("pause-menu-screen-darken").style.display = "block";
+}
+
+/**
+ * Resumes the game.
+ */
+function resume() {
+  paused = false;
+  document.getElementById("pause-menu").style.display = "none";
+  document.getElementById("pause-menu-screen-darken").style.display = "none";
+}
 	
