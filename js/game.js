@@ -367,11 +367,10 @@ window.requestAnimFrame = (function () {
 var currentLives = 10;
 document.getElementById("life-counter").innerHTML = "Lives: " + currentLives;
 
-var currentScore = 420; 
+var currentScore = 0; 
 document.getElementById("score-counter").innerHTML = "Score: " + currentScore;
 
-var currentLevel = 1;
-document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
+var currentLevel;
 
 /**
  * Pauses the game.

@@ -365,14 +365,20 @@ function setDifficulty(e) {
     letterSpeed = 20; // Speed of the letters
     letterAmount = 10; // Amount of letters to spawn
     speicalSpeed = 15; // Speed of the special items
+    currentLevel = "Easy";
+    document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
   } else if (e == 3) { //hard
     letterSpeed = 10; // Speed of the letters
     letterAmount = 30; // Amount of letters to spawn
     specialSpeed = 5; // Speed of the special items
+    currentLevel = "Hard";
+    document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
   } else { //medium (default difficulty)
     letterSpeed = 12; // Speed of the letters
     letterAmount = 20; // Amount of letters to spawn
     specialSpeed = 8; // Speed of the special items
+    currentLevel = "Medium";
+    document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
   } 
 }
 /**
