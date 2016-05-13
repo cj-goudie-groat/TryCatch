@@ -142,11 +142,6 @@ function Ship() {
   this.rightButton = document.getElementById("right-button");
   
   this.draw = function () {
-  //this sort of pauses the ship, but ship disappears
-  	if (paused) {
-	   return;
-	}
-    
     this.context.clearRect(this.x, this.y, this.width, this.height);
     if (bonusActive) {
       this.context.drawImage(imageRepository.bonusLevelPlayer, this.x, this.y);
