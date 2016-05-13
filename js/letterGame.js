@@ -14,8 +14,8 @@ var letters = []; // Array for spawning letters
 var canvas = document.getElementById("elements"); // Canvas
 var ctx = canvas.getContext("2d"); // Canvas context
 var spawnTimer = null; // Spawn timer for letters
-var letterSpeed = 15; // Speed of the letters
-var letterAmount = 15; // Amount of letters to continuously spawn
+var letterSpeed; // Speed of the letters
+var letterAmount; // Amount of letters to continuously spawn
 var letterWidth = 40; // Width of the letters
 var letterHeight = 40; // Height of the letters
 var letterCount = 0; // Amount of letters collected in the word
@@ -37,7 +37,7 @@ var bonusTimer = null; // Spawn timer for bonus level
 var bonusWidth = 70; // Width of the bonus items
 var bonusHeight = 70; // Height of the bonus items
 
-var elementMove = 3; // Moves elements [n]px down every tick
+var elementMove; // Moves elements [n]px down every tick
 
 var word = document.getElementById("word");
 var collectedWord = document.getElementById("collected-word");
@@ -359,10 +359,41 @@ function addLetters() {
   }
 }
 
+function setDifficulty(e) {
+  //easy
+  if (e == 1) {
+    elementMove = 3;  //number of pixels elements move per timer tick
+    letterSpeed = 25; //timer tick speed in ms
+    letterAmount = 10; //how many letters spawn
+    alert(e);
+  }
+  //hard
+  else if(e == 3) {
+    elementMove = 3;
+    letterSpeed = 7;
+    letterAmount = 40;
+    alert(e);
+  } 
+  //medium (default difficulty)
+  else {
+    elementMove = 3;
+    letterSpeed = 12;
+    letterAmount = 20;
+  } 
+}
 /**
  * Sets up the arrays and starts the program.
  */
 function init() {
+  //clears the screen darkening from difficulty selection
+  document.getElementById("pause-menu-screen-darken").style.display = "none";
+  
+  if (elementMove == undefined || 
+  letterSpeed == undefined ||
+  letterAmount == undefined){
+    setDifficulty(2);
+  }
+  
   addLetters();
   draw();
   drawWord();

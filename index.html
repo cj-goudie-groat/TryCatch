@@ -43,6 +43,12 @@
         $("body").trigger(press);
       }, false);
     }, false);
+    
+    //TEMPORARY FUNCTIONS FOR PAUSE MENU 
+    function chooseDifficulty() {
+      document.getElementById("difficulty-menu").style.display = "block";
+      document.getElementById("pause-menu-screen-darken").style.display = "block";
+    }
   </script>
 </head>
 
@@ -63,8 +69,15 @@
         </div>
         
         <div id="button-collection">
-          <button id="play" class="button">Start Game</button>
-          <button onclick="location.href = 'Difficulty.html';" class="button" >Difficulty (Coming Soon!)</button>
+          <button onclick="chooseDifficulty()" class="button" >Difficulty</button>
+          <div id="difficulty-menu">
+            <h1>Choose Difficulty</h1>
+            <script src="js/letterGame.js"></script>
+            <button id="easy" class="button" onclick="setDifficulty(1)" >Easy</button><br/>
+            <button id="medium" class="button" onclick="setDifficulty(2)" >Medium</button><br/>
+            <button id="hard" class="button" onclick="setDifficulty(3)" >Hard</button><br/>
+            <button id="play" class="button">Start Game</button>
+          </div>
         </div>
       </div>
     </div>
@@ -93,9 +106,10 @@
     </div>
 	<div id="pause-menu">
 		<!-- function names probably need to be changed -->
-		<button id="resume" onclick="resume()">Resume</button><br>
-		<button id="return-to-main-menu" onclick="location.reload()">Main Menu</button><br>
-		<button id="mute" onclick="">Mute sound</button>
+    <h1>Game Paused</h1>
+		<button class="button" onclick="resume()">Resume</button><br>
+		<button class="button" onclick="location.reload()">Main Menu</button><br>
+		<button class="button" onclick="">Mute sound</button>
 	</div>
 	<div id="pause-menu-screen-darken">
 	</div>

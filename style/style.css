@@ -8,7 +8,7 @@ body {
   background-color:#ffffff;
   min-width: 1000px;
 }
-#title {
+h1 {
 	text-align: center;
 }
 #wrapper {
@@ -199,17 +199,45 @@ p {
 }
 
 #pause-menu {
-  display: none;
-  position: absolute;
-  left: 30%;
-  right: 30%;
-  top: 12.5%;
-  background-color: #ccffff;
-  width: 400px;
-  height: 500px;
-  z-index: 10;
+	display: none;
+	position: absolute;
+	left: 30%;
+	right: 30%;
+	top: 12.5%;
+	background-color: #ccffff;
+	width: 400px;
+	height: 500px;
+	z-index: 10;
+}
+#pause-menu .button {
+  position: relative;
+  margin-top: 20px;
+	left:50%;
+  transform: translateX(-50%);
 }
 
+#difficulty-menu {
+	display: none;
+	position: absolute;
+	left: 30%;
+	right: 30%;
+	top: 12.5%;
+	background-color: #ccffff;
+	width: 400px;
+	height: 500px;
+	z-index: 10;
+}
+
+#difficulty-menu .button {
+  width: 30%;
+  position: relative;
+  margin: 8px;
+	left:50%;
+  transform: translateX(-50%);
+	border: 6px solid #EDF259;
+	border-radius: 2em;
+	background-color: #0AAFF1;
+}
 #pause-menu-screen-darken {
 	display: none;
 	position: absolute;
@@ -221,33 +249,4 @@ p {
 	opacity: 0.5;
     filter: alpha(opacity=40); /* For IE8 and earlier */
 	z-index: 9;
-}
-
-#resume {
-	position: relative;
-	left: 42.75%;
-	right: 50%;
-}
-
-#return-to-main-menu {
-	position: relative;
-	left: 40.75%;
-	right: 50%;
-}
-
-#mute {
-  position: relative;
-  left: 40.5%;
-  right: 50%;
-}
-
-.dbutton {
-  width: 30%;
-  padding-top: 2em;
-  padding-bottom: 2em;
-  margin-bottom: 2em;
-  margin: 0 auto 2em auto;
-  border: 6px solid #EDF259;
-  border-radius: 2em;
-  background-color: #CCFFFF;
 }
