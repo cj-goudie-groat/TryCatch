@@ -57,7 +57,7 @@ var imageRepository = new function () {
   // Set images src
   this.background.src = "images/background.png";
   this.spaceship.src = "images/shipanim/ship0.png";
-  this.bonusLevelBg.src = "images/special/OGostrich2.jpg";
+  this.bonusLevelBg.src = "images/special/bonusbg.jpg";
   this.bonusLevelPlayer.src = "images/special/bonusplayer.png";
 };
 

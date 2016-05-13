@@ -23,7 +23,7 @@ var letterCount = 0; // Amount of letters collected in the word
 var specialItem = new Letter(); // Spawned special item
 var specialItems = []; // Array for special items
 var specialTimer = null; // Spawn timer for special items
-var specialSpeed = 10; // Speed of the special items
+var specialSpeed; // Speed of the special items
 var specialAmount = 1; // Amount of special items to spawn
 var specialWidth = 40; // Width of the special items
 var specialHeight = 40; // Height of the special items
@@ -37,7 +37,7 @@ var bonusTimer = null; // Spawn timer for bonus level
 var bonusWidth = 70; // Width of the bonus items
 var bonusHeight = 70; // Height of the bonus items
 
-var elementMove; // Moves elements [n]px down every tick
+var elementMove = 3; // Number of pixels elements move per timer tick
 
 var word = document.getElementById("word");
 var collectedWord = document.getElementById("collected-word");
@@ -362,21 +362,17 @@ function addLetters() {
 function setDifficulty(e) {
   //easy
   if (e == 1) {
-    elementMove = 3;  //number of pixels elements move per timer tick
-    letterSpeed = 25; //timer tick speed in ms
-    letterAmount = 10; //how many letters spawn
-  }
-  //hard
-  else if(e == 3) {
-    elementMove = 3;
-    letterSpeed = 7;
-    letterAmount = 40;
-  } 
-  //medium (default difficulty)
-  else {
-    elementMove = 3;
-    letterSpeed = 12;
-    letterAmount = 20;
+    letterSpeed = 20; // Speed of the letters
+    letterAmount = 10; // Amount of letters to spawn
+    speicalSpeed = 15; // Speed of the special items
+  } else if (e == 3) { //hard
+    letterSpeed = 10; // Speed of the letters
+    letterAmount = 30; // Amount of letters to spawn
+    specialSpeed = 5; // Speed of the special items
+  } else { //medium (default difficulty)
+    letterSpeed = 12; // Speed of the letters
+    letterAmount = 20; // Amount of letters to spawn
+    specialSpeed = 8; // Speed of the special items
   } 
 }
 /**
@@ -388,7 +384,7 @@ function init() {
   
   if (elementMove == undefined || 
   letterSpeed == undefined ||
-  letterAmount == undefined){
+  letterAmount == undefined) {
     setDifficulty(2);
   }
   
