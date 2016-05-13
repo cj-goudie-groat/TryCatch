@@ -365,14 +365,12 @@ function setDifficulty(e) {
     elementMove = 3;  //number of pixels elements move per timer tick
     letterSpeed = 25; //timer tick speed in ms
     letterAmount = 10; //how many letters spawn
-    alert(e);
   }
   //hard
   else if(e == 3) {
     elementMove = 3;
     letterSpeed = 7;
     letterAmount = 40;
-    alert(e);
   } 
   //medium (default difficulty)
   else {
