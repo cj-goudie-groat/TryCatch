@@ -191,12 +191,16 @@ function checkCollision(i, letter) {
 function bonusLevel() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
+  // Update ships model
+  game.ship.draw();
   clearInterval(bonusTimer);
   bonusTimer = setInterval("drawBonus();", bonusSpeed);
   // Wait for [bonusLength]ms to end bonus level
   setTimeout(function() {
     bonusActive = false;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Update ships model
+    game.ship.draw();
     
     for (var i = 0; i < bonusAmount; i++) {
       bonusItems[i].xPos = Math.floor(Math.random() * (canvas.width - bonusWidth));

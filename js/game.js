@@ -147,6 +147,7 @@ function Ship() {
 	   return;
 	}
     
+    this.context.clearRect(this.x, this.y, this.width, this.height);
     if (bonusActive) {
       this.context.drawImage(imageRepository.bonusLevelPlayer, this.x, this.y);
     } else {
@@ -172,21 +173,11 @@ function Ship() {
   };
   */
   this.move = function () {
-  	
   	// Stops the ship from moving when paused!
-  	if(paused){
-	return;
+  	if (paused) {
+      return;
 	}
-			
-    this.leftButton.addEventListener("onmousedown", function () {
-      this.shipR = 1;
-      this.x -= this.speed
-
-      if (this.x <= 0) { // Keep player within the screen
-        this.x = 0;
-      }
-      this.draw();
-    }, false);
+    
     // Determine if the action is move action
     if (KEY_STATUS.left || KEY_STATUS.right) {
       // The ship moved, so erase it's current image so it can
