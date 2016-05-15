@@ -6,7 +6,7 @@
   <title>TryCatch - Home</title>
   <link href="style/style.css" rel="stylesheet" type="text/css"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-
+  <script src="js/game.js"></script>
   <script>
     window.addEventListener("load", function() {
       var leftButton = document.getElementById("left-button");
@@ -44,7 +44,6 @@
       }, false);
     }, false);
     
-    //TEMPORARY FUNCTIONS FOR PAUSE MENU 
     function chooseDifficulty() {
       document.getElementById("difficulty-menu").style.display = "block";
       document.getElementById("pause-menu-screen-darken").style.display = "block";
@@ -72,11 +71,10 @@
           <button onclick="chooseDifficulty()" class="button" >Difficulty</button>
           <div id="difficulty-menu">
             <h1>Choose Difficulty</h1>
-            <script src="js/letterGame.js"></script>
             <button id="easy" class="button" onclick="setDifficulty(1)" >Easy</button><br/>
             <button id="medium" class="button" onclick="setDifficulty(2)" >Medium</button><br/>
             <button id="hard" class="button" onclick="setDifficulty(3)" >Hard</button><br/>
-            <button id="play" class="button">Start Game</button>
+            <button id="play" class="button" onclick="loadGamemode()">Start Game</button>
           </div>
         </div>
       </div>
@@ -146,12 +144,6 @@
       $("#play").click(function() {
         $("#main-menu").fadeOut(1000);
         $("#game").fadeIn(2000);
-        
-        var script = document.createElement("script");
-        script.src = "js/game.js";
-        script.type = "text/javascript";
-        var head = document.getElementsByTagName("head")[0];
-        head.appendChild(script);
       });
     });
     -->

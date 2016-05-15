@@ -23,7 +23,7 @@ var letterCount = 0; // Amount of letters collected in the word
 var specialItem = new Letter(); // Spawned special item
 var specialItems = []; // Array for special items
 var specialTimer = null; // Spawn timer for special items
-var specialSpeed; // Speed of the special items
+var specialSpeed = 8; // Speed of the special items
 var specialAmount = 1; // Amount of special items to spawn
 var specialWidth = 40; // Width of the special items
 var specialHeight = 40; // Height of the special items
@@ -37,7 +37,7 @@ var bonusTimer = null; // Spawn timer for bonus level
 var bonusWidth = 70; // Width of the bonus items
 var bonusHeight = 70; // Height of the bonus items
 
-var elementMove = 3; // Number of pixels elements move per timer tick
+var timerTick = 30; // Timer tick to redraw elements
 
 var word = document.getElementById("word");
 var collectedWord = document.getElementById("collected-word");
@@ -49,17 +49,17 @@ var wordList = ["MARS", "STAR", "SHIP", "HALO", "MOON"];
  */
 function clearLetter() {
   for (var i = 0; i < letterAmount; i++) {
-    ctx.clearRect(letters[i].xPos, letters[i].yPos - elementMove, letterWidth, letterHeight);
+    ctx.clearRect(letters[i].xPos, letters[i].yPos - letterSpeed, letterWidth, letterHeight);
   }
-  ctx.clearRect(0, canvas.height - elementMove, canvas.width, elementMove);
+  ctx.clearRect(0, canvas.height - letterSpeed, canvas.width, letterSpeed);
 }
 
 /**
  * Clears the canvas [elementMove]px above the special items sprites to remove trails.
  */
 function clearSpecial() {
-  ctx.clearRect(specialItem.xPos, specialItem.yPos - elementMove, specialWidth, specialHeight);
-  ctx.clearRect(0, canvas.height - elementMove, canvas.width, elementMove);
+  ctx.clearRect(specialItem.xPos, specialItem.yPos - specialSpeed, specialWidth, specialHeight);
+  ctx.clearRect(0, canvas.height - specialSpeed, canvas.width, specialSpeed);
 }
 
 /**
@@ -67,9 +67,9 @@ function clearSpecial() {
  */
 function clearBonus() {
   for (var i = 0; i < bonusAmount; i++) {
-    ctx.clearRect(bonusItems[i].xPos, bonusItems[i].yPos - elementMove, bonusWidth, bonusHeight);
+    ctx.clearRect(bonusItems[i].xPos, bonusItems[i].yPos - bonusSpeed, bonusWidth, bonusHeight);
   }
-  ctx.clearRect(0, canvas.height - elementMove, canvas.width, elementMove);
+  ctx.clearRect(0, canvas.height - bonusSpeed, canvas.width, bonusSpeed);
 }
 
 /**
@@ -91,7 +91,6 @@ function newSpecialItem() {
   specialItem.xPos = Math.floor(Math.random() * (canvas.width - specialWidth * 3)) + specialWidth;
   specialItem.yPos = Math.floor(Math.random() * (canvas.height + specialHeight) * -1);
   specialItem.letter = index;
-  console.log("Spawn");
 }
 
 function newBonusItem(index) {
@@ -194,7 +193,7 @@ function bonusLevel() {
   // Update ships model
   game.ship.draw();
   clearInterval(bonusTimer);
-  bonusTimer = setInterval("drawBonus();", bonusSpeed);
+  bonusTimer = setInterval("drawBonus();", timerTick);
   // Wait for [bonusLength]ms to end bonus level
   setTimeout(function() {
     bonusActive = false;
@@ -227,7 +226,7 @@ function drawBonus() {
   for (var i = 0; i < bonusAmount; i++) {
     checkCollision(i, bonusItems[i].letter);
     ctx.drawImage(bonusItems[i].img, bonusItems[i].xPos, bonusItems[i].yPos);
-    bonusItems[i].yPos += elementMove;
+    bonusItems[i].yPos += bonusSpeed;
     if (bonusItems[i].yPos > canvas.height) {
       newBonusItem(i);
     }
@@ -261,7 +260,7 @@ function drawLetter() {
   for (var i = 0; i < letterAmount; i++) {
     checkCollision(i, letters[i].letter);
     ctx.drawImage(letters[i].img, letters[i].xPos, letters[i].yPos);
-    letters[i].yPos += elementMove;
+    letters[i].yPos += letterSpeed;
     if (letters[i].yPos > canvas.height) {
       newLetter(i);
     }
@@ -284,7 +283,7 @@ function drawSpecialItem() {
   
   if (specialSpawned) {
     ctx.drawImage(specialItem.img, specialItem.xPos, specialItem.yPos);
-    specialItem.yPos += elementMove;
+    specialItem.yPos += specialSpeed;
   }
   
   if (specialItem.yPos > canvas.height) {
@@ -309,8 +308,8 @@ function draw() {
   
   clearLetter();
   clearSpecial();
-  spawnTimer = setInterval("drawLetter();", letterSpeed);
-  specialTimer = setInterval("drawSpecialItem();", specialSpeed);
+  spawnTimer = setInterval("drawLetter();", timerTick);
+  specialTimer = setInterval("drawSpecialItem();", timerTick);
 }
 
 /**
@@ -359,28 +358,6 @@ function addLetters() {
   }
 }
 
-function setDifficulty(e) {
-  //easy
-  if (e == 1) {
-    letterSpeed = 20; // Speed of the letters
-    letterAmount = 10; // Amount of letters to spawn
-    speicalSpeed = 15; // Speed of the special items
-    currentLevel = "Easy";
-    document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
-  } else if (e == 3) { //hard
-    letterSpeed = 10; // Speed of the letters
-    letterAmount = 30; // Amount of letters to spawn
-    specialSpeed = 5; // Speed of the special items
-    currentLevel = "Hard";
-    document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
-  } else { //medium (default difficulty)
-    letterSpeed = 12; // Speed of the letters
-    letterAmount = 20; // Amount of letters to spawn
-    specialSpeed = 8; // Speed of the special items
-    currentLevel = "Medium";
-    document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
-  } 
-}
 /**
  * Sets up the arrays and starts the program.
  */
@@ -388,10 +365,15 @@ function init() {
   //clears the screen darkening from difficulty selection
   document.getElementById("pause-menu-screen-darken").style.display = "none";
   
-  if (elementMove == undefined || 
-  letterSpeed == undefined ||
-  letterAmount == undefined) {
-    setDifficulty(2);
+  if (difficulty == 1) {
+    letterSpeed = 5; // Speed of the letters
+    letterAmount = 10; // Amount of letters to spawn
+  } else if (difficulty == 3) { //hard
+    letterSpeed = 15; // Speed of the letters
+    letterAmount = 30; // Amount of letters to spawn
+  } else { //medium (default difficulty)
+    letterSpeed = 10; // Speed of the letters
+    letterAmount = 20; // Amount of letters to spawn
   }
   
   addLetters();

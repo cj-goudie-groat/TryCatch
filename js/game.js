@@ -9,13 +9,20 @@ function init() {
   if (game.init()) {
     game.start();
     
-    // load letters game
-    var script = document.createElement("script");
-    script.src = "js/letterGame.js";
-    script.type = "text/javascript";
-    var head = document.getElementsByTagName("head")[0];
-    head.appendChild(script);
+    currentLives = 10;
+    currentScore = 0;
+    document.getElementById("life-counter").innerHTML = "Lives: " + currentLives;
+    document.getElementById("score-counter").innerHTML = "Score: " + currentScore;
   }
+}
+
+function loadGamemode() {
+  // load letters game
+  var script = document.createElement("script");
+  script.src = "js/letterGame.js";
+  script.type = "text/javascript";
+  var head = document.getElementsByTagName("head")[0];
+  head.appendChild(script)
 }
 
 /**
@@ -361,16 +368,31 @@ window.requestAnimFrame = (function () {
  * This where the variables and declarations of the working
  * scoreboard, life system, and levels are. They are variables in javascript 
  * and can be updated as such, allowing a user to progress through the game.
- * They are located in a div (#game) in the HTML and are being referenced as 
- * #level_Counter, #life_Counter, and #score_Counter accordingly
  */
-var currentLives = 10;
-document.getElementById("life-counter").innerHTML = "Lives: " + currentLives;
-
-var currentScore = 0; 
-document.getElementById("score-counter").innerHTML = "Score: " + currentScore;
-
+var currentLives;
+var currentScore;
 var currentLevel;
+var difficulty;
+
+/**
+ * Sets the difficulty of the game.
+ */
+function setDifficulty(diff) {
+  //easy
+  if (diff == 1) {
+    difficulty = 1;
+    currentLevel = "Easy";
+    document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
+  } else if (diff == 3) { //hard
+    difficulty = 3;
+    currentLevel = "Hard";
+    document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
+  } else { //medium (default difficulty)
+    difficulty = 2;
+    currentLevel = "Medium";
+    document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
+  }
+}
 
 /**
  * Pauses the game.
