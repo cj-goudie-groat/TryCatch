@@ -388,3 +388,15 @@ p {
   /* For IE8 and earlier */
   z-index: 9;
 }
+
+/***********************/
+/* Leaderboard Styling */
+/***********************/
+
+#leaderboard-buttons {
+  float: bottom;
+  position: relative;
+  top: 80%;
+  display: flex;
+  flex-direction: column;
+}
