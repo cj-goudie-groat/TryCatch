@@ -216,6 +216,24 @@ p {
   transform: translateX(-50%);
 }
 
+#game-over {
+  display: none;
+  position: absolute;
+  left: 30%;
+  right: 30%;
+  top: 12.5%;
+  background-color: #ccffff;
+  width: 400px;
+  height: 500px;
+  z-index: 10;
+}
+#game-over .button {
+  position: relative;
+  margin-top: 20px;
+  left:50%;
+  transform: translateX(-50%);
+}
+
 #difficulty-menu {
 	display: none;
 	position: absolute;
@@ -238,6 +256,7 @@ p {
 	border-radius: 2em;
 	background-color: #0AAFF1;
 }
+
 #pause-menu-screen-darken {
 	display: none;
 	position: absolute;

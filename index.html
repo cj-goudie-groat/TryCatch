@@ -68,7 +68,8 @@
         </div>
         
         <div id="button-collection">
-          <button onclick="chooseDifficulty()" class="button" >Difficulty</button>
+          <button onclick="chooseDifficulty()" class="button">Difficulty</button>
+          <button onclick="showLeaderboard()" class="button">Leaderboard</button>
           <div id="difficulty-menu">
             <h1>Choose Difficulty</h1>
             <button id="easy" class="button" onclick="setDifficulty(1)" >Easy</button><br/>
@@ -109,6 +110,19 @@
 		<button class="button" onclick="location.reload()">Main Menu</button><br>
 		<button class="button" onclick="">Mute sound</button>
 	</div>
+
+
+
+  <div id="game-over">
+    <h1> Game Over! </h1>
+    <h1 id="score"></h1>
+    <button class="button" onclick="">Retry</button><br>
+    <button class="button" onclick="">Leaderboards!</button><br>
+    <button class="button" onclick="location.reload()">Main Menu</button><br>
+  </div>
+
+
+
 	<div id="pause-menu-screen-darken">
 	</div>
   </div>

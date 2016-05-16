@@ -161,6 +161,14 @@ function checkCollision(i, letter) {
       } else {
         currentLives--;
         document.getElementById("life-counter").innerHTML = "Lives: " + currentLives;
+
+            // Determines if you lost the game or not
+            if (currentLives == 0) {
+              paused = true;
+                document.getElementById("score").innerHTML = "Your final score was: " + currentScore;
+                document.getElementById("game-over").style.display = "block";
+                document.getElementById("pause-menu-screen-darken").style.display = "block";
+            }
       }
       newLetter(i);
     }
