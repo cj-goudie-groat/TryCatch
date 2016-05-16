@@ -9,11 +9,7 @@
 }
 
 /*******************/
-
-
 /* General Styling */
-
-
 /*******************/
 
 body {
@@ -57,11 +53,7 @@ canvas {
 
 
 /*******************/
-
-
 /* The Menu Header */
-
-
 /*******************/
 
 #header-title {
@@ -82,11 +74,7 @@ canvas {
 
 
 /*****************/
-
-
 /* The Main Menu */
-
-
 /*****************/
 
 #main-menu {
@@ -94,13 +82,28 @@ canvas {
   width: 100%;
 }
 
+/***********************/
+/* The Difficulty Menu */
+/***********************/
+#difficulty-menu h2 {
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
+  margin-bottom: 2em;
+  margin: 0 auto 2em auto;
+  background: #F1AE3E;
+  background-color: #0088CB;
+  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.50);
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 2em;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 24px rgba(0, 0, 0, 0.50);
+}
 
 /***************/
-
-
 /* The Buttons */
-
-
 /***************/
 
 #game-collection {
@@ -365,14 +368,21 @@ p {
 }
 
 #difficulty-menu .button {
-  width: 30%;
+  width: 60%;
   position: relative;
-  margin: 8px;
   left: 50%;
   transform: translateX(-50%);
-  border: 6px solid #EDF259;
-  border-radius: 2em;
+  margin-bottom: 1em;
+  margin: 0 auto 1em auto;
   background-color: #0AAFF1;
+  background: #F1AE3E;
+  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.50);
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 2em;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 24px rgba(0, 0, 0, 0.50);
 }
 
 #pause-menu-screen-darken {
