@@ -60,6 +60,33 @@
         selected = false;
       }
     }
+    
+    
+    function selectDifficulty(id) {
+        if (selectEasy == false && id == "easy") {
+          document.getElementById(id).className = "button-selected";
+          selectEasy = true;
+        } else if (selectEasy == true && id == "easy") {
+          document.getElementById(id).className = "button";
+          selectEasy = false;
+        }
+        
+        if (selectMedium == false && id == "medium") {
+          document.getElementById(id).style = "outline: 10px solid white; border: none; overflow: hidden;";
+          selectMedium = true;
+        } else if (selectMedium == true && id == "easy") {
+          document.getElementById(id).style = "";
+          selectMedium = false;
+        }
+        
+        if (selectHard == false && id == "hard") {
+          document.getElementById(id).style = "outline: 10px solid white; border: none; overflow: hidden;";
+          selectHard = true;
+        } else if (selectHard == true && id == "hard") {
+          document.getElementById(id).style = "";
+          selectHard = false;
+        }
+    }
   </script>
   <link href='https://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
 </head>
@@ -94,7 +121,7 @@
       <div id="buttons">
         <div id="game-collection">
           <div class="selector">
-            <button class="theme" name="spelling" id="spelling-button" onclick="selectButton('spelling-button')"><img id="spelling-ship" src="images/shipanim/ship0.png"></button>
+            <button class="theme" name="spelling" id="spelling-button"><img id="spelling-ship" src="images/shipanim/ship0.png"></button>
             <label for="spelling">spelling</label>
           </div>
           <div class="selector">

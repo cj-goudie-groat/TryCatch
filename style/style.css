@@ -138,10 +138,6 @@ canvas {
   flex-direction: column;
 }
 
-#button-collection button {
-  height: 50px;
-}
-
 button .banner {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
@@ -166,19 +162,26 @@ button .banner {
   overflow: hidden;
 }
 
+.theme:active {
+  outline: 10px solid white;
+  border: none;
+  overflow: hidden;
+}
+
 .theme-selected {
   width: 150px;
   height: 150px;
   margin: 0 1em 0.5em 1em;
   background: #18306E;
   box-shadow: 0px 4px 40px 0px rgba(0,0,0,0.50);
-  outline: 5px solid white;
+  outline: 10px solid white;
   border: none;
   overflow: hidden;
 }
 
 .button {
-  width: 30%;
+  width: 250px;
+  height: 50px;
   margin-bottom: 1em;
   margin: 0 auto 1em auto;
   background-color: #0AAFF1;
@@ -190,6 +193,25 @@ button .banner {
   font-size: 2em;
   color: #FFFFFF;
   text-shadow: 0px 4px 24px rgba(0, 0, 0, 0.50);
+}
+
+.button-selected {
+  width: 250px;
+  height: 50px;
+  margin-bottom: 1em;
+  margin: 0 auto 1em auto;
+  background-color: #0AAFF1;
+  background: #F1AE3E;
+  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.50);
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 2em;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 24px rgba(0, 0, 0, 0.50);
+  outline: 10px solid white;
+  border: none;
+  overflow: hidden;
 }
 
 #background {
@@ -365,14 +387,15 @@ p {
 }
 
 #difficulty-menu .button {
-  width: 30%;
   position: relative;
-  margin: 8px;
   left: 50%;
   transform: translateX(-50%);
-  border: 6px solid #EDF259;
-  border-radius: 2em;
-  background-color: #0AAFF1;
+}
+
+#difficulty-menu .button-selected {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 #pause-menu-screen-darken {
@@ -388,3 +411,5 @@ p {
   /* For IE8 and earlier */
   z-index: 9;
 }
+
+
