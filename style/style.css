@@ -124,6 +124,8 @@ canvas {
   text-shadow: 0px 2px 20px rgba(0,0,0,0.50);
 }
 
+
+
 #spelling-ship {
   transform: rotate(-45deg);
   margin-left: -15px;
@@ -136,6 +138,24 @@ canvas {
   flex-direction: column;
 }
 
+#button-collection button {
+  height: 50px;
+}
+
+button .banner {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 1.3em;
+  color: #FFFFFF;
+  text-shadow: 0px 2px 20px rgba(0,0,0,0.50);
+  background-color: #B6182A;
+  transform: rotate(-30deg);
+  width: 150%;
+  margin-left: -40px;
+  height: 30px;
+  box-shadow: 0px 3px 16px 0px rgba(0,0,0,0.38);
+}
+
 .theme {
   width: 150px;
   height: 150px;
@@ -143,6 +163,7 @@ canvas {
   background: #18306E;
   box-shadow: 0px 4px 40px 0px rgba(0,0,0,0.50);
   border: none;
+  overflow: hidden;
 }
 
 .theme-selected {
@@ -153,7 +174,7 @@ canvas {
   box-shadow: 0px 4px 40px 0px rgba(0,0,0,0.50);
   outline: 5px solid white;
   border: none;
-
+  overflow: hidden;
 }
 
 .button {
