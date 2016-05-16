@@ -24,6 +24,10 @@ body {
   min-width: 1000px;
 }
 
+button {
+  outline: none;
+}
+
 #title h1 {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
@@ -120,6 +124,13 @@ canvas {
   text-shadow: 0px 2px 20px rgba(0,0,0,0.50);
 }
 
+#spelling-ship {
+  transform: rotate(-45deg);
+  margin-left: -15px;
+  margin-top: -20px;
+  
+}
+
 #button-collection {
   display: flex;
   flex-direction: column;
@@ -132,6 +143,17 @@ canvas {
   background: #18306E;
   box-shadow: 0px 4px 40px 0px rgba(0,0,0,0.50);
   border: none;
+}
+
+.theme-selected {
+  width: 150px;
+  height: 150px;
+  margin: 0 1em 0.5em 1em;
+  background: #18306E;
+  box-shadow: 0px 4px 40px 0px rgba(0,0,0,0.50);
+  outline: 5px solid white;
+  border: none;
+
 }
 
 .button {

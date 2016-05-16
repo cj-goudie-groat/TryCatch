@@ -48,6 +48,18 @@
       document.getElementById("difficulty-menu").style.display = "block";
       document.getElementById("pause-menu-screen-darken").style.display = "block";
     }
+    
+    var selected = false;
+    
+    function selectButton(id) {
+      if (selected == false) {
+        document.getElementById(id).className = "theme-selected";
+        selected = true;
+      } else {
+        document.getElementById(id).className = "theme";
+        selected = false;
+      }
+    }
   </script>
   <link href='https://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
 </head>
@@ -82,15 +94,15 @@
       <div id="buttons">
         <div id="game-collection">
           <div class="selector">
-            <button class="theme" name="spelling"></button>
+            <button class="theme" name="spelling" id="spelling-button" onclick="selectButton('spelling-button')"><img id="spelling-ship" src="images/shipanim/ship0.png"</button>
             <label for="spelling">spelling</label>
           </div>
           <div class="selector">
-            <button class="theme" name="math"></button>
+            <button class="theme" name="math" id="math-button"></button>
             <label for="math">math</label>
           </div>
           <div class="selector">
-            <button class="theme" name="shapes"></button>
+            <button class="theme" name="shapes" id="shapes-button"></button>
             <label for="shapes">shapes</label>
           </div>
         </div>
