@@ -375,8 +375,12 @@ var currentLevel;
 var difficulty;
 
 /**
- * Sets the difficulty of the game.
+ * Sets the difficulty of the game. Also activates selection on buttons.
  */
+var selectEasy = false;
+var selectMedium = false;
+var selectHard = false;
+
 function setDifficulty(diff) {
   //easy
   if (diff == 1) {
@@ -391,6 +395,26 @@ function setDifficulty(diff) {
     difficulty = 2;
     currentLevel = "Medium";
     document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
+  }
+  
+  if (selectEasy == false && diff == 1) {
+    document.getElementById("easy").className = "button-selected";
+    selectEasy = true;
+  } else if (selectEasy == true && id == 1) {
+    document.getElementById("easy").className = "button";
+    selectEasy = false;
+  } else if (selectMedium == false && diff == 2) {
+    document.getElementById("medium").className = "button-selected";
+    selectMedium = true;
+  } else if (selectMedium == true && id == 2) {
+    document.getElementById("medium").className = "button";
+    selectMedium = false;
+  } else if (selectHard == false && diff == 3) {
+    document.getElementById("hard").className = "button-selected";
+    selectHard = true;
+  } else if (selectHard == true && id == 3) {
+    document.getElementById("hard").className = "button";
+    selectHard = false;
   }
 }
 
