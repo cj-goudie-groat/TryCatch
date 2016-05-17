@@ -40,11 +40,6 @@ var collectedWord = document.getElementById("collected-word");
 var currentWord; // Current word to find
 var wordList = ["MARS", "STAR", "SHIP", "HALO", "MOON"];
 
-function round(x)
-{
-    return Math.ceil(x/60)*60;
-}
-
 /**
  * Clears the canvas [elementMove]px above the letter sprites to remove trails.
  */
@@ -284,13 +279,7 @@ function drawLetter() {
   clearLetter();
   for (var i = 0; i < letterAmount; i++) {
     checkCollision(i, letters[i].letter);
-
-    if (letters[i].yPos > canvas.height) {
-      ctx.drawImage(letters[i].img, letters[i].xPos, round(letters[i].yPos));
-    } else {
-      ctx.drawImage(letters[i].img, letters[i].xPos, letters[i].yPos);
-    }
-
+    ctx.drawImage(letters[i].img, letters[i].xPos, letters[i].yPos);
     letters[i].yPos += letterSpeed;
 
     if (letters[i].yPos > canvas.height) {
