@@ -273,6 +273,10 @@ function drawWord() {
   }
 }
 
+function clearWord() {
+  wordRow.innerHTML = "";
+}
+
 /**
  * Calls checkCollision(), makes letters move, 
  * checks if they're off the screen, and then calls
@@ -403,6 +407,7 @@ function retryGame() {
   currentLives = 5;
   currentScore = 0;
   
+  clearWord();
   drawWord();
   collectedWord.innerHTML = "";
   letterCount = 0;
