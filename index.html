@@ -73,6 +73,7 @@
         </div>
 
         <div id="button-collection">
+          <button id="play" class="button" onclick="loadGamemode()">Start Game</button>
           <button onclick="chooseDifficulty()" class="button">Difficulty</button>
           <button onclick="goToLeaderboard()" class="button">Leaderboard</button>
         </div>
@@ -84,10 +85,9 @@
         <button id="medium" class="button-selected" onclick="setDifficulty(2)">Medium</button>
         <br/>
         <button id="hard" class="button" onclick="setDifficulty(3)">Hard</button>
-        <br/>
-        <button id="play" class="button" onclick="loadGamemode()">Start Game</button>
       </div>
     </div>
+    <!-- This is the game section -->
     <div id="game">
       <canvas id="background"></canvas>
       <canvas id="elements"></canvas>
@@ -96,6 +96,7 @@
         <button id="left-button">&lt;</button>
         <button id="right-button">&gt;</button>
       </div>
+      <!-- Top menu UI -->
       <div id="top-menu">
         <div id="left">
           <p id="level-counter"></p>
@@ -106,13 +107,15 @@
           <p id="score-counter"></p>
         </div>
       </div>
+      <!-- Word displayed -->
       <div id="word-section">
         <h1 id="word"></h1>
         <h1 id="collected-word"></h1>
       </div>
     </div>
+    
+    <!-- This is the pause menu section -->
     <div id="pause-menu">
-      <!-- function names probably need to be changed -->
       <h2>Game Paused</h2>
       <button class="button" onclick="resume()">Resume</button>
       <br>
@@ -120,7 +123,11 @@
       <br>
       <button class="button" onclick="">Mute sound</button>
     </div>
-
+    
+    <!-- This is the pause screen darken effect -->
+    <div id="pause-menu-screen-darken"></div>
+    
+    <!-- This is the game over section -->
     <div id="game-over">
       <div id="game-over-header">
         <h1>Game Over!</h1>
@@ -133,12 +140,8 @@
       <button class="button" onclick="location.reload()">Main Menu</button>
       <br>
     </div>
-
-
-
-    <div id="pause-menu-screen-darken">
-    </div>
   </div>
+  
   <script src="js/resizeCanvas.js"></script>
   <script>
     <!--

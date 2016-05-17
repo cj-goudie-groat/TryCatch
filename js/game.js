@@ -10,13 +10,25 @@ function init() {
     game.start();
     
     currentLives = 1;
-    currentScore = 69420;
+    currentScore = 0;
     document.getElementById("life-counter").innerHTML = "Lives: " + currentLives;
     document.getElementById("score-counter").innerHTML = "Score: " + currentScore;
   }
 }
 
 function loadGamemode() {
+  // Set difficulty text
+  if (difficulty == 1) {
+    currentLevel = "Easy";
+    document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
+  } else if (difficulty == 3) {
+    currentLevel = "Hard";
+    document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
+  } else {
+    currentLevel = "Medium";
+    document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
+  }
+  
   // load letters game
   var script = document.createElement("script");
   script.src = "js/letterGame.js";
@@ -111,7 +123,7 @@ function Background() {
   
   	//pauses the background
     if (paused) {
-	   return;
+      return;
 	}
     
     if (bonusActive) {
@@ -140,7 +152,7 @@ Background.prototype = new Drawable();
  * around the screen.
  */
 function Ship() {
-  this.speed = 10;
+  this.speed = 5;
   //this.shipL = 1;
   //this.shipR = 1;
   //this.shipAnim = new Image();
@@ -159,8 +171,8 @@ function Ship() {
   rightButton.addEventListener("touchstart", function(e) {
       KEY_STATUS.right = true;
     }, false);
-
-    rightButton.addEventListener("touchend", function(e) {
+  
+  rightButton.addEventListener("touchend", function(e) {
       KEY_STATUS.right = false;
     }, false);
   
@@ -192,7 +204,7 @@ function Ship() {
   */
   this.move = function () {
   	// Stops the ship from moving when paused!
-  	if (paused) {
+    if (paused) {
       return;
 	}
     
@@ -382,6 +394,7 @@ window.requestAnimFrame = (function () {
 var currentLives;
 var currentScore;
 var currentLevel;
+
 var difficulty;
 
 /**
@@ -395,8 +408,6 @@ function setDifficulty(diff) {
   //easy
   if (diff == 1) {
     difficulty = 1;
-    currentLevel = "Easy";
-    document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
     
     if (selectEasy == false) {
       document.getElementById("easy").className = "button-selected";
@@ -415,8 +426,6 @@ function setDifficulty(diff) {
     }
   } else if (diff == 3) { //hard
     difficulty = 3;
-    currentLevel = "Hard";
-    document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
     
     if (selectHard == false) {
       document.getElementById("easy").className = "button";
@@ -453,6 +462,7 @@ function setDifficulty(diff) {
       selectHard = false;
     }
   }
+  document.getElementById("difficulty-menu").style.display = "none";
 }
 
 /**
@@ -480,4 +490,3 @@ function goToLeaderboard() {
 function goToMainMenu() {
   document.location.href = 'index.html';
 }
-  	

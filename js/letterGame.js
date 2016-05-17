@@ -13,7 +13,6 @@ var characters = []; // Array for all 26 characters
 var letters = []; // Array for spawning letters
 var canvas = document.getElementById("elements"); // Canvas
 var ctx = canvas.getContext("2d"); // Canvas context
-var spawnTimer = null; // Spawn timer for letters
 var letterSpeed; // Speed of the letters
 var letterAmount; // Amount of letters to continuously spawn
 var letterWidth = 40; // Width of the letters
@@ -22,8 +21,7 @@ var letterCount = 0; // Amount of letters collected in the word
 
 var specialItem = new Letter(); // Spawned special item
 var specialItems = []; // Array for special items
-var specialTimer = null; // Spawn timer for special items
-var specialSpeed = 8; // Speed of the special items
+var specialSpeed = 3; // Speed of the special items
 var specialAmount = 1; // Amount of special items to spawn
 var specialWidth = 40; // Width of the special items
 var specialHeight = 40; // Height of the special items
@@ -32,12 +30,9 @@ var specialSpawned = true; // Boolean for special item spawned or not
 var bonusLength = 15000; // Bonus level active in ms
 var bonusItems = []; // Array for bonus items
 var bonusAmount = 30; // Amount of items to spawn on bonus level
-var bonusSpeed = 10; // Speed of items on bonus level
-var bonusTimer = null; // Spawn timer for bonus level
+var bonusSpeed = 5; // Speed of items on bonus level
 var bonusWidth = 70; // Width of the bonus items
 var bonusHeight = 70; // Height of the bonus items
-
-var timerTick = 30; // Timer tick to redraw elements
 
 var word = document.getElementById("word");
 var collectedWord = document.getElementById("collected-word");
@@ -200,8 +195,6 @@ function bonusLevel() {
   
   // Update ships model
   game.ship.draw();
-  clearInterval(bonusTimer);
-  bonusTimer = setInterval("drawBonus();", timerTick);
   // Wait for [bonusLength]ms to end bonus level
   setTimeout(function() {
     bonusActive = false;
@@ -306,18 +299,14 @@ function drawSpecialItem() {
 }
 
 /**
- * Calls draw letter every letterTickRate, and moves them 
- * setInterval pixels.
+ * Animates the falling elements.
  */
 function draw() {
-  if (paused) {
-    return;
-  }
   
-  clearLetter();
-  clearSpecial();
-  spawnTimer = setInterval("drawLetter();", timerTick);
-  specialTimer = setInterval("drawSpecialItem();", timerTick);
+  requestAnimFrame(draw);
+  drawLetter();
+  drawSpecialItem();
+  drawBonus();
 }
 
 /**
@@ -374,13 +363,13 @@ function init() {
   document.getElementById("pause-menu-screen-darken").style.display = "none";
   
   if (difficulty == 1) {
-    letterSpeed = 5; // Speed of the letters
+    letterSpeed = 2; // Speed of the letters
     letterAmount = 10; // Amount of letters to spawn
   } else if (difficulty == 3) { //hard
-    letterSpeed = 15; // Speed of the letters
+    letterSpeed = 5; // Speed of the letters
     letterAmount = 30; // Amount of letters to spawn
   } else { //medium (default difficulty)
-    letterSpeed = 10; // Speed of the letters
+    letterSpeed = 3; // Speed of the letters
     letterAmount = 20; // Amount of letters to spawn
   }
   
