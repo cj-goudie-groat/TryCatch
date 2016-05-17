@@ -400,7 +400,6 @@ p {
 /**** DIFFICULTY ***/
 /*******************/
 
-
 #difficulty-menu {
   display: none;
   position: absolute;
@@ -425,6 +424,24 @@ p {
   transform: translateX(-50%);
 }
 
+#difficulty-menu .button {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #18306E;
+}
+
+#difficulty-menu .button-selected {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #18306E;
+}
+
+#difficulty-menu button:last-of-type {
+  background-color: #F1AE3E;
+}
+
 /*******************/
 /**** PAUSE MENU ***/
 /*******************/
@@ -439,20 +456,6 @@ p {
   width: 400px;
   height: 500px;
   z-index: 10;
-}
-
-#difficulty-menu .button {
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #18306E;
-}
-
-#difficulty-menu .button-selected {
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #18306E;
 }
 
 #pause-menu .button {
