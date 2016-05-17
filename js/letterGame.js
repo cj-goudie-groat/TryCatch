@@ -160,9 +160,9 @@ function checkCollision(i, letter) {
             // Determines if you lost the game or not
             if (currentLives == 0) {
               paused = true;
-                document.getElementById("score").innerHTML = "Your final score was: " + currentScore;
-                document.getElementById("game-over").style.display = "block";
-                document.getElementById("pause-menu-screen-darken").style.display = "block";
+              document.getElementById("score").innerHTML = "Your final score was: " + currentScore;
+              document.getElementById("game-over").style.display = "block";
+              document.getElementById("pause-menu-screen-darken").style.display = "block";
             }
       }
       newLetter(i);
@@ -238,10 +238,6 @@ function drawBonus() {
  * Draw a random word at the top to collect.
  */
 function drawWord() {
-  if (paused) {
-    return;
-  }
-  
   var randomIndex = Math.floor(Math.random() * wordList.length);
   currentWord = wordList[randomIndex];
   word.innerHTML = currentWord;
@@ -356,35 +352,27 @@ function addLetters() {
 }
 
 function retryGame() {
-
-      //Reloads the game
-      var head= document.getElementsByTagName('head')[0];
-      var script= document.createElement('script');
-      script.type= 'text/javascript';
-      script.src= 'js/letterGame.js';
-      head.appendChild(script);
-
-      currentLives = 1;
-      currentScore = 0;
-
-      //Resets the lives and Scores
-      document.getElementById("life-counter").innerHTML = "Lives: " + currentLives;
-      document.getElementById("score-counter").innerHTML = "Score: " + currentScore;
-
-      //Clears the canvas from the previous game
-      for (var i = 0; i < letterAmount; i++) {
-          ctx.clearRect(letters[i].xPos, letters[i].yPos - letterSpeed, letterWidth, letterHeight);
-        }
-      ctx.clearRect(0, canvas.height - letterSpeed, canvas.width, letterSpeed);
-
-
-      //Clears the special
-      ctx.clearRect(specialItem.xPos, specialItem.yPos - specialSpeed, specialWidth, specialHeight);
-      ctx.clearRect(0, canvas.height - specialSpeed, canvas.width, specialSpeed);
+  // Reset letters and special item positions
+  for (var i = 0; i < letterAmount; i++) {
+    newLetter(i);
+  }
+  newSpecialItem();
   
-      //Resumes the game
-      document.getElementById("game-over").style.display = "none";
-      resume();
+  currentLives = 10;
+  currentScore = 0;
+  
+  drawWord();
+  collectedWord.innerHTML = "";
+  
+  //Resets the lives and Scores
+  document.getElementById("life-counter").innerHTML = "Lives: " + currentLives;
+  document.getElementById("score-counter").innerHTML = "Score: " + currentScore;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+  //Resumes the game
+  document.getElementById("game-over").style.display = "none";
+  resume();
 }
 
 
@@ -396,13 +384,13 @@ function init() {
   document.getElementById("pause-menu-screen-darken").style.display = "none";
   
   if (difficulty == 1) {
-    letterSpeed = 2; // Speed of the letters
+    letterSpeed = 3; // Speed of the letters
     letterAmount = 10; // Amount of letters to spawn
   } else if (difficulty == 3) { //hard
-    letterSpeed = 5; // Speed of the letters
+    letterSpeed = 15; // Speed of the letters
     letterAmount = 30; // Amount of letters to spawn
   } else { //medium (default difficulty)
-    letterSpeed = 3; // Speed of the letters
+    letterSpeed = 5; // Speed of the letters
     letterAmount = 20; // Amount of letters to spawn
   }
   
