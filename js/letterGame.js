@@ -273,6 +273,9 @@ function drawWord() {
   }
 }
 
+/**
+ * Clears cells in word row.
+ */
 function clearWord() {
   wordRow.innerHTML = "";
 }
