@@ -404,7 +404,7 @@ function retryGame() {
       newSpecialItem();
     }, specialSpawnTimer);
   
-  currentLives = 10;
+  currentLives = 5;
   currentScore = 0;
   
   drawWord();
@@ -412,11 +412,10 @@ function retryGame() {
   letterCount = 0;
   
   //Resets the lives and Scores
-  document.getElementById("life-counter").innerHTML = "" + currentLives;
   document.getElementById("score-counter").innerHTML = "" + currentScore;
   updateLives();
   
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);9
   
   //Resumes the game
   document.getElementById("game-over").style.display = "none";
