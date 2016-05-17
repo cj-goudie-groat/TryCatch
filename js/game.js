@@ -9,7 +9,7 @@ function init() {
   if (game.init()) {
     game.start();
     
-    currentLives = 10;
+    currentLives = 1000;
     currentScore = 0;
     document.getElementById("life-counter").innerHTML = "Lives: " + currentLives;
     document.getElementById("score-counter").innerHTML = "Score: " + currentScore;
