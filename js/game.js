@@ -145,8 +145,24 @@ function Ship() {
   //this.shipR = 1;
   //this.shipAnim = new Image();
   
-  this.leftButton = document.getElementById("left-button");
-  this.rightButton = document.getElementById("right-button");
+  var leftButton = document.getElementById("left-button");
+  var rightButton = document.getElementById("right-button");
+  
+  leftButton.addEventListener("touchstart", function(e) {
+      KEY_STATUS.left = true;
+    }, false);
+
+    leftButton.addEventListener("touchend", function(e) {
+      KEY_STATUS.left = false;
+    }, false);
+
+  rightButton.addEventListener("touchstart", function(e) {
+      KEY_STATUS.right = true;
+    }, false);
+
+    rightButton.addEventListener("touchend", function(e) {
+      KEY_STATUS.right = false;
+    }, false);
   
   this.draw = function () {
     this.context.clearRect(this.x, this.y, this.width, this.height);
@@ -192,28 +208,22 @@ function Ship() {
       if (KEY_STATUS.left) {
         this.shipR = 1;
         this.x -= this.speed
-        shipX = this.x;
         
         // this.animTimer = setInterval(this.drawLeft(), 1000)
         if (this.x <= 0) { // Keep player within the screen
           this.x = 0;
-          shipX = this.x;
         }
         
       } else if (KEY_STATUS.right) {
         this.shipL = 1;
         this.x += this.speed
-        shipX = this.x;
         
         // this.animTimer = setInterval(this.drawRight(), 1000);
         if (this.x >= this.canvasWidth - this.width) {
           this.x = this.canvasWidth - this.width;
-          shipX = this.x;
         }
       }
       this.draw();
-    } else {
-      shipX = this.x;
     }
   };
 }
