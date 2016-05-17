@@ -21,13 +21,14 @@ var letterCount = 0; // Amount of letters collected in the word
 
 var specialItem = new Letter(); // Spawned special item
 var specialItems = []; // Array for special items
-var specialSpeed = 3; // Speed of the special items
+var specialSpeed = 8; // Speed of the special items
 var specialAmount = 1; // Amount of special items to spawn
 var specialWidth = 40; // Width of the special items
 var specialHeight = 40; // Height of the special items
-var specialSpawned = true; // Boolean for special item spawned or not
+var specialSpawned = false; // Boolean for special item spawned or not
+var specialSpawnTimer; // Random spawn timer for special items
 
-var bonusLength = 15000; // Bonus level active in ms
+var bonusLength = 10000; // Bonus level active in ms
 var bonusItems = []; // Array for bonus items
 var bonusAmount = 30; // Amount of items to spawn on bonus level
 var bonusSpeed = 5; // Speed of items on bonus level
@@ -39,11 +40,6 @@ var collectedWord = document.getElementById("collected-word");
 var wordRow = document.getElementById("word-row");
 var currentWord; // Current word to find
 var wordList = ["MARS", "STAR", "SHIP", "HALO", "MOON"];
-
-function round(x)
-{
-    return Math.ceil(x/60)*60;
-}
 
 /**
  * Clears the canvas [elementMove]px above the letter sprites to remove trails.
@@ -74,22 +70,36 @@ function clearBonus() {
 }
 /**
  * The letter image will be replaced with a new letter,
- * and spawn at a random height above the screen, except for letterY, which will
- * be set to 50 so it always has 1 image on the screen.
+ * and spawn at a random height above the screen
  */
 function newLetter(index) {
   var randomChar = Math.floor(Math.random() * characters.length);
+  letters[index].xPos = Math.floor(Math.random() * (canvas.width - letterWidth * 3)) + letterWidth;
+  letters[index].yPos = Math.floor(Math.random() * (canvas.height + letterHeight) * -1);
   letters[index].img.src = characters[randomChar].img.src;
-  letters[index].xPos = round( Math.floor( Math.random() * (canvas.width - letterWidth * 3)) + letterWidth );
-  letters[index].yPos = round( Math.floor(Math.random() * (canvas.height - letterHeight) * -1) + letterHeight);
   letters[index].letter = characters[randomChar].letter;
+  
+  // Check for collision with other letters
+  for (var i = 0; i < letterAmount; i++) {
+    if (i == index) {
+      i++;
+    } else {
+      while (letters[index].xPos < letters[i].xPos + letterWidth &&
+            letters[index].xPos + letterWidth > letters[i].xPos &&
+            letters[index].yPos < letters[i].yPos + letterHeight &&
+            letters[index].yPos + letterHeight > letters[i].yPos) {
+        
+        letters[index].yPos -= letterHeight;
+      }
+    }
+  }
 }
 
 function newSpecialItem() {
   var index = Math.floor(Math.random() * specialAmount);
   specialItem.img.src = "images/special/" + index + ".png";
   specialItem.xPos = Math.floor(Math.random() * (canvas.width - specialWidth * 3)) + specialWidth;
-  specialItem.yPos = Math.floor(Math.random() * (canvas.height + specialHeight) * -1);
+  specialItem.yPos = Math.floor(Math.random() * (canvas.height - specialHeight) * -1);
   specialItem.letter = index;
 }
 
@@ -150,7 +160,7 @@ function checkCollision(i, letter) {
         document.getElementById("score-counter").innerHTML = "" + currentScore;
         letterCount++;
         collectedWord.innerHTML += letters[i].letter;
-
+        
         if(letterCount == currentWord.length) {
           letterCount = 0;
           currentScore += 500;
@@ -216,6 +226,14 @@ function bonusLevel() {
     for (var i = 0; i < letterAmount; i++) {
       newLetter(i);
     }
+    
+    specialSpawned = false;
+    specialSpawnTimer = Math.floor(Math.random() * 15000) + 15000; // Spawn 15 - 30 seconds after bonus level
+    setTimeout(function () {
+      specialSpawned = true;
+      newSpecialItem();
+    }, specialSpawnTimer);
+    
   }, bonusLength);
 }
 
@@ -268,13 +286,7 @@ function drawLetter() {
   clearLetter();
   for (var i = 0; i < letterAmount; i++) {
     checkCollision(i, letters[i].letter);
-
-    if (letters[i].yPos > canvas.height) {
-      ctx.drawImage(letters[i].img, letters[i].xPos, round(letters[i].yPos));
-    } else {
-      ctx.drawImage(letters[i].img, letters[i].xPos, letters[i].yPos);
-    }
-
+    ctx.drawImage(letters[i].img, letters[i].xPos, letters[i].yPos);
     letters[i].yPos += letterSpeed;
 
     if (letters[i].yPos > canvas.height) {
@@ -306,7 +318,7 @@ function drawSpecialItem() {
   if (specialItem.yPos > canvas.height) {
     specialItem.yPos = 0;
     specialSpawned = false;
-    var specialSpawnTimer = Math.floor(Math.random() * 15000) + 15000; // Spawn every 15 - 30 seconds
+    specialSpawnTimer = Math.floor(Math.random() * 15000) + 15000; // Spawn every 15 - 30 seconds
     setTimeout(function () {
       specialSpawned = true;
       newSpecialItem();
@@ -318,10 +330,10 @@ function drawSpecialItem() {
  * Animates the falling elements.
  */
 function draw() {
-  requestAnimFrame(draw);
   drawLetter();
   drawSpecialItem();
   drawBonus();
+  requestAnimFrame(draw);
 }
 
 /**
@@ -340,10 +352,13 @@ function addLetters() {
   for (var i = 0; i < letterAmount; i++) {
     var randomChar = Math.floor(Math.random() * characters.length);
     letters[i] = new Letter();
-    letters[i].img.src = characters[randomChar].img.src;
-    letters[i].xPos = round( Math.floor(Math.random() * (canvas.width - letterWidth * 3)) + letterWidth) ;
-    letters[i].yPos = round( Math.floor(Math.random() * (canvas.height + letterHeight) * -1));
-    letters[i].letter = characters[randomChar].letter;
+    letters[i].xPos = 0;
+    letters[i].yPos = 0;
+  }
+  
+  // Randomize the letter positions and letter
+  for (var i = 0; i < letterAmount; i++) {
+    newLetter(i);
   }
   
   // Fill special items array
@@ -354,12 +369,14 @@ function addLetters() {
   }
   
   // Assign a random special item to start
-  var randomSpecial = Math.floor(Math.random() * specialAmount);
-  specialItem.img.src = specialItems[randomSpecial].img.src;
-  specialItem.xPos = Math.floor(Math.random() * (canvas.width - specialWidth * 3)) + specialWidth;
-  specialItem.yPos = Math.floor(Math.random() * (canvas.height + specialHeight) * -1);
-  specialItem.letter = specialItems[randomSpecial].letter;
-  
+  specialItem.xPos = 0;
+  specialItem.yPos = 0;
+  newSpecialItem();
+  specialSpawnTimer = Math.floor(Math.random() * 15000) + 15000; // Spawn 15 - 30 seconds after start
+    setTimeout(function () {
+      specialSpawned = true;
+    }, specialSpawnTimer);
+
   // Fill bonus level items array
   for (var i = 0; i < bonusAmount; i++) {
     bonusItems[i] = new Letter();
@@ -375,7 +392,13 @@ function retryGame() {
   for (var i = 0; i < letterAmount; i++) {
     newLetter(i);
   }
-  newSpecialItem();
+  
+  specialSpawned = false;
+  specialSpawnTimer = Math.floor(Math.random() * 15000) + 15000; // Spawn 15 - 30 seconds after retry
+    setTimeout(function () {
+      specialSpawned = true;
+      newSpecialItem();
+    }, specialSpawnTimer);
   
   currentLives = 5;
   currentScore = 0;
@@ -385,11 +408,10 @@ function retryGame() {
   letterCount = 0;
   
   //Resets the lives and Scores
-  document.getElementById("life-counter").innerHTML = "" + currentLives;
   document.getElementById("score-counter").innerHTML = "" + currentScore;
   updateLives();
   
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);9
   
   //Resumes the game
   document.getElementById("game-over").style.display = "none";
@@ -408,10 +430,10 @@ function init() {
     letterSpeed = 3; // Speed of the letters
     letterAmount = 10; // Amount of letters to spawn
   } else if (difficulty == 3) { //hard
-    letterSpeed = 15; // Speed of the letters
+    letterSpeed = 10; // Speed of the letters
     letterAmount = 30; // Amount of letters to spawn
   } else { //medium (default difficulty)
-    letterSpeed = 5; // Speed of the letters
+    letterSpeed = 7; // Speed of the letters
     letterAmount = 20; // Amount of letters to spawn
   }
   
