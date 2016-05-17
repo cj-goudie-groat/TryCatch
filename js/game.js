@@ -9,8 +9,8 @@ function init() {
   if (game.init()) {
     game.start();
     
-    currentLives = 10;
-    currentScore = 0;
+    currentLives = 1;
+    currentScore = 69420;
     document.getElementById("life-counter").innerHTML = "Lives: " + currentLives;
     document.getElementById("score-counter").innerHTML = "Score: " + currentScore;
   }
@@ -462,4 +462,12 @@ function resume() {
   document.getElementById("pause-menu").style.display = "none";
   document.getElementById("pause-menu-screen-darken").style.display = "none";
 }
-	
+
+function goToLeaderboard() {
+  document.location.href = 'leaderboard.html';
+}
+
+function goToMainMenu() {
+  document.location.href = 'index.html';
+}
+  	
