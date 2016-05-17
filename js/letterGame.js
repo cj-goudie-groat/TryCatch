@@ -166,7 +166,7 @@ function checkCollision(i, letter) {
           letterCount = 0;
           currentScore += 500;
           document.getElementById("score-counter").innerHTML = "" + currentScore;
-          collectedWord.innerHTML = "";
+          clearWord();
           drawWord();
         }
       } else {
