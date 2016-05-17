@@ -151,7 +151,7 @@ Background.prototype = new Drawable();
  * around the screen.
  */
 function Ship() {
-  this.speed = 5;
+  this.speed = 10;
   //this.shipL = 1;
   //this.shipR = 1;
   //this.shipAnim = new Image();
