@@ -243,6 +243,15 @@ button .banner {
   margin: 0.8em 0 2em -6em;
 }
 
+/* #menu-bg {
+  width: auto;
+  height: auto;
+  scale: both;
+  position: absolute;
+  left: 0;
+  top: 0;
+} */
+
 #level-counter {
   position: relative;
   margin: 0.2em 0 0.2em -3em;
@@ -255,7 +264,6 @@ button .banner {
 
 #right {
   float: right;
-  text-align: right;
 }
 
 .right-text {
@@ -274,25 +282,13 @@ button .banner {
   color: white;
 }
 
-#lives-table {
-  z-index: 8;
-}
-
 #score-counter {
   position: relative;
-  margin: -15px 15px 15px 0;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  font-size: 5em;
+  margin: 10px 0 10px 20px;
+  font-family: sans-serif;
+  font-size: 40px;
   color: white;
   text-shadow: 0px 4px 40px rgba(0, 0, 0, 0.50);
-}
-
-#underlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: -2;
 }
 
 p {
@@ -428,11 +424,11 @@ p {
 }
 
 #game-over h2 {
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: .5em;
+  padding-bottom: .5em;
   text-align: center;
   margin: 0;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 1.5em;
@@ -441,6 +437,22 @@ p {
 
 }
 
+form {
+  font-family: 'Montserrat', sans-serif;
+  color: #FFF;
+  position: relative;
+  transform: translateX(-50%);
+  left: 50%;
+  text-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.40);
+}
+
+#user-score {
+  font-size: 1.5em;
+  text-align: center;
+  position: relative;
+  transform: translateX(-50%);
+  left: 50%;
+}
 /*******************/
 /**** DIFFICULTY ***/
 /*******************/
