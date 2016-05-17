@@ -106,17 +106,8 @@
           </div>
         </div>
         <div id="right">
-          <img src="images/scoreunderlay.png" id="underlay">
-          <table id="lives-table">
-            <tr>
-              <td><img src="images/heart.png" id="heart1"></td>
-              <td><img src="images/heart.png" id="heart2"></td>
-              <td><img src="images/heart.png" id="heart3"></td>
-              <td><img src="images/heart.png" id="heart4"></td>
-              <td><img src="images/heart.png" id="heart5"></td>
-            </tr>
-          </table>
           <p id="score-counter"></p>
+          <p id="life-counter"></p>
         </div>
       </div>
       <!-- Word displayed -->
@@ -145,12 +136,19 @@
         <h1>Game Over!</h1>
         <h2 id="score"></h2>
       </div>
-      <button class="button" onclick="retryGame()">retry</button>
-      <br>
-      <button class="button" onclick="goToLeaderboard()">leaderboard</button>
-      <br>
-      <button class="button" onclick="location.reload()">main menu</button>
-      <br>
+        <button class="button" onclick="retryGame()">retry</button>
+        <br>
+        <button class="button" onclick="goToLeaderboard()">leaderboard</button>
+        <br>
+        <button class="button" onclick="location.reload()">main menu</button>
+        <br>
+        <form action="" method="post" onsubmit="">
+          <div id="user-score"> Your name: 
+            <input type="text" size="3" maxlength="3">
+          </div>
+          <br>
+          <input type="submit" value="Submit score" class="button">
+        </form>
     </div>
   </div>
   
