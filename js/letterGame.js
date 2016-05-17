@@ -155,7 +155,7 @@ function checkCollision(i, letter) {
         }
       } else {
         currentLives--;
-        document.getElementById("life-counter").innerHTML = "" + currentLives;
+        updateLives();
 
             // Determines if you lost the game or not
             if (currentLives == 0) {
@@ -163,6 +163,7 @@ function checkCollision(i, letter) {
               document.getElementById("score").innerHTML = "Your final score was: " + currentScore;
               document.getElementById("game-over").style.display = "block";
               document.getElementById("pause-menu-screen-darken").style.display = "block";
+              updateLives();
             }
       }
       newLetter(i);
@@ -357,7 +358,7 @@ function retryGame() {
   }
   newSpecialItem();
   
-  currentLives = 10;
+  currentLives = 5;
   currentScore = 0;
   
   drawWord();
@@ -367,7 +368,8 @@ function retryGame() {
   //Resets the lives and Scores
   document.getElementById("life-counter").innerHTML = "" + currentLives;
   document.getElementById("score-counter").innerHTML = "" + currentScore;
-
+  updateLives();
+  
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
   //Resumes the game
