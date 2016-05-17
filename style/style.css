@@ -341,6 +341,17 @@ p {
 /**** GAME OVER ****/
 /*******************/
 
+@keyframes game-over-fade-in {
+    from {
+      display: none;
+      opacity: 0;
+    }
+    to {
+      display: block;
+      opacity: 1;
+    }
+}
+
 #game-over {
   background-image: radial-gradient(53% 102%, rgba(193, 238, 253, 0.65) 34%, rgba(23, 51, 97, 0.36) 100%);
   background-color: #CCFFFF;
@@ -354,6 +365,9 @@ p {
   width: 400px;
   height: 500px;
   z-index: 10;
+  animation-name: game-over-fade-in;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
 }
 
 #game-over .button {
@@ -407,6 +421,17 @@ p {
 /*******************/
 /**** DIFFICULTY ***/
 /*******************/
+
+@keyframes menu-drop-in {
+    from {
+      top: -50%;
+    }
+    to {
+      transform: translateY(-50%);
+      top: 50%;
+    }
+}
+
 #difficulty-menu {
   background-image: radial-gradient(53% 102%, rgba(193, 238, 253, 0.65) 34%, rgba(23, 51, 97, 0.36) 100%);
   display: none;
@@ -414,13 +439,15 @@ p {
   margin: auto;
   left: 0;
   right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  top: -50%;
   margin: auto;
   background-color: #CCFFFF;
   width: 400px;
   height: 500px;
   z-index: 10;
+  animation-name: menu-drop-in;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
 }
 
 #difficulty-menu h2 {
@@ -593,6 +620,9 @@ p {
   
   #game-over {
     width: 300px;
+    animation-name: game-over-fade-in;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
   }
 }
 
