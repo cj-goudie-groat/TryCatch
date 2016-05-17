@@ -337,7 +337,7 @@ p {
   left: 50%;
   margin-bottom: 1em;
   margin: 0 auto 1em auto;
-  background-color: #F1AE3E;
+  background-color: #18306E;
   box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.50);
   border: none;
   font-family: 'Montserrat', sans-serif;
@@ -345,6 +345,11 @@ p {
   font-size: 1.5em;
   color: #FFFFFF;
   text-shadow: 0px 4px 24px rgba(0, 0, 0, 0.50);
+}
+
+#game-over .button:last-of-type {
+  background-color: #F1AE3E;
+  margin-top: 0.5em;
 }
 
 #game-over-header {
@@ -403,7 +408,6 @@ p {
   padding-top: 1em;
   padding-bottom: 1em;
   margin: 0 0 1em 0;
-  background: #F1AE3E;
   background-color: #0088CB;
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.40);
   border: none;
@@ -567,6 +571,10 @@ p {
   }
   
   #pause-menu {
+    width: 300px;
+  }
+  
+  #game-over {
     width: 300px;
   }
 }
