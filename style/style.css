@@ -93,13 +93,19 @@ canvas {
   margin: 0 auto 2em auto;
   background: #F1AE3E;
   background-color: #0088CB;
-  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.50);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.40);
   border: none;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 2em;
   color: #FFFFFF;
   text-shadow: 0px 4px 24px rgba(0, 0, 0, 0.50);
+  background-image: radial-gradient(53% 102%, rgba(193, 238, 253, 0.65) 34%, rgba(23, 51, 97, 0.36) 100%);
+}
+
+#difficulty-menu {
+  background: #4593DE;
+  background-image: radial-gradient(53% 102%, rgba(193, 238, 253, 0.65) 34%, rgba(23, 51, 97, 0.36) 100%);
 }
 
 /***************/
@@ -393,12 +399,18 @@ p {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  background-color: #18306E;
 }
 
 #difficulty-menu .button-selected {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  background-color: #18306E;
+}
+
+#difficulty-menu button:last-of-type {
+  background-color: #F1AE3E;
 }
 
 #pause-menu-screen-darken {
