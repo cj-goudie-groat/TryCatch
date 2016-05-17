@@ -42,12 +42,16 @@
 
 #score-table {
   top: 45%;
-  left: 40%;
   position: relative;
 }
 
 #scores {
+  font-family: 'Montserrat', sans-serif;
   border: solid 5px;
   color: white;
   border-spacing: 10px;
+  top: 45%;
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
 }
