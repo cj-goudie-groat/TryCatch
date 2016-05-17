@@ -355,6 +355,39 @@ function addLetters() {
   }
 }
 
+function retryGame() {
+
+      //Reloads the game
+      var head= document.getElementsByTagName('head')[0];
+      var script= document.createElement('script');
+      script.type= 'text/javascript';
+      script.src= 'js/letterGame.js';
+      head.appendChild(script);
+
+      currentLives = 1;
+      currentScore = 0;
+
+      //Resets the lives and Scores
+      document.getElementById("life-counter").innerHTML = "Lives: " + currentLives;
+      document.getElementById("score-counter").innerHTML = "Score: " + currentScore;
+
+      //Clears the canvas from the previous game
+      for (var i = 0; i < letterAmount; i++) {
+          ctx.clearRect(letters[i].xPos, letters[i].yPos - letterSpeed, letterWidth, letterHeight);
+        }
+      ctx.clearRect(0, canvas.height - letterSpeed, canvas.width, letterSpeed);
+
+
+      //Clears the special
+      ctx.clearRect(specialItem.xPos, specialItem.yPos - specialSpeed, specialWidth, specialHeight);
+      ctx.clearRect(0, canvas.height - specialSpeed, canvas.width, specialSpeed);
+  
+      //Resumes the game
+      document.getElementById("game-over").style.display = "none";
+      resume();
+}
+
+
 /**
  * Sets up the arrays and starts the program.
  */

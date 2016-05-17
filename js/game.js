@@ -305,9 +305,9 @@ function Game() {
  * object.
  */
 function animate() {
-  requestAnimFrame(animate);
   game.background.draw();
   game.ship.move();
+  requestAnimFrame(animate);
 }
 
 /** The keycodes that will be mapped when a user presses a button.
@@ -490,3 +490,4 @@ function goToLeaderboard() {
 function goToMainMenu() {
   document.location.href = 'index.html';
 }
+
