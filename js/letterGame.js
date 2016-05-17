@@ -37,13 +37,9 @@ var bonusHeight = 70; // Height of the bonus items
 
 var word = document.getElementById("word");
 var collectedWord = document.getElementById("collected-word");
+var wordRow = document.getElementById("word-row");
 var currentWord; // Current word to find
 var wordList = ["MARS", "STAR", "SHIP", "HALO", "MOON"];
-
-function round(x)
-{
-    return Math.ceil(x/60)*60;
-}
 
 /**
  * Clears the canvas [elementMove]px above the letter sprites to remove trails.
@@ -268,7 +264,20 @@ function drawBonus() {
 function drawWord() {
   var randomIndex = Math.floor(Math.random() * wordList.length);
   currentWord = wordList[randomIndex];
-  word.innerHTML = currentWord;
+  wordLength = currentWord.length;
+  for (var i = 0; i < wordLength; i++) {
+    wordRow.insertCell(0);
+  }
+  for (var i = 0; i < wordLength; i++) {
+    wordRow.cells[i].innerHTML = currentWord.charAt(i);
+  }
+}
+
+/**
+ * Clears cells in word row.
+ */
+function clearWord() {
+  wordRow.innerHTML = "";
 }
 
 /**
@@ -284,13 +293,7 @@ function drawLetter() {
   clearLetter();
   for (var i = 0; i < letterAmount; i++) {
     checkCollision(i, letters[i].letter);
-
-    if (letters[i].yPos > canvas.height) {
-      ctx.drawImage(letters[i].img, letters[i].xPos, round(letters[i].yPos));
-    } else {
-      ctx.drawImage(letters[i].img, letters[i].xPos, letters[i].yPos);
-    }
-
+    ctx.drawImage(letters[i].img, letters[i].xPos, letters[i].yPos);
     letters[i].yPos += letterSpeed;
 
     if (letters[i].yPos > canvas.height) {
@@ -404,19 +407,19 @@ function retryGame() {
       newSpecialItem();
     }, specialSpawnTimer);
   
-  currentLives = 10;
+  currentLives = 5;
   currentScore = 0;
   
+  clearWord();
   drawWord();
   collectedWord.innerHTML = "";
   letterCount = 0;
   
   //Resets the lives and Scores
-  document.getElementById("life-counter").innerHTML = "" + currentLives;
   document.getElementById("score-counter").innerHTML = "" + currentScore;
   updateLives();
   
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);9
   
   //Resumes the game
   document.getElementById("game-over").style.display = "none";
