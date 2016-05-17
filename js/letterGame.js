@@ -170,17 +170,16 @@ function checkCollision(i, letter) {
           drawWord();
         }
       } else {
-        currentLives--;
-        updateLives();
-
-            // Determines if you lost the game or not
-            if (currentLives == 0) {
-              paused = true;
-              document.getElementById("score").innerHTML = "Your final score was: " + currentScore;
-              document.getElementById("game-over").style.display = "block";
-              document.getElementById("pause-menu-screen-darken").style.display = "block";
-              updateLives();
-            }
+          currentLives--;
+          updateLives();
+          // Determines if you lost the game or not
+          if (currentLives == 0) {
+            paused = true;
+            document.getElementById("score").innerHTML = "Your final score was: " + currentScore;
+            document.getElementById("game-over").style.display = "block";
+            document.getElementById("pause-menu-screen-darken").style.display = "block";
+            updateLives();
+          }
       }
       newLetter(i);
     }
