@@ -60,33 +60,6 @@
         selected = false;
       }
     }
-    
-    
-    function selectDifficulty(id) {
-        if (selectEasy == false && id == "easy") {
-          document.getElementById(id).className = "button-selected";
-          selectEasy = true;
-        } else if (selectEasy == true && id == "easy") {
-          document.getElementById(id).className = "button";
-          selectEasy = false;
-        }
-        
-        if (selectMedium == false && id == "medium") {
-          document.getElementById(id).style = "outline: 10px solid white; border: none; overflow: hidden;";
-          selectMedium = true;
-        } else if (selectMedium == true && id == "easy") {
-          document.getElementById(id).style = "";
-          selectMedium = false;
-        }
-        
-        if (selectHard == false && id == "hard") {
-          document.getElementById(id).style = "outline: 10px solid white; border: none; overflow: hidden;";
-          selectHard = true;
-        } else if (selectHard == true && id == "hard") {
-          document.getElementById(id).style = "";
-          selectHard = false;
-        }
-    }
   </script>
   <link href='https://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
 </head>
@@ -151,7 +124,7 @@
             <h2>Choose Difficulty</h2>
             <button id="easy" class="button" onclick="setDifficulty(1)">Easy</button>
             <br/>
-            <button id="medium" class="button" onclick="setDifficulty(2)">Medium</button>
+            <button id="medium" class="button-selected" onclick="setDifficulty(2)">Medium</button>
             <br/>
             <button id="hard" class="button" onclick="setDifficulty(3)">Hard</button>
             <br/>
