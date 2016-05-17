@@ -36,6 +36,7 @@ var bonusHeight = 70; // Height of the bonus items
 
 var word = document.getElementById("word");
 var collectedWord = document.getElementById("collected-word");
+var wordRow = document.getElementById("word-row");
 var currentWord; // Current word to find
 var wordList = ["MARS", "STAR", "SHIP", "HALO", "MOON"];
 
@@ -245,7 +246,13 @@ function drawBonus() {
 function drawWord() {
   var randomIndex = Math.floor(Math.random() * wordList.length);
   currentWord = wordList[randomIndex];
-  word.innerHTML = currentWord;
+  wordLength = currentWord.length;
+  for (var i = 0; i < wordLength; i++) {
+    wordRow.insertCell(0);
+  }
+  for (var i = 0; i < wordLength; i++) {
+    wordRow.cells[i].innerHTML = currentWord.charAt(i);
+  }
 }
 
 /**
