@@ -56,42 +56,36 @@
         <div id="game-collection">
           <div class="selector">
             <button class="theme" name="spelling" id="spelling-button" onclick="selectButton('spelling-button')"><img id="spelling-ship" src="images/shipanim/ship0.png"></button>
-            <label for="spelling">spelling</label>
+            <label for="spelling">Spelling</label>
           </div>
           <div class="selector">
             <button class="theme" name="math" id="math-button">
-              <div class="banner">
-                coming soon
-              </div>
+              <div class="banner">Coming Soon</div>
             </button>
-            <label for="math">math</label>
+            <label for="math">Math</label>
           </div>
           <div class="selector">
             <button class="theme" name="shapes" id="shapes-button">
-              <div class="banner">
-                coming soon
-              </div>
+              <div class="banner">Coming Soon</div>
             </button>
-            <label for="shapes">shapes</label>
+            <label for="shapes">Shapes</label>
           </div>
         </div>
 
         <div id="button-collection">
-          <button onclick="chooseDifficulty()" class="button">difficulty</button>
-
-          <button onclick="goToLeaderboard()" class="button">leaderboard</button>
-          
-          <div id="difficulty-menu">
-            <h2>Choose Difficulty</h2>
-            <button id="easy" class="button" onclick="setDifficulty(1)">easy</button>
-            <br/>
-            <button id="medium" class="button-selected" onclick="setDifficulty(2)">medium</button>
-            <br/>
-            <button id="hard" class="button" onclick="setDifficulty(3)">hard</button>
-            <br/>
-            <button id="play" class="button" onclick="loadGamemode()">start game</button>
-          </div>
+          <button onclick="chooseDifficulty()" class="button">Difficulty</button>
+          <button onclick="goToLeaderboard()" class="button">Leaderboard</button>
         </div>
+      </div>
+      <div id="difficulty-menu">
+        <h2>Choose Difficulty</h2>
+        <button id="easy" class="button" onclick="setDifficulty(1)">Easy</button>
+        <br/>
+        <button id="medium" class="button-selected" onclick="setDifficulty(2)">Medium</button>
+        <br/>
+        <button id="hard" class="button" onclick="setDifficulty(3)">Hard</button>
+        <br/>
+        <button id="play" class="button" onclick="loadGamemode()">Start Game</button>
       </div>
     </div>
     <div id="game">
@@ -119,7 +113,7 @@
     </div>
     <div id="pause-menu">
       <!-- function names probably need to be changed -->
-      <h1>Game Paused</h1>
+      <h2>Game Paused</h2>
       <button class="button" onclick="resume()">Resume</button>
       <br>
       <button class="button" onclick="location.reload()">Main Menu</button>
