@@ -233,6 +233,7 @@ button .banner {
   margin: 0;
   color: #C9C1C1;
   text-shadow: 0px 1px 15px rgba(0,0,0,0.50);
+  z-index: 9;
 }
 
 #pause:hover {
@@ -305,19 +306,16 @@ p {
 
 #word-section {
   position: absolute;
-  top: 100px;
-  text-align: center;
-  width: 100%;
+  top: 0px;
+  width: auto;
   font-size: 1.5em;
   z-index: 4;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 #word {
   color: #FFFFFF;
-}
-
-#collected-word {
-  color: #FF0000;
 }
 
 #word-table {
