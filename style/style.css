@@ -264,30 +264,27 @@ button .banner {
 
 #right {
   float: right;
-}
-
-.right-text {
-  position: relative;
-  margin: 10px 0 10px 20px;
-  font-family: fantasy, sans-serif;
-  font-size: 40px;
-  color: white;
+  text-align: right;
 }
 
 #life-counter {
   position: relative;
-  margin: 10px 0 10px 20px;
-  font-family: sans-serif;
-  font-size: 40px;
+  margin: 10px 15px 0 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 3em;
   color: white;
+  text-shadow: 0px 1px 15px rgba(0,0,0,0.50);
 }
 
 #score-counter {
   position: relative;
-  margin: 10px 0 10px 20px;
-  font-family: sans-serif;
-  font-size: 40px;
+  margin: -10px 15px 15px 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 5em;
   color: white;
+  text-shadow: 0px 1px 15px rgba(0,0,0,0.50);
 }
 
 p {

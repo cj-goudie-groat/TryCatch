@@ -124,7 +124,7 @@ function checkCollision(i, letter) {
         shipRect.heightOffset + (window.innerHeight - shipRect.height) > bonusRect.y) {
       
       currentScore += 50;
-      document.getElementById("score-counter").innerHTML = "Score: " + currentScore;
+      document.getElementById("score-counter").innerHTML = "" + currentScore;
       newBonusItem(i);
     }
   } else if (isNaN(letter)) { // letter character
@@ -142,20 +142,20 @@ function checkCollision(i, letter) {
 
       if(letter == currentWord.charAt(letterCount)) {
         currentScore += 100;
-        document.getElementById("score-counter").innerHTML = "Score: " + currentScore;
+        document.getElementById("score-counter").innerHTML = "" + currentScore;
         letterCount++;
         collectedWord.innerHTML += letters[i].letter;
 
         if(letterCount == currentWord.length) {
           letterCount = 0;
           currentScore += 500;
-          document.getElementById("score-counter").innerHTML = "Score: " + currentScore;
+          document.getElementById("score-counter").innerHTML = "" + currentScore;
           collectedWord.innerHTML = "";
           drawWord();
         }
       } else {
         currentLives--;
-        document.getElementById("life-counter").innerHTML = "Lives: " + currentLives;
+        document.getElementById("life-counter").innerHTML = "" + currentLives;
 
             // Determines if you lost the game or not
             if (currentLives == 0) {
@@ -365,8 +365,8 @@ function retryGame() {
   letterCount = 0;
   
   //Resets the lives and Scores
-  document.getElementById("life-counter").innerHTML = "Lives: " + currentLives;
-  document.getElementById("score-counter").innerHTML = "Score: " + currentScore;
+  document.getElementById("life-counter").innerHTML = "" + currentLives;
+  document.getElementById("score-counter").innerHTML = "" + currentScore;
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   

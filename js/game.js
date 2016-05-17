@@ -11,8 +11,8 @@ function init() {
     
     currentLives = 10;
     currentScore = 0;
-    document.getElementById("life-counter").innerHTML = "Lives: " + currentLives;
-    document.getElementById("score-counter").innerHTML = "Score: " + currentScore;
+    document.getElementById("life-counter").innerHTML = "" + currentLives;
+    document.getElementById("score-counter").innerHTML = "" + currentScore;
   }
 }
 
