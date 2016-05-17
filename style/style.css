@@ -497,10 +497,19 @@ p {
   flex-direction: column;
 }
 
-/********************************/
-/* For larger phones or tablets */
-/********************************/
+/*******************************************/
+/* Fill screen when under 1000px */
+/*******************************************/
 @media screen and (max-width: 1000px) {
+  #wrapper {
+    width: 100%;
+  }
+}
+
+/**********************/
+/* For larger devices */
+/**********************/
+@media screen and (max-width: 530px) {
   #wrapper {
     width: 100%;
   }
