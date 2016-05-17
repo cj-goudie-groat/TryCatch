@@ -36,8 +36,6 @@
   width: 95%;
   color: white;
   border-spacing: 10px;
-  left: 50%;
-  transform: translateX(-50%);
   position: relative;
 }
 
