@@ -1,3 +1,14 @@
+/***********************/
+/* Leaderboard Styling */
+/***********************/
+
+#leaderboard-buttons {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  top: 20%;
+}
+
 /*****************/
 /* Title Styling */
 /*****************/
@@ -8,6 +19,12 @@
 /* Leaderboard Styling */
 /***********************/
 #score-table {
+  top: 15%;
+  position: relative;
+}
+
+#scores {
+  font-family: 'Montserrat', sans-serif;
   margin-bottom: 1em;
 }
 
@@ -17,6 +34,11 @@
   width: 95%;
   color: white;
   border-spacing: 10px;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+=======
 }
 
 /**********************/
