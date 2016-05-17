@@ -159,8 +159,8 @@ function checkCollision(i, letter) {
       if(letter == currentWord.charAt(letterCount)) {
         currentScore += 100;
         document.getElementById("score-counter").innerHTML = "" + currentScore;
-        wordRow.cells[currentLetter].style = "color: #fff";
-        currentLetter++;
+        wordRow.cells[letterCount].style = "color: #fff";
+        letterCount++
         
         if(letterCount == currentWord.length) {
           letterCount = 0;
