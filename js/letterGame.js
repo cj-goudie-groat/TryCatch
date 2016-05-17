@@ -40,6 +40,7 @@ var collectedWord = document.getElementById("collected-word");
 var wordRow = document.getElementById("word-row");
 var currentWord; // Current word to find
 var wordList = ["MARS", "STAR", "SHIP", "HALO", "MOON"];
+var currentLetter = 0;
 
 /**
  * Clears the canvas [elementMove]px above the letter sprites to remove trails.
@@ -158,8 +159,8 @@ function checkCollision(i, letter) {
       if(letter == currentWord.charAt(letterCount)) {
         currentScore += 100;
         document.getElementById("score-counter").innerHTML = "" + currentScore;
-        letterCount++;
-        collectedWord.innerHTML += letters[i].letter;
+        wordRow.cells[currentLetter].style = "color: #fff";
+        currentLetter++;
         
         if(letterCount == currentWord.length) {
           letterCount = 0;
