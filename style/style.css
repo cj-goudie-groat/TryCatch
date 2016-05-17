@@ -102,7 +102,7 @@ canvas {
   align-self: center;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-  font-size: 1.5em;
+  font-size: 1.3em;
   color: #FFFFFF;
   text-shadow: 0px 2px 20px rgba(0,0,0,0.50);
 }
@@ -172,8 +172,8 @@ button .banner {
   box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.50);
   border: none;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 2em;
+  font-weight: 400;
+  font-size: 1.5em;
   color: #FFFFFF;
   text-shadow: 0px 4px 24px rgba(0, 0, 0, 0.50);
 }
@@ -188,8 +188,8 @@ button .banner {
   box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.50);
   border: none;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 2em;
+  font-weight: 400;
+  font-size: 1.5em;
   color: #FFFFFF;
   text-shadow: 0px 4px 24px rgba(0, 0, 0, 0.50);
   outline: 10px solid white;
