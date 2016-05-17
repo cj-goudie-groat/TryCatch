@@ -298,7 +298,6 @@ function drawSpecialItem() {
  * Animates the falling elements.
  */
 function draw() {
-  
   requestAnimFrame(draw);
   drawLetter();
   drawSpecialItem();
@@ -363,6 +362,7 @@ function retryGame() {
   
   drawWord();
   collectedWord.innerHTML = "";
+  letterCount = 0;
   
   //Resets the lives and Scores
   document.getElementById("life-counter").innerHTML = "Lives: " + currentLives;
