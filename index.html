@@ -2,51 +2,14 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="user-scalable=no">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <title>TryCatch - Home</title>
   <link href="style/style.css" rel="stylesheet" type="text/css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="js/game.js"></script>
   <script>
-    window.addEventListener("load", function() {
-      var leftButton = document.getElementById("left-button");
-      var rightButton = document.getElementById("right-button");
-
-      leftButton.addEventListener("touchstart", function(e) {
-        var press = $.Event("keydown");
-        press.which = 37; // # Some key code value
-        press.keyCode = 37;
-        $("body").trigger(press);
-
-      }, false);
-
-      leftButton.addEventListener("touchend", function(e) {
-        var press = $.Event("keyup");
-        press.which = 37; // # Some key code value
-        press.keyCode = 37;
-        $("body").trigger(press);
-
-      }, false);
-
-      rightButton.addEventListener("touchstart", function(e) {
-        var press = $.Event("keydown");
-        press.which = 39; // # Some key code value
-        press.keyCode = 39;
-        $("body").trigger(press);
-
-      }, false);
-
-      rightButton.addEventListener("touchend", function(e) {
-        var press = $.Event("keyup");
-        press.which = 39; // # Some key code value
-        press.keyCode = 39;
-        $("body").trigger(press);
-      }, false);
-    }, false);
-
     function chooseDifficulty() {
       document.getElementById("difficulty-menu").style.display = "block";
-      document.getElementById("pause-menu-screen-darken").style.display = "block";
     }
     
     var selected = false;
@@ -72,8 +35,6 @@
       <div id="title">
 
         <svg id="cloud" width="391px" height="205px" viewBox="97 -36 391 205" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <!-- Generator: Sketch 3.7.2 (28276) - http://www.bohemiancoding.com/sketch -->
-          <desc>Created with Sketch.</desc>
           <defs>
             <path d="M265.808325,1.31550967 C228.22354,6.67438796 227.113585,38.0741687 227.113585,38.0741687 C227.113585,38.0741687 212.65845,29.3635502 187.134662,40.7364502 C161.610874,52.1093502 169.112766,88.5173035 169.112766,88.5173035 C169.112766,88.5173035 153.603434,84.0063122 142.806618,95.1495007 C132.009802,106.292689 139.797901,124.57602 139.797901,124.57602 L447.918928,124.57602 C447.918928,124.57602 450.191875,92.2664449 428.801025,80.9166794 C407.410176,69.5669139 389.00948,80.9166796 389.00948,80.9166796 C389.00948,80.9166796 401.879059,39.0874732 370.986053,26.6492481 C340.093048,14.211023 316.687262,42.9633878 316.687262,42.9633878 C316.687262,42.9633878 309.270245,-4.8813366 265.808325,1.31550967 Z" id="path-1"></path>
             <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
@@ -134,9 +95,9 @@
       </div>
     </div>
     <div id="game">
-      <canvas id="background" width="1000"></canvas>
-      <canvas id="elements" width="1000"></canvas>
-      <canvas id="ship" width="1000" height="209"></canvas>
+      <canvas id="background"></canvas>
+      <canvas id="elements"></canvas>
+      <canvas id="ship" height="209"></canvas>
       <div id="mobile-buttons">
         <button id="left-button">&lt;</button>
         <button id="right-button">&gt;</button>
@@ -166,8 +127,6 @@
       <button class="button" onclick="">Mute sound</button>
     </div>
 
-
-
     <div id="game-over">
       <div id="game-over-header">
         <h1> Game Over! </h1>
@@ -189,34 +148,6 @@
   <script src="js/resizeCanvas.js"></script>
   <script>
     <!--
-    function leftClick() {
-      var e = $.Event("keydown");
-      e.which = 37; // # Some key code value
-      e.keyCode = 37;
-      $("body").trigger(e);
-    }
-
-    function rightClick() {
-      var e = $.Event("keydown");
-      e.which = 39; // # Some key code value
-      e.keyCode = 39;
-      $("body").trigger(e);
-    }
-
-    function leftClear() {
-      var e = $.Event("keyup");
-      e.which = 37; // # Some key code value
-      e.keyCode = 37;
-      $("body").trigger(e);
-    }
-
-    function rightClear() {
-      var e = $.Event("keyup");
-      e.which = 39; // # Some key code value
-      e.keyCode = 39;
-      $("body").trigger(e);
-    }
-
     $(document).ready(function() {
       $("#play").click(function() {
         $("#main-menu").fadeOut(1000);
