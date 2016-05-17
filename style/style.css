@@ -82,26 +82,6 @@ canvas {
   width: 100%;
 }
 
-/***********************/
-/* The Difficulty Menu */
-/***********************/
-#difficulty-menu h2 {
-  text-align: center;
-  padding-top: 1em;
-  padding-bottom: 0.5em;
-  margin-bottom: 2em;
-  margin: 0 auto 2em auto;
-  background: #F1AE3E;
-  background-color: #0088CB;
-  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.50);
-  border: none;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 2em;
-  color: #FFFFFF;
-  text-shadow: 0px 4px 24px rgba(0, 0, 0, 0.50);
-}
-
 /***************/
 /* The Buttons */
 /***************/
@@ -122,7 +102,7 @@ canvas {
   align-self: center;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-  font-size: 1.5em;
+  font-size: 1.3em;
   color: #FFFFFF;
   text-shadow: 0px 2px 20px rgba(0,0,0,0.50);
 }
@@ -165,19 +145,13 @@ button .banner {
   overflow: hidden;
 }
 
-.theme:active {
-  outline: 10px solid white;
-  border: none;
-  overflow: hidden;
-}
-
 .theme-selected {
   width: 150px;
   height: 150px;
   margin: 0 1em 0.5em 1em;
   background: #18306E;
   box-shadow: 0px 4px 40px 0px rgba(0,0,0,0.50);
-  outline: 10px solid white;
+  outline: 8px solid white;
   border: none;
   overflow: hidden;
 }
@@ -192,8 +166,8 @@ button .banner {
   box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.50);
   border: none;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 2em;
+  font-weight: 400;
+  font-size: 1.5em;
   color: #FFFFFF;
   text-shadow: 0px 4px 24px rgba(0, 0, 0, 0.50);
 }
@@ -208,11 +182,11 @@ button .banner {
   box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.50);
   border: none;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 2em;
+  font-weight: 400;
+  font-size: 1.5em;
   color: #FFFFFF;
   text-shadow: 0px 4px 24px rgba(0, 0, 0, 0.50);
-  outline: 10px solid white;
+  outline: 8px solid white;
   border: none;
   overflow: hidden;
 }
@@ -339,24 +313,9 @@ p {
   top: 0;
 }
 
-#pause-menu {
-  display: none;
-  position: absolute;
-  left: 30%;
-  right: 30%;
-  top: 12.5%;
-  background-color: #ccffff;
-  width: 400px;
-  height: 500px;
-  z-index: 10;
-}
-
-#pause-menu .button {
-  position: relative;
-  margin-top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-}
+/*******************/
+/**** GAME OVER ****/
+/*******************/
 
 #game-over {
   display: none;
@@ -372,12 +331,77 @@ p {
 
 #game-over .button {
   position: relative;
-  margin-top: 20px;
-  left: 50%;
   transform: translateX(-50%);
+  left: 50%;
+  width: 60%;
+  margin-bottom: 1em;
+  margin: 0 auto 1em auto;
+  background-color: #F1AE3E;
+  background: #F1AE3E;
+  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.50);
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 1.5em;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 24px rgba(0, 0, 0, 0.50);
+}
+
+#game-over-header {
+  background: #F1AE3E;
+  background-color: #0088CB;
+  background-image: radial-gradient(50% 99%, rgba(193,238,253,0.65) 0%, rgba(23,51,97,0.36) 100%);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.40);
+}
+
+#game-over h1 {
+  text-align: center;
+  padding-top: 1em;
+  margin: 0;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 2em;
+  color: #FFFFFF;
+}
+
+#game-over h2 {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 2em;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 1.5em;
+  color: #FFF;
+  border: none;
+
+}
+
+/*******************/
+/**** DIFFICULTY ***/
+/*******************/
+#difficulty-menu h2 {
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin: 0 0 1em 0;
+  background: #F1AE3E;
+  background-color: #0088CB;
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.40);
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 2em;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 24px rgba(0, 0, 0, 0.50);
+  background-image: radial-gradient(50% 99%, rgba(193,238,253,0.65) 0%, rgba(23,51,97,0.36) 100%);
 }
 
 #difficulty-menu {
+  background: #4593DE;
+  background-image: radial-gradient(53% 102%, rgba(193, 238, 253, 0.65) 34%, rgba(23, 51, 97, 0.36) 100%);
   display: none;
   position: absolute;
   left: 30%;
@@ -401,6 +425,53 @@ p {
   transform: translateX(-50%);
 }
 
+#difficulty-menu .button {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #18306E;
+}
+
+#difficulty-menu .button-selected {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #18306E;
+}
+
+#difficulty-menu button:last-of-type {
+  background-color: #F1AE3E;
+}
+
+/*******************/
+/**** PAUSE MENU ***/
+/*******************/
+
+#pause-menu {
+  display: none;
+  position: absolute;
+  left: 30%;
+  right: 30%;
+  top: 12.5%;
+  background-color: #ccffff;
+  width: 400px;
+  height: 500px;
+  z-index: 10;
+}
+
+#pause-menu .button {
+  position: relative;
+  margin-top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #18306E;
+}
+
+#difficulty-menu button:last-of-type {
+  margin-top: 0.5em;
+  background-color: #F1AE3E;
+}
+
 #pause-menu-screen-darken {
   display: none;
   position: absolute;
@@ -415,7 +486,6 @@ p {
   z-index: 9;
 }
 
-<<<<<<< HEAD
 /***********************/
 /* Leaderboard Styling */
 /***********************/

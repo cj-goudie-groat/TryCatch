@@ -9,8 +9,8 @@ function init() {
   if (game.init()) {
     game.start();
     
-    currentLives = 10;
-    currentScore = 0;
+    currentLives = 1;
+    currentScore = 69420;
     document.getElementById("life-counter").innerHTML = "Lives: " + currentLives;
     document.getElementById("score-counter").innerHTML = "Score: " + currentScore;
   }
@@ -387,34 +387,61 @@ function setDifficulty(diff) {
     difficulty = 1;
     currentLevel = "Easy";
     document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
+    
+    if (selectEasy == false) {
+      document.getElementById("easy").className = "button-selected";
+      document.getElementById("medium").className = "button";
+      document.getElementById("hard").className = "button";
+      selectEasy = true;
+      selectMedium = false;
+      selectHard = false;
+    } else {
+      document.getElementById("easy").className = "button";
+      document.getElementById("medium").className = "button";
+      document.getElementById("hard").className = "button";
+      selectEasy = false;
+      selectMedium = false;
+      selectHard = false;
+    }
   } else if (diff == 3) { //hard
     difficulty = 3;
     currentLevel = "Hard";
     document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
+    
+    if (selectHard == false) {
+      document.getElementById("easy").className = "button";
+      document.getElementById("medium").className = "button";
+      document.getElementById("hard").className = "button-selected";
+      selectEasy = false;
+      selectMedium = false;
+      selectHard = true;
+    } else {
+      document.getElementById("easy").className = "button";
+      document.getElementById("medium").className = "button";
+      document.getElementById("hard").className = "button";
+      selectEasy = false;
+      selectMedium = false;
+      selectHard = false;
+    }
   } else { //medium (default difficulty)
     difficulty = 2;
     currentLevel = "Medium";
     document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
-  }
-  
-  if (selectEasy == false && diff == 1) {
-    document.getElementById("easy").className = "button-selected";
-    selectEasy = true;
-  } else if (selectEasy == true && id == 1) {
-    document.getElementById("easy").className = "button";
-    selectEasy = false;
-  } else if (selectMedium == false && diff == 2) {
-    document.getElementById("medium").className = "button-selected";
-    selectMedium = true;
-  } else if (selectMedium == true && id == 2) {
-    document.getElementById("medium").className = "button";
-    selectMedium = false;
-  } else if (selectHard == false && diff == 3) {
-    document.getElementById("hard").className = "button-selected";
-    selectHard = true;
-  } else if (selectHard == true && id == 3) {
-    document.getElementById("hard").className = "button";
-    selectHard = false;
+    if (selectMedium == false) {
+      document.getElementById("easy").className = "button";
+      document.getElementById("medium").className = "button-selected";
+      document.getElementById("hard").className = "button";
+      selectEasy = false;
+      selectMedium = true;
+      selectHard = false;
+    } else {
+      document.getElementById("easy").className = "button";
+      document.getElementById("medium").className = "button";
+      document.getElementById("hard").className = "button";
+      selectEasy = false;
+      selectMedium = false;
+      selectHard = false;
+    }
   }
 }
 
@@ -435,4 +462,12 @@ function resume() {
   document.getElementById("pause-menu").style.display = "none";
   document.getElementById("pause-menu-screen-darken").style.display = "none";
 }
-	
+
+function goToLeaderboard() {
+  document.location.href = 'leaderboard.html';
+}
+
+function goToMainMenu() {
+  document.location.href = 'index.html';
+}
+  	
