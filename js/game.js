@@ -9,9 +9,8 @@ function init() {
   if (game.init()) {
     game.start();
     
-    currentLives = 10;
+    currentLives = 5;
     currentScore = 0;
-    document.getElementById("life-counter").innerHTML = "" + currentLives;
     document.getElementById("score-counter").innerHTML = "" + currentScore;
   }
 }
@@ -296,6 +295,59 @@ function Game() {
     this.ship.draw();
     animate();
   };
+}
+
+/**
+ * Updates Lives indication.
+ */
+function updateLives() {
+  if (currentLives == 5) {
+    document.getElementById("heart1").style.visibility = "visible";
+    document.getElementById("heart2").style.visibility = "visible";
+    document.getElementById("heart3").style.visibility = "visible";
+    document.getElementById("heart4").style.visibility = "visible";
+    document.getElementById("heart5").style.visibility = "visible";
+  }
+  
+  if (currentLives == 4) {
+    document.getElementById("heart1").style.visibility = "hidden";
+    document.getElementById("heart2").style.visibility = "visible";
+    document.getElementById("heart3").style.visibility = "visible";
+    document.getElementById("heart4").style.visibility = "visible";
+    document.getElementById("heart5").style.visibility = "visible";
+  }
+  
+  if (currentLives == 3) {
+    document.getElementById("heart1").style.visibility = "hidden";
+    document.getElementById("heart2").style.visibility = "hidden";
+    document.getElementById("heart3").style.visibility = "visible";
+    document.getElementById("heart4").style.visibility = "visible";
+    document.getElementById("heart5").style.visibility = "visible";
+  }
+  
+  if (currentLives == 2) {
+    document.getElementById("heart1").style.visibility = "hidden";
+    document.getElementById("heart2").style.visibility = "hidden";
+    document.getElementById("heart3").style.visibility = "hidden";
+    document.getElementById("heart4").style.visibility = "visible";
+    document.getElementById("heart5").style.visibility = "visible";
+  }
+  
+  if (currentLives == 1) {
+    document.getElementById("heart1").style.visibility = "hidden";
+    document.getElementById("heart2").style.visibility = "hidden";
+    document.getElementById("heart3").style.visibility = "hidden";
+    document.getElementById("heart4").style.visibility = "hidden";
+    document.getElementById("heart5").style.visibility = "visible";
+  }
+  
+  if (currentLives == 0) {
+    document.getElementById("heart1").style.visibility = "hidden";
+    document.getElementById("heart2").style.visibility = "hidden";
+    document.getElementById("heart3").style.visibility = "hidden";
+    document.getElementById("heart4").style.visibility = "hidden";
+    document.getElementById("heart5").style.visibility = "hidden";
+  }
 }
 
 /**

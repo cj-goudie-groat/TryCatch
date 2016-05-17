@@ -39,6 +39,11 @@ var collectedWord = document.getElementById("collected-word");
 var currentWord; // Current word to find
 var wordList = ["MARS", "STAR", "SHIP", "HALO", "MOON"];
 
+function round(x)
+{
+    return Math.ceil(x/60)*60;
+}
+
 /**
  * Clears the canvas [elementMove]px above the letter sprites to remove trails.
  */
@@ -66,7 +71,6 @@ function clearBonus() {
   }
   ctx.clearRect(0, canvas.height - bonusSpeed, canvas.width, bonusSpeed);
 }
-
 /**
  * The letter image will be replaced with a new letter,
  * and spawn at a random height above the screen, except for letterY, which will
@@ -75,8 +79,8 @@ function clearBonus() {
 function newLetter(index) {
   var randomChar = Math.floor(Math.random() * characters.length);
   letters[index].img.src = characters[randomChar].img.src;
-  letters[index].xPos = Math.floor(Math.random() * (canvas.width - letterWidth * 3)) + letterWidth;
-  letters[index].yPos = Math.floor(Math.random() * (canvas.height - letterHeight) * -1);
+  letters[index].xPos = round( Math.floor( Math.random() * (canvas.width - letterWidth * 3)) + letterWidth );
+  letters[index].yPos = round( Math.floor(Math.random() * (canvas.height - letterHeight) * -1) + letterHeight);
   letters[index].letter = characters[randomChar].letter;
 }
 
@@ -155,7 +159,7 @@ function checkCollision(i, letter) {
         }
       } else {
         currentLives--;
-        document.getElementById("life-counter").innerHTML = "" + currentLives;
+        updateLives();
 
             // Determines if you lost the game or not
             if (currentLives == 0) {
@@ -163,6 +167,7 @@ function checkCollision(i, letter) {
               document.getElementById("score").innerHTML = "Your final score was: " + currentScore;
               document.getElementById("game-over").style.display = "block";
               document.getElementById("pause-menu-screen-darken").style.display = "block";
+              updateLives();
             }
       }
       newLetter(i);
@@ -256,11 +261,19 @@ function drawLetter() {
   clearLetter();
   for (var i = 0; i < letterAmount; i++) {
     checkCollision(i, letters[i].letter);
-    ctx.drawImage(letters[i].img, letters[i].xPos, letters[i].yPos);
+
+    if (letters[i].yPos > canvas.height) {
+      ctx.drawImage(letters[i].img, letters[i].xPos, round(letters[i].yPos));
+    } else {
+      ctx.drawImage(letters[i].img, letters[i].xPos, letters[i].yPos);
+    }
+
     letters[i].yPos += letterSpeed;
+
     if (letters[i].yPos > canvas.height) {
       newLetter(i);
     }
+
   }
 }
 
@@ -281,7 +294,7 @@ function drawSpecialItem() {
   if (specialSpawned) {
     ctx.drawImage(specialItem.img, specialItem.xPos, specialItem.yPos);
     specialItem.yPos += specialSpeed;
-  }
+  } 
   
   if (specialItem.yPos > canvas.height) {
     specialItem.yPos = 0;
@@ -321,8 +334,8 @@ function addLetters() {
     var randomChar = Math.floor(Math.random() * characters.length);
     letters[i] = new Letter();
     letters[i].img.src = characters[randomChar].img.src;
-    letters[i].xPos = Math.floor(Math.random() * (canvas.width - letterWidth * 3)) + letterWidth;
-    letters[i].yPos = Math.floor(Math.random() * (canvas.height + letterHeight) * -1);
+    letters[i].xPos = round( Math.floor(Math.random() * (canvas.width - letterWidth * 3)) + letterWidth) ;
+    letters[i].yPos = round( Math.floor(Math.random() * (canvas.height + letterHeight) * -1));
     letters[i].letter = characters[randomChar].letter;
   }
   
@@ -357,7 +370,7 @@ function retryGame() {
   }
   newSpecialItem();
   
-  currentLives = 10;
+  currentLives = 5;
   currentScore = 0;
   
   drawWord();
@@ -367,7 +380,8 @@ function retryGame() {
   //Resets the lives and Scores
   document.getElementById("life-counter").innerHTML = "" + currentLives;
   document.getElementById("score-counter").innerHTML = "" + currentScore;
-
+  updateLives();
+  
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
   //Resumes the game
@@ -399,4 +413,4 @@ function init() {
   drawWord();
 }
 
-window.onload = init();
+window.onload = init(); 
