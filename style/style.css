@@ -243,15 +243,6 @@ button .banner {
   margin: 0.8em 0 2em -6em;
 }
 
-/* #menu-bg {
-  width: auto;
-  height: auto;
-  scale: both;
-  position: absolute;
-  left: 0;
-  top: 0;
-} */
-
 #level-counter {
   position: relative;
   margin: 0.2em 0 0.2em -3em;
@@ -282,7 +273,8 @@ button .banner {
   font-size: 40px;
   color: white;
 }
-  #lives-table {
+
+#lives-table {
   z-index: 8;
 }
 
