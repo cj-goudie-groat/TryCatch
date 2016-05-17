@@ -267,14 +267,8 @@ button .banner {
   text-align: right;
 }
 
-#life-counter {
-  position: relative;
-  margin: 10px 15px 0 0;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  font-size: 3em;
-  color: white;
-  text-shadow: 0px 1px 15px rgba(0,0,0,0.50);
+#lives-table {
+  z-index: 8;
 }
 
 #score-counter {
@@ -285,6 +279,13 @@ button .banner {
   font-size: 5em;
   color: white;
   text-shadow: 0px 1px 15px rgba(0,0,0,0.50);
+}
+
+#underlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -2;
 }
 
 p {
