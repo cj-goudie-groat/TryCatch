@@ -145,12 +145,6 @@ button .banner {
   overflow: hidden;
 }
 
-.theme:active {
-  outline: 10px solid white;
-  border: none;
-  overflow: hidden;
-}
-
 .theme-selected {
   width: 150px;
   height: 150px;
