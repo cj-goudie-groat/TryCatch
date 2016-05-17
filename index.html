@@ -2,51 +2,14 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="user-scalable=no">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <title>TryCatch - Home</title>
   <link href="style/style.css" rel="stylesheet" type="text/css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="js/game.js"></script>
   <script>
-    window.addEventListener("load", function() {
-      var leftButton = document.getElementById("left-button");
-      var rightButton = document.getElementById("right-button");
-
-      leftButton.addEventListener("touchstart", function(e) {
-        var press = $.Event("keydown");
-        press.which = 37; // # Some key code value
-        press.keyCode = 37;
-        $("body").trigger(press);
-
-      }, false);
-
-      leftButton.addEventListener("touchend", function(e) {
-        var press = $.Event("keyup");
-        press.which = 37; // # Some key code value
-        press.keyCode = 37;
-        $("body").trigger(press);
-
-      }, false);
-
-      rightButton.addEventListener("touchstart", function(e) {
-        var press = $.Event("keydown");
-        press.which = 39; // # Some key code value
-        press.keyCode = 39;
-        $("body").trigger(press);
-
-      }, false);
-
-      rightButton.addEventListener("touchend", function(e) {
-        var press = $.Event("keyup");
-        press.which = 39; // # Some key code value
-        press.keyCode = 39;
-        $("body").trigger(press);
-      }, false);
-    }, false);
-
     function chooseDifficulty() {
       document.getElementById("difficulty-menu").style.display = "block";
-      document.getElementById("pause-menu-screen-darken").style.display = "block";
     }
     
     var selected = false;
@@ -72,8 +35,6 @@
       <div id="title">
 
         <svg id="cloud" width="391px" height="205px" viewBox="97 -36 391 205" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <!-- Generator: Sketch 3.7.2 (28276) - http://www.bohemiancoding.com/sketch -->
-          <desc>Created with Sketch.</desc>
           <defs>
             <path d="M265.808325,1.31550967 C228.22354,6.67438796 227.113585,38.0741687 227.113585,38.0741687 C227.113585,38.0741687 212.65845,29.3635502 187.134662,40.7364502 C161.610874,52.1093502 169.112766,88.5173035 169.112766,88.5173035 C169.112766,88.5173035 153.603434,84.0063122 142.806618,95.1495007 C132.009802,106.292689 139.797901,124.57602 139.797901,124.57602 L447.918928,124.57602 C447.918928,124.57602 450.191875,92.2664449 428.801025,80.9166794 C407.410176,69.5669139 389.00948,80.9166796 389.00948,80.9166796 C389.00948,80.9166796 401.879059,39.0874732 370.986053,26.6492481 C340.093048,14.211023 316.687262,42.9633878 316.687262,42.9633878 C316.687262,42.9633878 309.270245,-4.8813366 265.808325,1.31550967 Z" id="path-1"></path>
             <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
@@ -95,52 +56,47 @@
         <div id="game-collection">
           <div class="selector">
             <button class="theme" name="spelling" id="spelling-button" onclick="selectButton('spelling-button')"><img id="spelling-ship" src="images/shipanim/ship0.png"></button>
-            <label for="spelling">spelling</label>
+            <label for="spelling">Spelling</label>
           </div>
           <div class="selector">
             <button class="theme" name="math" id="math-button">
-              <div class="banner">
-                coming soon
-              </div>
+              <div class="banner">Coming Soon</div>
             </button>
-            <label for="math">math</label>
+            <label for="math">Math</label>
           </div>
           <div class="selector">
             <button class="theme" name="shapes" id="shapes-button">
-              <div class="banner">
-                coming soon
-              </div>
+              <div class="banner">Coming Soon</div>
             </button>
-            <label for="shapes">shapes</label>
+            <label for="shapes">Shapes</label>
           </div>
         </div>
 
         <div id="button-collection">
-          <button onclick="chooseDifficulty()" class="button">difficulty</button>
-
-          <button onclick="goToLeaderboard()" class="button">leaderboard</button>
-          
-          <div id="difficulty-menu">
-            <h2>Choose Difficulty</h2>
-            <button id="easy" class="button" onclick="setDifficulty(1)">easy</button>
-            <br/>
-            <button id="medium" class="button-selected" onclick="setDifficulty(2)">medium</button>
-            <br/>
-            <button id="hard" class="button" onclick="setDifficulty(3)">hard</button>
-            <br/>
-            <button id="play" class="button" onclick="loadGamemode()">start game</button>
-          </div>
+          <button id="play" class="button" onclick="loadGamemode()">Start Game</button>
+          <button onclick="chooseDifficulty()" class="button">Difficulty</button>
+          <button onclick="goToLeaderboard()" class="button">Leaderboard</button>
         </div>
       </div>
+      <div id="difficulty-menu">
+        <h2>Choose Difficulty</h2>
+        <button id="easy" class="button" onclick="setDifficulty(1)">Easy</button>
+        <br/>
+        <button id="medium" class="button-selected" onclick="setDifficulty(2)">Medium</button>
+        <br/>
+        <button id="hard" class="button" onclick="setDifficulty(3)">Hard</button>
+      </div>
     </div>
+    <!-- This is the game section -->
     <div id="game">
-      <canvas id="background" width="1000"></canvas>
-      <canvas id="elements" width="1000"></canvas>
-      <canvas id="ship" width="1000" height="209"></canvas>
+      <canvas id="background"></canvas>
+      <canvas id="elements"></canvas>
+      <canvas id="ship" height="209"></canvas>
       <div id="mobile-buttons">
         <button id="left-button">&lt;</button>
         <button id="right-button">&gt;</button>
       </div>
+      <!-- Top menu UI -->
       <div id="top-menu">
         <div id="left">
           <p id="level-counter"></p>
@@ -151,72 +107,44 @@
           <p id="score-counter"></p>
         </div>
       </div>
+      <!-- Word displayed -->
       <div id="word-section">
         <h1 id="word"></h1>
         <h1 id="collected-word"></h1>
       </div>
     </div>
+    
+    <!-- This is the pause menu section -->
     <div id="pause-menu">
-      <!-- function names probably need to be changed -->
-      <h1>Game Paused</h1>
+      <h2>Game Paused</h2>
       <button class="button" onclick="resume()">Resume</button>
       <br>
       <button class="button" onclick="location.reload()">Main Menu</button>
       <br>
       <button class="button" onclick="">Mute sound</button>
     </div>
-
-
-
+    
+    <!-- This is the pause screen darken effect -->
+    <div id="pause-menu-screen-darken"></div>
+    
+    <!-- This is the game over section -->
     <div id="game-over">
       <div id="game-over-header">
-        <h1> Game Over! </h1>
+        <h1>Game Over!</h1>
         <h2 id="score"></h2>
       </div>
-      <button class="button" onclick="">retry</button>
+      <button class="button" onclick="retryGame()">retry</button>
       <br>
       <button class="button" onclick="goToLeaderboard()">leaderboard</button>
       <br>
       <button class="button" onclick="location.reload()">main menu</button>
       <br>
     </div>
-
-
-
-    <div id="pause-menu-screen-darken">
-    </div>
   </div>
+  
   <script src="js/resizeCanvas.js"></script>
   <script>
     <!--
-    function leftClick() {
-      var e = $.Event("keydown");
-      e.which = 37; // # Some key code value
-      e.keyCode = 37;
-      $("body").trigger(e);
-    }
-
-    function rightClick() {
-      var e = $.Event("keydown");
-      e.which = 39; // # Some key code value
-      e.keyCode = 39;
-      $("body").trigger(e);
-    }
-
-    function leftClear() {
-      var e = $.Event("keyup");
-      e.which = 37; // # Some key code value
-      e.keyCode = 37;
-      $("body").trigger(e);
-    }
-
-    function rightClear() {
-      var e = $.Event("keyup");
-      e.which = 39; // # Some key code value
-      e.keyCode = 39;
-      $("body").trigger(e);
-    }
-
     $(document).ready(function() {
       $("#play").click(function() {
         $("#main-menu").fadeOut(1000);

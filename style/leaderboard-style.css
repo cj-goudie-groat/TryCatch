@@ -1,4 +1,3 @@
-
 /***********************/
 /* Leaderboard Styling */
 /***********************/
@@ -14,32 +13,11 @@
 /* Title Styling */
 /*****************/
 #title h1 {
-  text-align: center;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 3em;
-  color: #FFFFFF;
-  text-shadow: 0px 4px 40px rgba(0, 0, 0, 0.50);
-  margin-top: 0;
-  margin-bottom: 0.5em;
+  font-size: 4em;
 }
-
-#header-title {
-  text-align: center;
-}
-
-#title {
-  display: flex;
-  flex-direction: column;
-}
-
-#cloud {
-  align-self: center;
-  top: 0;
-}
-
-
-
+/***********************/
+/* Leaderboard Styling */
+/***********************/
 #score-table {
   top: 15%;
   position: relative;
@@ -47,11 +25,36 @@
 
 #scores {
   font-family: 'Montserrat', sans-serif;
+  margin-bottom: 1em;
+}
+
+#scores {
+  margin: auto;
   border: solid 5px;
+  width: 95%;
   color: white;
   border-spacing: 10px;
   top: 20%;
   left: 50%;
   transform: translateX(-50%);
   position: relative;
+=======
+}
+
+/**********************/
+/* For larger devices */
+/**********************/
+@media screen and (max-width: 530px) {
+  #title h1 {
+    font-size: 2.5em;
+  }
+}
+
+/***********************/
+/* For smaller devices */
+/***********************/
+@media screen and (max-width: 360px) {
+  #title h1 {
+    font-size: 2em;
+  }
 }

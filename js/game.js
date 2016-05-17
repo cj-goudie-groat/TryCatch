@@ -10,13 +10,25 @@ function init() {
     game.start();
     
     currentLives = 1;
-    currentScore = 69420;
+    currentScore = 0;
     document.getElementById("life-counter").innerHTML = "Lives: " + currentLives;
     document.getElementById("score-counter").innerHTML = "Score: " + currentScore;
   }
 }
 
 function loadGamemode() {
+  // Set difficulty text
+  if (difficulty == 1) {
+    currentLevel = "Easy";
+    document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
+  } else if (difficulty == 3) {
+    currentLevel = "Hard";
+    document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
+  } else {
+    currentLevel = "Medium";
+    document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
+  }
+  
   // load letters game
   var script = document.createElement("script");
   script.src = "js/letterGame.js";
@@ -111,7 +123,7 @@ function Background() {
   
   	//pauses the background
     if (paused) {
-	   return;
+      return;
 	}
     
     if (bonusActive) {
@@ -140,13 +152,29 @@ Background.prototype = new Drawable();
  * around the screen.
  */
 function Ship() {
-  this.speed = 10;
+  this.speed = 5;
   //this.shipL = 1;
   //this.shipR = 1;
   //this.shipAnim = new Image();
   
-  this.leftButton = document.getElementById("left-button");
-  this.rightButton = document.getElementById("right-button");
+  var leftButton = document.getElementById("left-button");
+  var rightButton = document.getElementById("right-button");
+  
+  leftButton.addEventListener("touchstart", function(e) {
+      KEY_STATUS.left = true;
+    }, false);
+
+    leftButton.addEventListener("touchend", function(e) {
+      KEY_STATUS.left = false;
+    }, false);
+
+  rightButton.addEventListener("touchstart", function(e) {
+      KEY_STATUS.right = true;
+    }, false);
+  
+  rightButton.addEventListener("touchend", function(e) {
+      KEY_STATUS.right = false;
+    }, false);
   
   this.draw = function () {
     this.context.clearRect(this.x, this.y, this.width, this.height);
@@ -176,7 +204,7 @@ function Ship() {
   */
   this.move = function () {
   	// Stops the ship from moving when paused!
-  	if (paused) {
+    if (paused) {
       return;
 	}
     
@@ -192,28 +220,22 @@ function Ship() {
       if (KEY_STATUS.left) {
         this.shipR = 1;
         this.x -= this.speed
-        shipX = this.x;
         
         // this.animTimer = setInterval(this.drawLeft(), 1000)
         if (this.x <= 0) { // Keep player within the screen
           this.x = 0;
-          shipX = this.x;
         }
         
       } else if (KEY_STATUS.right) {
         this.shipL = 1;
         this.x += this.speed
-        shipX = this.x;
         
         // this.animTimer = setInterval(this.drawRight(), 1000);
         if (this.x >= this.canvasWidth - this.width) {
           this.x = this.canvasWidth - this.width;
-          shipX = this.x;
         }
       }
       this.draw();
-    } else {
-      shipX = this.x;
     }
   };
 }
@@ -283,9 +305,9 @@ function Game() {
  * object.
  */
 function animate() {
-  requestAnimFrame(animate);
   game.background.draw();
   game.ship.move();
+  requestAnimFrame(animate);
 }
 
 /** The keycodes that will be mapped when a user presses a button.
@@ -372,6 +394,7 @@ window.requestAnimFrame = (function () {
 var currentLives;
 var currentScore;
 var currentLevel;
+
 var difficulty;
 
 /**
@@ -385,8 +408,6 @@ function setDifficulty(diff) {
   //easy
   if (diff == 1) {
     difficulty = 1;
-    currentLevel = "Easy";
-    document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
     
     if (selectEasy == false) {
       document.getElementById("easy").className = "button-selected";
@@ -405,8 +426,6 @@ function setDifficulty(diff) {
     }
   } else if (diff == 3) { //hard
     difficulty = 3;
-    currentLevel = "Hard";
-    document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
     
     if (selectHard == false) {
       document.getElementById("easy").className = "button";
@@ -443,6 +462,7 @@ function setDifficulty(diff) {
       selectHard = false;
     }
   }
+  document.getElementById("difficulty-menu").style.display = "none";
 }
 
 /**
@@ -470,4 +490,4 @@ function goToLeaderboard() {
 function goToMainMenu() {
   document.location.href = 'index.html';
 }
-  	
+
