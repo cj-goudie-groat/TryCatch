@@ -15,8 +15,8 @@ var canvas = document.getElementById("elements"); // Canvas
 var ctx = canvas.getContext("2d"); // Canvas context
 var letterSpeed; // Speed of the letters
 var letterAmount; // Amount of letters to continuously spawn
-var letterWidth = 40; // Width of the letters
-var letterHeight = 40; // Height of the letters
+var letterWidth = 70; // Width of the letters
+var letterHeight = 70; // Height of the letters
 var letterCount = 0; // Amount of letters collected in the word
 
 var specialItem = new Letter(); // Spawned special item
