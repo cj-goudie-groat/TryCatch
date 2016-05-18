@@ -75,7 +75,7 @@ function clearBonus() {
  */
 function newLetter(index) {
   var randomChar = Math.floor(Math.random() * characters.length);
-  letters[index].xPos = Math.floor(Math.random() * (canvas.width - letterWidth * 3)) + letterWidth;
+  letters[index].xPos = Math.floor(Math.random() * (canvas.width - letterWidth));
   letters[index].yPos = Math.floor(Math.random() * (canvas.height + letterHeight) * -1);
   letters[index].img.src = characters[randomChar].img.src;
   letters[index].letter = characters[randomChar].letter;
@@ -99,7 +99,7 @@ function newLetter(index) {
 function newSpecialItem() {
   var index = Math.floor(Math.random() * specialAmount);
   specialItem.img.src = "images/special/" + index + ".png";
-  specialItem.xPos = Math.floor(Math.random() * (canvas.width - specialWidth * 3)) + specialWidth;
+  specialItem.xPos = Math.floor(Math.random() * (canvas.width - specialWidth));
   specialItem.yPos = Math.floor(Math.random() * (canvas.height - specialHeight) * -1);
   specialItem.letter = index;
 }
@@ -434,14 +434,26 @@ function init() {
   document.getElementById("pause-menu-screen-darken").style.display = "none";
   
   if (difficulty == 1) {
-    letterSpeed = 3; // Speed of the letters
-    letterAmount = 10; // Amount of letters to spawn
+    letterSpeed = 2; // Speed of the letters
+    if (window.innerWidth > 1000) {
+      letterAmount = 10; // Amount of letters to spawn
+    } else {
+      letterAmount = 4;
+    }
   } else if (difficulty == 3) { //hard
-    letterSpeed = 10; // Speed of the letters
-    letterAmount = 30; // Amount of letters to spawn
+    letterSpeed = 8; // Speed of the letters
+    if (window.innerWidth > 1000) {
+      letterAmount = 30; // Amount of letters to spawn
+    } else {
+      letterAmount = 15;
+    }
   } else { //medium (default difficulty)
-    letterSpeed = 7; // Speed of the letters
-    letterAmount = 20; // Amount of letters to spawn
+    letterSpeed = 5; // Speed of the letters
+    if (window.innerWidth > 1000) {
+      letterAmount = 20; // Amount of letters to spawn
+    } else {
+      letterAmount = 8;
+    }
   }
   
   addLetters();

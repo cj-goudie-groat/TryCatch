@@ -142,7 +142,7 @@ function Background() {
 	}
     
     if (bonusActive) {
-      this.context.drawImage(imageRepository.bonusLevelBg, this.x, this.y);
+      this.context.drawImage(imageRepository.bonusLevelBg, 0, 0);
     } else {
       // Pan background
       this.context.drawImage(imageRepository.background, this.x, this.y);
