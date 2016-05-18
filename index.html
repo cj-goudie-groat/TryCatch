@@ -78,7 +78,7 @@
           <button onclick="goToLeaderboard()" class="button">Leaderboard</button>
         </div>
       </div>
-      <div id="difficulty-menu">
+      <div id="difficulty-menu" >
         <h2>Choose Difficulty</h2>
         <button id="easy" class="button" onclick="setDifficulty(1)">Easy</button>
         <br/>
@@ -146,12 +146,6 @@
         <h1>Game Over!</h1>
         <h2 id="score"></h2>
       </div>
-        <button class="button" onclick="retryGame()">retry</button>
-        <br>
-        <button class="button" onclick="goToLeaderboard()">leaderboard</button>
-        <br>
-        <button class="button" onclick="location.reload()">main menu</button>
-        <br>
         <form action="" method="post" onsubmit="">
           <div id="user-score"> Your name: 
             <input type="text" size="3" maxlength="3">
@@ -159,6 +153,13 @@
           <br>
           <input type="submit" value="Submit score" class="button">
         </form>
+        <br>
+        <button class="button" onclick="retryGame()">retry</button>
+        <br>
+        <button class="button" onclick="goToLeaderboard()">leaderboard</button>
+        <br>
+        <button class="button" onclick="location.reload()">main menu</button>
+        <br>
     </div>
   </div>
   

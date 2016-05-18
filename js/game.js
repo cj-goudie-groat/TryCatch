@@ -510,7 +510,7 @@ function setDifficulty(diff) {
       selectHard = false;
     }
   }
-  document.getElementById("difficulty-menu").style.display = "none";
+  $("#difficulty-menu").fadeOut(1000);
 }
 
 /**
