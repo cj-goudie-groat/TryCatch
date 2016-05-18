@@ -45,12 +45,13 @@ function loadGamemode() {
 var imageRepository = new function () {	
   // Define images
   this.background = new Image();
+  this.background1 = new Image();
   this.spaceship = new Image();
   this.bonusLevelBg = new Image();
   this.bonusLevelPlayer = new Image();
   
   // Ensure all images have loaded before starting the game
-  var numImages = 4;
+  var numImages = 5;
   var numLoaded = 0;
 
   function imageLoaded() {
@@ -63,6 +64,11 @@ var imageRepository = new function () {
   this.background.onload = function () {
     imageLoaded();
   }
+  
+  this.background1.onload = function () {
+    imageLoaded();
+  }
+  
   this.spaceship.onload = function () {
     imageLoaded();
   }
@@ -76,15 +82,17 @@ var imageRepository = new function () {
 
   // Set images src
   this.background.src = "images/background.png";
+  this.background1.src = "images/bg1.png";
   
   if (windowWidth > 1000 ) {
     this.spaceship.src = "images/shipanim/ship0.png";
+    this.bonusLevelPlayer.src = "images/special/bonusplayer.png";
   } else {
     this.spaceship.src = "images/shipanim/smaller/ship0s.png";
+    this.bonusLevelPlayer.src = "images/special/bonusplayers.png";
   }
   
   this.bonusLevelBg.src = "images/special/bonusbg.jpg";
-  this.bonusLevelPlayer.src = "images/special/bonusplayer.png";
 };
 
 /**
@@ -123,7 +131,7 @@ function Drawable() {
  * canvas and creates the illusion of moving by panning the image.
  */
 function Background() {
-  this.speed = 0; // Redefine speed of the background for panning
+  this.speed = 3; // Redefine speed of the background for panning
 
   // Implement abstract function 
   this.draw = function () {
@@ -275,7 +283,7 @@ function Game() {
       // information
       Background.prototype.context = this.bgContext;
       Background.prototype.canvasWidth = this.bgCanvas.width;
-      Background.prototype.canvasHeight = imageRepository.spaceship.height;
+      Background.prototype.canvasHeight = imageRepository.background.height;
       
       Ship.prototype.context = this.shipContext;
       Ship.prototype.canvasWidth = this.shipCanvas.width;
