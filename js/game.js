@@ -4,6 +4,7 @@
 var game = new Game();
 var paused = false;
 var bonusActive = false;
+var windowWidth = window.innerWidth;
 
 function init() {
   if (game.init()) {
@@ -65,6 +66,7 @@ var imageRepository = new function () {
   this.spaceship.onload = function () {
     imageLoaded();
   }
+  
   this.bonusLevelBg.onload = function () {
     imageLoaded();
   }
@@ -74,7 +76,13 @@ var imageRepository = new function () {
 
   // Set images src
   this.background.src = "images/background.png";
-  this.spaceship.src = "images/shipanim/ship0.png";
+  
+  if (windowWidth > 1000 ) {
+    this.spaceship.src = "images/shipanim/ship0.png";
+  } else {
+    this.spaceship.src = "images/shipanim/smaller/ship0s.png";
+  }
+  
   this.bonusLevelBg.src = "images/special/bonusbg.jpg";
   this.bonusLevelPlayer.src = "images/special/bonusplayer.png";
 };
@@ -268,7 +276,7 @@ function Game() {
       Background.prototype.context = this.bgContext;
       Background.prototype.canvasWidth = this.bgCanvas.width;
       Background.prototype.canvasHeight = imageRepository.spaceship.height;
-
+      
       Ship.prototype.context = this.shipContext;
       Ship.prototype.canvasWidth = this.shipCanvas.width;
       Ship.prototype.canvasHeight = this.shipCanvas.height;

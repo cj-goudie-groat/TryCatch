@@ -50,6 +50,14 @@ canvas {
   background: transparent;
 }
 
+p {
+  margin: 0;
+}
+
+#buttons {
+  margin: auto;
+}
+
 /*******************/
 /* The Menu Header */
 /*******************/
@@ -81,12 +89,9 @@ canvas {
   transform: translateY(-50%);
 }
 
-/***************/
-/* The Buttons */
-/***************/
-#buttons {
-  margin: auto;
-}
+/*********************/
+/* Main Menu Buttons */
+/*********************/
 
 #game-collection {
   display: flex;
@@ -190,6 +195,9 @@ button .banner {
   overflow: hidden;
 }
 
+/************/
+/* Canvases */
+/***********/
 #background {
   z-index: 0;
 }
@@ -203,6 +211,9 @@ button .banner {
   z-index: 2;
 }
 
+/***********/
+/* Game UI */
+/***********/
 #top-menu {
   position: absolute;
   top: 0;
@@ -220,7 +231,6 @@ button .banner {
   background-image: url(../images/menubar.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  
 }
 
 #pause {
@@ -244,15 +254,6 @@ button .banner {
   margin: 0.8em 0 2em -6em;
 }
 
-/* #menu-bg {
-  width: auto;
-  height: auto;
-  scale: both;
-  position: absolute;
-  left: 0;
-  top: 0;
-} */
-
 #level-counter {
   position: relative;
   margin: 0.2em 0 0.2em -3em;
@@ -275,33 +276,12 @@ button .banner {
   z-index: -2;
 }
 
-.right-text {
-  position: relative;
-  margin: 10px 0 10px 20px;
-  font-family: fantasy, sans-serif;
-  font-size: 40px;
-  color: white;
-}
-
-#life-counter {
-  position: relative;
-  margin: 10px 0 10px 20px;
-  font-family: sans-serif;
-  font-size: 40px;
-  color: white;
-}
-
 #score-counter {
-  position: relative;
   margin: -15px 15px 15px 0;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 5em;
   color: white;
-}
-
-p {
-  margin: 0;
 }
 
 #word-section {
@@ -334,6 +314,7 @@ p {
 }
 
 #mobile-buttons {
+  display: none;
   position: absolute;
   width: 100%;
   height: 60px;
@@ -664,6 +645,46 @@ form {
     box-shadow: 0px 3px 16px 0px rgba(0,0,0,0.38);
   }
   
+  #left {
+    width: 50%;
+  }
+  
+  #level-counter {
+    font-size: 1.2em;
+    margin: 0.4em 0 0.1em -1.3em;
+  }
+  
+  #pause {
+    font-size: 1.2em;
+    margin: 0.1em 0 0 1.5em;
+  }
+  
+  
+  #right {
+    width: 50%;
+  }
+  
+  #lives-table img {
+    width: 75%;
+    height: auto;
+  }
+  
+  #score-counter {
+    font-size: 4em;
+  }
+  
+  #word-section {
+    top: 80px;
+  }
+  
+  #word-table {
+    font-size: 2em;
+  }
+  
+  #mobile-buttons {
+    display: block;
+  }
+  
   #difficulty-menu {
     width: 300px;
   }
@@ -708,6 +729,10 @@ form {
     margin-top: -13px;
     width: 65px;
     height: 95px;
+  }
+  
+  #word-table {
+    font-size: 1.5em;
   }
   
   button .banner {

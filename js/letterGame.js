@@ -120,8 +120,8 @@ function checkCollision(i, letter) {
   var shipRect = {
     x: game.ship.x,
     y: game.ship.y,
-    widthOffset: 48,
-    heightOffset: 59,
+    widthOffset: 0.4 * imageRepository.spaceship.width,
+    heightOffset: 0.33 * imageRepository.spaceship.height,
     width: imageRepository.spaceship.width,
     height: imageRepository.spaceship.height
   };
@@ -412,7 +412,6 @@ function retryGame() {
   
   clearWord();
   drawWord();
-  collectedWord.innerHTML = "";
   letterCount = 0;
   
   //Resets the lives and Scores
