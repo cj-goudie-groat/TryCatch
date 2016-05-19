@@ -9,7 +9,6 @@ var windowWidth = window.innerWidth;
 function init() {
   if (game.init()) {
     game.start();
-    
     currentLives = 5;
     currentScore = 0;
     document.getElementById("score-counter").innerHTML = "" + currentScore;
@@ -269,6 +268,7 @@ function Game() {
    * running on browsers that do not support the canvas.
    */
   this.init = function () {
+    
     // Get the canvas elements
     this.bgCanvas = document.getElementById("background");
     this.shipCanvas = document.getElementById("ship");
@@ -542,14 +542,19 @@ function goToMainMenu() {
 /********
  *SOUNDS*
  ********/
-var buttonSound = "Blip";
-var collectionSound;
-var game;
 
 function loadSounds() {
-  createjs.Sound.registerSound("sounds/button.mp3", buttonSound);
+  createjs.Sound.registerSound("sounds/button.mp3", "buttonSound"); //
+  createjs.Sound.registerSound("sounds/correct.mp3", "correctElementSound"); //
+  createjs.Sound.registerSound("sounds/wrong.mp3", "wrongElementSound"); //
+  createjs.Sound.registerSound("sounds/menumusic.mp3", "menuMusic");
+  createjs.Sound.registerSound("sounds/gameover.mp3", "gameOverSound"); 
+  createjs.Sound.registerSound("sounds/button.mp3", "bonusCollectionSound"); //
+  createjs.Sound.registerSound("sounds/button.mp3", "bonusMusic"); //
+  createjs.Sound.registerSound("sounds/button.mp3", "gameMusic"); 
+  createjs.Sound.registerSound("sounds/button.mp3", "correctWord"); //
 }
 
 function playButtonSound() {
-  createjs.Sound.play(buttonSound);
+  createjs.Sound.play("buttonSound");
 }

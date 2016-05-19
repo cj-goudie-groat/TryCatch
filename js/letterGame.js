@@ -140,6 +140,7 @@ function checkCollision(i, letter) {
         shipRect.heightOffset + (window.innerHeight - shipRect.height) > bonusRect.y) {
       
       currentScore += 50;
+      createjs.Sound.play("bonusCollectionSound");
       document.getElementById("score-counter").innerHTML = "" + currentScore;
       newBonusItem(i);
     }
@@ -158,6 +159,7 @@ function checkCollision(i, letter) {
 
       if(letter == currentWord.charAt(letterCount)) {
         currentScore += 100;
+        createjs.Sound.play("correctElementSound");
         document.getElementById("score-counter").innerHTML = "" + currentScore;
         wordRow.cells[letterCount].style = "color: #fff";
         letterCount++
@@ -165,12 +167,14 @@ function checkCollision(i, letter) {
         if(letterCount == currentWord.length) {
           letterCount = 0;
           currentScore += 500;
+          createjs.Sound.play("correctWord");
           document.getElementById("score-counter").innerHTML = "" + currentScore;
           clearWord();
           drawWord();
         }
       } else {
           currentLives--;
+          createjs.Sound.play("wrongElementSound");
           updateLives();
           // Determines if you lost the game or not
           if (currentLives == 0) {
@@ -195,7 +199,6 @@ function checkCollision(i, letter) {
       shipRect.x + (shipRect.width - shipRect.widthOffset) > specialRect.x &&
       (window.innerHeight - shipRect.height) < specialRect.y + specialRect.height &&
       shipRect.heightOffset + (window.innerHeight - shipRect.height) > specialRect.y) {
-      
       bonusActive = true;
       bonusLevel();
       newSpecialItem();
@@ -208,7 +211,7 @@ function checkCollision(i, letter) {
  */
 function bonusLevel() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
+  createjs.Sound.play("bonusMusic");
   // Update ships model
   game.ship.draw();
   // Wait for [bonusLength]ms to end bonus level
