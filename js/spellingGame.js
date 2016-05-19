@@ -28,6 +28,7 @@ function clearWord() {
 
 function letterCollision(character) {
   if(character == currentWord.charAt(letterCount)) {
+    createjs.Sound.play("correctElementSound");
     currentScore += 100 * scoreMult;
     document.getElementById("score-counter").innerHTML = "" + currentScore;
     wordRow.cells[letterCount].style = "color: #FFFFFF";
@@ -42,9 +43,11 @@ function letterCollision(character) {
     }
   } else {
     currentLives--;
+    createjs.Sound.play("wrongElementSound");
     updateLives();
     // Determines if you lost the game or not
     if (currentLives == 0) {
+      createjs.Sound.play("gameOverSound");
       gameOver();
     }
   }
