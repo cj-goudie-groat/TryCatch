@@ -36,9 +36,9 @@ $(document).ready(function () {
   
   $("#mute-button").click(function () {
     if (!muteSound) {
-      document.getElementById("mute-button").innerHTML("Unmute Sound");
+      document.getElementById("mute-button").innerHTML = "Unmute Sound";
     } else {
-      document.getElementById("mute-button").innerHTML("Mute Sound");
+      document.getElementById("mute-button").innerHTML = "Mute Sound";
     }
     muteSound = !muteSound;
   });

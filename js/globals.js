@@ -28,7 +28,7 @@ var canPause = false; // Whether player can pause or not
 /**
  * Global variable for muting sound.
  */
- var muteSound = true;
+ var muteSound = false;
 /**
  * Global variables for falling elements
  */
