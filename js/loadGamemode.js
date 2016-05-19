@@ -5,6 +5,7 @@ $(document).ready(function () {
   $("#start-button").click(function () {
     $("#main-menu").fadeOut(1000);
     $("#game").fadeIn(2000);
+    // $("#space-bg").fadeIn(1000);
     loadGamemode();
   });
 });

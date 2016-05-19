@@ -19,6 +19,14 @@ body {
   background-image: radial-gradient(53% 102%, rgba(193, 238, 253, 0.65) 34%, rgba(23, 51, 97, 0.36) 100%);
 }
 
+#space-bg {
+  width: 100%;
+  height: 100vh;
+  background: #0f162e;
+  background-image: radial-gradient(53% 102%, rgba(0, 0, 0, 0) 34%, rgba(0, 0, 0, 0.45) 100%),
+    url(../images/starbackground.png);*/
+}
+
 button {
   outline: none;
 }
