@@ -364,7 +364,7 @@ function animate() {
 KEY_CODES = {
   37: "left",
   39: "right",
-  80: "pause",
+  27: "pause",
 }
 
 /** Creates the array to hold the KEY_CODES and sets all their values
@@ -390,7 +390,7 @@ document.onkeydown = function (e) {
     e.preventDefault();
     KEY_STATUS[KEY_CODES[keyCode]] = true;
     
-    if (e.keyCode === 80) { // p
+    if (e.keyCode === 27) { // escape
       if (paused) {
         document.getElementById("pause-menu").style.display = "none";
         document.getElementById("pause-menu-screen-darken").style.display = "none";
@@ -539,3 +539,17 @@ function goToMainMenu() {
   document.location.href = 'index.html';
 }
 
+/********
+ *SOUNDS*
+ ********/
+var buttonSound = "Blip";
+var collectionSound;
+var game
+
+function loadSounds() {
+  createjs.Sound.registerSound("sounds/button.mp3", buttonSound);
+}
+
+function playButtonSound() {
+  createjs.Sound.play(buttonSound);
+}
