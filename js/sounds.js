@@ -3,13 +3,15 @@
  */
 function loadSounds() {
   createjs.Sound.registerSound("sounds/button.mp3", "buttonSound"); //added 
-  createjs.Sound.registerSound("sounds/collectionsound.mp3", "correctElementSound"); //
-  createjs.Sound.registerSound("sounds/errorsound.mp3", "wrongElementSound"); //
+  createjs.Sound.registerSound("sounds/collectionsound.mp3", "correctElementSound"); //added
+  createjs.Sound.registerSound("sounds/errorsound.mp3", "wrongElementSound"); //added
   createjs.Sound.registerSound("sounds/mainmenusound.mp3", "menuMusic"); //
   createjs.Sound.registerSound("sounds/gameover.mp3", "gameOverSound"); //
-  createjs.Sound.registerSound("sounds/button.mp3", "bonusCollectionSound"); //
+  createjs.Sound.registerSound("sounds/natesound1.mp3", "bonus1"); //
+  createjs.Sound.registerSound("sounds/natesound2.mp3", "bonus2"); //
+  createjs.Sound.registerSound("sounds/natesound3.mp3", "bonus3"); //
   createjs.Sound.registerSound("sounds/button.mp3", "bonusMusic"); //
-  createjs.Sound.registerSound("sounds/button.mp3", "gameMusic"); //
+  createjs.Sound.registerSound("sounds/spacesound.mp3", "gameMusic"); //
   createjs.Sound.registerSound("sounds/button.mp3", "correctWord"); //
 }
 
