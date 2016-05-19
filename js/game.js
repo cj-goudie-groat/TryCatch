@@ -544,7 +544,7 @@ function goToMainMenu() {
  ********/
 var buttonSound = "Blip";
 var collectionSound;
-var game
+var game;
 
 function loadSounds() {
   createjs.Sound.registerSound("sounds/button.mp3", buttonSound);
