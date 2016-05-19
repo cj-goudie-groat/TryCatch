@@ -211,7 +211,7 @@ button .banner {
   z-index: 1;
 }
 
-#ship {
+#player {
   bottom: 0;
   z-index: 3;
 }
@@ -246,7 +246,7 @@ button .banner {
   background-size: 100% 100%;
 }
 
-#pause {
+#pause-button {
   cursor: pointer;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
@@ -259,7 +259,7 @@ button .banner {
   z-index: 9;
 }
 
-#pause:hover {
+#pause-button:hover {
   text-shadow: 0px 5px 15px rgba(0,0,0,0.90);
 }
 
@@ -672,11 +672,10 @@ button .banner {
     margin: 0.4em 0 0.1em -1.3em;
   }
   
-  #pause {
+  #pause-button {
     font-size: 1.2em;
     margin: 0.1em 0 0 1.5em;
   }
-  
   
   #right {
     width: 50%;

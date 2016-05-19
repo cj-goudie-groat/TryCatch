@@ -7,28 +7,10 @@
   <link href="style/style.css" rel="stylesheet" type="text/css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
-  <script src="js/game.js"></script>
-  <script>
-    function chooseDifficulty() {
-      document.getElementById("difficulty-menu").style.display = "block";
-    }
-    
-    var selected = false;
-    
-    function selectButton(id) {
-      if (selected == false) {
-        document.getElementById(id).className = "theme-selected";
-        selected = true;
-      } else {
-        document.getElementById(id).className = "theme";
-        selected = false;
-      }
-    }
-  </script>
   <link href='https://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
 </head>
 
-<body onload="loadSounds()">
+<body>
 
   <div id="wrapper">
     <!-- This is the main menu section -->
@@ -56,7 +38,7 @@
       <div id="buttons">
         <div id="game-collection">
           <div class="selector">
-            <button class="theme" name="spelling" id="spelling-button" onclick="selectButton('spelling-button'); playButtonSound();"><img id="spelling-ship" src="images/shipanim/ship0.png"></button>
+            <button class="theme-selected available" name="spelling" id="spelling-button"><img id="spelling-ship" src="images/shipanim/ship0.png"></button>
             <label for="spelling">Spelling</label>
           </div>
           <div class="selector">
@@ -74,18 +56,18 @@
         </div>
 
         <div id="button-collection">
-          <button id="play" class="button" onclick="loadGamemode(); playButtonSound();">Start Game</button>
-          <button onclick="chooseDifficulty(); playButtonSound();" class="button">Difficulty</button>
-          <button onclick="goToLeaderboard(); playButtonSound();" class="button">Leaderboard</button>
+          <button id="start-button" class="button">Start Game</button>
+          <button id="difficulty-button" class="button">Difficulty</button>
+          <button class="button leaderboard-button">Leaderboard</button>
         </div>
       </div>
       <div id="difficulty-menu" >
         <h2>Choose Difficulty</h2>
-        <button id="easy" class="button" onclick="setDifficulty(1); playButtonSound();">Easy</button>
+        <button id="easy" class="button">Easy</button>
         <br/>
-        <button id="medium" class="button-selected" onclick="setDifficulty(2); playButtonSound();">Medium</button>
+        <button id="medium" class="button-selected">Medium</button>
         <br/>
-        <button id="hard" class="button" onclick="setDifficulty(3); playButtonSound();">Hard</button>
+        <button id="hard" class="button">Hard</button>
       </div>
     </div>
     <!-- This is the game section -->
@@ -93,7 +75,7 @@
       <canvas id="background"></canvas>
       <canvas id="elements"></canvas>
       <canvas id="gradient"></canvas>
-      <canvas id="ship" height="209"></canvas>
+      <canvas id="player" height="209"></canvas>
       <div id="mobile-buttons">
         <button id="left-button">&lt;</button>
         <button id="right-button">&gt;</button>
@@ -101,10 +83,9 @@
       <!-- Top menu UI -->
       <div id="top-menu">
         <div id="left">
-          <!-- <img src="images/menubar.png" id="menu-bg"> -->
           <p id="level-counter"></p>
           <div id="menu-pause">
-            <p id="pause" onclick="pause()">Pause</p>
+            <p id="pause-button">Pause</p>
           </div>
         </div>
         <div id="right">
@@ -123,8 +104,7 @@
       <!-- Word displayed -->
       <div id="word-section">
         <table id="word-table">
-          <tr id="word-row">
-          </tr>
+          <tr id="word-row"></tr>
         </table>
       </div>
     </div>
@@ -132,11 +112,11 @@
     <!-- This is the pause menu section -->
     <div id="pause-menu">
       <h2>Game Paused</h2>
-      <button class="button" onclick="resume(); playButtonSound();">Resume</button>
+      <button id="resume-button" class="button">Resume</button>
       <br>
-      <button class="button" onclick="location.reload(); playButtonSound();">Main Menu</button>
+      <button class="button main-menu-button">Main Menu</button>
       <br>
-      <button class="button" onclick="playButtonSound();">Mute sound</button>
+      <button id="mute-button" class="button">Mute sound</button>
     </div>
     
     <!-- This is the pause screen darken effect -->
@@ -148,33 +128,48 @@
         <h1>Game Over!</h1>
         <h2 id="score"></h2>
       </div>
-        <form action="" method="post" onsubmit="">
+        <form id="submit-score" action="" method="post" onsubmit="">
           <div id="user-score"> Your name: 
-            <input type="text" size="3" maxlength="3" id="game-over-input">
+            <input type="text" size="3" maxlength="3" id="game-over-input" name="initials">
           </div>
           <br>
           <input type="submit" value="Submit score" class="button">
         </form>
-        <button class="button" onclick="retryGame(); playButtonSound();">retry</button>
+        <button id="retry-button" class="button">Retry</button>
         <br>
-        <button class="button" onclick="goToLeaderboard(); playButtonSound();">leaderboard</button>
+        <button class="button leaderboard-button">Leaderboard</button>
         <br>
-        <button class="button" onclick=" playButtonSound(); location.reload();">main menu</button>
+        <button class="button main-menu-button">Main Menu</button>
         <br>
     </div>
   </div>
+  <!-- Global scripts -->
+  <script src="js/globals.js"></script>
+  <script src="js/game.js"></script>
   
+  <!-- Menu and sound scripts -->
+  <script src="js/menus.js"></script>
+  <script src="js/selectGamemode.js"></script>
+  <script src="js/setDifficulty.js"></script>
+  <script src="js/sounds.js"></script>
+  <script src="js/pause.js"></script>
+  
+  <!-- Image type scripts -->
+  <script src="js/drawable.js"></script>
+  <script src="js/background.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/element.js"></script>
+  <script src="js/specialElement.js"></script>
+  <script src="js/bonusElement.js"></script>
+  
+  <!-- Game scripts -->
+  <script src="js/loadGamemode.js"></script>
+  <script src="js/collision.js"></script>
+  <script src="js/lives.js"></script>
+  <script src="js/gameOver.js"></script>
+  <script src="js/bonusLevel.js"></script>
+  
+  <!-- Canvas resizing script -->
   <script src="js/resizeCanvas.js"></script>
-  <script>
-    <!--
-    $(document).ready(function() {
-      $("#play").click(function() {
-        $("#main-menu").fadeOut(1000);
-        $("#game").fadeIn(2000);
-      });
-    });
-    -->
-  </script>
 </body>
-
 </html>
