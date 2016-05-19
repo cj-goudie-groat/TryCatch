@@ -379,16 +379,19 @@ button .banner {
   position: relative;
   transform: translateX(-50%);
   left: 50%;
-  margin-bottom: 1em;
-  margin: 0 auto 1em auto;
+  margin: 0 auto.75em auto;
   background-color: #F1AE3E;
-  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.50);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.50);
   border: none;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 1.5em;
   color: #FFFFFF;
   text-shadow: 0px 4px 24px rgba(0, 0, 0, 0.50);
+}
+
+#game-over .button:hover {
+    box-shadow: 0px 6px 30px 0px rgba(0, 0, 0, 0.80);
 }
 
 #game-over-header {
@@ -430,6 +433,7 @@ button .banner {
   transform: translateX(-50%);
   left: 50%;
   text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.50);
+  margin-bottom: 15px;
 }
 
 .game-over-input {
