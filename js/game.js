@@ -7,7 +7,6 @@ var wrapper = document.getElementById("wrapper");
 function init() {
   if (game.init()) {
     game.start();
-    
     currentLives = 5;
     currentScore = 0;
     document.getElementById("score-counter").innerHTML = "" + currentScore;
@@ -98,6 +97,9 @@ function Game() {
    * running on browsers that do not support the canvas.
    */
   this.init = function () {
+    if (!muteSound) {
+      createjs.Sound.play("gameMusic", {interrupt: createjs.Sound.INTERRUPT_ANY, loop:-1});
+    }
     this.bgCanvas = document.getElementById("background");
     this.playerCanvas = document.getElementById("player");
     this.elementCanvas = document.getElementById("elements");

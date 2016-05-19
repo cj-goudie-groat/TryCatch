@@ -3,12 +3,19 @@
  */
 function bonusLevel() {
   game.elementContext.clearRect(0, 0, game.elementCanvas.width, game.elementCanvas.height);
-  
+  if (!muteSound) {
+    createjs.Sound.stop("gameMusic");
+    //createjs.Sound.play("bonusMusic");
+  }
   // Update player model
   game.player.draw();
   // Wait for [bonusLength]ms to end bonus level
   setTimeout(function() {
     stopBonusLevel();
+    if (!muteSound) {
+      //createjs.Sound.stop("bonusMusic");
+      createjs.Sound.play("gameMusic", {interrupt: createjs.Sound.INTERRUPT_ANY, loop:-1});
+    }
   }, bonusLength);
 }
 

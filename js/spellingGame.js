@@ -29,7 +29,9 @@ function clearWord() {
 function letterCollision(character) {
   if(character == currentWord.charAt(letterCount)) {
     if (letterCount != wordLength) {
-      createjs.Sound.play("correctElementSound");
+      if (!muteSound) {
+        createjs.Sound.play("correctElementSound");
+      }
     }
     currentScore += 100 * scoreMult;
     document.getElementById("score-counter").innerHTML = "" + currentScore;
@@ -39,18 +41,26 @@ function letterCollision(character) {
     if(letterCount == wordLength) {
       letterCount = 0;
       currentScore += 500 * scoreMult;
-      createjs.Sound.play("correctWord");
+      if (!muteSound) {
+        createjs.Sound.play("correctWord");
+      }
       document.getElementById("score-counter").innerHTML = "" + currentScore;
       clearWord();
       drawWord();
     }
   } else {
     currentLives--;
-    createjs.Sound.play("wrongElementSound");
+    if (currentLives != 0) {
+      if (!muteSound) {
+        createjs.Sound.play("wrongElementSound");
+      }
+    }
     updateLives();
     // Determines if you lost the game or not
     if (currentLives == 0) {
-      createjs.Sound.play("gameOverSound");
+      if (!muteSound) {
+        createjs.Sound.play("gameOverSound");
+      }
       gameOver();
     }
   }

@@ -27,11 +27,17 @@ function checkCollision(i, character) {
       
       nayte = Math.floor(Math.random() * 3);
       if (nayte == 0) {
-        createjs.Sound.play("bonus1");
+        if (!muteSound) {
+          createjs.Sound.play("bonus1");
+        }
       } else if (nayte == 1) {
-        createjs.Sound.play("bonus2");
+        if (!muteSound) {
+          createjs.Sound.play("bonus2");
+        }
       } else {
-        createjs.Sound.play("bonus3");
+        if (!muteSound) {
+          createjs.Sound.play("bonus3");
+        }
       }
       currentScore += 10;
       document.getElementById("score-counter").innerHTML = "" + currentScore;

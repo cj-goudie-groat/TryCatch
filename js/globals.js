@@ -26,6 +26,10 @@ var paused = false; // Game is paused or not
 var canPause = false; // Whether player can pause or not
 
 /**
+ * Global variable for muting sound.
+ */
+ var muteSound = true;
+/**
  * Global variables for falling elements
  */
 var elements = []; // Array for falling elements

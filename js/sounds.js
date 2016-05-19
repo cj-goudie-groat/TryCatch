@@ -6,40 +6,45 @@ function loadSounds() {
   createjs.Sound.registerSound("sounds/collectionsound.mp3", "correctElementSound"); //added
   createjs.Sound.registerSound("sounds/errorsound.mp3", "wrongElementSound"); //added
   createjs.Sound.registerSound("sounds/mainmenusound.mp3", "menuMusic"); //
-  createjs.Sound.registerSound("sounds/gameover.mp3", "gameOverSound"); //
+  createjs.Sound.registerSound("sounds/gameover.mp3", "gameOverSound"); // added
   createjs.Sound.registerSound("sounds/natesound1.mp3", "bonus1"); // added
   createjs.Sound.registerSound("sounds/natesound2.mp3", "bonus2"); // added
   createjs.Sound.registerSound("sounds/natesound3.mp3", "bonus3"); // added
   createjs.Sound.registerSound("sounds/button.mp3", "bonusMusic"); // NOT EXIST YET
-  createjs.Sound.registerSound("sounds/spacesound.mp3", "gameMusic"); //
+  createjs.Sound.registerSound("sounds/spacesound.mp3", "gameMusic"); // added
   createjs.Sound.registerSound("sounds/wordsound.mp3", "correctWord"); //added
 }
+
 
 /**
  * Plays the menu selection sound
  */
 $(document).ready(function () {
   $(".button").click(function () {
+  if (!muteSound) {
     createjs.Sound.play("buttonSound");
+  }
   });
-});
-
-/**
- * Plays the menu selection sound
- */
-$(document).ready(function () {
+  
   $(".button-selected").click(function () {
     createjs.Sound.play("buttonSound");
   });
-});
-
-/**
- * Plays the menu selection sound
- */
-$(document).ready(function () {
+  
   $(".available").click(function () {
     createjs.Sound.play("buttonSound");
   });
+  
+  $("#mute-button").click(function () {
+    if (!muteSound) {
+      document.getElementById("mute-button").innerHTML("Unmute Sound");
+    } else {
+      document.getElementById("mute-button").innerHTML("Mute Sound");
+    }
+    muteSound = !muteSound;
+  });
 });
 
-window.onload = loadSounds();
+window.onload = function () {
+  loadSounds();
+  playMenuMusic();
+};
