@@ -1,39 +1,17 @@
-/**
- * Initialize the Game and start it.
- */
 var game = new Game();
-var paused = false;
-var bonusActive = false;
-var windowWidth = window.innerWidth;
+var wrapper = document.getElementById("wrapper");
 
+/**
+ * Initializes the Game and starts it.
+ */
 function init() {
   if (game.init()) {
     game.start();
+    
     currentLives = 5;
     currentScore = 0;
     document.getElementById("score-counter").innerHTML = "" + currentScore;
   }
-}
-
-function loadGamemode() {
-  // Set difficulty text
-  if (difficulty == 1) {
-    currentLevel = "Easy";
-    document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
-  } else if (difficulty == 3) {
-    currentLevel = "Hard";
-    document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
-  } else {
-    currentLevel = "Medium";
-    document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
-  }
-
-  // load letters game
-  var script = document.createElement("script");
-  script.src = "js/letterGame.js";
-  script.type = "text/javascript";
-  var head = document.getElementsByTagName("head")[0];
-  head.appendChild(script)
 }
 
 /**
@@ -41,19 +19,18 @@ function loadGamemode() {
  * are only ever created once. This type of object is known as a 
  * singleton.
  */
-var imageRepository = new function () {
+var imageRepository = new function () {	
   // Define images
-  this.background = new Image();
   this.background1 = new Image();
   this.background2 = new Image();
   this.background3 = new Image();
-  this.background4 = new Image();
-  this.spaceship = new Image();
+  this.player = new Image();
   this.bonusLevelBg = new Image();
   this.bonusLevelPlayer = new Image();
-
+  this.easterEgg = new Image();
+  
   // Ensure all images have loaded before starting the game
-  var numImages = 8;
+  var numImages = 7;
   var numLoaded = 0;
 
   function imageLoaded() {
@@ -62,290 +39,51 @@ var imageRepository = new function () {
       window.init();
     }
   }
-
-  this.background.onload = function () {
-    imageLoaded();
-  }
-
+  
   this.background1.onload = function () {
     imageLoaded();
   }
-
+  
   this.background2.onload = function () {
     imageLoaded();
   }
+  
   this.background3.onload = function () {
     imageLoaded();
   }
-  this.background4.onload = function () {
+  
+  this.player.onload = function () {
     imageLoaded();
   }
-
-  this.spaceship.onload = function () {
-    imageLoaded();
-  }
-
+  
   this.bonusLevelBg.onload = function () {
     imageLoaded();
   }
+  
   this.bonusLevelPlayer.onload = function () {
+    imageLoaded();
+  }
+  
+  this.easterEgg.online = function () {
     imageLoaded();
   }
 
   // Set images src
-  this.background.src = "images/background.png";
   this.background1.src = "images/background/layer1.png";
   this.background2.src = "images/background/layer2.png";
   this.background3.src = "images/background/layer3.png";
-  this.background4.src = "images/background/layer4.png";
-
-  if (windowWidth > 1000) {
-    this.spaceship.src = "images/shipanim/ship0.png";
+  
+  if (window.innerWidth >= 1000) {
+    this.player.src = "images/shipanim/ship0.png";
     this.bonusLevelPlayer.src = "images/special/bonusplayer.png";
   } else {
-    this.spaceship.src = "images/shipanim/smaller/ship0s.png";
+    this.player.src = "images/shipanim/mobile/ship0.png";
     this.bonusLevelPlayer.src = "images/special/bonusplayers.png";
   }
-
-  this.bonusLevelBg.src = "images/special/bonusbg.jpg";
-};
-
-/**
- * Creates the Drawable object which will be the base class for
- * all drawable objects in the game. Sets up defualt variables
- * that all child objects will inherit, as well as the defualt
- * functions. 
- */
-function Drawable() {
-  this.init = function (x, y, width, height) {
-    // Defualt variables
-    this.x = x;
-    this.y = y;
-    this.width = width;
-    this.height = height;
-  }
-
-  this.speed = 0;
-  this.canvasWidth = 0;
-  this.canvasHeight = 0;
-
-
-  // Define abstract function to be implemented in child objects
-  this.draw = function () {};
-  this.move = function () {};
-}
-
-/**
- * Creates the Background object which will become a child of
- * the Drawable object. The background is drawn on the "background"
- * canvas and creates the illusion of moving by panning the image.
- */
-function Background1() {
-  this.speed = 6; // Redefine speed of the background for panning
-
-  // Implement abstract function 
-  this.draw = function () {
-
-    //pauses the background
-    if (paused) {
-      return;
-    }
-
-    if (bonusActive) {
-      this.context.drawImage(imageRepository.bonusLevelBg, 0, 0);
-    } else {
-      // Pan background
-      this.context.drawImage(imageRepository.background1, this.x, this.y);
-
-      this.y += this.speed;
-      // Draw another image at the top edge of the first image
-      this.context.drawImage(imageRepository.background1, this.x, this.y - this.canvasHeight);
-
-      // If the image scrolled off the screen, reset
-      if (this.y >= this.canvasHeight) {
-        this.y = 0;
-      }
-    }
-  }
-};
-
-
-function Background2() {
-  this.speed = 4; // Redefine speed of the background for panning
-
-  // Implement abstract function 
-  this.draw = function () {
-
-    //pauses the background
-    if (paused) {
-      return;
-    }
-    // Pan background
-    this.context.drawImage(imageRepository.background2, this.x, this.y);
-
-    this.y += this.speed;
-    // Draw another image at the top edge of the first image
-    this.context.drawImage(imageRepository.background2, this.x, this.y - this.canvasHeight);
-
-    // If the image scrolled off the screen, reset
-    if (this.y >= this.canvasHeight) {
-      this.y = 0;
-    }
-  }
-};
-
-
-function Background3() {
-  this.speed = 3; // Redefine speed of the background for panning
-
-  // Implement abstract function 
-  this.draw = function () {
-
-    //pauses the background
-    if (paused) {
-      return;
-    }
-    // Pan background
-    this.context.drawImage(imageRepository.background3, this.x, this.y);
-
-    this.y += this.speed;
-    // Draw another image at the top edge of the first image
-    this.context.drawImage(imageRepository.background3, this.x, this.y - this.canvasHeight);
-
-    // If the image scrolled off the screen, reset
-    if (this.y >= this.canvasHeight) {
-      this.y = 0;
-    }
-  }
-};
-
-
-function Background4() {
-  this.speed = 1; // Redefine speed of the background for panning
-
-  // Implement abstract function 
-  this.draw = function () {
-
-    //pauses the background
-    if (paused) {
-      return;
-    }
-    // Pan background
-    this.context.drawImage(imageRepository.background4, this.x, this.y);
-
-    this.y += this.speed;
-    // Draw another image at the top edge of the first image
-    this.context.drawImage(imageRepository.background4, this.x, this.y - this.canvasHeight);
-
-    // If the image scrolled off the screen, reset
-    if (this.y >= this.canvasHeight) {
-      this.y = 0;
-    }
-  }
-};
-
-
-// Set Background to inherit properties from Drawable
-Background1.prototype = new Drawable();
-Background2.prototype = new Drawable();
-Background3.prototype = new Drawable();
-Background4.prototype = new Drawable();
-
-
-/**
- * Create the Ship object that the player controls. The ship is
- * drawn on the "ship" canvas and uses dirty rectangles to move
- * around the screen.
- */
-function Ship() {
-  this.speed = 10;
-  //this.shipL = 1;
-  //this.shipR = 1;
-  //this.shipAnim = new Image();
-
-  var leftButton = document.getElementById("left-button");
-  var rightButton = document.getElementById("right-button");
-
-  leftButton.addEventListener("touchstart", function (e) {
-    KEY_STATUS.left = true;
-  }, false);
-
-  leftButton.addEventListener("touchend", function (e) {
-    KEY_STATUS.left = false;
-  }, false);
-
-  rightButton.addEventListener("touchstart", function (e) {
-    KEY_STATUS.right = true;
-  }, false);
-
-  rightButton.addEventListener("touchend", function (e) {
-    KEY_STATUS.right = false;
-  }, false);
-
-  this.draw = function () {
-    this.context.clearRect(this.x, this.y, this.width, this.height);
-    if (bonusActive) {
-      this.context.drawImage(imageRepository.bonusLevelPlayer, this.x, this.y);
-    } else {
-      this.context.drawImage(imageRepository.spaceship, this.x, this.y);
-    }
-  };
-
-  /*
-  this.drawLeft = function () {
-    this.shipAnim.src = "images/shipanim/shipl" + this.shipL + ".png";
-    if (this.shipL < 5) {
-      this.shipL++;
-    }
-    this.context.drawImage(this.shipAnim, this.x, this.y);
-  };
   
-  this.drawRight = function () {
-    this.shipAnim.src = "images/shipanim/shipr" + this.shipR + ".png";
-    if (this.shipR < 5) {
-      this.shipR++;
-    }
-    this.context.drawImage(this.shipAnim, this.x, this.y);
-  };
-  */
-  this.move = function () {
-    // Stops the ship from moving when paused!
-    if (paused) {
-      return;
-    }
-
-    // Determine if the action is move action
-    if (KEY_STATUS.left || KEY_STATUS.right) {
-      // The ship moved, so erase it's current image so it can
-      // be redrawn in it's new location
-      this.context.clearRect(this.x, this.y, this.width, this.height);
-
-      // Update x and y according to the direction to move and
-      // redraw the ship. Change the else if's to if statements
-      // to have diagonal movement.
-      if (KEY_STATUS.left) {
-        this.shipR = 1;
-        this.x -= this.speed
-
-        // this.animTimer = setInterval(this.drawLeft(), 1000)
-        if (this.x <= 0) { // Keep player within the screen
-          this.x = 0;
-        }
-
-      } else if (KEY_STATUS.right) {
-        this.shipL = 1;
-        this.x += this.speed
-
-        // this.animTimer = setInterval(this.drawRight(), 1000);
-        if (this.x >= this.canvasWidth - this.width) {
-          this.x = this.canvasWidth - this.width;
-        }
-      }
-      this.draw();
-    }
-  };
-}
-Ship.prototype = new Drawable();
+  this.bonusLevelBg.src = "images/special/bonusbg.jpg";
+  this.easterEgg.src = "images/special/easteregg.png"
+};
 
 /**
  * Creates the Game object which will hold all objects and data for
@@ -360,59 +98,74 @@ function Game() {
    * running on browsers that do not support the canvas.
    */
   this.init = function () {
-    
-    // Get the canvas elements
     this.bgCanvas = document.getElementById("background");
-    this.shipCanvas = document.getElementById("ship");
-
+    this.playerCanvas = document.getElementById("player");
+    this.elementCanvas = document.getElementById("elements");
     // Test to see if canvas is supported. Only need to
     // check one canvas
-    if (this.bgCanvas.getContext) {
+    if (this.bgCanvas != null) {
       this.bgContext = this.bgCanvas.getContext("2d");
-      this.shipContext = this.shipCanvas.getContext("2d");
-
+      this.playerContext = this.playerCanvas.getContext("2d");
+      this.elementContext = this.elementCanvas.getContext("2d");
       // Initialize objects to contain their context and canvas
       // information
       Background1.prototype.context = this.bgContext;
       Background1.prototype.canvasWidth = this.bgCanvas.width;
       Background1.prototype.canvasHeight = imageRepository.background1.height;
-
+      
       Background2.prototype.context = this.bgContext;
       Background2.prototype.canvasWidth = this.bgCanvas.width;
       Background2.prototype.canvasHeight = imageRepository.background2.height;
-
+      
       Background3.prototype.context = this.bgContext;
       Background3.prototype.canvasWidth = this.bgCanvas.width;
       Background3.prototype.canvasHeight = imageRepository.background3.height;
-
-      Background4.prototype.context = this.bgContext;
-      Background4.prototype.canvasWidth = this.bgCanvas.width;
-      Background4.prototype.canvasHeight = imageRepository.background4.height;
-
-      Ship.prototype.context = this.shipContext;
-      Ship.prototype.canvasWidth = this.shipCanvas.width;
-      Ship.prototype.canvasHeight = this.shipCanvas.height;
-
+      
+      Player.prototype.context = this.playerContext;
+      Player.prototype.canvasWidth = this.playerCanvas.width;
+      Player.prototype.canvasHeight = this.playerCanvas.height;
+      
+      Element.prototype.context = this.elementContext;
+      Element.prototype.canvasWidth = this.elementCanvas.width;
+      Element.prototype.canvasHeight = this.elementCanvas.height;
+      
+      SpecialElement.prototype.context = this.elementContext;
+      SpecialElement.prototype.canvasWidth = this.elementCanvas.width;
+      SpecialElement.prototype.canvasHeight = this.elementCanvas.height;
+      
+      BonusElement.prototype.context = this.elementContext;
+      BonusElement.prototype.canvasWidth = this.elementCanvas.width;
+      BonusElement.prototype.canvasHeight = this.elementCanvas.height;
+      
       // Initialize the background object
       this.background1 = new Background1();
       this.background1.init(0, 0); // Set draw point to 0,0
-
+      
       this.background2 = new Background2();
       this.background2.init(0, 0); // Set draw point to 0,0
-
+      
       this.background3 = new Background3();
       this.background3.init(0, 0); // Set draw point to 0,0
-
-      this.background4 = new Background4();
-      this.background4.init(0, 0); // Set draw point to 0,0
-
-      // Initialize the ship object
-      this.ship = new Ship();
-      // Set the ship to start near the bottom middle of the canvas
-      var shipStartX = this.shipCanvas.width / 2 - imageRepository.spaceship.width;
-      var shipStartY = 0;
-      this.ship.init(shipStartX, shipStartY, imageRepository.spaceship.width, imageRepository.spaceship.height);
-
+      
+      // Initialize the player object
+      this.player = new Player();
+      // Set the player to start near the bottom middle of the canvas
+      var playerStartX = this.playerCanvas.width / 2 - imageRepository.player.width;
+      var playerStartY = 0;
+      this.player.init(playerStartX, playerStartY, imageRepository.player.width, imageRepository.player.height);
+      
+      // Initialize the falling element objects
+      this.element = new Element();
+      this.element.init(0, 0, elementWidth, elementHeight);
+      
+      // Initialize the special element objects
+      this.specialItem = new SpecialElement();
+      this.specialItem.init(0, 0, specialWidth, specialHeight);
+      
+      // Initialize the bonus element objects
+      this.bonusItem = new BonusElement();
+      this.bonusItem.init(0, 0, bonusWidth, bonusHeight);
+      
       return true;
     } else {
       return false;
@@ -421,42 +174,8 @@ function Game() {
 
   // Start the animation loop
   this.start = function () {
-    this.ship.draw();
-    animate();
+    this.player.draw();
   };
-}
-
-/**
- * Updates Lives indication.
- */
-function updateLives() {
-  if (currentLives == 5) {
-    document.getElementById("heart1").style.visibility = "visible";
-    document.getElementById("heart2").style.visibility = "visible";
-    document.getElementById("heart3").style.visibility = "visible";
-    document.getElementById("heart4").style.visibility = "visible";
-    document.getElementById("heart5").style.visibility = "visible";
-  }
-
-  if (currentLives == 4) {
-    document.getElementById("heart1").style.visibility = "hidden";
-  }
-
-  if (currentLives == 3) {
-    document.getElementById("heart2").style.visibility = "hidden";
-  }
-
-  if (currentLives == 2) {
-    document.getElementById("heart3").style.visibility = "hidden";
-  }
-
-  if (currentLives == 1) {
-    document.getElementById("heart4").style.visibility = "hidden";
-  }
-
-  if (currentLives == 0) {
-    document.getElementById("heart5").style.visibility = "hidden";
-  }
 }
 
 /**
@@ -466,212 +185,12 @@ function updateLives() {
  * object.
  */
 function animate() {
-  //game.background2.draw();
-  game.background4.draw();
   game.background3.draw();
-  // game.background2.draw();
+  game.background2.draw();
   game.background1.draw();
-  game.ship.move();
+  game.player.move();
+  game.element.move();
+  game.specialItem.move();
+  game.bonusItem.move();
   requestAnimFrame(animate);
-}
-
-/** The keycodes that will be mapped when a user presses a button.
- * Original code by Doug McInnes
- */
-KEY_CODES = {
-  37: "left",
-  39: "right",
-  27: "pause",
-}
-
-/** Creates the array to hold the KEY_CODES and sets all their values
- * to false. Checking true/flase is the quickest way to check status
- * of a key press and which one was pressed when determining
- * when to move and which direction.
- */
-KEY_STATUS = {};
-for (code in KEY_CODES) {
-  KEY_STATUS[KEY_CODES[code]] = false;
-}
-/**
- * Sets up the document to listen to onkeydown events (fired when
- * any key on the keyboard is pressed down). When a key is pressed,
- * it sets the appropriate direction to true to let us know which
- * key it was.
- */
-document.onkeydown = function (e) {
-  // Firefox and opera use charCode instead of keyCode to
-  // return which key was pressed.
-  var keyCode = (e.keyCode) ? e.keyCode : e.charCode;
-  if (KEY_CODES[keyCode]) {
-    e.preventDefault();
-    KEY_STATUS[KEY_CODES[keyCode]] = true;
-    
-    if (e.keyCode === 27) { // escape
-      if (paused) {
-        document.getElementById("pause-menu").style.display = "none";
-        document.getElementById("pause-menu-screen-darken").style.display = "none";
-
-      } else {
-        document.getElementById("pause-menu").style.display = "block";
-        document.getElementById("pause-menu-screen-darken").style.display = "block";
-      }
-      paused = !paused;
-    }
-  }
-}
-
-/**
- * Sets up the document to listen to ownkeyup events (fired when
- * any key on the keyboard is released). When a key is released,
- * it sets teh appropriate direction to false to let us know which
- * key it was.
- */
-document.onkeyup = function (e) {
-  var keyCode = (e.keyCode) ? e.keyCode : e.charCode;
-  if (KEY_CODES[keyCode]) {
-    e.preventDefault();
-    KEY_STATUS[KEY_CODES[keyCode]] = false;
-  }
-}
-
-/**	
- * requestAnim shim layer by Paul Irish
- * Finds the first API that works to optimize the animation loop, 
- * otherwise defaults to setTimeout().
- */
-window.requestAnimFrame = (function () {
-  return window.requestAnimationFrame ||
-    window.webkitRequestAnimationFrame ||
-    window.mozRequestAnimationFrame ||
-    window.oRequestAnimationFrame ||
-    window.msRequestAnimationFrame ||
-    function ( /* function */ callback, /* DOMElement */ element) {
-      window.setTimeout(callback, 1000 / 60);
-    };
-})();
-
-/**
- * This where the variables and declarations of the working
- * scoreboard, life system, and levels are. They are variables in javascript 
- * and can be updated as such, allowing a user to progress through the game.
- */
-var currentLives;
-var currentScore;
-var currentLevel;
-
-var difficulty;
-
-/**
- * Sets the difficulty of the game. Also activates selection on buttons.
- */
-var selectEasy = false;
-var selectMedium = false;
-var selectHard = false;
-
-function setDifficulty(diff) {
-  //easy
-  if (diff == 1) {
-    difficulty = 1;
-
-    if (selectEasy == false) {
-      document.getElementById("easy").className = "button-selected";
-      document.getElementById("medium").className = "button";
-      document.getElementById("hard").className = "button";
-      selectEasy = true;
-      selectMedium = false;
-      selectHard = false;
-    } else {
-      document.getElementById("easy").className = "button";
-      document.getElementById("medium").className = "button";
-      document.getElementById("hard").className = "button";
-      selectEasy = false;
-      selectMedium = false;
-      selectHard = false;
-    }
-  } else if (diff == 3) { //hard
-    difficulty = 3;
-
-    if (selectHard == false) {
-      document.getElementById("easy").className = "button";
-      document.getElementById("medium").className = "button";
-      document.getElementById("hard").className = "button-selected";
-      selectEasy = false;
-      selectMedium = false;
-      selectHard = true;
-    } else {
-      document.getElementById("easy").className = "button";
-      document.getElementById("medium").className = "button";
-      document.getElementById("hard").className = "button";
-      selectEasy = false;
-      selectMedium = false;
-      selectHard = false;
-    }
-  } else { //medium (default difficulty)
-    difficulty = 2;
-    currentLevel = "Medium";
-    document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
-    if (selectMedium == false) {
-      document.getElementById("easy").className = "button";
-      document.getElementById("medium").className = "button-selected";
-      document.getElementById("hard").className = "button";
-      selectEasy = false;
-      selectMedium = true;
-      selectHard = false;
-    } else {
-      document.getElementById("easy").className = "button";
-      document.getElementById("medium").className = "button";
-      document.getElementById("hard").className = "button";
-      selectEasy = false;
-      selectMedium = false;
-      selectHard = false;
-    }
-  }
-  $("#difficulty-menu").fadeOut(1000);
-}
-
-/**
- * Pauses the game.
- */
-function pause() {
-  paused = true;
-  document.getElementById("pause-menu").style.display = "block";
-  document.getElementById("pause-menu-screen-darken").style.display = "block";
-}
-
-/**
- * Resumes the game.
- */
-function resume() {
-  paused = false;
-  document.getElementById("pause-menu").style.display = "none";
-  document.getElementById("pause-menu-screen-darken").style.display = "none";
-}
-
-function goToLeaderboard() {
-  document.location.href = 'leaderboard.html';
-}
-
-function goToMainMenu() {
-  document.location.href = 'index.html';
-}
-
-/********
- *SOUNDS*
- ********/
-
-function loadSounds() {
-  createjs.Sound.registerSound("sounds/button.mp3", "buttonSound"); //
-  createjs.Sound.registerSound("sounds/correct.mp3", "correctElementSound"); //
-  createjs.Sound.registerSound("sounds/wrong.mp3", "wrongElementSound"); //
-  createjs.Sound.registerSound("sounds/menumusic.mp3", "menuMusic");
-  createjs.Sound.registerSound("sounds/gameover.mp3", "gameOverSound"); 
-  createjs.Sound.registerSound("sounds/button.mp3", "bonusCollectionSound"); //
-  createjs.Sound.registerSound("sounds/button.mp3", "bonusMusic"); //
-  createjs.Sound.registerSound("sounds/button.mp3", "gameMusic"); 
-  createjs.Sound.registerSound("sounds/button.mp3", "correctWord"); //
-}
-
-function playButtonSound() {
-  createjs.Sound.play("buttonSound");
 }
