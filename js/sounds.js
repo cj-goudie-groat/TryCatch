@@ -10,9 +10,9 @@ function loadSounds() {
   createjs.Sound.registerSound("sounds/natesound1.mp3", "bonus1"); //
   createjs.Sound.registerSound("sounds/natesound2.mp3", "bonus2"); //
   createjs.Sound.registerSound("sounds/natesound3.mp3", "bonus3"); //
-  createjs.Sound.registerSound("sounds/button.mp3", "bonusMusic"); //
+  createjs.Sound.registerSound("sounds/button.mp3", "bonusMusic"); // NOT EXIST YET
   createjs.Sound.registerSound("sounds/spacesound.mp3", "gameMusic"); //
-  createjs.Sound.registerSound("sounds/button.mp3", "correctWord"); //
+  createjs.Sound.registerSound("sounds/wordsound.mp3", "correctWord"); //added
 }
 
 /**
