@@ -51,7 +51,7 @@ function checkCollision(i, character) {
       }
       specialSpawned = false;
       newSpecialItem();
-      specialSpawnTimer = Math.floor(Math.random() * 15000) + 15000; 
+      specialSpawnTimer = Math.floor(Math.random() * 30000) + 60000; // Spawn in 60 - 90 seconds
       setTimeout(function () {
         specialSpawned = true;
       }, specialSpawnTimer);
