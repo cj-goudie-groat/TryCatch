@@ -32,7 +32,7 @@ function SpecialElement() {
     if (specialElement.y > game.elementCanvas.height) {
       specialElement.y = 0;
       specialSpawned = false;
-      specialSpawnTimer = Math.floor(Math.random() * 15000) + 15000; // Spawn every 15 - 30 seconds
+      specialSpawnTimer = Math.floor(Math.random() * 30000) + 60000; // Spawn every 60 - 90 seconds
       setTimeout(function () {
         specialSpawned = true;
         newSpecialItem();

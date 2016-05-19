@@ -29,7 +29,7 @@ function retryGame() {
   
   // Reset special item positions
   specialSpawned = false;
-  specialSpawnTimer = Math.floor(Math.random() * 15000) + 15000; // Spawn 15 - 30 seconds after retry
+  specialSpawnTimer = Math.floor(Math.random() * 30000) + 60000; // Spawn 60 - 90 seconds after retry
     setTimeout(function () {
       specialSpawned = true;
       newSpecialItem();

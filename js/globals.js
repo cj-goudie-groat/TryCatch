@@ -40,7 +40,7 @@ var elementHeight = 70; // Height of the elements
 var specialItems = []; // Array for special elements
 var specialElement; // The special element to fall
 var specialAmount = 2; // Amount of special elements to spawn
-var specialSpeed = 15; // Speed of the special elements
+var specialSpeed = 5; // Speed of the special elements
 var specialWidth = 40; // Width of the special elements
 var specialHeight = 40; // Height of the special elements
 var specialSpawned = false; // Whether a special items is spawned or not
