@@ -48,7 +48,7 @@ function setDifficulty(diff) {
     difficulty = 3;
     scoreMult = 1;
     elementSpeed = 10;
-    elementAmount = 30;
+    elementAmount = 15;
 
     if (selectHard == false) {
       document.getElementById("easy").className = "button";
@@ -69,7 +69,7 @@ function setDifficulty(diff) {
     difficulty = 2;
     scoreMult = 0.75;
     elementSpeed = 7;
-    elementAmount = 20;
+    elementAmount = 13;
     
     if (selectMedium == false) {
       document.getElementById("easy").className = "button";

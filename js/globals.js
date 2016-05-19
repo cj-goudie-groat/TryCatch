@@ -29,7 +29,7 @@ var canPause = false; // Whether player can pause or not
  * Global variables for falling elements
  */
 var elements = []; // Array for falling elements
-var elementAmount = 20; // Amount of elements to continuously spawn (default medium)
+var elementAmount = 13; // Amount of elements to continuously spawn (default medium)
 var elementSpeed = 7; // Speed of the elements (default medium)
 var elementWidth = 70; // Width of the elements
 var elementHeight = 70; // Height of the elements
