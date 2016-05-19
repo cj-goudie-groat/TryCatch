@@ -36,6 +36,7 @@ function loadGamemode() {
   
   createElements();
   animate();
+  resizeCanvas();
 }
 
 /**

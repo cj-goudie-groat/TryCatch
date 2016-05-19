@@ -20,5 +20,3 @@ function resizeCanvas() {
 resizeCanvas();
 
 window.addEventListener("resize", resizeCanvas, false);
-
-window.onload = resizeCanvas();
