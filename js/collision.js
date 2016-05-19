@@ -10,6 +10,7 @@ function checkCollision(i, character) {
     width: imageRepository.player.width,
     height: imageRepository.player.height
   };
+  var nayte;
   
   if (character == "@") { // Bonus level element
     var bonusRect = {
@@ -24,7 +25,15 @@ function checkCollision(i, character) {
         (window.innerHeight - playerRect.height) < bonusRect.y + bonusRect.height &&
         playerRect.heightOffset + (window.innerHeight - playerRect.height) > bonusRect.y) {
       
-      currentScore += 5;
+      nayte = Math.floor(Math.random() * 3);
+      if (nayte == 0) {
+        createjs.Sound.play("bonus1");
+      } else if (nayte == 1) {
+        createjs.Sound.play("bonus2");
+      } else {
+        createjs.Sound.play("bonus3");
+      }
+      currentScore += 10;
       document.getElementById("score-counter").innerHTML = "" + currentScore;
       newBonusItem(i);
     }

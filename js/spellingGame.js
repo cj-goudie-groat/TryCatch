@@ -28,7 +28,9 @@ function clearWord() {
 
 function letterCollision(character) {
   if(character == currentWord.charAt(letterCount)) {
-    createjs.Sound.play("correctElementSound");
+    if (letterCount != wordLength) {
+      createjs.Sound.play("correctElementSound");
+    }
     currentScore += 100 * scoreMult;
     document.getElementById("score-counter").innerHTML = "" + currentScore;
     wordRow.cells[letterCount].style = "color: #FFFFFF";
@@ -37,6 +39,7 @@ function letterCollision(character) {
     if(letterCount == wordLength) {
       letterCount = 0;
       currentScore += 500 * scoreMult;
+      createjs.Sound.play("correctWord");
       document.getElementById("score-counter").innerHTML = "" + currentScore;
       clearWord();
       drawWord();
