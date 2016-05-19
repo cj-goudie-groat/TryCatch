@@ -24,7 +24,7 @@ function checkCollision(i, character) {
         (window.innerHeight - playerRect.height) < bonusRect.y + bonusRect.height &&
         playerRect.heightOffset + (window.innerHeight - playerRect.height) > bonusRect.y) {
       
-      currentScore += 50;
+      currentScore += 5;
       document.getElementById("score-counter").innerHTML = "" + currentScore;
       newBonusItem(i);
     }
