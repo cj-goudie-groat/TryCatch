@@ -9,10 +9,6 @@ var windowWidth = window.innerWidth;
 function init() {
   if (game.init()) {
     game.start();
-<<<<<<< HEAD
-=======
-
->>>>>>> master
     currentLives = 5;
     currentScore = 0;
     document.getElementById("score-counter").innerHTML = "" + currentScore;
