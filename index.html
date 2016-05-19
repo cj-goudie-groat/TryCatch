@@ -6,6 +6,7 @@
   <title>TryCatch - Home</title>
   <link href="style/style.css" rel="stylesheet" type="text/css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
   <script src="js/game.js"></script>
   <script>
     function chooseDifficulty() {
@@ -27,7 +28,7 @@
   <link href='https://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
 </head>
 
-<body>
+<body onload="loadSounds()">
 
   <div id="wrapper">
     <!-- This is the main menu section -->
@@ -55,7 +56,7 @@
       <div id="buttons">
         <div id="game-collection">
           <div class="selector">
-            <button class="theme" name="spelling" id="spelling-button" onclick="selectButton('spelling-button')"><img id="spelling-ship" src="images/shipanim/ship0.png"></button>
+            <button class="theme" name="spelling" id="spelling-button" onclick="selectButton('spelling-button'); playButtonSound();"><img id="spelling-ship" src="images/shipanim/ship0.png"></button>
             <label for="spelling">Spelling</label>
           </div>
           <div class="selector">
@@ -73,18 +74,18 @@
         </div>
 
         <div id="button-collection">
-          <button id="play" class="button" onclick="loadGamemode()">Start Game</button>
-          <button onclick="chooseDifficulty()" class="button">Difficulty</button>
-          <button onclick="goToLeaderboard()" class="button">Leaderboard</button>
+          <button id="play" class="button" onclick="loadGamemode(); playButtonSound();">Start Game</button>
+          <button onclick="chooseDifficulty(); playButtonSound();" class="button">Difficulty</button>
+          <button onclick="goToLeaderboard(); playButtonSound();" class="button">Leaderboard</button>
         </div>
       </div>
       <div id="difficulty-menu" >
         <h2>Choose Difficulty</h2>
-        <button id="easy" class="button" onclick="setDifficulty(1)">Easy</button>
+        <button id="easy" class="button" onclick="setDifficulty(1); playButtonSound();">Easy</button>
         <br/>
-        <button id="medium" class="button-selected" onclick="setDifficulty(2)">Medium</button>
+        <button id="medium" class="button-selected" onclick="setDifficulty(2); playButtonSound();">Medium</button>
         <br/>
-        <button id="hard" class="button" onclick="setDifficulty(3)">Hard</button>
+        <button id="hard" class="button" onclick="setDifficulty(3); playButtonSound();">Hard</button>
       </div>
     </div>
     <!-- This is the game section -->
@@ -130,11 +131,11 @@
     <!-- This is the pause menu section -->
     <div id="pause-menu">
       <h2>Game Paused</h2>
-      <button class="button" onclick="resume()">Resume</button>
+      <button class="button" onclick="resume(); playButtonSound();">Resume</button>
       <br>
-      <button class="button" onclick="location.reload()">Main Menu</button>
+      <button class="button" onclick="location.reload(); playButtonSound();">Main Menu</button>
       <br>
-      <button class="button" onclick="">Mute sound</button>
+      <button class="button" onclick="playButtonSound();">Mute sound</button>
     </div>
     
     <!-- This is the pause screen darken effect -->
@@ -153,11 +154,11 @@
           <br>
           <input type="submit" value="Submit score" class="button">
         </form>
-        <button class="button" onclick="retryGame()">retry</button>
+        <button class="button" onclick="retryGame(); playButtonSound();">retry</button>
         <br>
-        <button class="button" onclick="goToLeaderboard()">leaderboard</button>
+        <button class="button" onclick="goToLeaderboard(); playButtonSound();">leaderboard</button>
         <br>
-        <button class="button" onclick="location.reload()">main menu</button>
+        <button class="button" onclick=" playButtonSound(); location.reload();">main menu</button>
         <br>
     </div>
   </div>
