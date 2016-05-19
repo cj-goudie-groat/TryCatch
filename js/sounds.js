@@ -47,11 +47,19 @@ $(document).ready(function () {
       createjs.Sound.stop("menuMusic");
     } else {
       document.getElementById("mute-button").innerHTML = "Mute Sound";
-      if (paused) {
-        createjs.Sound.play("gameMusic", {interrupt: createjs.Sound.INTERRUPT_ANY, loop:-1});
-      } else {
-        createjs.Sound.play("menuMusic", {interrupt: createjs.Sound.INTERRUPT_ANY, loop:-1});
-      }
+      createjs.Sound.play("menuMusic", {interrupt: createjs.Sound.INTERRUPT_ANY, loop:-1});
+    }
+    muteSound = !muteSound;
+  });
+  $("#mute-button1").click(function () {
+    if (!muteSound) {
+      document.getElementById("mute-button1").innerHTML = "Unmute Sound";
+      createjs.Sound.stop("gameMusic");
+      createjs.Sound.stop("menuMusic");
+    } else {
+      document.getElementById("mute-button1").innerHTML = "Mute Sound";
+      createjs.Sound.play("gameMusic", {interrupt: createjs.Sound.INTERRUPT_ANY, loop:-1});
+      
     }
     muteSound = !muteSound;
   });

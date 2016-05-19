@@ -98,6 +98,7 @@ function Game() {
    */
   this.init = function () {
     if (!muteSound) {
+      createjs.Sound.stop("menuMusic");
       createjs.Sound.play("gameMusic", {interrupt: createjs.Sound.INTERRUPT_ANY, loop:-1});
     }
     this.bgCanvas = document.getElementById("background");
