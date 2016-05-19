@@ -9,6 +9,10 @@ var windowWidth = window.innerWidth;
 function init() {
   if (game.init()) {
     game.start();
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
     currentLives = 5;
     currentScore = 0;
     document.getElementById("score-counter").innerHTML = "" + currentScore;
@@ -27,7 +31,7 @@ function loadGamemode() {
     currentLevel = "Medium";
     document.getElementById("level-counter").innerHTML = "Level: " + currentLevel;
   }
-  
+
   // load letters game
   var script = document.createElement("script");
   script.src = "js/letterGame.js";
@@ -41,16 +45,19 @@ function loadGamemode() {
  * are only ever created once. This type of object is known as a 
  * singleton.
  */
-var imageRepository = new function () {	
+var imageRepository = new function () {
   // Define images
   this.background = new Image();
   this.background1 = new Image();
+  this.background2 = new Image();
+  this.background3 = new Image();
+  this.background4 = new Image();
   this.spaceship = new Image();
   this.bonusLevelBg = new Image();
   this.bonusLevelPlayer = new Image();
-  
+
   // Ensure all images have loaded before starting the game
-  var numImages = 5;
+  var numImages = 8;
   var numLoaded = 0;
 
   function imageLoaded() {
@@ -63,15 +70,25 @@ var imageRepository = new function () {
   this.background.onload = function () {
     imageLoaded();
   }
-  
+
   this.background1.onload = function () {
     imageLoaded();
   }
-  
+
+  this.background2.onload = function () {
+    imageLoaded();
+  }
+  this.background3.onload = function () {
+    imageLoaded();
+  }
+  this.background4.onload = function () {
+    imageLoaded();
+  }
+
   this.spaceship.onload = function () {
     imageLoaded();
   }
-  
+
   this.bonusLevelBg.onload = function () {
     imageLoaded();
   }
@@ -81,16 +98,19 @@ var imageRepository = new function () {
 
   // Set images src
   this.background.src = "images/background.png";
-  this.background1.src = "images/bg1.png";
-  
-  if (windowWidth > 1000 ) {
+  this.background1.src = "images/background/layer1.png";
+  this.background2.src = "images/background/layer2.png";
+  this.background3.src = "images/background/layer3.png";
+  this.background4.src = "images/background/layer4.png";
+
+  if (windowWidth > 1000) {
     this.spaceship.src = "images/shipanim/ship0.png";
     this.bonusLevelPlayer.src = "images/special/bonusplayer.png";
   } else {
     this.spaceship.src = "images/shipanim/smaller/ship0s.png";
     this.bonusLevelPlayer.src = "images/special/bonusplayers.png";
   }
-  
+
   this.bonusLevelBg.src = "images/special/bonusbg.jpg";
 };
 
@@ -112,16 +132,11 @@ function Drawable() {
   this.speed = 0;
   this.canvasWidth = 0;
   this.canvasHeight = 0;
-  this.canCollide = "";
-  this.isColliding = false;
-  this.type = "";
+
 
   // Define abstract function to be implemented in child objects
   this.draw = function () {};
   this.move = function () {};
-  this.canCollideWith = function(object) {
-    return (this.canCollide === object.type);
-  };
 }
 
 /**
@@ -129,36 +144,117 @@ function Drawable() {
  * the Drawable object. The background is drawn on the "background"
  * canvas and creates the illusion of moving by panning the image.
  */
-function Background() {
-  this.speed = 3; // Redefine speed of the background for panning
+function Background1() {
+  this.speed = 6; // Redefine speed of the background for panning
 
   // Implement abstract function 
   this.draw = function () {
-  
-  	//pauses the background
+
+    //pauses the background
     if (paused) {
       return;
-	}
-    
+    }
+
     if (bonusActive) {
       this.context.drawImage(imageRepository.bonusLevelBg, 0, 0);
     } else {
       // Pan background
-      this.context.drawImage(imageRepository.background, this.x, this.y);
-    
+      this.context.drawImage(imageRepository.background1, this.x, this.y);
+
       this.y += this.speed;
       // Draw another image at the top edge of the first image
-      this.context.drawImage(imageRepository.background, this.x, this.y - this.canvasHeight);
-      
+      this.context.drawImage(imageRepository.background1, this.x, this.y - this.canvasHeight);
+
       // If the image scrolled off the screen, reset
       if (this.y >= this.canvasHeight) {
         this.y = 0;
       }
     }
-  };
-}
+  }
+};
+
+
+function Background2() {
+  this.speed = 4; // Redefine speed of the background for panning
+
+  // Implement abstract function 
+  this.draw = function () {
+
+    //pauses the background
+    if (paused) {
+      return;
+    }
+    // Pan background
+    this.context.drawImage(imageRepository.background2, this.x, this.y);
+
+    this.y += this.speed;
+    // Draw another image at the top edge of the first image
+    this.context.drawImage(imageRepository.background2, this.x, this.y - this.canvasHeight);
+
+    // If the image scrolled off the screen, reset
+    if (this.y >= this.canvasHeight) {
+      this.y = 0;
+    }
+  }
+};
+
+
+function Background3() {
+  this.speed = 3; // Redefine speed of the background for panning
+
+  // Implement abstract function 
+  this.draw = function () {
+
+    //pauses the background
+    if (paused) {
+      return;
+    }
+    // Pan background
+    this.context.drawImage(imageRepository.background3, this.x, this.y);
+
+    this.y += this.speed;
+    // Draw another image at the top edge of the first image
+    this.context.drawImage(imageRepository.background3, this.x, this.y - this.canvasHeight);
+
+    // If the image scrolled off the screen, reset
+    if (this.y >= this.canvasHeight) {
+      this.y = 0;
+    }
+  }
+};
+
+
+function Background4() {
+  this.speed = 1; // Redefine speed of the background for panning
+
+  // Implement abstract function 
+  this.draw = function () {
+
+    //pauses the background
+    if (paused) {
+      return;
+    }
+    // Pan background
+    this.context.drawImage(imageRepository.background4, this.x, this.y);
+
+    this.y += this.speed;
+    // Draw another image at the top edge of the first image
+    this.context.drawImage(imageRepository.background4, this.x, this.y - this.canvasHeight);
+
+    // If the image scrolled off the screen, reset
+    if (this.y >= this.canvasHeight) {
+      this.y = 0;
+    }
+  }
+};
+
+
 // Set Background to inherit properties from Drawable
-Background.prototype = new Drawable();
+Background1.prototype = new Drawable();
+Background2.prototype = new Drawable();
+Background3.prototype = new Drawable();
+Background4.prototype = new Drawable();
+
 
 /**
  * Create the Ship object that the player controls. The ship is
@@ -170,26 +266,26 @@ function Ship() {
   //this.shipL = 1;
   //this.shipR = 1;
   //this.shipAnim = new Image();
-  
+
   var leftButton = document.getElementById("left-button");
   var rightButton = document.getElementById("right-button");
-  
-  leftButton.addEventListener("touchstart", function(e) {
-      KEY_STATUS.left = true;
-    }, false);
 
-    leftButton.addEventListener("touchend", function(e) {
-      KEY_STATUS.left = false;
-    }, false);
+  leftButton.addEventListener("touchstart", function (e) {
+    KEY_STATUS.left = true;
+  }, false);
 
-  rightButton.addEventListener("touchstart", function(e) {
-      KEY_STATUS.right = true;
-    }, false);
-  
-  rightButton.addEventListener("touchend", function(e) {
-      KEY_STATUS.right = false;
-    }, false);
-  
+  leftButton.addEventListener("touchend", function (e) {
+    KEY_STATUS.left = false;
+  }, false);
+
+  rightButton.addEventListener("touchstart", function (e) {
+    KEY_STATUS.right = true;
+  }, false);
+
+  rightButton.addEventListener("touchend", function (e) {
+    KEY_STATUS.right = false;
+  }, false);
+
   this.draw = function () {
     this.context.clearRect(this.x, this.y, this.width, this.height);
     if (bonusActive) {
@@ -198,7 +294,7 @@ function Ship() {
       this.context.drawImage(imageRepository.spaceship, this.x, this.y);
     }
   };
-  
+
   /*
   this.drawLeft = function () {
     this.shipAnim.src = "images/shipanim/shipl" + this.shipL + ".png";
@@ -217,11 +313,11 @@ function Ship() {
   };
   */
   this.move = function () {
-  	// Stops the ship from moving when paused!
+    // Stops the ship from moving when paused!
     if (paused) {
       return;
-	}
-    
+    }
+
     // Determine if the action is move action
     if (KEY_STATUS.left || KEY_STATUS.right) {
       // The ship moved, so erase it's current image so it can
@@ -234,16 +330,16 @@ function Ship() {
       if (KEY_STATUS.left) {
         this.shipR = 1;
         this.x -= this.speed
-        
+
         // this.animTimer = setInterval(this.drawLeft(), 1000)
         if (this.x <= 0) { // Keep player within the screen
           this.x = 0;
         }
-        
+
       } else if (KEY_STATUS.right) {
         this.shipL = 1;
         this.x += this.speed
-        
+
         // this.animTimer = setInterval(this.drawRight(), 1000);
         if (this.x >= this.canvasWidth - this.width) {
           this.x = this.canvasWidth - this.width;
@@ -281,17 +377,38 @@ function Game() {
 
       // Initialize objects to contain their context and canvas
       // information
-      Background.prototype.context = this.bgContext;
-      Background.prototype.canvasWidth = this.bgCanvas.width;
-      Background.prototype.canvasHeight = imageRepository.background.height;
-      
+      Background1.prototype.context = this.bgContext;
+      Background1.prototype.canvasWidth = this.bgCanvas.width;
+      Background1.prototype.canvasHeight = imageRepository.background1.height;
+
+      Background2.prototype.context = this.bgContext;
+      Background2.prototype.canvasWidth = this.bgCanvas.width;
+      Background2.prototype.canvasHeight = imageRepository.background2.height;
+
+      Background3.prototype.context = this.bgContext;
+      Background3.prototype.canvasWidth = this.bgCanvas.width;
+      Background3.prototype.canvasHeight = imageRepository.background3.height;
+
+      Background4.prototype.context = this.bgContext;
+      Background4.prototype.canvasWidth = this.bgCanvas.width;
+      Background4.prototype.canvasHeight = imageRepository.background4.height;
+
       Ship.prototype.context = this.shipContext;
       Ship.prototype.canvasWidth = this.shipCanvas.width;
       Ship.prototype.canvasHeight = this.shipCanvas.height;
-      
+
       // Initialize the background object
-      this.background = new Background();
-      this.background.init(0, 0); // Set draw point to 0,0
+      this.background1 = new Background1();
+      this.background1.init(0, 0); // Set draw point to 0,0
+
+      this.background2 = new Background2();
+      this.background2.init(0, 0); // Set draw point to 0,0
+
+      this.background3 = new Background3();
+      this.background3.init(0, 0); // Set draw point to 0,0
+
+      this.background4 = new Background4();
+      this.background4.init(0, 0); // Set draw point to 0,0
 
       // Initialize the ship object
       this.ship = new Ship();
@@ -299,7 +416,7 @@ function Game() {
       var shipStartX = this.shipCanvas.width / 2 - imageRepository.spaceship.width;
       var shipStartY = 0;
       this.ship.init(shipStartX, shipStartY, imageRepository.spaceship.width, imageRepository.spaceship.height);
-      
+
       return true;
     } else {
       return false;
@@ -324,23 +441,23 @@ function updateLives() {
     document.getElementById("heart4").style.visibility = "visible";
     document.getElementById("heart5").style.visibility = "visible";
   }
-  
+
   if (currentLives == 4) {
     document.getElementById("heart1").style.visibility = "hidden";
   }
-  
+
   if (currentLives == 3) {
     document.getElementById("heart2").style.visibility = "hidden";
   }
-  
+
   if (currentLives == 2) {
     document.getElementById("heart3").style.visibility = "hidden";
   }
-  
+
   if (currentLives == 1) {
     document.getElementById("heart4").style.visibility = "hidden";
   }
-  
+
   if (currentLives == 0) {
     document.getElementById("heart5").style.visibility = "hidden";
   }
@@ -353,7 +470,11 @@ function updateLives() {
  * object.
  */
 function animate() {
-  game.background.draw();
+  //game.background2.draw();
+  game.background4.draw();
+  game.background3.draw();
+  // game.background2.draw();
+  game.background1.draw();
   game.ship.move();
   requestAnimFrame(animate);
 }
@@ -395,7 +516,7 @@ document.onkeydown = function (e) {
         document.getElementById("pause-menu").style.display = "none";
         document.getElementById("pause-menu-screen-darken").style.display = "none";
 
-      } else{
+      } else {
         document.getElementById("pause-menu").style.display = "block";
         document.getElementById("pause-menu-screen-darken").style.display = "block";
       }
@@ -456,7 +577,7 @@ function setDifficulty(diff) {
   //easy
   if (diff == 1) {
     difficulty = 1;
-    
+
     if (selectEasy == false) {
       document.getElementById("easy").className = "button-selected";
       document.getElementById("medium").className = "button";
@@ -474,7 +595,7 @@ function setDifficulty(diff) {
     }
   } else if (diff == 3) { //hard
     difficulty = 3;
-    
+
     if (selectHard == false) {
       document.getElementById("easy").className = "button";
       document.getElementById("medium").className = "button";

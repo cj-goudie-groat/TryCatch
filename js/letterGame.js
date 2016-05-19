@@ -148,8 +148,8 @@ function checkCollision(i, letter) {
     var letterRect = {
       x: letters[i].xPos,
       y: letters[i].yPos,
-      width: letterWidth,
-      height: letterHeight
+      width: letterWidth - 5,
+      height: letterHeight - 5
     };
 
     if (shipRect.x + shipRect.widthOffset < letterRect.x + letterRect.width &&
