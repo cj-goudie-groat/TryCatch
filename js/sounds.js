@@ -17,6 +17,10 @@ var wrongElementSound = new Howl ({
   urls: ["sounds/errorsound.mp3"]
 });
 
+var gameOverSound = new Howl ({
+  urls: ["sounds/endgamesound.mp3"]
+});
+
 var bonusSound1 = new Howl ({
   urls: ["sounds/natesound1.mp3"]
 });

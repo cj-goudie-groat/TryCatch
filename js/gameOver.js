@@ -12,6 +12,9 @@ $(document).ready(function () {
  */
 function gameOver() {
   paused = true;
+  
+  gameOverSound.play();
+  
   if (gamemode == "spelling") {
     spellingMusic.loop(false);
     spellingMusic.fadeOut(0, 1000);
