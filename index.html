@@ -128,9 +128,11 @@
         <h1>Game Over!</h1>
         <h2 id="score"></h2>
       </div>
-        <form id="submit-score" action="" method="post" onsubmit="">
+
+        <form action="addScore.php" method="post">
           <div id="user-score"> Your name: 
-            <input type="text" size="3" maxlength="3" id="game-over-input" name="initials">
+            <input type="text" size="3" maxlength="3" name="initials" id="game-over-input"></input>
+            <input id="final-score" name="final-score" visibility="hidden"></input>
           </div>
           <br>
           <input type="submit" value="Submit score" class="button">
