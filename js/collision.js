@@ -38,7 +38,7 @@ function checkCollision(i, character) {
       document.getElementById("score-counter").innerHTML = "" + currentScore;
       newBonusItem(i);
     }
-  } else if (i == null) { // Easter egg element
+  } else if (i == null) { // Special element
     var specialRect = {
       x: specialElement.x,
       y: specialElement.y,
@@ -51,11 +51,12 @@ function checkCollision(i, character) {
       (window.innerHeight - playerRect.height) < specialRect.y + specialRect.height &&
       playerRect.heightOffset + (window.innerHeight - playerRect.height) > specialRect.y) {
       
-      if (character == "egg") {
+      if (character == "egg") { // Easter egg element
         bonusInit();
-      } else if (character == "life") {
+      } else if (character == "life") { // Extra life
         if (currentLives < 5) {
           currentLives++;
+          lifeSound.play();
           updateLives();
         }
       }
