@@ -338,17 +338,19 @@ button .banner {
 }
 
 #left-button {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: auto;
   position: absolute;
   left: 0;
+  bottom: 0;
 }
 
 #right-button {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: auto;
   position: absolute;
   right: 0;
+  bottom: 0;
 }
 
 #game {
