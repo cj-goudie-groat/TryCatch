@@ -1,6 +1,7 @@
+var wordList = []; // Array of words to find
+
 var wordRow = document.getElementById("word-row"); // Div that displays the word
 var currentWord; // Current word to find
-var wordList = ["MARS", "STAR", "SHIP", "HALO", "MOON"]; // Array of words to find
 var wordLength; // Length of the word to find
 var letterCount = 0; // Current letter position to find
 
@@ -61,4 +62,20 @@ function letterCollision(character) {
   }
 }
 
-window.onload = drawWord();
+/**
+ * Adds words from a text file then calls drawWord()
+ * to randomly display one of the words.
+ */
+function addWords(data) {
+  wordList = data;
+  drawWord();
+}
+
+/**
+ * Initializes by getting words from a txt file.
+ */
+$(document).ready(function () {
+  $.get("js/spellingGame/wordList.txt", function (data) {
+    addWords(data.toUpperCase().split("\n"));
+  });
+});

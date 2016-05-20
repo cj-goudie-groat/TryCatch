@@ -47,3 +47,6 @@ cope
 note
 vote
 hold
+star
+moon
+mars

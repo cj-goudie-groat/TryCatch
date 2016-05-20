@@ -43,7 +43,9 @@ var bonusSound4 = new Howl ({
  * Music variables.
  */
 var menuMusic = new Howl ({
-  urls: ["sounds/mainmenusound.mp3"]
+  urls: ["sounds/mainmenusound.mp3"],
+  loop: true,
+  autoplay: true
 });
 
 var spellingMusic = new Howl ({
@@ -86,11 +88,3 @@ $(document).ready(function () {
     }
   });
 });
-
-/**
- * Load menu music when page loads.
- */
-window.onload = function () {
-  menuMusic.loop(true);
-  menuMusic.fadeIn(1, 2000);
-}

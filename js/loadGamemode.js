@@ -34,9 +34,9 @@ function loadGamemode() {
   
   if (gamemode == "spelling") {
     var script = document.createElement("script");
-    script.src = "js/spellingGame.js";
+    script.src = "js/spellingGame/spellingGame.js";
     var head = document.getElementsByTagName("head")[0];
-    head.appendChild(script)
+    head.appendChild(script);
     
     // Play space music for spelling game
     spellingMusic.loop(true);
