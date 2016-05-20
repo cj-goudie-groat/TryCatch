@@ -80,7 +80,7 @@ function createElements() {
   newSpecialItem();
   specialSpawned = false;
   // Spawn special element 60 - 90 seconds after loading
-  specialSpawnTimer = Math.floor(Math.random() * 0); 
+  specialSpawnTimer = Math.floor(Math.random() * 30000) + 60000; 
   setTimeout(function () {
       specialSpawned = true;
     }, specialSpawnTimer);
