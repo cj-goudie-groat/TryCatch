@@ -32,7 +32,7 @@ button {
 }
 
 button:hover {
-    box-shadow: 0px 6px 40px 0px rgba(0, 0, 0, 0.80);
+    box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.80);
 }
 
 #title h1 {
@@ -86,6 +86,8 @@ p {
 }
 
 #cloud {
+  width: 20%;
+  height: auto;
   align-self: center;
   transform: translateY(15%);
 }
@@ -175,11 +177,10 @@ button .banner {
 .button {
   width: 250px;
   height: 50px;
-  margin-bottom: 1em;
-  margin: 0 auto 1em auto;
+  margin: 0 auto .5em auto;
   background-color: #0AAFF1;
   background: #F1AE3E;
-  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.50);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.50);
   border: none;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
@@ -636,7 +637,7 @@ button .banner {
   }
   
   #title h1 {
-    font-size: 4em;
+    font-size: 1em;
   }
   
   #title svg {
