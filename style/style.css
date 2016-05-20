@@ -15,17 +15,21 @@
 body {
   margin: 0;
   padding: 0;
-  background: #4593DE;
-  background-image: radial-gradient(53% 102%, rgba(193, 238, 253, 0.65) 34%, rgba(23, 51, 97, 0.36) 100%);
+  background: #0f162e;
+  background-image: radial-gradient(53% 102%, rgba(0, 0, 0, 0) 34%, rgba(0, 0, 0, 0.45) 100%),
+    url(../images/starbackground.png);*/
+  /* background: #0f162e;
+  background-image: radial-gradient(53% 102%, rgba(0, 0, 0, 0) 34%, rgba(0, 0, 0, 0.45) 100%),
+    url(../images/starbackground.png);*/
 }
 
-#space-bg {
+/* #space-bg {
   width: 100%;
   height: 100vh;
   background: #0f162e;
   background-image: radial-gradient(53% 102%, rgba(0, 0, 0, 0) 34%, rgba(0, 0, 0, 0.45) 100%),
     url(../images/starbackground.png);*/
-}
+} */
 
 button {
   outline: none;
@@ -343,6 +347,8 @@ button .banner {
   position: absolute;
   left: 0;
   bottom: 0;
+  background: none;
+  border: none;
 }
 
 #right-button {
@@ -351,6 +357,8 @@ button .banner {
   position: absolute;
   right: 0;
   bottom: 0;
+  background: none;
+  border: none;
 }
 
 #game {
@@ -635,7 +643,10 @@ button .banner {
   }
   
   body {
-    background-image: linear-gradient(-180deg, rgba(193,238,253,0.65) 0%, rgba(23,51,97,0.36) 100%);
+    /* background-image: linear-gradient(-180deg, rgba(193,238,253,0.65) 0%, rgba(23,51,97,0.36) 100%); */
+    background: #0f162e;
+    background-image: radial-gradient(53% 102%, rgba(0, 0, 0, 0) 34%, rgba(0, 0, 0, 0.45) 100%),
+    url(../images/starbackground.png);
   }
   
   #title h1 {
