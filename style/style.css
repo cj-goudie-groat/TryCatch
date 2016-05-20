@@ -462,6 +462,11 @@ button .banner {
   transform: translateX(-50%);
   left: 50%;
 }
+
+#final-score {
+  display: none;
+}
+
 /*******************/
 /**** DIFFICULTY ***/
 /*******************/

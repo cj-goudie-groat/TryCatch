@@ -21,6 +21,19 @@
     <div id="main-menu">
       <div id="title">
         <h1>Leaderboard</h1>
+         <?php 
+            $servername = "mysql13.000webhost.com";
+            $username = "a5796219_admin";
+            $password = "ilikepie123";
+            $dbname = "a5796219_hs";
+
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            } 
+          ?>
       </div>
       <div id="score-table">
         <table id="scores">
@@ -30,54 +43,51 @@
             <td>Score</td>
           </tr>
           <tr>
-            <td>1.</td>
-            <td>Connor</td>
-            <td>9999</td>
-          </tr>
-          <tr>
-            <td>2.</td>
-            <td>Tyler</td>
-            <td>99999</td>
-          </tr>
-          <tr>
-            <td>3.</td>
-            <td>Everyone Else</td>
-            <td>999999</td>
-          </tr>
-          <tr>
-            <td>4.</td>
-            <td>Nate</td>
-            <td>-1</td>
-          </tr>
-          <tr>
-            <td>5.</td>
-            <td>Nate</td>
-            <td>-1</td>
-          </tr>
-          <tr>
-            <td>6.</td>
-            <td>Nate</td>
-            <td>-1</td>
-          </tr>
-          <tr>
-            <td>7.</td>
-            <td>Nate</td>
-            <td>-1</td>
-          </tr>
-          <tr>
-            <td>8.</td>
-            <td>Nate</td>
-            <td>-1</td>
-          </tr>
-          <tr>
-            <td>9.</td>
-            <td>Nate</td>
-            <td>-1</td>
-          </tr>
-          <tr>
-            <td>10.</td>
-            <td>Nate</td>
-            <td>-1</td>
+            <td>
+              <p> 
+                1. <br>
+                2. <br>
+                3. <br>
+                4. <br>
+                5. <br>
+                6. <br>
+                7. <br>
+                8. <br>
+                9. <br>
+                10.<br>
+              </p>
+            </td>
+            <td>  
+              <?php
+
+              //This is where it prints out the score
+              //Refreshes the list to order the top 10
+              $sql = "SELECT * FROM high_score ORDER by score DESC LIMIT 10";
+              $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                        echo $row["name"]."<br>";
+                    }
+                }
+              ?>
+            </td>
+            <td>
+              <?php
+
+              //This is where it prints out the score
+              //Refreshes the list to order the top 10
+                $sql = "SELECT * FROM high_score ORDER by score DESC LIMIT 10";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                        echo $row["score"]."<br>";
+                    }
+                }
+                $conn->close();
+              ?>
+            </td>
           </tr>
         </table>
       </div>
