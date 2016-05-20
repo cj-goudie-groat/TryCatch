@@ -10,14 +10,14 @@ $(document).ready(function () {
    * Calls the goToLeaderBoard() function.
    */
   $(".leaderboard-button").click(function () {
-    goToLeaderboard()
+    goToLeaderboard();
   });
   
   /**
    * Calls the goToMainMenu() function.
    */
   $(".main-menu-button").click(function () {
-    goToMainMenu()
+    goToMainMenu();
   });
 });
 
@@ -25,6 +25,7 @@ $(document).ready(function () {
  * Loads to the main menu page.
  */
 function goToMainMenu() {
+  buttonSound.play();
   canPause = false;
   document.location.href = 'index.html';
 }
@@ -33,6 +34,7 @@ function goToMainMenu() {
  * Loads to the leaderboard page.
  */
 function goToLeaderboard() {
+  buttonSound.play();
   canPause = false;
   document.location.href = 'leaderboard.html';
 }

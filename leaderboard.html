@@ -10,6 +10,11 @@
   <link href='https://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
   
   <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+  
+  <!-- Sounds library-->
+  <script src="js/howlerjs/howler.js"></script>
+  
+  <!-- Menu and sounds scripts -->
   <script src="js/menus.js"></script>
   <script src="js/sounds.js"></script>
 </head>
@@ -60,7 +65,7 @@
             <td>  
               <?php
 
-              //This is where it prints out the score
+              //This is where it prints out the name
               //Refreshes the list to order the top 10
               $sql = "SELECT * FROM high_score ORDER by score DESC LIMIT 10";
               $result = $conn->query($sql);

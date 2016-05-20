@@ -3,24 +3,34 @@
  */
 function bonusLevel() {
   game.elementContext.clearRect(0, 0, game.elementCanvas.width, game.elementCanvas.height);
-  if (!muteSound) {
-    createjs.Sound.stop("gameMusic");
-    //createjs.Sound.play("bonusMusic");
-  }
+  
+  spellingMusic.loop(false);
+  spellingMusic.fadeOut(0, 1000);
+  
+  /*
+  bonusMusic.loop(true);
+  bonusMusic.fadeIn(1, 2000);
+  */
+  
   // Update player model
   game.player.draw();
   // Wait for [bonusLength]ms to end bonus level
   setTimeout(function() {
     stopBonusLevel();
-    if (!muteSound) {
-      //createjs.Sound.stop("bonusMusic");
-      createjs.Sound.play("gameMusic", {interrupt: createjs.Sound.INTERRUPT_ANY, loop:-1});
-    }
   }, bonusLength);
 }
 
 function stopBonusLevel() {
   bonusActive = false;
+  
+  /*
+  bonusMusic.loop(false);
+  bonusMusic.fadeOut(0, 1000);
+  */
+  
+  spellingMusic.loop(true);
+  spellingMusic.play(1, 2000);
+  
   game.elementContext.clearRect(0, 0, game.elementCanvas.width, game.elementCanvas.height);
   // Update player model
   game.player.draw();

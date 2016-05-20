@@ -3,7 +3,7 @@ $(document).ready(function () {
    * Calls the retryGame() function when the retry button is pressed.
    */
   $("#retry-button").click(function () {
-    retryGame()
+    retryGame();
   });
 });
 
@@ -12,9 +12,11 @@ $(document).ready(function () {
  */
 function gameOver() {
   paused = true;
-  if (!muteSound) {
-    createjs.Sound.stop("gameMusic");
+  if (gamemode == "spelling") {
+    spellingMusic.loop(false);
+    spellingMusic.fadeOut(0, 1000);
   }
+  
   canPause = false;
   document.getElementById("game-over").style.display = "block";
   document.getElementById("pause-menu-screen-darken").style.display = "block";
@@ -26,9 +28,11 @@ function gameOver() {
  * Restarts the game
  */
 function retryGame() {
-    if (!muteSound) {
-      createjs.Sound.play("gameMusic", {interrupt: createjs.Sound.INTERRUPT_ANY, loop:-1});
-    }
+  if (gamemode == "spelling") {
+    spellingMusic.loop(true);
+    spellingMusic.fadeIn(1, 2000);
+  }
+  
   // Reset element positions
   for (var i = 0; i < elementAmount; i++) {
     newElement(i);

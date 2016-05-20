@@ -26,24 +26,24 @@ function clearWord() {
   wordRow.innerHTML = "";
 }
 
+/**
+ * Checks if the letter collected it the correct letter.
+ */
 function letterCollision(character) {
   if(character == currentWord.charAt(letterCount)) {
     if (letterCount != wordLength) {
-      if (!muteSound) {
-        createjs.Sound.play("correctElementSound");
-      }
+      correctElementSound.play();
     }
     currentScore += 100 * scoreMult;
     document.getElementById("score-counter").innerHTML = "" + currentScore;
     wordRow.cells[letterCount].style = "color: #FFFFFF";
     letterCount++;
-
+    
+    // Checks if the word is complete and draws a new one if it is 
     if(letterCount == wordLength) {
       letterCount = 0;
       currentScore += 500 * scoreMult;
-      if (!muteSound) {
-        createjs.Sound.play("correctWord");
-      }
+      correctWordSound.play();
       document.getElementById("score-counter").innerHTML = "" + currentScore;
       clearWord();
       drawWord();
@@ -51,20 +51,14 @@ function letterCollision(character) {
   } else {
     currentLives--;
     if (currentLives != 0) {
-      if (!muteSound) {
-        createjs.Sound.play("wrongElementSound");
-      }
+      wrongElementSound.play();
     }
     updateLives();
     // Determines if you lost the game or not
     if (currentLives == 0) {
-      if (!muteSound) {
-        createjs.Sound.play("gameOverSound");
-      }
       gameOver();
     }
   }
 }
-
 
 window.onload = drawWord();

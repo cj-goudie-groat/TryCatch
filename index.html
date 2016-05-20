@@ -5,9 +5,14 @@
   <meta name="viewport" content="minimal-ui, initial-scale=1.0, user-scalable=0">
   <title>TryCatch - Home</title>
   <link href="style/style.css" rel="stylesheet" type="text/css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-  <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  
+  <!-- Sounds library-->
+  <script src="js/howlerjs/howler.js"></script>
+  <script src="js/sounds.js"></script>
+  <script src="js/menus.js"></script>
 </head>
 
 <body>
@@ -58,7 +63,7 @@
           <button id="start-button" class="button">Start Game</button>
           <button id="difficulty-button" class="button">Difficulty</button>
           <button class="button leaderboard-button">Leaderboard</button>
-          <button id="mute-button" class="button">Mute sound</button>
+          <button class="mute-button button ">Mute Sound</button>
         </div>
       </div>
       <div id="difficulty-menu" >
@@ -116,7 +121,7 @@
       <br>
       <button class="button main-menu-button">Main Menu</button>
       <br>
-      <button id="mute-button1" class="button">Mute sound</button>
+      <button class="mute-button button">Mute Sound</button>
     </div>
     
     <!-- This is the pause screen darken effect -->
@@ -131,11 +136,11 @@
 
         <form action="addScore.php" method="post">
           <div id="user-score"> Your name: 
-            <input type="text" size="3" maxlength="3" name="initials" id="game-over-input"></input>
-            <input id="final-score" name="final-score" visibility="hidden"></input>
+            <input type="text" size="3" maxlength="3" name="initials" id="game-over-input">
+            <input id="final-score" name="final-score" visibility="hidden">
           </div>
           <br>
-          <input type="submit" value="Submit score" class="button">
+        <input type="submit" value="Submit score" class="button">
         </form>
         <button id="retry-button" class="button">Retry</button>
         <br>
@@ -149,11 +154,9 @@
   <script src="js/globals.js"></script>
   <script src="js/game.js"></script>
   
-  <!-- Menu and sound scripts -->
-  <script src="js/menus.js"></script>
+  <!-- Menu scripts -->
   <script src="js/selectGamemode.js"></script>
   <script src="js/setDifficulty.js"></script>
-  <script src="js/sounds.js"></script>
   <script src="js/pause.js"></script>
   
   <!-- Image type scripts -->

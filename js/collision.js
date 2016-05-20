@@ -25,19 +25,14 @@ function checkCollision(i, character) {
         (window.innerHeight - playerRect.height) < bonusRect.y + bonusRect.height &&
         playerRect.heightOffset + (window.innerHeight - playerRect.height) > bonusRect.y) {
       
+      // Randomizes a "Nate" sound for bonus element collection
       nayte = Math.floor(Math.random() * 3);
       if (nayte == 0) {
-        if (!muteSound) {
-          createjs.Sound.play("bonus1");
-        }
+        bonusSound1.play();
       } else if (nayte == 1) {
-        if (!muteSound) {
-          createjs.Sound.play("bonus2");
-        }
+        bonusSound2.play();
       } else {
-        if (!muteSound) {
-          createjs.Sound.play("bonus3");
-        }
+        bonusSound3.play();
       }
       currentScore += 10;
       document.getElementById("score-counter").innerHTML = "" + currentScore;

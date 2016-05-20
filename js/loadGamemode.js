@@ -28,13 +28,22 @@ function loadGamemode() {
     document.getElementById("level-counter").innerHTML = "Level: Medium";
   }
   
+  // Mutes the menu music
+  menuMusic.loop(false);
+  menuMusic.fadeOut(0, 1000);
+  
   if (gamemode == "spelling") {
     var script = document.createElement("script");
     script.src = "js/spellingGame.js";
     var head = document.getElementsByTagName("head")[0];
     head.appendChild(script)
+    
+    // Play space music for spelling game
+    spellingMusic.loop(true);
+    spellingMusic.fadeIn(1, 2000);
   }
   
+  // Create the elements, start animation loop, and size the canvas
   createElements();
   animate();
   resizeCanvas();
