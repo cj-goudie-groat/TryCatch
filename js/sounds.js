@@ -5,20 +5,21 @@ function loadSounds() {
   /**
    * Sound effects
    */
-  createjs.Sound.registerSound("sounds/button.mp3", "buttonSound"); //added 
-  createjs.Sound.registerSound("sounds/collectionsound.mp3", "correctElementSound"); //added
-  createjs.Sound.registerSound("sounds/errorsound.mp3", "wrongElementSound"); //added
-  createjs.Sound.registerSound("sounds/gameover.mp3", "gameOverSound"); // added
-  createjs.Sound.registerSound("sounds/natesound1.mp3", "bonus1"); // added
-  createjs.Sound.registerSound("sounds/natesound2.mp3", "bonus2"); // added
-  createjs.Sound.registerSound("sounds/natesound3.mp3", "bonus3"); // added
-  createjs.Sound.registerSound("sounds/wordsound.mp3", "correctWord"); //added
+  createjs.Sound.registerSound("sounds/button.mp3", "buttonSound");
+  createjs.Sound.registerSound("sounds/collectionsound.mp3", "correctElementSound");
+  createjs.Sound.registerSound("sounds/errorsound.mp3", "wrongElementSound");
+  createjs.Sound.registerSound("sounds/gameover.mp3", "gameOverSound");
+  createjs.Sound.registerSound("sounds/natesound1.mp3", "bonus1");
+  createjs.Sound.registerSound("sounds/natesound2.mp3", "bonus2");
+  createjs.Sound.registerSound("sounds/natesound3.mp3", "bonus3");
+  createjs.Sound.registerSound("sounds/natesound4.mp3", "bonus4"); // Does not exist yet
+  createjs.Sound.registerSound("sounds/wordsound.mp3", "correctWord");
   /**
    * Music
    */
-  createjs.Sound.registerSound("sounds/button.mp3", "bonusMusic"); // NOT EXIST YET
-  createjs.Sound.registerSound("sounds/spacesound.mp3", "gameMusic"); // added
-  createjs.Sound.registerSound("sounds/mainmenusound.mp3", "menuMusic"); //
+  createjs.Sound.registerSound("sounds/bonusgamesound.mp3", "bonusMusic"); // Does not exist yet
+  createjs.Sound.registerSound("sounds/spacesound.mp3", "gameMusic");
+  createjs.Sound.registerSound("sounds/mainmenusound.mp3", "menuMusic"); //Not functioning entirely
 }
 
 
@@ -51,6 +52,7 @@ $(document).ready(function () {
     }
     muteSound = !muteSound;
   });
+  
   $("#mute-button1").click(function () {
     if (!muteSound) {
       document.getElementById("mute-button1").innerHTML = "Unmute Sound";
@@ -59,10 +61,10 @@ $(document).ready(function () {
     } else {
       document.getElementById("mute-button1").innerHTML = "Mute Sound";
       createjs.Sound.play("gameMusic", {interrupt: createjs.Sound.INTERRUPT_ANY, loop:-1});
-      
     }
     muteSound = !muteSound;
   });
+  
 });
 
 window.onload = function () {
