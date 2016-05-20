@@ -29,7 +29,7 @@ function stopBonusLevel() {
   */
   
   spellingMusic.loop(true);
-  spellingMusic.play(1, 2000);
+  spellingMusic.fadeIn(1, 2000);
   
   game.elementContext.clearRect(0, 0, game.elementCanvas.width, game.elementCanvas.height);
   // Update player model
