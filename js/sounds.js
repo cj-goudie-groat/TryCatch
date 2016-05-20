@@ -21,6 +21,10 @@ var gameOverSound = new Howl ({
   urls: ["sounds/endgamesound.mp3"]
 });
 
+var lifeSound = new Howl ({
+  urls: ["sounds/lifesound.mp3"]
+});
+
 var bonusSound1 = new Howl ({
   urls: ["sounds/natesound1.mp3"]
 });
@@ -32,12 +36,6 @@ var bonusSound2 = new Howl ({
 var bonusSound3 = new Howl ({
   urls: ["sounds/natesound3.mp3"]
 });
-
-/* Doesn't exist yet
-var bonusSound4 = new Howl ({
-  urls: ["sounds/natesound4.mp3"]
-});
-*/
 
 /**
  * Music variables.
@@ -51,11 +49,10 @@ var menuMusic = new Howl ({
 var spellingMusic = new Howl ({
   urls: ["sounds/spacesound.mp3"]
 });
-/* Doesn't exist yet
+
 var bonusMusic = new Howl ({
-  urls: ["sounds/bonusgamesound.mp3"]
+  urls: ["sounds/bonuslevelsound.mp3"]
 });
-*/
 
 $(document).ready(function () {
   /**

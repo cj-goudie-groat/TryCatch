@@ -7,10 +7,8 @@ function bonusLevel() {
   spellingMusic.loop(false);
   spellingMusic.fadeOut(0, 1000);
   
-  /*
   bonusMusic.loop(true);
   bonusMusic.fadeIn(1, 2000);
-  */
   
   // Update player model
   game.player.draw();
@@ -20,13 +18,14 @@ function bonusLevel() {
   }, bonusLength);
 }
 
+/**
+ * Stops the bonus level and returns to normal gamemode.
+ */
 function stopBonusLevel() {
   bonusActive = false;
   
-  /*
   bonusMusic.loop(false);
   bonusMusic.fadeOut(0, 1000);
-  */
   
   spellingMusic.loop(true);
   spellingMusic.fadeIn(1, 2000);
@@ -34,12 +33,14 @@ function stopBonusLevel() {
   game.elementContext.clearRect(0, 0, game.elementCanvas.width, game.elementCanvas.height);
   // Update player model
   game.player.draw();
-    
+  
+  // Sets the bonus elements back to the top.
   for (var i = 0; i < bonusAmount; i++) {
     bonusItems[i].x = Math.floor(Math.random() * (game.elementCanvas.width - bonusWidth));
     bonusItems[i].y = Math.floor(Math.random() * (game.elementCanvas.height - bonusHeight) * -1);
   }
-    
+  
+  // Spawns new elements to fall
   for (var i = 0; i < elementAmount; i++) {
     newElement(i);
   }
@@ -52,6 +53,9 @@ function stopBonusLevel() {
   }, specialSpawnTimer);
 }
 
+/**
+ * Fills the array for bonus elements.
+ */
 function bonusInit() {
   bonusActive = true;
   // Fill bonus level items array
