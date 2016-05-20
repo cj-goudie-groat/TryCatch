@@ -34,7 +34,11 @@ var canPause = false; // Whether player can pause or not
  */
 var elements = []; // Array for falling elements
 var elementAmount = 13; // Amount of elements to continuously spawn (default medium)
-var elementSpeed = 7; // Speed of the elements (default medium)
+if (window.innerWidth > 1000) {
+  var elementSpeed = 6; // Speed of the elements (default medium)
+} else {
+  var elementSpeed = 4;
+}
 var elementWidth = 70; // Width of the elements
 var elementHeight = 70; // Height of the elements
 

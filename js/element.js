@@ -5,11 +5,23 @@
  */
 function Element() {
   if (difficulty == 1) { // Easy
-    this.speed = 4;
+    if (window.innerWidth) {
+      this.speed = 3;
+    } else {
+      this.speed = 1;
+    }
   } else if (difficulty == 3) { // Hard
-    this.speed = 10;
+    if (window.innerWidth) {
+      this.speed = 8;
+    } else {
+      this.speed = 6;
+    }
   } else { // Medium (default)
-    this.speed = 7;
+    if (window.innerWidth) {
+      this.speed = 6;
+    } else {
+      this.speed = 4;
+    }
   }
   
   this.img = new Image();

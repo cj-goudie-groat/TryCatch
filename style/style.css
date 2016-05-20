@@ -86,7 +86,7 @@ p {
 }
 
 #cloud {
-  width: 20%;
+  width: 30%;
   height: auto;
   align-self: center;
   transform: translateY(15%);
@@ -637,7 +637,7 @@ button .banner {
   }
   
   #title h1 {
-    font-size: 1em;
+    font-size: 3em;
   }
   
   #title svg {

@@ -26,8 +26,14 @@ function setDifficulty(diff) {
   if (diff == 1) { // Easy
     difficulty = 1;
     scoreMult = 0.5;
-    elementSpeed = 4;
-    elementAmount = 10;
+    
+    if (window.innerWidth > 1000) {
+      elementSpeed = 3;
+      elementAmount = 10;
+    } else {
+      elementSpeed = 1;
+      elementAmount = 13;
+    }
 
     if (selectEasy == false) {
       document.getElementById("easy").className = "button-selected";
@@ -47,8 +53,14 @@ function setDifficulty(diff) {
   } else if (diff == 3) { // Hard
     difficulty = 3;
     scoreMult = 1;
-    elementSpeed = 10;
-    elementAmount = 15;
+    
+    if (window.innerWidth > 1000) {
+      elementSpeed = 8;
+      elementAmount = 15;
+    } else {
+      elementSpeed = 6;
+      elementAmount = 15;
+    }
 
     if (selectHard == false) {
       document.getElementById("easy").className = "button";
@@ -68,8 +80,14 @@ function setDifficulty(diff) {
   } else { // Medium (default)
     difficulty = 2;
     scoreMult = 0.75;
-    elementSpeed = 7;
-    elementAmount = 13;
+    
+    if (window.innerWidth > 1000) {
+      elementSpeed = 6;
+      elementAmount = 13;
+    } else {
+      elementSpeed = 4;
+      elementAmount = 13;
+    }
     
     if (selectMedium == false) {
       document.getElementById("easy").className = "button";

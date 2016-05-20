@@ -69,5 +69,4 @@ $(document).ready(function () {
 
 window.onload = function () {
   loadSounds();
-  playMenuMusic();
 };
