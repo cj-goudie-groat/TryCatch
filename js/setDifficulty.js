@@ -28,11 +28,11 @@ function setDifficulty(diff) {
     scoreMult = 0.5;
     
     if (window.innerWidth > 1000) {
-      elementSpeed = 3;
+      elementSpeed = 5;
       elementAmount = 10;
     } else {
-      elementSpeed = 1;
-      elementAmount = 13;
+      elementSpeed = 5;
+      elementAmount = 5;
     }
 
     if (selectEasy == false) {
@@ -59,7 +59,7 @@ function setDifficulty(diff) {
       elementAmount = 15;
     } else {
       elementSpeed = 6;
-      elementAmount = 15;
+      elementAmount = 10;
     }
 
     if (selectHard == false) {
@@ -86,7 +86,7 @@ function setDifficulty(diff) {
       elementAmount = 13;
     } else {
       elementSpeed = 4;
-      elementAmount = 13;
+      elementAmount = 7;
     }
     
     if (selectMedium == false) {
