@@ -16,6 +16,10 @@ function drawEquation() {
     equationRow.insertCell(0);
   }
   
+  for (var i = 0; i < 3; i++) {
+    equationRow.cells[i].innerHTML = "&nbsp;";
+  }
+  
   // Assign the operands and operator to their cell
   operand1 = equationRow.cells[0];
   operator = equationRow.cells[1];
@@ -23,7 +27,7 @@ function drawEquation() {
   
   // Generates a random number from -9 to 18
   answer = Math.floor(Math.random() * 28) - 9;
-  equationRow.cells[3].innerHTML = " = " + answer;
+  equationRow.cells[3].innerHTML = "&nbsp;=&nbsp;" + answer;
 }
 
 /**
@@ -36,15 +40,18 @@ function equationCollision(character) {
     correctElementSound.play();
     // Assign to operator if an operator is picked up
     operator.innerHTML = character;
-  } else if (operand1.innerHTML == "") {
+  } else if (operand1.innerHTML == "&nbsp;") {
     correctElementSound.play();
-    // Assign first operator if it is empty
+    // Assign to first operand if it is empty
     operand1.innerHTML = character;
-  } else if (operator.innerHTML != "") {
-    // Assign second operand if there is an operator
+  } else if (operand2.innerHTML == "&nbsp;") {
+    // Assign to second operand if it is empty
     operand2.innerHTML = character;
-    
-    // Checks if the answer is correct
+  }
+  
+  // Checks if the answer is correct when equation is collected
+  if (operator.innerHTML != "&nbsp;" && operand1.innerHTML != "&nbsp;" &&
+      operand2.innerHTML != "&nbsp;") {
     checkAnswer();
   }
 }
@@ -59,6 +66,7 @@ function checkAnswer() {
     if (parseInt(operand1.innerHTML) + parseInt(operand2.innerHTML) == answer) {
       correctAnswerSound.play();
       currentScore += 500 * scoreMult;
+      document.getElementById("score-counter").innerHTML = "" + currentScore;
     } else { // Wrong answer
       currentLives--;
       updateLives();
@@ -73,6 +81,7 @@ function checkAnswer() {
     if (parseInt(operand1.innerHTML) - parseInt(operand2.innerHTML) == answer) {
       correctAnswerSound.play();
       currentScore += 500 * scoreMult;
+      document.getElementById("score-counter").innerHTML = "" + currentScore;
       clearEquation();
       drawEquation();
     } else { // Wrong answer

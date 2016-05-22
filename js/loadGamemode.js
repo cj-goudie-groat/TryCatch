@@ -52,6 +52,9 @@ function loadGamemode() {
     spellingMusic.fadeIn(1, 2000);
   }
   
+  // Display score at the top right
+  document.getElementById("score-counter").innerHTML = 0;
+  
   // Create the elements, start animation loop, and size the canvas
   createElements();
   animate();
