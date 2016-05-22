@@ -26,7 +26,7 @@
     <div id="main-menu">
       <div id="title">
         <h1>Leaderboard</h1>
-         <?php 
+          <?php 
             $servername = "mysql13.000webhost.com";
             $username = "a5796219_admin";
             $password = "ilikepie123";
@@ -67,27 +67,27 @@
 
               //This is where it prints out the name
               //Refreshes the list to order the top 10
-              $sql = "SELECT * FROM high_score ORDER by score DESC LIMIT 10";
+              $sql = "SELECT * FROM sp_hs ORDER by sp_score DESC LIMIT 10";
               $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
-                        echo $row["name"]."<br>";
+                        echo $row["sp_name"]."<br>";
                     }
                 }
               ?>
-            </td>
+        </td>
             <td>
               <?php
 
               //This is where it prints out the score
               //Refreshes the list to order the top 10
-                $sql = "SELECT * FROM high_score ORDER by score DESC LIMIT 10";
+                $sql = "SELECT * FROM sp_hs ORDER by sp_score DESC LIMIT 10";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     // output data of each row
                     while($row = $result->fetch_assoc()) {
-                        echo $row["score"]."<br>";
+                        echo $row["sp_score"]."<br>";
                     }
                 }
                 $conn->close();
