@@ -43,7 +43,7 @@ function loadGamemode() {
     spellingMusic.fadeIn(1, 2000);
   } else if (gamemode == "math") {
     var script = document.createElement("script");
-    script.src = "js/mathGame/mathGame.js";
+    script.src = "js/mathGame/mathGame2.js";
     var head = document.getElementsByTagName("head")[0];
     head.appendChild(script);
     

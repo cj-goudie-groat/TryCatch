@@ -1,7 +1,9 @@
+var equationTable = document.getElementById("answer-table"); //table that contains equation
 var equationRow = document.getElementById("answer-row"); // Div that displays the equation
 var currentNumber; // Current number to find
 var operandCount = 0; // Current amount of operands found
 var equationLength = 4; // Length of the full equation (1 + 1 [= 2])
+var currentIndex = 0;
 
 var answer; // The answer to find
 var operator; // Current operator in use
@@ -18,6 +20,7 @@ function drawEquation() {
   
   for (var i = 0; i < 3; i++) {
     equationRow.cells[i].innerHTML = "&nbsp;";
+    equationRow.cells[i].className = "equation-answer";
   }
   
   // Assign the operands and operator to their cell
@@ -25,7 +28,9 @@ function drawEquation() {
   operator = equationRow.cells[1];
   operand2 = equationRow.cells[2];
   
-  equationRow.style = "text-shadow: none; color: white";
+  operand1.style = "border: 5px solid white";
+  
+  equationTable.style = "margin-top: 10px; border-spacing: 20px; color: #FFFFFF;";
   
   // Generates a random number from -9 to 18
   answer = Math.floor(Math.random() * 28) - 9;
@@ -38,7 +43,7 @@ function drawEquation() {
  * if the equation is true or not.
  */
 function equationCollision(character) {
-  if (isNaN(character)) {
+/*  if (isNaN(character)) {
     correctElementSound.play();
     // Assign to operator if an operator is picked up
     operator.innerHTML = character;
@@ -49,6 +54,46 @@ function equationCollision(character) {
   } else if (operand2.innerHTML == "&nbsp;") {
     // Assign to second operand if it is empty
     operand2.innerHTML = character;
+  } */
+  
+  if (currentIndex == 0) {
+    if (!isNaN(character)) {
+      correctElementSound.play();
+      operand1.innerHTML = character;
+      currentIndex++;
+      operand1.style = "";
+      operator.style = "border: 5px solid white";
+    } else if (isNaN(character)) {
+      wrongElementSound.play();
+      clearEquation();
+      drawEquation();
+    }
+    
+  } else if (currentIndex == 1) {
+    if (isNaN(character)) {
+      correctElementSound.play();
+      operator.innerHTML = character;
+      currentIndex++;
+      operator.style = "";
+      operand2.style = "border: 5px solid white";
+    } else if (!isNaN(character)) {
+      wrongElementSound.play();
+      clearEquation();
+      drawEquation();
+      currentIndex = 0;
+    }
+    
+  } else if (currentIndex == 2) {
+    if (!isNaN(character)) {
+      correctElementSound.play();
+      operand2.innerHTML = character;
+      currentIndex = 0;
+    } else if (isNaN(character)) {
+      wrongElementSound.play();
+      clearEquation();
+      drawEquation();
+      currentIndex = 0;
+    }
   }
   
   // Checks if the answer is correct when equation is collected
