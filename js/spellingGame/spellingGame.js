@@ -53,12 +53,11 @@ function letterCollision(character) {
     }
   } else {
     currentLives--;
+    updateLives();
+    
     if (currentLives != 0) {
       wrongElementSound.play();
-    }
-    updateLives();
-    // Determines if you lost the game or not
-    if (currentLives == 0) {
+    } else { // Lost the game
       gameOver();
     }
   }

@@ -99,7 +99,7 @@ function newElement(index) {
             elements[index].y + elementHeight > elements[i].y) {
         
         // Move spwan position if there is a collision
-        elements[index].y -= Math.floor(Math.random() * (game.elementCanvas.height + elementHeight) * -1);
+        elements[index].y = Math.floor(Math.random() * (game.elementCanvas.height + elementHeight) * -1);
       }
     }
   }
