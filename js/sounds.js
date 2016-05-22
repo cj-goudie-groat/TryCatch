@@ -9,8 +9,8 @@ var correctElementSound = new Howl ({
   urls: ["sounds/collectionsound.mp3"]
 });
 
-var correctWordSound = new Howl ({
-  urls: ["sounds/wordsound.mp3"]
+var correctAnswerSound = new Howl ({
+  urls: ["sounds/answersound.mp3"]
 });
 
 var wrongElementSound = new Howl ({

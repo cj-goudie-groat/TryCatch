@@ -1,18 +1,24 @@
-var selected = false; // Whether or not the gamemode button is selected
+$(document).ready(function () {
+  $(".available").click(function () {
+    selectGamemode(this.id);
+  });
+});
 
 /**
  * Sets the gamemode to play.
  */
 function selectGamemode(id) {
-  if (selected == false) {
-    document.getElementById(id).className = "theme-selected";
-    selected = true;
-  } else {
-    document.getElementById(id).className = "theme";
-    selected = false;
+  var themes = document.getElementsByClassName("theme-selected");
+  
+  while (themes.length) {
+    themes[0].className = "theme";
   }
+  
+  document.getElementById(id).className = "theme-selected";
   
   if (id == "spelling-button") {
     gamemode = "spelling";
+  } else if (id == "math-button") {
+    gamemode = "math";
   }
 }

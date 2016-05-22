@@ -53,7 +53,7 @@ function checkCollision(i, character) {
       
       if (character == "egg") { // Easter egg element
         bonusInit();
-      } else if (character == "life") { // Extra life
+      } else if (character == "life") { // Extra life element
         if (currentLives < 5) {
           currentLives++;
           lifeSound.play();
@@ -82,6 +82,8 @@ function checkCollision(i, character) {
       
       if (gamemode == "spelling") {
         letterCollision(character);
+      } else if (gamemode == "math") {
+        equationCollision(character);
       }
       newElement(i);
     }

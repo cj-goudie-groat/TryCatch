@@ -303,7 +303,7 @@ button .banner {
   color: white;
 }
 
-#word-section {
+#answer-section {
   position: absolute;
   top: 0px;
   width: auto;
@@ -313,11 +313,7 @@ button .banner {
   transform: translateX(-50%);
 }
 
-#word {
-  color: #FFFFFF;
-}
-
-#word-table {
+#answer-table {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 3em;
@@ -717,11 +713,11 @@ button .banner {
     font-size: 4em;
   }
   
-  #word-section {
+  #answer-section {
     top: 80px;
   }
   
-  #word-table {
+  #answer-table {
     font-size: 2em;
   }
   

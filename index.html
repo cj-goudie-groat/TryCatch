@@ -50,7 +50,7 @@
             <label for="spelling">Spelling</label>
           </div>
           <div class="selector">
-            <button class="theme" name="math" id="math-button">
+            <button class="theme available" name="math" id="math-button">
               <div class="banner">Coming Soon</div>
             </button>
             <label for="math">Math</label>
@@ -75,11 +75,11 @@
       <!-- This is the difficulty menu section (hidden by default) -->
       <div id="difficulty-menu" >
         <h2>Choose Difficulty</h2>
-        <button id="easy" class="button">Easy</button>
+        <button id="easy" class="button diff">Easy</button>
         <br/>
-        <button id="medium" class="button-selected">Medium</button>
+        <button id="medium" class="button-selected diff">Medium</button>
         <br/>
-        <button id="hard" class="button">Hard</button>
+        <button id="hard" class="button diff">Hard</button>
       </div>
     </div>
     <!-- This is the game section (hidden on start) -->
@@ -115,10 +115,10 @@
           <p id="score-counter"></p>
         </div>
       </div>
-      <!-- Word displayed -->
-      <div id="word-section">
-        <table id="word-table">
-          <tr id="word-row"></tr>
+      <!-- Answer displayed -->
+      <div id="answer-section">
+        <table id="answer-table">
+          <tr id="answer-row"></tr>
         </table>
       </div>
     </div>

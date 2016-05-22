@@ -74,6 +74,18 @@ function newElement(index) {
     var randomLetter = Math.floor(Math.random() * (122 - 97 + 1)) + 97; // Random letter from a-z
     elements[index].img.src = "images/letters/" + String.fromCharCode(randomLetter) + ".png";
     elements[index].character = String.fromCharCode(randomLetter).toUpperCase(); // A-Z
+  } else if (gamemode == "math") {
+    var randomNumber = Math.floor(Math.random() * 12); // Random number from 0-11
+    if (randomNumber == 10) { // + (add)
+      elements[index].img.src = "images/numbers/+.png";
+      elements[index].character = "+";
+    } else if (randomNumber == 11) { // - (subtract)
+      elements[index].img.src = "images/numbers/-.png";
+      elements[index].character = "-";
+    } else { // 0-9
+      elements[index].img.src = "images/numbers/" + randomNumber + ".png";
+      elements[index].character = randomNumber;
+    }
   }
   
   // Check for collision with other elements
@@ -87,7 +99,7 @@ function newElement(index) {
             elements[index].y + elementHeight > elements[i].y) {
         
         // Move spwan position if there is a collision
-        elements[index].y -= elementHeight;
+        elements[index].y -= Math.floor(Math.random() * (game.elementCanvas.height + elementHeight) * -1);
       }
     }
   }

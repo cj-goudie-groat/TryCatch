@@ -1,6 +1,6 @@
 var wordList = []; // Array of words to find
 
-var wordRow = document.getElementById("word-row"); // Div that displays the word
+var answerRow = document.getElementById("answer-row"); // Div that displays the word
 var currentWord; // Current word to find
 var wordLength; // Length of the word to find
 var letterCount = 0; // Current letter position to find
@@ -15,10 +15,10 @@ function drawWord() {
   currentWord = wordList[randomIndex];
   wordLength = currentWord.length;
   for (var i = 0; i < wordLength; i++) {
-    wordRow.insertCell(0);
+    answerRow.insertCell(0);
   }
   for (var i = 0; i < wordLength; i++) {
-    wordRow.cells[i].innerHTML = currentWord.charAt(i);
+    answerRow.cells[i].innerHTML = currentWord.charAt(i);
   }
 }
 
@@ -26,7 +26,7 @@ function drawWord() {
  * Clears cells in word row.
  */
 function clearWord() {
-  wordRow.innerHTML = "";
+  answerRow.innerHTML = "";
 }
 
 /**
@@ -39,14 +39,14 @@ function letterCollision(character) {
     }
     currentScore += 100 * scoreMult;
     document.getElementById("score-counter").innerHTML = "" + currentScore;
-    wordRow.cells[letterCount].style = "color: #FFFFFF";
+    answerRow.cells[letterCount].style = "color: #FFFFFF";
     letterCount++;
     
     // Checks if the word is complete and draws a new one if it is 
     if(letterCount == wordLength) {
       letterCount = 0;
       currentScore += 500 * scoreMult;
-      correctWordSound.play();
+      correctAnswerSound.play();
       document.getElementById("score-counter").innerHTML = "" + currentScore;
       clearWord();
       drawWord();
