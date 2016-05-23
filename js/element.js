@@ -71,7 +71,13 @@ function newElement(index) {
   elements[index].x = Math.floor(Math.random() * (game.elementCanvas.width - elementWidth));
   elements[index].y = Math.floor(Math.random() * (game.elementCanvas.height + elementHeight) * -1);
   if (gamemode == "spelling") {
-    var randomLetter = Math.floor(Math.random() * (122 - 97 + 1)) + 97; // Random letter from a-z
+/*    var randGen = Math.floor(Math.random() * 30);
+    if (randGen % 3 == 0) {
+      var randIndex = Math.floor(Math.random() * wordLength);
+      var randomLetter = currentWord.charCodeAt(randIndex);
+    } else { */
+      var randomLetter = Math.floor(Math.random() * (122 - 97 + 1)) + 97; // Random letter from a-z
+//    }
     elements[index].img.src = "images/letters/" + String.fromCharCode(randomLetter) + ".png";
     elements[index].character = String.fromCharCode(randomLetter).toUpperCase(); // A-Z
   } else if (gamemode == "math") {

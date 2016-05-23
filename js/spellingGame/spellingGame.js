@@ -1,9 +1,9 @@
 var wordList = []; // Array of words to find
 
 var answerRow = document.getElementById("answer-row"); // Div that displays the word
+var letterCount = 0; // Current letter position to find
 var currentWord; // Current word to find
 var wordLength; // Length of the word to find
-var letterCount = 0; // Current letter position to find
 
 wordList = ["SHIP", "MARS", "STAR", "MOON", "HALO", "RING"];
 
