@@ -35,6 +35,9 @@ function drawEquation() {
   // Generates a random number from 0 to 100
   answer = Math.floor(Math.random() * 100);
   equationRow.cells[3].innerHTML = "=&nbsp;" + answer;
+
+  // Set the active box back to the first operand
+  currentIndex = 0;
 }
 
 /**
@@ -57,15 +60,25 @@ function equationCollision(character) {
       // If an operator is grabbed before a number, it takes away a life
       if (isNaN(character) && operand1.innerHTML == "") {
         loseLife();
+        clearAnswer();
       } else if (!isNaN(character)) {
+        
+        if (operand1.innerHTML == "") {
+          correctElementSound.play();
+          operand1.innerHTML += character;
+        } else {
+          correctElementSound.play();
+          operand1.innerHTML += character;
+          currentIndex++;
+          operand1.style = ""; //clears current border
+          operator.style = "border: 5px solid white"; //updates next border
+        }
+      } else {
         correctElementSound.play();
-        operand1.innerHTML += character;
-        currentIndex++;
-      } else if (isNaN(character)) {
-        correctElementSound.play();
-        currentIndex++;
+        operator.innerHTML += character;
+        currentIndex+= 2;
         operand1.style = ""; //clears current border
-        operator.style = "border: 5px solid white"; //updates next border
+        operand2.style = "border: 5px solid white"; //updates next border
       }
     // Checks operator
     } else if (currentIndex == 1) {
@@ -81,7 +94,7 @@ function equationCollision(character) {
         operand2.style = "border: 5px solid white"; //updates next border
       } else if (!isNaN(character)) {
         loseLife();
-        currentIndex = 0;
+        clearAnswer();
       }
     // Checks second operand
     } else if (currentIndex == 2) {
@@ -93,17 +106,16 @@ function equationCollision(character) {
         // Checks if the number is less than 100, and concatenates the
         // number to the current number if it is, otherwise it checks
         // the answer.
-        if (parseInt(operand2.innerHTML + character) < 100) {
+        if (operand2.innerHTML == "") {
           correctElementSound.play();
           operand2.innerHTML += character;
         } else {
+          operand2.innerHTML += character;
           checkAnswer();
         }
-      } else if (isNaN(character) || parseInt(operand2) < 100) {
-        correctElementSound.play();
-        currentIndex++;
-        operand1.style = ""; //clears current border
-        operator.style = "border: 5px solid white"; //updates next border
+      } else {
+        loseLife();
+        clearAnswer();
       }
     }
   }
@@ -128,8 +140,6 @@ function checkAnswer() {
       correctAnswerSound.play();
       currentScore += 500 * scoreMult;
       document.getElementById("score-counter").innerHTML = "" + currentScore;
-      clearEquation();
-      drawEquation();
     } else { // Wrong answer
       loseLife();
     }
@@ -143,6 +153,20 @@ function checkAnswer() {
  */
 function clearEquation() {
   equationRow.innerHTML = "";
+}
+
+/**
+ * Clears the current collected elements and resets back to the first operand.
+ */
+function clearAnswer() {
+  operand1.innerHTML = "";
+  operand2.innerHTML = "";
+  operator.innerHTML = "";
+
+  operand1.style = "border: 5px solid white";
+  operator.style = "";
+  operand2.style = "";
+  currentIndex = 0;
 }
 
 window.onload = drawEquation();

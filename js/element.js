@@ -81,13 +81,16 @@ function newElement(index) {
     elements[index].img.src = "images/letters/" + String.fromCharCode(randomLetter) + ".png";
     elements[index].character = String.fromCharCode(randomLetter).toUpperCase(); // A-Z
   } else if (gamemode == "math") {
-    var randomNumber = Math.floor(Math.random() * 12); // Random number from 0-11
+    var randomNumber = Math.floor(Math.random() * 13); // Random number from 0-12
     if (randomNumber == 10) { // + (add)
       elements[index].img.src = "images/numbers/+.png";
       elements[index].character = "+";
     } else if (randomNumber == 11) { // - (subtract)
       elements[index].img.src = "images/numbers/-.png";
       elements[index].character = "-";
+    } else if (randomNumber == 12) { // = (equals)
+      elements[index].img.src = "images/numbers/=.png";
+      elements[index].character = "=";
     } else { // 0-9
       elements[index].img.src = "images/numbers/" + randomNumber + ".png";
       elements[index].character = randomNumber;

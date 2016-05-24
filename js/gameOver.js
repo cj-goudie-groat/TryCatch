@@ -56,9 +56,11 @@ function retryGame() {
   updateLives();
   
   // Clear and redraw word
-  clearWord();
-  drawWord();
-  letterCount = 0;
+  if (gamemode =="spelling") {
+    clearWord();
+    drawWord();
+    letterCount = 0;
+  }
   
   game.elementContext.clearRect(0, 0, game.elementCanvas.width, game.elementCanvas.height);9
   
