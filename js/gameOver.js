@@ -60,6 +60,10 @@ function retryGame() {
     clearWord();
     drawWord();
     letterCount = 0;
+  } else if (gamemode == "math") {
+    clearEquation();
+    drawEquation();
+    currentIndex = 0;
   }
   
   game.elementContext.clearRect(0, 0, game.elementCanvas.width, game.elementCanvas.height);9
