@@ -26,22 +26,10 @@
     <div id="main-menu">
       <div id="title">
         <h1>Leaderboard</h1>
-          <?php 
-            $servername = "mysql13.000webhost.com";
-            $username = "a5796219_admin";
-            $password = "ilikepie123";
-            $dbname = "a5796219_hs";
-
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            } 
-          ?>
       </div>
       <div id="score-table">
         <table id="scores">
+          <?php include 'php/server-logOn.php'; ?>
           <tr>
             <td>Rank</td>
             <td>Name</td>
@@ -62,38 +50,14 @@
                 10.<br>
               </p>
             </td>
-            <td>  
-              <?php
-
-              //This is where it prints out the name
-              //Refreshes the list to order the top 10
-              $sql = "SELECT * FROM sp_hs ORDER by sp_score DESC LIMIT 10";
-              $result = $conn->query($sql);
-                if ($result->num_rows > 0) {
-                    // output data of each row
-                    while($row = $result->fetch_assoc()) {
-                        echo $row["sp_name"]."<br>";
-                    }
-                }
-              ?>
-        </td>
+            <td> 
+              <?php include "php/sp_listNames.php"; ?>
+           </td>
             <td>
-              <?php
-
-              //This is where it prints out the score
-              //Refreshes the list to order the top 10
-                $sql = "SELECT * FROM sp_hs ORDER by sp_score DESC LIMIT 10";
-                $result = $conn->query($sql);
-                if ($result->num_rows > 0) {
-                    // output data of each row
-                    while($row = $result->fetch_assoc()) {
-                        echo $row["sp_score"]."<br>";
-                    }
-                }
-                $conn->close();
-              ?>
+              <?php include 'php/sp_listScores.php'; ?>
             </td>
           </tr>
+          <?php include 'php/server-logOff.php'; ?>
         </table>
       </div>
       <div id="back-to-main-menu">
