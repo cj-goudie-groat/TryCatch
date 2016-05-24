@@ -24,3 +24,30 @@ function updateLives() {
     document.getElementById("heart5").style.visibility = "hidden";
   }
 }
+
+/**
+ * Adds a life and updates the heart sprites if the current lives
+ * are less than 5.
+ */
+function addLife() {
+  if (currentLives < 5) {
+    lifeSound.play();
+    currentLives++;
+    updateLives();
+  }
+}
+
+/**
+ * Removes a life and updates the heart sprites.
+ * If the lives run out, gameOver() is called.
+ */
+function loseLife() {
+  currentLives--;
+  updateLives();
+  
+  if (currentLives != 0) {
+    wrongElementSound.play();
+  } else {
+    gameOver();
+  }
+}
