@@ -131,21 +131,21 @@
       <button class="button main-menu-button">Back</button>
     </div>
     
-    <!-- This is the tutorial section (hidden by default) -->
+    <!-- This is the achievement section (hidden by default) -->
     <div id="achievement-screen">
       <h2>Achievements</h2>
       <table id="achievements-table">
         <tr>
-          <td><img src="images/lock.png"></td>
+          <td><img id="unlock100" src="images/lock.png"></td>
           <td colspan="2">Earn 100 points in any game mode.</td>
         </tr>
         <tr>
           <td><img src="images/lock.png"></td>
-          <td colspan="2">Earn 200 points in any game mode.</td>
+          <td colspan="2">Earn 500 points in any game mode.</td>
         </tr>
         <tr>
           <td><img src="images/lock.png"></td>
-          <td colspan="2">Earn 300 points in any game mode.</td>
+          <td colspan="2">Earn 1000 points in any game mode.</td>
         </tr>
       </table>
       <button class="button main-menu-button">Back</button>
@@ -181,9 +181,7 @@
                 </tr>
                 <tr>
                   <td>
-                    <p> 
-                      <?php include 'php/server-listPosition.php'; ?>
-                    </p>
+                    <?php include 'php/server-listPosition.php'; ?>
                   </td>
                   <td>  
                     <?php include 'php/sp_listNames.php'; ?>
@@ -262,14 +260,15 @@
   <!-- Global scripts -->
   <script src="js/globals.js"></script>
   <script src="js/game.js"></script>
-  <script src="js/js-cookie-master/src/js.cookie.js"></script>
   
   <!-- Menu scripts -->
   <script src="js/selectGamemode.js"></script>
   <script src="js/setDifficulty.js"></script>
   <script src="js/pause.js"></script>
-  <script src="js/getCookies.js"></script>
   
+  <script src="js/unlockCheck.js"></script>
+  <script src="js/unlockTrophy.js"></script>
+
   <!-- Image type scripts -->
   <script src="js/drawable.js"></script>
   <script src="js/player.js"></script>
