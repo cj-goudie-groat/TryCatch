@@ -37,6 +37,10 @@ var bonusSound3 = new Howl ({
   urls: ["sounds/natesound3.mp3"]
 });
 
+var achievementSound = new Howl ({
+	urls; ["sound/achievementsound.mp3"]
+});
+
 /**
  * Music variables.
  */

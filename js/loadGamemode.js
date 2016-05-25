@@ -49,7 +49,7 @@ function loadGamemode() {
     
     // Play jungle music for math game
     mathMusic.loop(true);
-    mathMusic.fadeIn(1, 2000);
+    mathMusic.fadeIn(1, 1800);
   }
   
   // Display score at the top right
