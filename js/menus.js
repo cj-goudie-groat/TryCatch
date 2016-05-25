@@ -4,7 +4,6 @@ $(document).ready(function () {
    */
   $("#difficulty-button").click(function() {
     $("#difficulty-menu").css({display: "block"});
-    $("#pause-menu-screen-darken").css({display: "block"});
   });
   /**
    * Brings the leaderboard menu up.
@@ -12,7 +11,6 @@ $(document).ready(function () {
   $(".leaderboard-button").click(function() {
     $("#leaderboard").css({display: "block"});
     $("#achievement-screen").css({display: "none"});
-    $("#pause-menu-screen-darken").fadeIn(1000);
   });
   
   /**
@@ -31,7 +29,6 @@ $(document).ready(function () {
    */
   $(".tutorial-button").click(function() {
     $("#tutorial-screen").css({display: "block"});
-    $("#pause-menu-screen-darken").fadeIn(1000);
   });
   
   /**
