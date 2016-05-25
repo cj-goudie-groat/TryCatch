@@ -20,6 +20,12 @@
   
     <!-- This is the main menu section -->
     <div id="main-menu">
+    
+    <!-- Mute button and achievement icon -->
+    <div id="icons">
+      <img id="mute" src="images/mute.png" alt="mute">
+      <img id="trophy" src="images/trophy.png" alt="achievements">
+    </div>
       <div id="title">
         
         <!-- Cloud image for the main menu -->
@@ -65,13 +71,14 @@
         
         <!-- This is the start, difficulty, leaderboard, and mute button section -->
         <div id="button-collection">
-          <button id="start-button" class="button">Start Game</button>
-          <button id="difficulty-button" class="button">Difficulty</button>
-          <button class="button leaderboard-button">Leaderboard</button>
-          <button class="mute-button button ">Mute Sound</button>
+          <button id="difficulty-button" class="button">Start Game</button> 
+          <button class="button leaderboard-button">Leaderboard</button> 
+<!--           <button class="mute-button button ">Mute Sound</button> 
+ -->        
+          <button id="tutorial-button" class="button tutorial-button">Tutorial</button>  
+          <button class="achievement-button button ">Achievments</button> 
         </div>
       </div>
-      
     </div>
     <!-- This is the game section (hidden on start) -->
     <div id="game">
@@ -124,6 +131,11 @@
       <button class="mute-button button">Mute Sound</button>
     </div>
     
+    <!-- This is the tutorial section (hidden by default) -->
+    <div id="tutorial-screen">
+      <h2>How to play</h2>
+    </div>
+    
     <!-- This is the pause screen darken effect -->
     <div id="pause-menu-screen-darken"></div>
      
@@ -135,8 +147,10 @@
         <button id="medium" class="button-selected diff">Medium</button>
         <br/>
         <button id="hard" class="button diff">Hard</button>
+        <button id="start-button" class="button">Start Game</button> 
       </div>
       
+      <!-- This is the leaderboard section (hidden by default) -->
       <div id="leaderboard">
         <?php include 'server-logOn.php' ;?>
         
@@ -234,7 +248,6 @@
   
   <!-- Image type scripts -->
   <script src="js/drawable.js"></script>
-  <script src="js/background.js"></script>
   <script src="js/player.js"></script>
   <script src="js/element.js"></script>
   <script src="js/specialElement.js"></script>
@@ -246,6 +259,8 @@
   <script src="js/lives.js"></script>
   <script src="js/gameOver.js"></script>
   <script src="js/bonusLevel.js"></script>
+  
+  <script src="js/background.js"></script>
   
   <!-- Canvas resizing script -->
   <script src="js/resizeCanvas.js"></script>

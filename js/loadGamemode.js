@@ -5,6 +5,8 @@ $(document).ready(function () {
   $("#start-button").click(function () {
     $("#main-menu").fadeOut(1000);
     $("#game").fadeIn(2000);
+    $("#difficulty-menu").css({display: "none"});
+    $("#pause-menu-screen-darken").css({display: "none"});
     // $("#space-bg").fadeIn(1000);
     loadGamemode();
   });
@@ -47,9 +49,13 @@ function loadGamemode() {
     var head = document.getElementsByTagName("head")[0];
     head.appendChild(script);
     
+    imageRepository.background1.src = "images/mathbg/trees.png";
+    imageRepository.background2.src = "images/mathbg/cloudwater.png";
+    imageRepository.background3.src = "images/mathbg/base.png";
+    
     // Play jungle music for math game
     mathMusic.loop(true);
-    mathMusic.fadeIn(1, 2000);
+    mathMusic.fadeIn(1, 1800);
   }
   
   // Display score at the top right

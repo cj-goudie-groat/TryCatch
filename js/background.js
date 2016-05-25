@@ -19,6 +19,9 @@ function Background1() {
     if (bonusActive) {
       this.context.drawImage(imageRepository.bonusLevelBg, 0, 0);
     } else {
+      if (gamemode == "math") {
+        this.speed = 0;
+      }
       // Pan background
       this.context.drawImage(imageRepository.background1, this.x, this.y);
 
@@ -47,16 +50,34 @@ function Background2() {
     if (paused) {
       return;
     }
-    // Pan background
-    this.context.drawImage(imageRepository.background2, this.x, this.y);
 
-    this.y += this.speed;
-    // Draw another image at the top edge of the first image
-    this.context.drawImage(imageRepository.background2, this.x, this.y - this.canvasHeight);
+    if (gamemode == "spelling") {
+      // Pan background
+      this.context.drawImage(imageRepository.background2, this.x, this.y);
 
-    // If the image scrolled off the screen, reset
-    if (this.y >= this.canvasHeight) {
-      this.y = 0;
+      this.y += this.speed;
+      // Draw another image at the top edge of the first image
+      this.context.drawImage(imageRepository.background2, this.x, this.y - this.canvasHeight);
+
+      // If the image scrolled off the screen, reset
+      if (this.y >= this.canvasHeight) {
+        this.y = 0;
+      }
+    } else if (gamemode == "math") {
+      this.speed = 1;
+
+      // Pan background
+      this.context.drawImage(imageRepository.background2, this.x, this.y);
+
+      this.x += this.speed;
+
+      // Draw another image at the top edge of the first image
+      this.context.drawImage(imageRepository.background2, this.x - this.canvasWidth, this.y);
+
+      // If the image scrolled off the screen, reset
+      if (this.x >= this.canvasWidth) {
+        this.x = 0;
+      }
     }
   }
 };
@@ -73,16 +94,33 @@ function Background3() {
     if (paused) {
       return;
     }
-    // Pan background
-    this.context.drawImage(imageRepository.background3, this.x, this.y);
 
-    this.y += this.speed;
-    // Draw another image at the top edge of the first image
-    this.context.drawImage(imageRepository.background3, this.x, this.y - this.canvasHeight);
+    if (gamemode == "spelling") {
+      // Pan background
+      this.context.drawImage(imageRepository.background3, this.x, this.y);
 
-    // If the image scrolled off the screen, reset
-    if (this.y >= this.canvasHeight) {
-      this.y = 0;
+      this.y += this.speed;
+      // Draw another image at the top edge of the first image
+      this.context.drawImage(imageRepository.background3, this.x, this.y - this.canvasHeight);
+
+      // If the image scrolled off the screen, reset
+      if (this.y >= this.canvasHeight) {
+        this.y = 0;
+      }
+    } else if (gamemode == "math") {
+      this.speed = 0.5;
+
+      // Pan background
+      this.context.drawImage(imageRepository.background3, this.x, this.y);
+
+      this.x += this.speed;
+      // Draw another image at the top edge of the first image
+      this.context.drawImage(imageRepository.background3, this.x - this.canvasWidth, this.y);
+
+      // If the image scrolled off the screen, reset
+      if (this.x >= this.canvasWidth) {
+        this.x = 0;
+      }
     }
   }
 };
