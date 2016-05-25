@@ -13,8 +13,6 @@
   <script src="js/howlerjs/howler.js"></script>
   <script src="js/sounds.js"></script>
   <script src="js/menus.js"></script>
-
-  <script src="js/js-cookie-master/src/js.cookie.js"></script>
 </head>
 
 <body>
@@ -136,6 +134,20 @@
     <!-- This is the tutorial section (hidden by default) -->
     <div id="achievement-screen">
       <h2>Achievements</h2>
+      <table id="achievements-table">
+        <tr>
+          <td><img src="images/lock.png"></td>
+          <td colspan="2">Earn 100 points in any game mode.</td>
+        </tr>
+        <tr>
+          <td><img src="images/lock.png"></td>
+          <td colspan="2">Earn 200 points in any game mode.</td>
+        </tr>
+        <tr>
+          <td><img src="images/lock.png"></td>
+          <td colspan="2">Earn 300 points in any game mode.</td>
+        </tr>
+      </table>
       <button class="button main-menu-button">Back</button>
     </div>
     
@@ -151,6 +163,7 @@
         <br/>
         <button id="hard" class="button diff">Hard</button>
         <button id="start-button" class="button">Start Game</button> 
+        <button class="button main-menu-button">Back</button>
       </div>
       
       <!-- This is the leaderboard section (hidden by default) -->
@@ -250,11 +263,13 @@
   <!-- Global scripts -->
   <script src="js/globals.js"></script>
   <script src="js/game.js"></script>
+  <script src="js/js-cookie-master/src/js.cookie.js"></script>
   
   <!-- Menu scripts -->
   <script src="js/selectGamemode.js"></script>
   <script src="js/setDifficulty.js"></script>
   <script src="js/pause.js"></script>
+  <script src="js/getCookies.js"></script>
   
   <!-- Image type scripts -->
   <script src="js/drawable.js"></script>

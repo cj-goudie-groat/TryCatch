@@ -27,6 +27,7 @@ function gameOver() {
   
   // Displays final score and screen darkem background effect
   canPause = false;
+  setCookies();
   document.getElementById("game-over").style.display = "block";
   document.getElementById("pause-menu-screen-darken").style.display = "block";
   document.getElementById("score").innerHTML = "Your final score was: " + currentScore;

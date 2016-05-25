@@ -23,6 +23,7 @@ $(document).ready(function () {
     $("#tutorial-screen").css({display: "none"});
     $("#achievement-screen").css({display: "none"});
     $("#pause-menu-screen-darken").css({display: "none"});
+    $("#difficulty-menu").css({display: "none"});
   });
   
   /**
