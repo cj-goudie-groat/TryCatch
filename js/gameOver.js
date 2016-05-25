@@ -13,20 +13,19 @@ $(document).ready(function () {
 function gameOver() {
   paused = true;
   
+  // Plays game over sound
   gameOverSound.play();
   
+  // Checks the gamemode and stops the music
   if (gamemode == "spelling") {
     spellingMusic.loop(false);
     spellingMusic.fadeOut(0, 1000);
-    
-  }
-  
-  else if (gamemode == "math") {
+  } else if (gamemode == "math") {
     mathMusic.loop(false);
     mathMusic.fadeOut(0, 1000);
-    
-    }
+  }
   
+  // Displays final score and screen darkem background effect
   canPause = false;
   document.getElementById("game-over").style.display = "block";
   document.getElementById("pause-menu-screen-darken").style.display = "block";
@@ -39,15 +38,24 @@ function gameOver() {
  */
 function retryGame() {
   if (gamemode == "spelling") {
+    // Clear and redraw a new word
+    clearWord();
+    drawWord();
+    letterCount = 0;
+    
+    // Replays the spelling music
     spellingMusic.loop(true);
     spellingMusic.fadeIn(1, 2000);
-  }
-  
-  else if 
-  (gamemode == "math") {
+  } else if (gamemode == "math") {
+    // Clear and redraw a new equation
+    clearEquation();
+    drawEquation();
+    currentIndex = 0;
+    
+    // Replays the math music
     mathMusic.loop(true);
     mathMusic.fadeIn(1, 2000);
-    }
+  }
   
   // Reset element positions
   for (var i = 0; i < elementAmount; i++) {
@@ -67,17 +75,6 @@ function retryGame() {
   currentScore = 0;
   document.getElementById("score-counter").innerHTML = "" + currentScore;
   updateLives();
-  
-  // Clear and redraw word
-  if (gamemode =="spelling") {
-    clearWord();
-    drawWord();
-    letterCount = 0;
-  } else if (gamemode == "math") {
-    clearEquation();
-    drawEquation();
-    currentIndex = 0;
-  }
   
   game.elementContext.clearRect(0, 0, game.elementCanvas.width, game.elementCanvas.height);9
   

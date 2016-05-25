@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function () {  
   /**
    * Brings the difficulty menu up.
    */

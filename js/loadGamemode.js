@@ -18,7 +18,7 @@ $(document).ready(function () {
  */
 function loadGamemode() {
   canPause = true;
-  //clears the screen darkening from difficulty selection
+  // Clears the screen darkening from difficulty selection
   document.getElementById("pause-menu-screen-darken").style.display = "none";
   
   // Set difficulty text
@@ -48,6 +48,10 @@ function loadGamemode() {
     script.src = "js/mathGame/mathGame.js";
     var head = document.getElementsByTagName("head")[0];
     head.appendChild(script);
+    
+    imageRepository.background1.src = "images/mathbg/trees.png";
+    imageRepository.background2.src = "images/mathbg/cloudwater.png";
+    imageRepository.background3.src = "images/mathbg/base.png";
     
     // Play jungle music for math game
     mathMusic.loop(true);
