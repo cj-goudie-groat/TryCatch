@@ -70,7 +70,7 @@ function addWords(data) {
  * Initializes by getting words from a txt file.
  */
 $(document).ready(function () {
-  $.get("js/spellingGame/wordList.txt", function (data) {
+  $.get("js/spellingGame/wordList.html", function (data) {
     addWords(data.toUpperCase().split("\n"));
   });
 });
