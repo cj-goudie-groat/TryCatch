@@ -47,9 +47,9 @@ function loadGamemode() {
     var head = document.getElementsByTagName("head")[0];
     head.appendChild(script);
     
-    // Play space music for spelling game
-    spellingMusic.loop(true);
-    spellingMusic.fadeIn(1, 2000);
+    // Play jungle music for math game
+    mathMusic.loop(true);
+    mathMusic.fadeIn(1, 2000);
   }
   
   // Display score at the top right

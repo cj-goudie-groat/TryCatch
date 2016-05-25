@@ -54,6 +54,10 @@ var bonusMusic = new Howl ({
   urls: ["sounds/bonuslevelsound.mp3"]
 });
 
+var mathMusic = new Howl ({
+  urls: ["sounds/junglebg.mp3"]
+});
+
 $(document).ready(function () {
   /**
    * Plays menu button sound.
