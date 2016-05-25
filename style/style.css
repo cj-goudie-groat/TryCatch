@@ -768,15 +768,17 @@ h2 {
 
 
 #leaderboard #next-board .button {
-  width: 35%;
+  width: 32%;
   float: right;
   margin-top: 15px;
+  margin-right: 10px;
 }
 
 #leaderboard #previous-board .button {
-  width: 35%;
+  width: 32%;
   float: left;
   margin-top: 15px;
+  margin-left: 10px;
 }
 
 #score-table {
@@ -927,6 +929,26 @@ h2 {
   #trophy {
   width: 50px;
   height: 50px;
+  }
+  
+  
+  #leaderboard #next-board .button {
+  width: 120px;
+  float: right;
+  margin-top: 15px;
+  margin-right: 10px;
+  }
+  #leaderboard #previous-board .button {
+    width: 120px;
+    float: left;
+    margin-top: 15px;
+    margin-left: 10px;
+  }
+  #achievements-and-back .button {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 173px;
   }
 }
 

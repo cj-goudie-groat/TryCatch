@@ -89,9 +89,11 @@ function switchBoards() {
   if (spellingLeaderboard) {
     $("#math-scores").css({display: "block"});
     $("#spelling-scores").css({display: "none"});
+    $("#leaderboard-header").html("Leaderboard - Math");
   } else {
     $("#spelling-scores").css({display: "block"});
     $("#math-scores").css({display: "none"});
+    $("#leaderboard-header").html("Leaderboard - Spelling");
   }
     spellingLeaderboard = !spellingLeaderboard;
 }
