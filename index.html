@@ -17,6 +17,7 @@
 
 <body>
   <div id="wrapper">
+  
     <!-- This is the main menu section -->
     <div id="main-menu">
       <div id="title">
@@ -40,7 +41,6 @@
         
         <h1>TryCatch</h1>
       </div>
-      
       <!-- This is the section that holds the main menu buttons -->
       <div id="buttons">
         <!-- This is the game type selection section -->
@@ -72,15 +72,6 @@
         </div>
       </div>
       
-      <!-- This is the difficulty menu section (hidden by default) -->
-      <div id="difficulty-menu" >
-        <h2>Choose Difficulty</h2>
-        <button id="easy" class="button diff">Easy</button>
-        <br/>
-        <button id="medium" class="button-selected diff">Medium</button>
-        <br/>
-        <button id="hard" class="button diff">Hard</button>
-      </div>
     </div>
     <!-- This is the game section (hidden on start) -->
     <div id="game">
@@ -128,19 +119,170 @@
       <h2>Game Paused</h2>
       <button id="resume-button" class="button">Resume</button>
       <br>
-      <button class="button main-menu-button">Main Menu</button>
+      <button class="button main-menu">Main Menu</button>
       <br>
       <button class="mute-button button">Mute Sound</button>
     </div>
     
     <!-- This is the pause screen darken effect -->
     <div id="pause-menu-screen-darken"></div>
+     
+     <!-- This is the difficulty menu section (hidden by default) -->
+      <div id="difficulty-menu" >
+        <h2>Choose Difficulty</h2>
+        <button id="easy" class="button diff">Easy</button>
+        <br/>
+        <button id="medium" class="button-selected diff">Medium</button>
+        <br/>
+        <button id="hard" class="button diff">Hard</button>
+      </div>
+      
+      <div id="leaderboard" >
+        <h2>Leaderboard - Spelling</h2>
+    <!--      <?php 
+            $servername = "mysql13.000webhost.com";
+            $username = "a5796219_admin";
+            $password = "ilikepie123";
+            $dbname = "a5796219_hs";
+
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            } 
+          ?> -->
+          <div id="score-table">
+            <div id="spelling-scores">
+              <table id="scores">
+                <tr>
+                  <td>Rank</td>
+                  <td>Name</td>
+                  <td>Score</td>
+                </tr>
+                <tr>
+                  <td>
+                    <p> 
+                      1. <br>
+                      2. <br>
+                      3. <br>
+                      4. <br>
+                      5. <br>
+                      6. <br>
+                      7. <br>
+                      8. <br>
+                      9. <br>
+                      10.<br>
+                    </p>
+                  </td>
+                  <td>  
+<!--                    <?php
+
+                    //This is where it prints out the name
+                    //Refreshes the list to order the top 10
+                    $sql = "SELECT * FROM sp_hs ORDER by sp_score DESC LIMIT 10";
+                    $result = $conn->query($sql);
+                      if ($result->num_rows > 0) {
+                          // output data of each row
+                          while($row = $result->fetch_assoc()) {
+                              echo $row["sp_name"]."<br>";
+                          }
+                      }
+                    ?> -->
+              </td>
+                  <td>
+          <!--          <?php
+
+                    //This is where it prints out the score
+                    //Refreshes the list to order the top 10
+                      $sql = "SELECT * FROM sp_hs ORDER by sp_score DESC LIMIT 10";
+                      $result = $conn->query($sql);
+                      if ($result->num_rows > 0) {
+                          // output data of each row
+                          while($row = $result->fetch_assoc()) {
+                              echo $row["sp_score"]."<br>";
+                          }
+                      }
+                      $conn->close();
+                    ?> -->
+                  </td>
+                </tr>
+              </table>
+            </div>
+            
+            <div id="math-scores">
+              <table id="scores">
+                <tr>
+                  <td>Rank</td>
+                  <td>Name</td>
+                  <td>Score</td>
+                </tr>
+                <tr>
+                  <td>
+                    <p> 
+                      1. <br>
+                      2. <br>
+                      3. <br>
+                      4. <br>
+                      5. <br>
+                      6. <br>
+                      7. <br>
+                      8. <br>
+                      9. <br>
+                      10.<br>
+                    </p>
+                  </td>
+                  <td>  
+                    <?php
+
+                    //This is where it prints out the name
+                    //Refreshes the list to order the top 10
+                    $sql = "SELECT * FROM sp_hs ORDER by sp_score DESC LIMIT 10";
+                    $result = $conn->query($sql);
+                      if ($result->num_rows > 0) {
+                          // output data of each row
+                          while($row = $result->fetch_assoc()) {
+                              echo $row["sp_name"]."<br>";
+                          }
+                      }
+                    ?>
+              </td>
+                  <td>
+                    <?php
+
+                    //This is where it prints out the score
+                    //Refreshes the list to order the top 10
+                      $sql = "SELECT * FROM sp_hs ORDER by sp_score DESC LIMIT 10";
+                      $result = $conn->query($sql);
+                      if ($result->num_rows > 0) {
+                          // output data of each row
+                          while($row = $result->fetch_assoc()) {
+                              echo $row["sp_score"]."<br>";
+                          }
+                      }
+                      $conn->close();
+                    ?>
+                  </td>
+                </tr>
+              </table>
+            </div>
+        </div>
+        <div id="previous-board">
+            <button class="button previous-board">Previous</button>
+        </div>
+        <div id="next-board">
+          <button class="button next-board">Next</button>
+        </div>
+        <div id="back-to-main-menu">
+          <button class="button main-menu-button">Back</button>
+        </div>
+      </div>
     
     <!-- This is the game over section -->
     <div id="game-over">
       <div id="game-over-header">
         <h1>Game Over!</h1>
-        <h2 id="score"></h2>
+        <h1 id="score" class="score"></h1>
       </div>
         <form action="php/addScore.php" method="post">
           <div id="user-score"> Your name: 
@@ -154,7 +296,7 @@
         <br>
         <button class="button leaderboard-button">Leaderboard</button>
         <br>
-        <button class="button main-menu-button">Main Menu</button>
+        <button class="button main-menu">Main Menu</button>
         <br>
     </div>
   </div>
