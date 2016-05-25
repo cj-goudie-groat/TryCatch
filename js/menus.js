@@ -36,9 +36,8 @@ $(document).ready(function () {
   /**
    * Brings the achievement screen up.
    */
-  $(".trophy").click(function() {
+  $("#achievement-button").click(function() {
     $("#achievement-screen").css({display: "block"});
-    $("#leaderboard").css({display: "none"});
   });
   
   /**
