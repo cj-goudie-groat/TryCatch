@@ -536,6 +536,7 @@ button .banner {
 #difficulty-menu .button {
   position: relative;
   margin-top: 20px;
+  margin-bottom: 5px;
   left: 50%;
   transform: translateX(-50%);
   background-color: #18306E;
@@ -544,6 +545,7 @@ button .banner {
 #difficulty-menu .button-selected {
   position: relative;
   margin-top: 20px;
+  margin-bottom: 5px;
   left: 50%;
   transform: translateX(-50%);
   background-color: #18306E;
