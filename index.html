@@ -67,6 +67,7 @@
         <div id="button-collection">
           <button id="start-button" class="button">Start Game</button>
           <button id="difficulty-button" class="button">Difficulty</button>
+          <button id="tutorial-button" class="button tutorial-button">Tutorial</button>
           <button class="button leaderboard-button">Leaderboard</button>
           <button class="mute-button button ">Mute Sound</button>
         </div>
@@ -124,6 +125,11 @@
       <button class="mute-button button">Mute Sound</button>
     </div>
     
+    <!-- This is the tutorial section (hidden by default) -->
+    <div id="tutorial-screen">
+      <h2>How to play</h2>
+    </div>
+    
     <!-- This is the pause screen darken effect -->
     <div id="pause-menu-screen-darken"></div>
      
@@ -137,6 +143,7 @@
         <button id="hard" class="button diff">Hard</button>
       </div>
       
+      <!-- This is the leaderboard section (hidden by default) -->
       <div id="leaderboard" >
         <?php include 'server-logOn.php' ;?>
         

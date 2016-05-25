@@ -594,6 +594,7 @@ h2 {
   transform: translateX(-50%);
   background-color: #F1AE3E;
 }
+
 @keyframes screen-darken {
     from {
       display: none;
@@ -620,6 +621,39 @@ h2 {
   animation-name: screen-darken;
   animation-duration: 1.5s;
   animation-fill-mode: forwards;
+}
+
+/*******************/
+/**** PAUSE MENU ***/
+/*******************/
+
+#tutorial-screen {
+  background-image: radial-gradient(53% 102%, rgba(193, 238, 253, 0.65) 34%, rgba(23, 51, 97, 0.36) 100%);
+  display: none;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #CCFFFF;
+  width: 400px;
+  height: 100%;
+  z-index: 10;
+  animation-name: menu-drop-in;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+#tutorial-screen h2 {
+  font-size: 2em;
+}
+
+#tutorial-screen .button {
+  position: relative;
+  margin-top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #F1AE3E;
 }
 
 /***********************/

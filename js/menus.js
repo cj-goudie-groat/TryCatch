@@ -19,7 +19,16 @@ $(document).ready(function () {
    */
   $(".main-menu-button").click(function () {
     $("#leaderboard").css({display: "none"});
+    $("#tutorial-screen").css({display: "none"});
     $("#pause-menu-screen-darken").css({display: "none"});
+  });
+  
+  /**
+   * Brings the tutorial screen up.
+   */
+  $(".tutorial-button").click(function() {
+    $("#tutorial-screen").css({display: "block"});
+    $("#pause-menu-screen-darken").fadeIn(1000);
   });
   
   /**
