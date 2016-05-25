@@ -59,6 +59,8 @@ function loadGamemode() {
       imageRepository.player.src = "images/crabmobile.png";
     }
     
+    document.getElementById("gradient").style = "opacity: 0.5";
+    
     // Play jungle music for math game
     mathMusic.loop(true);
     mathMusic.fadeIn(1, 1800);
