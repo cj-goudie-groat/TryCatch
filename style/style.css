@@ -99,7 +99,7 @@ p {
   height: 100px;
   position: absolute;
   top: 7%;
-  left: 0;
+  right: 0;
 }
 
 #icons #trophy {
@@ -639,9 +639,9 @@ h2 {
   animation-fill-mode: forwards;
 }
 
-/*******************/
-/**** PAUSE MENU ***/
-/*******************/
+/************************/
+/**** TUTORIAL SCREEN ***/
+/************************/
 
 #tutorial-screen {
   background-image: radial-gradient(53% 102%, rgba(193, 238, 253, 0.65) 34%, rgba(23, 51, 97, 0.36) 100%);
@@ -672,14 +672,49 @@ h2 {
   background-color: #F1AE3E;
 }
 
+
+/***************************/
+/**** ACHIEVEMENT SCREEN ***/
+/***************************/
+
+#achievement-screen {
+  background-image: radial-gradient(53% 102%, rgba(193, 238, 253, 0.65) 34%, rgba(23, 51, 97, 0.36) 100%);
+  display: none;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #CCFFFF;
+  width: 400px;
+  height: 500px;
+  z-index: 10;
+  animation-name: menu-drop-in;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+#achievement-screen h2 {
+  font-size: 2em;
+}
+
+#achievement-screen .button {
+  position: relative;
+  margin-top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #F1AE3E;
+}
+
 /***********************/
 /* Leaderboard Styling */
 /***********************/
 
-#leaderboard .button {
+#achievements-and-back .button {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  width: 35%;
 }
 
 #score-table {
@@ -700,8 +735,8 @@ h2 {
   top: -50%;
   margin: auto;
   background-color: #CCFFFF;
-  width: 400px;
-  height: 500px;
+  width: 90%;
+  height: 90%;
   z-index: 12;
   animation-name: menu-drop-in;
   animation-duration: 1s;
@@ -736,12 +771,10 @@ h2 {
   width: 35%;
   float: right;
   margin-top: 15px;
-  left: 15%;
 }
 
 #leaderboard #previous-board .button {
   width: 35%;
-  left: 20%;
   float: left;
   margin-top: 15px;
 }
@@ -882,9 +915,12 @@ h2 {
   }
   
   #icons {
+    float: bottom;
     width: 100px;
+    height: 100%;
   }
   #mute {
+  float: left;
   width: 50px;
   height: 50px;
   }

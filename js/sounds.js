@@ -37,10 +37,10 @@ var bonusSound3 = new Howl ({
   urls: ["sounds/natesound3.mp3"]
 });
 
-/** var achievementSound = new Howl ({
-	urls; ["sound/achievementsound.mp3"]
+var achievementSound = new Howl ({
+	urls: ["sound/achievementsound.mp3"]
 });
-*/
+
 /**
  * Music variables
  */
@@ -54,15 +54,17 @@ var spellingMusic = new Howl ({
   urls: ["sounds/spacesound.mp3"]
 });
 
+
+var mathMusic = new Howl ({
+  urls: ["sounds/junglebg.mp3"],
+  loop: true
+});
+
 var bonusMusic = new Howl ({
   urls: ["sounds/bonuslevelsound.mp3"]
 });
 
-var mathMusic = new Howl ({
-  urls: ["sounds/junglebg.mp3"]
-});
-
-$(document).ready(function () {
+$(document).ready(function () {  
   /**
    * Plays menu button sound.
    */

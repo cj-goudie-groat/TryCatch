@@ -18,7 +18,7 @@ $(document).ready(function () {
  */
 function loadGamemode() {
   canPause = true;
-  //clears the screen darkening from difficulty selection
+  // Clears the screen darkening from difficulty selection
   document.getElementById("pause-menu-screen-darken").style.display = "none";
   
   // Set difficulty text

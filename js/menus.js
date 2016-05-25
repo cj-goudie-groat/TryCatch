@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function () {  
   /**
    * Brings the difficulty menu up.
    */
@@ -11,6 +11,7 @@ $(document).ready(function () {
    */
   $(".leaderboard-button").click(function() {
     $("#leaderboard").css({display: "block"});
+    $("#achievement-screen").css({display: "none"});
     $("#pause-menu-screen-darken").fadeIn(1000);
   });
   
@@ -20,6 +21,7 @@ $(document).ready(function () {
   $(".main-menu-button").click(function () {
     $("#leaderboard").css({display: "none"});
     $("#tutorial-screen").css({display: "none"});
+    $("#achievement-screen").css({display: "none"});
     $("#pause-menu-screen-darken").css({display: "none"});
   });
   
@@ -34,9 +36,9 @@ $(document).ready(function () {
   /**
    * Brings the achievement screen up.
    */
-  $("#trophy").click(function() {
+  $(".trophy").click(function() {
     $("#achievement-screen").css({display: "block"});
-    $("#pause-menu-screen-darken").fadeIn(1000);
+    $("#leaderboard").css({display: "none"});
   });
   
   /**

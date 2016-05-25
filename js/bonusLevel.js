@@ -4,9 +4,16 @@
 function bonusLevel() {
   game.elementContext.clearRect(0, 0, game.elementCanvas.width, game.elementCanvas.height);
   
-  spellingMusic.loop(false);
-  spellingMusic.fadeOut(0, 1000);
+  // Checks the gamemode and stops the music
+  if (gamemode == "spelling") {
+    spellingMusic(false);
+    spellingMusic.fadeOut(0, 1000);
+  } else if (gamemode == "math") {
+    mathMusic(false);
+    mathMusic.fadeOut(0, 1000);
+  }
   
+  // Plays the bonus level music
   bonusMusic.loop(true);
   bonusMusic.fadeIn(1, 2000);
   
@@ -24,11 +31,18 @@ function bonusLevel() {
 function stopBonusLevel() {
   bonusActive = false;
   
+  // Stops the bonus level music
   bonusMusic.loop(false);
   bonusMusic.fadeOut(0, 1000);
   
-  spellingMusic.loop(true);
-  spellingMusic.fadeIn(1, 2000);
+  // Checks the gamemode and plays the music
+  if (gamemode == "spelling") {
+    spellingMusic.loop(true);
+    spellingMusic.fadeIn(1, 2000);
+  } else if (gamemode == "math") {
+    mathMusic.loop(true);
+    mathMusic.fadeIn(1, 2000);
+  }
   
   game.elementContext.clearRect(0, 0, game.elementCanvas.width, game.elementCanvas.height);
   // Update player model
