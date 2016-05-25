@@ -37,8 +37,12 @@ var bonusSound3 = new Howl ({
   urls: ["sounds/natesound3.mp3"]
 });
 
+/** var achievementSound = new Howl ({
+	urls; ["sound/achievementsound.mp3"]
+});
+*/
 /**
- * Music variables.
+ * Music variables
  */
 var menuMusic = new Howl ({
   urls: ["sounds/mainmenusound.mp3"],
@@ -52,6 +56,10 @@ var spellingMusic = new Howl ({
 
 var bonusMusic = new Howl ({
   urls: ["sounds/bonuslevelsound.mp3"]
+});
+
+var mathMusic = new Howl ({
+  urls: ["sounds/junglebg.mp3"]
 });
 
 $(document).ready(function () {
@@ -73,15 +81,13 @@ $(document).ready(function () {
   /**
    * Mutes or unmutes the sound.
    */
-  $(".mute-button").click(function () {
+  $("#mute").click(function () {
     if (!muteSound) {
       Howler.mute();
       muteSound = true;
-      $(".mute-button").html("Unmute Sound");
     } else {
       Howler.unmute();
       muteSound = false;
-      $(".mute-button").html("Mute Sound");
     }
   });
 });

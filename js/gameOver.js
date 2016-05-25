@@ -18,7 +18,14 @@ function gameOver() {
   if (gamemode == "spelling") {
     spellingMusic.loop(false);
     spellingMusic.fadeOut(0, 1000);
+    
   }
+  
+  else if (gamemode == "math") {
+    mathMusic.loop(false);
+    mathMusic.fadeOut(0, 1000);
+    
+    }
   
   canPause = false;
   document.getElementById("game-over").style.display = "block";
@@ -35,6 +42,12 @@ function retryGame() {
     spellingMusic.loop(true);
     spellingMusic.fadeIn(1, 2000);
   }
+  
+  else if 
+  (gamemode == "math") {
+    mathMusic.loop(true);
+    mathMusic.fadeIn(1, 2000);
+    }
   
   // Reset element positions
   for (var i = 0; i < elementAmount; i++) {
@@ -60,6 +73,10 @@ function retryGame() {
     clearWord();
     drawWord();
     letterCount = 0;
+  } else if (gamemode == "math") {
+    clearEquation();
+    drawEquation();
+    currentIndex = 0;
   }
   
   game.elementContext.clearRect(0, 0, game.elementCanvas.width, game.elementCanvas.height);9

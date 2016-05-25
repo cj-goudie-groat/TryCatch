@@ -20,6 +20,12 @@
   
     <!-- This is the main menu section -->
     <div id="main-menu">
+    
+    <!-- Mute button and achievement icon -->
+    <div id="icons">
+      <img id="mute" src="images/mute.png" alt="mute">
+      <img id="trophy" src="images/trophy.png" alt="achievements">
+    </div>
       <div id="title">
         
         <!-- Cloud image for the main menu -->
@@ -65,13 +71,14 @@
         
         <!-- This is the start, difficulty, leaderboard, and mute button section -->
         <div id="button-collection">
-          <button id="start-button" class="button">Start Game</button>
-          <button id="difficulty-button" class="button">Difficulty</button>
-          <button class="button leaderboard-button">Leaderboard</button>
-          <button class="mute-button button ">Mute Sound</button>
+          <button id="difficulty-button" class="button">Start Game</button> 
+          <button class="button leaderboard-button">Leaderboard</button> 
+<!--           <button class="mute-button button ">Mute Sound</button> 
+ -->        
+          <button id="tutorial-button" class="button tutorial-button">Tutorial</button>  
+          <button class="achievement-button button ">Achievments</button> 
         </div>
       </div>
-      
     </div>
     <!-- This is the game section (hidden on start) -->
     <div id="game">
@@ -124,6 +131,11 @@
       <button class="mute-button button">Mute Sound</button>
     </div>
     
+    <!-- This is the tutorial section (hidden by default) -->
+    <div id="tutorial-screen">
+      <h2>How to play</h2>
+    </div>
+    
     <!-- This is the pause screen darken effect -->
     <div id="pause-menu-screen-darken"></div>
      
@@ -135,23 +147,14 @@
         <button id="medium" class="button-selected diff">Medium</button>
         <br/>
         <button id="hard" class="button diff">Hard</button>
+        <button id="start-button" class="button">Start Game</button> 
       </div>
       
+      <!-- This is the leaderboard section (hidden by default) -->
       <div id="leaderboard" >
+        <?php include 'server-logOn.php' ;?>
+        
         <h2>Leaderboard - Spelling</h2>
-    <!--      <?php 
-            $servername = "mysql13.000webhost.com";
-            $username = "a5796219_admin";
-            $password = "ilikepie123";
-            $dbname = "a5796219_hs";
-
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            } 
-          ?> -->
           <div id="score-table">
             <div id="spelling-scores">
               <table id="scores">
@@ -163,48 +166,14 @@
                 <tr>
                   <td>
                     <p> 
-                      1. <br>
-                      2. <br>
-                      3. <br>
-                      4. <br>
-                      5. <br>
-                      6. <br>
-                      7. <br>
-                      8. <br>
-                      9. <br>
-                      10.<br>
+                      <?php include 'server-listPosition.php' ;?>
                     </p>
                   </td>
                   <td>  
-<!--                    <?php
-
-                    //This is where it prints out the name
-                    //Refreshes the list to order the top 10
-                    $sql = "SELECT * FROM sp_hs ORDER by sp_score DESC LIMIT 10";
-                    $result = $conn->query($sql);
-                      if ($result->num_rows > 0) {
-                          // output data of each row
-                          while($row = $result->fetch_assoc()) {
-                              echo $row["sp_name"]."<br>";
-                          }
-                      }
-                    ?> -->
-              </td>
+                    <?php include 'sp_listNames.php' ;?>
+                  </td>
                   <td>
-          <!--          <?php
-
-                    //This is where it prints out the score
-                    //Refreshes the list to order the top 10
-                      $sql = "SELECT * FROM sp_hs ORDER by sp_score DESC LIMIT 10";
-                      $result = $conn->query($sql);
-                      if ($result->num_rows > 0) {
-                          // output data of each row
-                          while($row = $result->fetch_assoc()) {
-                              echo $row["sp_score"]."<br>";
-                          }
-                      }
-                      $conn->close();
-                    ?> -->
+                    <?php include 'sp_listScores.php' ;?>
                   </td>
                 </tr>
               </table>
@@ -220,48 +189,14 @@
                 <tr>
                   <td>
                     <p> 
-                      1. <br>
-                      2. <br>
-                      3. <br>
-                      4. <br>
-                      5. <br>
-                      6. <br>
-                      7. <br>
-                      8. <br>
-                      9. <br>
-                      10.<br>
+                      <?php include 'server-listPosition.php' ;?>
                     </p>
                   </td>
                   <td>  
-                    <?php
-
-                    //This is where it prints out the name
-                    //Refreshes the list to order the top 10
-                    $sql = "SELECT * FROM sp_hs ORDER by sp_score DESC LIMIT 10";
-                    $result = $conn->query($sql);
-                      if ($result->num_rows > 0) {
-                          // output data of each row
-                          while($row = $result->fetch_assoc()) {
-                              echo $row["sp_name"]."<br>";
-                          }
-                      }
-                    ?>
-              </td>
+                    <?php include 'math_listNames.php' ;?>
+                  </td>
                   <td>
-                    <?php
-
-                    //This is where it prints out the score
-                    //Refreshes the list to order the top 10
-                      $sql = "SELECT * FROM sp_hs ORDER by sp_score DESC LIMIT 10";
-                      $result = $conn->query($sql);
-                      if ($result->num_rows > 0) {
-                          // output data of each row
-                          while($row = $result->fetch_assoc()) {
-                              echo $row["sp_score"]."<br>";
-                          }
-                      }
-                      $conn->close();
-                    ?>
+                    <?php include 'math_listScores.php' ;?>
                   </td>
                 </tr>
               </table>
@@ -276,6 +211,7 @@
         <div id="back-to-main-menu">
           <button class="button main-menu-button">Back</button>
         </div>
+        <?php include 'server-logOff.php' ;?>
       </div>
     
     <!-- This is the game over section -->
