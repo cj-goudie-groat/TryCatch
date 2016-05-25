@@ -2,30 +2,53 @@
 /* RESET CSS */
 /*************/
 * {
-	padding: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
 /*******************/
 /* General Styling */
 /*******************/
 
-body {
-  margin: 0;
-  padding: 0;
-  background: #4593DE;
-  background-image: radial-gradient(53% 102%, rgba(193, 238, 253, 0.65) 34%, rgba(23, 51, 97, 0.36) 100%), url(../images/mathbodybg2.png);
-}
-
-/* #space-bg {
+#menu-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100vh;
-  background: #0f162e;
+  background: #4593DE;
+  background-image: radial-gradient(53% 102%, rgba(193, 238, 253, 0.65) 34%, rgba(23, 51, 97, 0.36) 100%);
+  z-index: -10;
+}
+
+#spelling-bg {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #0f162E;
   background-image: radial-gradient(53% 102%, rgba(0, 0, 0, 0) 34%, rgba(0, 0, 0, 0.45) 100%),
-    url(../images/starbackground.png);*/
-} */
+    url(../images/starbackground.png);
+  z-index: -10;
+}
+
+#math-bg {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #4593DE;
+  background-image: radial-gradient(53% 102%, rgba(193, 238, 253, 0.65) 34%,
+    rgba(23, 51, 97, 0.36) 100%), url(../images/mathbodybg.png);
+  z-index: -10;
+}
 
 h2 {
   text-align: center;
@@ -800,7 +823,6 @@ h2 {
   position: relative;
   display: none;
 }
-
 
 #leaderboard #next-board .button {
   width: 32%;
