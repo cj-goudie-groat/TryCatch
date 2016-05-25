@@ -71,14 +71,12 @@ function goToMainMenu() {
   document.location.href = 'index.html';
 }
 
-
 var spellingLeaderboard = true; // Start at the spelling leaderboard
 
 /**
  * Switches the leaderboard to different gamemode leaderboards
  */
 function switchBoards() {
-  
   if (spellingLeaderboard) {
     $("#math-scores").css({display: "block"});
     $("#spelling-scores").css({display: "none"});

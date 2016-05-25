@@ -4,6 +4,7 @@ $(document).ready(function () {
    */
   $("#start-button").click(function () {
     $("#main-menu").fadeOut(1000);
+    $("#menu-bg").fadeOut(1000);
     $("#game").fadeIn(2000);
     $("#difficulty-menu").css({display: "none"});
     $("#pause-menu-screen-darken").css({display: "none"});
@@ -40,6 +41,9 @@ function loadGamemode() {
     var head = document.getElementsByTagName("head")[0];
     head.appendChild(script);
     
+    // Fade in space background for spelling game
+    $("#spelling-bg").fadeIn(500);
+    
     // Play space music for spelling game
     spellingMusic.loop(true);
     spellingMusic.fadeIn(1, 2000);
@@ -49,10 +53,12 @@ function loadGamemode() {
     var head = document.getElementsByTagName("head")[0];
     head.appendChild(script);
     
+    // Draw background image for math gamemode
     imageRepository.background1.src = "images/mathbg/trees.png";
     imageRepository.background2.src = "images/mathbg/cloudwater.png";
     imageRepository.background3.src = "images/mathbg/base.png";
     
+    // Set player sprite for math gamemode
     if (window.innerWidth >= 1000) {
       imageRepository.player.src = "images/crab.png";
     } else {
@@ -60,6 +66,9 @@ function loadGamemode() {
     }
     
     document.getElementById("gradient").style = "opacity: 0.5";
+    
+    // Fade in jungle background for math game
+    $("#math-bg").fadeIn(1000);
     
     // Play jungle music for math game
     mathMusic.loop(true);
