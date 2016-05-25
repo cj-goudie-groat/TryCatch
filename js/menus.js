@@ -15,12 +15,27 @@ $(document).ready(function () {
   });
   
   /**
-   * Calls the goToMainMenu() function.
+   * Removes the leaderboard overlay and screen darkening
    */
   $(".main-menu-button").click(function () {
-    $("#leaderboard").fadeOut(1000);
-    $("#pause-menu-screen-darken").fadeOut(1000);
+    $("#leaderboard").css({display: "none"});
+    $("#pause-menu-screen-darken").css({display: "none"});
   });
+  
+  /**
+   * Switches leaderboards on click
+   */
+  $(".next-board").click(function () {
+    switchBoards();
+  });
+  
+  /**
+   * Switches leaderboards on click
+   */
+  $(".previous-board").click(function () {
+    switchBoards();
+  });
+  
   /**
    * Calls the goToMainMenu() function.
    */
@@ -39,6 +54,7 @@ function goToMainMenu() {
 }
 
 var selected = false;
+var spellingLeaderboard = true;
 
 function selectButton(id) {
   if (selected == false) {
@@ -48,4 +64,16 @@ function selectButton(id) {
     document.getElementById(id).className = "theme";
     selected = false;
   }
+}
+
+function switchBoards() {
+  
+  if (spellingLeaderboard) {
+    $("#math-scores").css({display: "block"});
+    $("#spelling-scores").css({display: "none"});
+  } else {
+    $("#spelling-scores").css({display: "block"});
+    $("#math-scores").css({display: "none"});
+  }
+    spellingLeaderboard = !spellingLeaderboard;
 }
