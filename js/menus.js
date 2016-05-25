@@ -20,6 +20,7 @@ $(document).ready(function () {
   $(".main-menu-button").click(function () {
     $("#leaderboard").css({display: "none"});
     $("#tutorial-screen").css({display: "none"});
+    $("#achievement-screen").css({display: "none"});
     $("#pause-menu-screen-darken").css({display: "none"});
   });
   
