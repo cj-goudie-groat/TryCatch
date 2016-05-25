@@ -16,6 +16,19 @@
   font-size: 3.5em;
   margin: 0, 0, 20px, 0;
 }
+
+
+h3 {
+  text-align: center;
+  margin: auto;
+  padding-top: 0.25em;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 1.5em;
+  color: #FFFFFF;
+}
+
 /***********************/
 /* Leaderboard Styling */
 /***********************/
