@@ -5,7 +5,7 @@ var letterCount = 0; // Current letter position to find
 var currentWord; // Current word to find
 var wordLength; // Length of the word to find
 
-wordList = ["SHIP", "MARS", "STAR", "MOON", "HALO", "RING"];
+//wordList = ["SHIP", "MARS", "STAR", "MOON", "HALO", "RING"];
 
 /**
  * Draw a random word at the top to collect.
@@ -52,15 +52,25 @@ function letterCollision(character) {
       drawWord();
     }
   } else {
-    currentLives--;
+    loseLife();
     updateLives();
-    
-    if (currentLives != 0) {
-      wrongElementSound.play();
-    } else { // Lost the game
-      gameOver();
-    }
   }
 }
 
-window.onload = drawWord();
+/**
+ * Adds words from a text file then calls drawWord()
+ * to randomly display one of the words.
+ */
+function addWords(data) {
+  wordList = data;
+  drawWord();
+}
+
+/**
+ * Initializes by getting words from a txt file.
+ */
+$(document).ready(function () {
+  $.get("js/spellingGame/wordList.txt", function (data) {
+    addWords(data.toUpperCase().split("\n"));
+  });
+});
