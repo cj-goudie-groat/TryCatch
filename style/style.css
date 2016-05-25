@@ -91,6 +91,20 @@ p {
 #buttons {
   margin: auto;
 }
+/*****************/
+/* Image Styling */
+/*****************/
+#icons #mute{
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 10%;
+  left: 0;
+}
+
+#icons {
+  
+}
 
 /*******************/
 /* The Menu Header */
