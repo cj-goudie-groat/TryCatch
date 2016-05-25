@@ -652,7 +652,7 @@ h2 {
   background-color: #CCFFFF;
   width: 400px;
   height: 500px;
-  z-index: 10;
+  z-index: 12;
   animation-name: menu-drop-in;
   animation-duration: 1s;
   animation-fill-mode: forwards;
