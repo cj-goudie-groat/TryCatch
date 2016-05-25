@@ -47,6 +47,8 @@ function setDifficulty(id) {
       elementAmount = 7;
     }
   }
+  
+  // Changes the buttons selected class to the currently selected button
   var difficulties = document.getElementsByClassName("button-selected");
   
   while (difficulties.length) {
