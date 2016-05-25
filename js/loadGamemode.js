@@ -5,7 +5,7 @@ $(document).ready(function () {
   $("#start-button").click(function () {
     $("#main-menu").fadeOut(1000);
     $("#game").fadeIn(2000);
-    $("#difficulty-menu").fadeOut(1000);
+    $("#difficulty-menu").css({display: "none"});
     $("#pause-menu-screen-darken").css({display: "none"});
     // $("#space-bg").fadeIn(1000);
     loadGamemode();

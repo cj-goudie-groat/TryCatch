@@ -81,15 +81,13 @@ $(document).ready(function () {
   /**
    * Mutes or unmutes the sound.
    */
-  $(".mute-button").click(function () {
+  $("#mute").click(function () {
     if (!muteSound) {
       Howler.mute();
       muteSound = true;
-      $(".mute-button").html("Unmute Sound");
     } else {
       Howler.unmute();
       muteSound = false;
-      $(".mute-button").html("Mute Sound");
     }
   });
 });

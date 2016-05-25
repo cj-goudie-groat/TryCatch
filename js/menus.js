@@ -15,7 +15,7 @@ $(document).ready(function () {
   });
   
   /**
-   * Removes the leaderboard overlay and screen darkening
+   * Removes the overlayed screen and screen darkening
    */
   $(".main-menu-button").click(function () {
     $("#leaderboard").css({display: "none"});
@@ -28,6 +28,14 @@ $(document).ready(function () {
    */
   $(".tutorial-button").click(function() {
     $("#tutorial-screen").css({display: "block"});
+    $("#pause-menu-screen-darken").fadeIn(1000);
+  });
+  
+  /**
+   * Brings the achievement screen up.
+   */
+  $("#trophy").click(function() {
+    $("#achievement-screen").css({display: "block"});
     $("#pause-menu-screen-darken").fadeIn(1000);
   });
   

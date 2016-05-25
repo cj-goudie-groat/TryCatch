@@ -94,20 +94,16 @@ p {
 /*****************/
 /* Image Styling */
 /*****************/
-#icons #mute{
-  width: 100px;
+#icons {
+  width: 200px;
   height: 100px;
   position: absolute;
-  top: 10%;
+  top: 7%;
   left: 0;
 }
 
-#icons #trophy{
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  top: 10%;
-  left: 10%;
+#icons #trophy {
+  float: right;
 }
 
 /*******************/
@@ -883,6 +879,18 @@ h2 {
     animation-name: game-over-fade-in;
     animation-duration: 1.5s;
     animation-fill-mode: forwards;
+  }
+  
+  #icons {
+    width: 100px;
+  }
+  #mute {
+  width: 50px;
+  height: 50px;
+  }
+  #trophy {
+  width: 50px;
+  height: 50px;
   }
 }
 
