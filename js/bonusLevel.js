@@ -6,10 +6,10 @@ function bonusLevel() {
   
   // Checks the gamemode and stops the music
   if (gamemode == "spelling") {
-    spellingMusic(false);
+    spellingMusic.loop(false);
     spellingMusic.fadeOut(0, 1000);
   } else if (gamemode == "math") {
-    mathMusic(false);
+    mathMusic.loop(false);
     mathMusic.fadeOut(0, 1000);
   }
   

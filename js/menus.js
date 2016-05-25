@@ -71,19 +71,12 @@ function goToMainMenu() {
   document.location.href = 'index.html';
 }
 
-var selected = false;
-var spellingLeaderboard = true;
 
-function selectButton(id) {
-  if (selected == false) {
-    document.getElementById(id).className = "theme-selected";
-    selected = true;
-  } else {
-    document.getElementById(id).className = "theme";
-    selected = false;
-  }
-}
+var spellingLeaderboard = true; // Start at the spelling leaderboard
 
+/**
+ * Switches the leaderboard to different gamemode leaderboards
+ */
 function switchBoards() {
   
   if (spellingLeaderboard) {

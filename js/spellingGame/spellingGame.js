@@ -2,16 +2,21 @@ var wordList = []; // Array of words to find
 
 var answerRow = document.getElementById("answer-row"); // Div that displays the word
 var letterCount = 0; // Current letter position to find
-var currentWord; // Current word to find
-var wordLength; // Length of the word to find
 
-//wordList = ["SHIP", "MARS", "STAR", "MOON", "HALO", "RING"];
+wordList = ["SHIP", "MARS"];
 
 /**
  * Draw a random word at the top to collect.
  */
 function drawWord() {
   var randomIndex = Math.floor(Math.random() * wordList.length);
+  
+  // Checks to see if the new word is the same as the previous word
+  if (currentWord == wordList[randomIndex]) {
+    drawWord();
+    return;
+  }
+  
   currentWord = wordList[randomIndex];
   wordLength = currentWord.length;
   for (var i = 0; i < wordLength; i++) {
@@ -70,7 +75,7 @@ function addWords(data) {
  * Initializes by getting words from a txt file.
  */
 $(document).ready(function () {
-  $.get("js/spellingGame/wordList.txt", function (data) {
+  $.get("js/spellingGame/wordList.html", function (data) {
     addWords(data.toUpperCase().split("\n"));
   });
 });
