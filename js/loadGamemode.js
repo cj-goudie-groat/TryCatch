@@ -50,6 +50,10 @@ function loadGamemode() {
     // Play space music for spelling game
     spellingMusic.loop(true);
     spellingMusic.fadeIn(1, 2000);
+    
+    imageRepository.background1.src = "images/mathbg/trees.png";
+    imageRepository.background2.src = "images/mathbg/cloudwater.png";
+    imageRepository.background3.src = "images/mathbg/base.png";
   }
   
   // Display score at the top right
