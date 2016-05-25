@@ -42,7 +42,7 @@ var bonusSound3 = new Howl ({
 });
 */
 /**
- * Music variables.
+ * Music variables
  */
 var menuMusic = new Howl ({
   urls: ["sounds/mainmenusound.mp3"],
