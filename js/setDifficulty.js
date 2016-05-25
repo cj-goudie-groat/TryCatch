@@ -56,4 +56,5 @@ function setDifficulty(id) {
   document.getElementById(id).className = "button-selected";
   
   $("#difficulty-menu").fadeOut(1000);
+  $("#pause-menu-screen-darken").fadeOut(1000);
 }

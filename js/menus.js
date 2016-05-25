@@ -4,19 +4,27 @@ $(document).ready(function () {
    */
   $("#difficulty-button").click(function() {
     $("#difficulty-menu").css({display: "block"});
+    $("#pause-menu-screen-darken").css({display: "block"});
   });
-  
   /**
-   * Calls the goToLeaderBoard() function.
+   * Brings the leaderboard menu up.
    */
-  $(".leaderboard-button").click(function () {
-    goToLeaderboard();
+  $(".leaderboard-button").click(function() {
+    $("#leaderboard").css({display: "block"});
+    $("#pause-menu-screen-darken").fadeIn(1000);
   });
   
   /**
    * Calls the goToMainMenu() function.
    */
   $(".main-menu-button").click(function () {
+    $("#leaderboard").fadeOut(1000);
+    $("#pause-menu-screen-darken").fadeOut(1000);
+  });
+  /**
+   * Calls the goToMainMenu() function.
+   */
+  $(".main-menu").click(function () {
     goToMainMenu();
   });
 });
@@ -28,15 +36,6 @@ function goToMainMenu() {
   buttonSound.play();
   canPause = false;
   document.location.href = 'index.html';
-}
-
-/**
- * Loads to the leaderboard page.
- */
-function goToLeaderboard() {
-  buttonSound.play();
-  canPause = false;
-  document.location.href = 'leaderboard.html';
 }
 
 var selected = false;

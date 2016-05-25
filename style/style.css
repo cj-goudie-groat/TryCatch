@@ -31,6 +31,23 @@ body {
     url(../images/starbackground.png);*/
 } */
 
+h2 {
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin: 0 0 1em 0;
+  background: #F1AE3E;
+  background-color: #0088CB;
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.40);
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.5em;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 24px rgba(0, 0, 0, 0.50);
+  background-image: radial-gradient(50% 99%, rgba(193,238,253,0.65) 0%, rgba(23,51,97,0.36) 100%);
+}
+
 button {
   outline: none;
 }
@@ -53,10 +70,6 @@ button:active {
   text-shadow: 0px 4px 40px rgba(0, 0, 0, 0.50);
   margin-top: 0;
   margin-bottom: 0.5em;
-}
-
-h2 {
-  text-align: center;
 }
 
 #wrapper {
@@ -452,18 +465,10 @@ button .banner {
   font-size: 2em;
   color: #FFFFFF;
 }
-
-#game-over h2 {
-  padding-top: .5em;
-  padding-bottom: .5em;
-  text-align: center;
-  margin: 0;
-  margin-bottom: 1em;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
+#game-over .score {
   font-size: 1.5em;
-  color: #FFF;
-  border: none;
+  margin-bottom: 10px;
+  padding:;
 }
 
 #game-over form {
@@ -525,19 +530,7 @@ button .banner {
 }
 
 #difficulty-menu h2 {
-  text-align: center;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  margin: 0 0 1em 0;
-  background-color: #0088CB;
-  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.40);
-  border: none;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
   font-size: 2em;
-  color: #FFFFFF;
-  text-shadow: 0px 4px 24px rgba(0, 0, 0, 0.50);
-  background-image: radial-gradient(50% 99%, rgba(193,238,253,0.65) 0%, rgba(23,51,97,0.36) 100%);
 }
 
 #difficulty-menu .button {
@@ -574,8 +567,10 @@ button .banner {
   height: 450px;
   z-index: 10;
 }
-
 #pause-menu h2 {
+  font-size: 2em;
+}
+h2 {
   text-align: center;
   padding-top: 1em;
   padding-bottom: 1em;
@@ -586,7 +581,7 @@ button .banner {
   border: none;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  font-size: 2em;
+  font-size: 1.5em;
   color: #FFFFFF;
   text-shadow: 0px 4px 24px rgba(0, 0, 0, 0.50);
   background-image: radial-gradient(50% 99%, rgba(193,238,253,0.65) 0%, rgba(23,51,97,0.36) 100%);
@@ -621,7 +616,7 @@ button .banner {
   opacity: 0.5;
   filter: alpha(opacity=40);
   /* For IE8 and earlier */
-  z-index: 9;
+  z-index: 7;
   animation-name: screen-darken;
   animation-duration: 1.5s;
   animation-fill-mode: forwards;
@@ -631,12 +626,90 @@ button .banner {
 /* Leaderboard Styling */
 /***********************/
 
-#leaderboard-buttons {
-  float: bottom;
+#leaderboard .button {
   position: relative;
-  top: 80%;
-  display: flex;
-  flex-direction: column;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#score-table {
+  position: relative;
+  text-shadow: 0px 6px 18px rgba(0, 0, 0, 0.50);
+  padding: 0;
+  margin: 0;
+}
+
+#leaderboard {
+  display: none;
+  background-image: radial-gradient(53% 102%, rgba(193, 238, 253, 0.65) 34%, rgba(23, 51, 97, 0.36) 100%);
+  display: none;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: -50%;
+  margin: auto;
+  background-color: #CCFFFF;
+  width: 400px;
+  height: 500px;
+  z-index: 10;
+  animation-name: menu-drop-in;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+#spelling-scores {
+  box-shadow: 0px 3px 28px 0px rgba(0,0,0,0.38);
+  font-family: 'Montserrat', sans-serif;
+  margin: 0, auto, 1em, auto;
+  border: solid 5px;
+  width: 95%;
+  color: white;
+  border-spacing: 10px;
+  position: relative;
+}
+
+#math-scores {
+  box-shadow: 0px 3px 28px 0px rgba(0,0,0,0.38);
+  font-family: 'Montserrat', sans-serif;
+  margin: 0, auto, 1em, auto;
+  border: solid 5px;
+  width: 95%;
+  color: white;
+  border-spacing: 10px;
+  position: relative;
+  display: none;
+}
+
+
+#leaderboard #next-board .button {
+  width: 35%;
+  float: right;
+  margin-top: 15px;
+  left: 15%;
+}
+
+#leaderboard #previous-board .button {
+  width: 35%;
+  left: 20%;
+  float: left;
+  margin-top: 15px;
+}
+
+#score-table {
+  position: relative;
+  margin: .35em, 0, 0, .2em;
+  padding-left: 2.5%;
+}
+
+@keyframes leaderboard-drop-in {
+    from {
+      top: -50%;
+    }
+    to {
+      transform: translateY(-50%);
+      top: 50%;
+    }
 }
 
 /*******************************************/
