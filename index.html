@@ -24,7 +24,6 @@
     <!-- Mute button and achievement icon -->
     <div id="icons">
       <img id="mute" src="images/mute.png" alt="mute">
-      <img id="trophy" src="images/trophy.png" alt="achievements">
     </div>
       <div id="title">
         
@@ -138,6 +137,7 @@
     <div id="achievement-screen">
       <h2>Achievements</h2>
       <button class="button main-menu-button">Back</button>
+      <button class="button leaderboard-button">Leaderboard</button>
     </div>
     
     <!-- This is the pause screen darken effect -->
@@ -204,6 +204,7 @@
                   </td>
                 </tr>
               </table>
+              1<br>2<br>3<br>4<br>5<br>6<br>6<br>6<br>
             </div>
         </div>
         <div id="previous-board">
@@ -212,10 +213,11 @@
         <div id="next-board">
           <button class="button next-board">Next</button>
         </div>
-        <div id="back-to-main-menu">
+        <div id="achievements-and-back">
+          <button class="button trophy">Achievements</button><br>
           <button class="button main-menu-button">Back</button>
-        </div>
         <?php include 'server-logOff.php' ;?>
+        </div>
       </div>
     
     <!-- This is the game over section -->

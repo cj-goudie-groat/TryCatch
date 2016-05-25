@@ -11,6 +11,7 @@ $(document).ready(function () {
    */
   $(".leaderboard-button").click(function() {
     $("#leaderboard").css({display: "block"});
+    $("#achievement-screen").css({display: "none"});
     $("#pause-menu-screen-darken").fadeIn(1000);
   });
   
@@ -35,9 +36,9 @@ $(document).ready(function () {
   /**
    * Brings the achievement screen up.
    */
-  $("#trophy").click(function() {
+  $(".trophy").click(function() {
     $("#achievement-screen").css({display: "block"});
-    $("#pause-menu-screen-darken").fadeIn(1000);
+    $("#leaderboard").css({display: "none"});
   });
   
   /**

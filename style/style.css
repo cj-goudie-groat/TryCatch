@@ -710,10 +710,11 @@ h2 {
 /* Leaderboard Styling */
 /***********************/
 
-#leaderboard .button {
+#achievements-and-back .button {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  width: 35%;
 }
 
 #score-table {
@@ -734,8 +735,8 @@ h2 {
   top: -50%;
   margin: auto;
   background-color: #CCFFFF;
-  width: 400px;
-  height: 500px;
+  width: 90%;
+  height: 90%;
   z-index: 12;
   animation-name: menu-drop-in;
   animation-duration: 1s;
@@ -770,12 +771,10 @@ h2 {
   width: 35%;
   float: right;
   margin-top: 15px;
-  left: 15%;
 }
 
 #leaderboard #previous-board .button {
   width: 35%;
-  left: 20%;
   float: left;
   margin-top: 15px;
 }
@@ -916,9 +915,12 @@ h2 {
   }
   
   #icons {
+    float: bottom;
     width: 100px;
+    height: 100%;
   }
   #mute {
+  float: left;
   width: 50px;
   height: 50px;
   }
