@@ -53,6 +53,12 @@ function loadGamemode() {
     imageRepository.background2.src = "images/mathbg/cloudwater.png";
     imageRepository.background3.src = "images/mathbg/base.png";
     
+    if (window.innerWidth >= 1000) {
+      imageRepository.player.src = "images/crab.png";
+    } else {
+      imageRepository.player.src = "images/crabmobile.png";
+    }
+    
     // Play jungle music for math game
     mathMusic.loop(true);
     mathMusic.fadeIn(1, 1800);
