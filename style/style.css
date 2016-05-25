@@ -102,8 +102,12 @@ p {
   left: 0;
 }
 
-#icons {
-  
+#icons #trophy{
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 10%;
+  left: 10%;
 }
 
 /*******************/
