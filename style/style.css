@@ -859,18 +859,20 @@ h2 {
   }
   
   #title svg {
-	width: 360px;
+	  width: 360px;
     height: 135px;
   }
   
   .theme {
     height: 100px;
     width: 100px;
+    margin: 0 1em 0.5em 0.9em;
   }
   
   .theme-selected {
     width: 100px;
     height: 100px;
+    outline: 5px solid white;
   }
   
   #spelling-ship {
@@ -969,7 +971,7 @@ h2 {
   }
   
   #main-menu {
-    top: 42%;
+    top: 45%;
   }
 }
 
@@ -1021,7 +1023,7 @@ h2 {
     box-shadow: 0px 3px 16px 0px rgba(0,0,0,0.38);
   }
   #main-menu {
-    top: 40%;
+    top: 47%;
   }
   
 }
