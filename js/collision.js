@@ -52,6 +52,7 @@ function checkCollision(i, character) {
       playerRect.heightOffset + (window.innerHeight - playerRect.height) > specialRect.y) {
       
       if (character == "egg") { // Easter egg element
+        eggCount++;
         bonusInit();
       } else if (character == "life") { // Extra life element
         if (currentLives < 5) {

@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="minimal-ui, initial-scale=0.5, user-scalable=no">
+  <meta name="viewport" content="minimal-ui, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>TryCatch - Home</title>
   <link href="style/style.css" rel="stylesheet" type="text/css" />
   <link href='https://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
@@ -234,12 +234,12 @@
       <div id="game-over-header">
         <h1>Game Over!</h1>
         <h1 id="score" class="score"></h1>
-        <h1 id="gametype" class="gametype"></h1>
       </div>
         <form action="php/addScore.php" method="post">
           <div id="user-score"> Your name: 
             <input type="text" size="3" maxlength="3" name="initials" id="game-over-input">
             <input id="final-score" name="final-score" visibility="hidden">
+            <input id="gametype" name="gametype" visibility="hidden">
           </div>
           <br>
         <input type="submit" value="Submit score" class="button">
@@ -252,7 +252,6 @@
         <br>
     </div>
   </div>
-  
   <!-- Background for gamemodes and menu -->
   <div id="menu-bg"></div>
   <div id="spelling-bg"></div>

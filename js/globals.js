@@ -76,6 +76,11 @@ var bonusLength = 10000; // Bonus level active in ms
 var bonusWidth = 70; // Width of the bonus elements
 var bonusHeight = 70; // Height of the bonus elements
 
+/**
+ * Global variables for achievements.
+ */
+var eggCount = 0;
+
 /** The keycodes that will be mapped when a user presses a button.
  * Original code by Doug McInnes.
  */

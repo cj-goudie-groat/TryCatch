@@ -386,7 +386,7 @@ button .banner {
   color: #FFFFFF;
   width: 80px;
   height: 80px;
-  box-shadow: 0px 0px 20px 5px rgba(255, 255, 255, 0.30);
+  box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.30);
 }
 
 #answer-row td:last-of-type {
@@ -525,14 +525,6 @@ button .banner {
   position: relative;
   transform: translateX(-50%);
   left: 50%;
-}
-
-#final-score {
-  display: none;
-}
-
-#gametype {
-  display: none;
 }
 
 
@@ -880,18 +872,20 @@ h2 {
   }
   
   #title svg {
-	width: 360px;
+	  width: 360px;
     height: 135px;
   }
   
   .theme {
     height: 100px;
     width: 100px;
+    margin: 0 1em 0.5em 0.9em;
   }
   
   .theme-selected {
     width: 100px;
     height: 100px;
+    outline: 5px solid white;
   }
   
   #spelling-ship {
@@ -963,6 +957,16 @@ h2 {
     width: 300px;
   }
   
+  .equation-answer {
+    width: 40px;
+    height: 40px;
+    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.30);
+  }
+  
+  #answer-table {
+    width: 350px;
+  }
+  
   #game-over {
     width: 300px;
     animation-name: game-over-fade-in;
@@ -990,7 +994,7 @@ h2 {
   }
   
   #main-menu {
-    top: 42%;
+    top: 47%;
   }
 }
 
@@ -1042,7 +1046,7 @@ h2 {
     box-shadow: 0px 3px 16px 0px rgba(0,0,0,0.38);
   }
   #main-menu {
-    top: 40%;
+    top: 47%;
   }
   
 }
