@@ -2,24 +2,18 @@
  * Checks if a trophy is unlocked.
  */
 function unlockTrophy() {
-  var unlock = false;
-  
-  if (currentScore > 100) {
+  if (currentScore > 100 && localStorage.getItem("100Trophy") != "Achieved!") {
     localStorage.setItem("100Trophy", "Achieved!");
-    unlock = true;
+    achievementSound.play();
   }
   
-  if (currentScore > 500) {
+  if (currentScore > 500 && localStorage.getItem("500Trophy") != "Achieved!") {
     localStorage.setItem("500Trophy", "Achieved!");
-    unlock = true;
+    achievementSound.play();
   }
   
-  if (currentScore > 1000) {
+  if (currentScore > 1000 && localStorage.getItem("1000Trophy") != "Achieved!") {
     localStorage.setItem("1000Trophy", "Achieved!");
-    unlock = true;
-  }
-  
-  if (unlock) {
     achievementSound.play();
   }
 }
