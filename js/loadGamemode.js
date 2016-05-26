@@ -142,7 +142,6 @@ function createElements() {
   for (var i = 0; i < bonusAmount; i++) {
     bonusItems[i] = new BonusElement();
     bonusItems[i].init(0, 0, bonusWidth, bonusHeight);
-    bonusItems[i].img.src = "images/special/bonus.png";
-    bonusItems[i].character = "@";
+    newBonusItem(i);
   }
 }

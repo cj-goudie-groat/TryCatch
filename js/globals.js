@@ -42,13 +42,15 @@ var canPause = false; // Whether player can pause or not
  * Global variables for falling elements
  */
 var elements = []; // Array for falling elements
-var elementAmount = 13; // Amount of elements to continuously spawn (default medium)
-if (window.innerWidth > 1000) {
-  elementSpeed = 6;
+var elementSpeed; // Speed of elements (default medium)
+var elementAmount; // Amount of elements to continuously spawn (default medium)
+// Sets speed and amount of elements depending on screen size
+if (window.innerWidth >= 550) {
+  elementSpeed = 7;
   elementAmount = 13;
 } else {
-  elementSpeed = 4;
-  elementAmount = 7;
+  elementSpeed = 5;
+  elementAmount = 10;
 }
 var elementWidth = 70; // Width of the elements
 var elementHeight = 70; // Height of the elements
@@ -69,7 +71,13 @@ var specialSpawnTimer; // Spawn timer for special elements
  * Global variables for bonus elements and bonus level.
  */
 var bonusItems = []; // Array for bonus elements
-var bonusAmount = 30; // Amount of items to spawn on bonus level
+var bonusAmount; // Amount of items to spawn on bonus level
+// Sets amount of bonus items to fall depending on screen size
+if (window.innerWidth >= 550) {
+  bonusAmount = 30;
+} else {
+  bonusAmount = 20;
+}
 var bonusSpeed = 5; // Speed of the bonus elements
 var bonusActive = false; // Bonus level active or not
 var bonusLength = 10000; // Bonus level active in ms

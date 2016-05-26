@@ -17,34 +17,34 @@ function setDifficulty(id) {
     difficulty = 1;
     scoreMult = 0.5;
     
-    if (window.innerWidth > 1000) {
+    if (window.innerWidth >= 550) {
       elementSpeed = 5;
       elementAmount = 10;
     } else {
-      elementSpeed = 5;
-      elementAmount = 5;
+      elementSpeed = 4;
+      elementAmount = 7;
     }
   } else if (id == "hard") { // Hard
     difficulty = 3;
     scoreMult = 1;
     
-    if (window.innerWidth > 1000) {
-      elementSpeed = 8;
+    if (window.innerWidth >= 550) {
+      elementSpeed = 9;
       elementAmount = 15;
     } else {
-      elementSpeed = 6;
-      elementAmount = 10;
+      elementSpeed = 7;
+      elementAmount = 12;
     }
   } else { // Medium (default)
     difficulty = 2;
     scoreMult = 0.75;
     
-    if (window.innerWidth > 1000) {
-      elementSpeed = 6;
+    if (window.innerWidth >= 550) {
+      elementSpeed = 7;
       elementAmount = 13;
     } else {
-      elementSpeed = 4;
-      elementAmount = 7;
+      elementSpeed = 5;
+      elementAmount = 10;
     }
   }
   

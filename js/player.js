@@ -4,7 +4,11 @@
  * around the screen.
  */
 function Player() {
-  this.speed = 10;
+  if (window.innerWidth >= 550) {
+    this.speed = 10;
+  } else {
+    this.speed = 5;
+  }
   
   var leftButton = document.getElementById("left-button");
   var rightButton = document.getElementById("right-button");

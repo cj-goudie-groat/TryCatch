@@ -48,4 +48,12 @@ function clearBonus() {
 function newBonusItem(index) {
   bonusItems[index].x = Math.floor(Math.random() * (game.elementCanvas.width - bonusWidth));
   bonusItems[index].y = Math.floor(Math.random() * (game.elementCanvas.height - bonusHeight) * -1);
+  
+  // Sets size of bonus elements based on screen size
+  if (window.innerWidth >= 550) {
+    bonusItems[index].img.src = "images/special/bonus.png";
+  } else {
+    bonusItems[index].img.src = "images/special/bonusmobile.png";
+  }
+  bonusItems[index].character = "@";
 }
