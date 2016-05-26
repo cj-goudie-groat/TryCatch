@@ -24,7 +24,7 @@ function pause() {
   
   paused = true;
   document.getElementById("pause-menu").style.display = "block";
-  document.getElementById("pause-menu-screen-darken").style.display = "block";
+    $("#pause-menu-screen-darken").css({display: "block", opacity: ".5"});
 }
 
 /**
@@ -37,5 +37,5 @@ function resume() {
   
   paused = false;
   document.getElementById("pause-menu").style.display = "none";
-  document.getElementById("pause-menu-screen-darken").style.display = "none";
+    $("#pause-menu-screen-darken").css({display: "none"});
 }
