@@ -258,13 +258,14 @@ button .banner {
   overflow: hidden;
 }
 
-.mute {
+#main-menu .mute {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
   width: 50px;
   height: 50px;
 }
+
 /************/
 /* Canvases */
 /***********/
@@ -641,22 +642,6 @@ button .banner {
 #pause-menu h2 {
   font-size: 2em;
 }
-h2 {
-  text-align: center;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  margin: 0 0 1em 0;
-  background: #F1AE3E;
-  background-color: #0088CB;
-  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.40);
-  border: none;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 1.5em;
-  color: #FFFFFF;
-  text-shadow: 0px 4px 24px rgba(0, 0, 0, 0.50);
-  background-image: radial-gradient(50% 99%, rgba(193,238,253,0.65) 0%, rgba(23,51,97,0.36) 100%);
-}
 
 #pause-menu .button {
   position: relative;
@@ -664,6 +649,15 @@ h2 {
   left: 50%;
   transform: translateX(-50%);
   background-color: #F1AE3E;
+}
+
+#pause-menu .mute {
+  position: relative;
+  left: 43%;
+  transform: tranlateX(-50%);
+  margin-top: 20px;
+  width: 50px;
+  height: 50px;
 }
 
 #pause-menu-screen-darken {
