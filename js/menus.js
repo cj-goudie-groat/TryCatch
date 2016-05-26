@@ -58,6 +58,9 @@ $(document).ready(function () {
   $(".main-menu").click(function () {
     goToMainMenu();
   });
+  
+  // Check if there are trophies unlocked
+  unlockCheck();
 });
 
 /**

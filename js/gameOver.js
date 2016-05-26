@@ -31,8 +31,8 @@ function gameOver() {
   document.getElementById("pause-menu-screen-darken").style.display = "block";
   document.getElementById("score").innerHTML = "Your final score was: " + currentScore;
   document.getElementById("final-score").value =  currentScore;
-  unlockCheck();
   unlockTrophy();
+  unlockCheck();
 }
 
 /**
