@@ -231,12 +231,12 @@
       <div id="game-over-header">
         <h1>Game Over!</h1>
         <h1 id="score" class="score"></h1>
-        <h1 id="gametype" class="gametype"></h1>
       </div>
         <form action="php/addScore.php" method="post">
           <div id="user-score"> Your name: 
             <input type="text" size="3" maxlength="3" name="initials" id="game-over-input">
             <input id="final-score" name="final-score" visibility="hidden">
+            <input id="gametype" name="gametype" visibility="hidden">
           </div>
           <br>
         <input type="submit" value="Submit score" class="button">
@@ -249,7 +249,6 @@
         <br>
     </div>
   </div>
-  
   <!-- Background for gamemodes and menu -->
   <div id="menu-bg"></div>
   <div id="spelling-bg"></div>

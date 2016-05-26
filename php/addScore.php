@@ -16,7 +16,12 @@ $name = $_POST["initials"];
 $currentScore = $_POST["final-score"]; 
 $gametype = $_POST["gametype"];
 
-$sql = "INSERT INTO sp_hs (sp_name, sp_score) VALUES ('$name', '$currentScore')"; 
+if ($gametype == "spelling") {
+	$sql = "INSERT INTO sp_hs (sp_name, sp_score) VALUES ('$name', '$currentScore')"; 
+}	
+if ($gametype == "math") {
+	$sql = "INSERT INTO math_hs (math_name, math_score) VALUES ('$name', '$currentScore')"; 
+}
 
 if ($conn->query($sql) === TRUE) { 
     echo "Score Submitted. "; 
@@ -26,5 +31,4 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close(); 
 header('Location: http://trycatchbeta.netai.net/'); 
-?> 
-	
+?>

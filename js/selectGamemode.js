@@ -18,9 +18,7 @@ function selectGamemode(id) {
   
   if (id == "spelling-button") {
     gamemode = "spelling";
-    document.getElementById("gametype").innerHTML = "spelling";
   } else if (id == "math-button") {
     gamemode = "math";
-    document.getElementById("gametype").innerHTML = "math";
   }
 }
