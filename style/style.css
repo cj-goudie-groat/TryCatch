@@ -96,6 +96,7 @@ button:active {
   width: 1000px;
   height: 100vh;
   margin: auto;
+  top: 0;
 }
 
 canvas {
@@ -109,20 +110,6 @@ p {
 
 #buttons {
   margin: auto;
-}
-/*****************/
-/* Image Styling */
-/*****************/
-#icons {
-  width: 200px;
-  height: 100px;
-  position: absolute;
-  top: 7%;
-  right: 0;
-}
-
-#icons #trophy {
-  float: right;
 }
 
 /*******************/
@@ -271,6 +258,13 @@ button .banner {
   overflow: hidden;
 }
 
+.mute {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+}
 /************/
 /* Canvases */
 /***********/
@@ -461,7 +455,7 @@ button .banner {
   top: 50%;
   transform: translateY(-50%);
   width: 400px;
-  height: 500px;
+  height: 550px;
   z-index: 10;
   animation-name: game-over-fade-in;
   animation-duration: 1.5s;
@@ -562,11 +556,12 @@ button .banner {
   margin: auto;
   background-color: #CCFFFF;
   width: 400px;
-  height: 500px;
+  height: 550px;
   z-index: 10;
   animation-name: menu-drop-in;
   animation-duration: 1s;
   animation-fill-mode: forwards;
+  box-shadow: 0px 3px 94px 20px rgba(0,0,0,0.38);
 }
 
 #difficulty-menu h2 {
@@ -733,11 +728,12 @@ h2 {
   transform: translateY(-50%);
   background-color: #CCFFFF;
   width: 400px;
-  height: 500px;
+  height: 550px;
   z-index: 10;
   animation-name: menu-drop-in;
   animation-duration: 1s;
   animation-fill-mode: forwards;
+  box-shadow: 0px 3px 94px 20px rgba(0,0,0,0.38);
 }
 
 #achievement-screen h2 {
@@ -746,7 +742,7 @@ h2 {
 
 #achievement-screen .button {
   position: relative;
-  margin-top: 20px;
+  margin-top: 45px;
   left: 50%;
   transform: translateX(-50%);
   background-color: #F1AE3E;
@@ -771,7 +767,7 @@ h2 {
 /* Leaderboard Styling */
 /***********************/
 
-#achievements-and-back .button {
+#back-button .button {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -782,7 +778,7 @@ h2 {
   position: relative;
   text-shadow: 0px 6px 18px rgba(0, 0, 0, 0.50);
   padding: 0;
-  margin: 0;
+  margin-top: 60px;
 }
 
 #leaderboard {
@@ -796,12 +792,13 @@ h2 {
   top: -50%;
   margin: auto;
   background-color: #CCFFFF;
-  width: 90%;
-  height: 90%;
+  width: 400px;
+  height: 550px;
   z-index: 12;
   animation-name: menu-drop-in;
   animation-duration: 1s;
   animation-fill-mode: forwards;
+  box-shadow: 0px 3px 94px 20px rgba(0,0,0,0.38);
 }
 
 #spelling-scores {
@@ -976,22 +973,6 @@ h2 {
     animation-fill-mode: forwards;
   }
   
-  #icons {
-    float: bottom;
-    width: 100px;
-    height: 100%;
-  }
-  #mute {
-  float: left;
-  width: 50px;
-  height: 50px;
-  }
-  #trophy {
-  width: 50px;
-  height: 50px;
-  }
-  
-  
   #leaderboard #next-board .button {
   width: 120px;
   float: right;
@@ -1004,11 +985,15 @@ h2 {
     margin-top: 15px;
     margin-left: 10px;
   }
-  #achievements-and-back .button {
+  #back-button .button {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
   width: 173px;
+  }
+  
+  #main-menu {
+    top: 42%;
   }
 }
 
@@ -1059,4 +1044,8 @@ h2 {
     height: 20px;
     box-shadow: 0px 3px 16px 0px rgba(0,0,0,0.38);
   }
+  #main-menu {
+    top: 40%;
+  }
+  
 }

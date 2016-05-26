@@ -16,15 +16,14 @@
 </head>
 
 <body>
+
+  <!-- This is the pause screen darken effect -->
+  <div id="pause-menu-screen-darken"></div>
+  
   <div id="wrapper">
   
     <!-- This is the main menu section -->
     <div id="main-menu">
-    
-    <!-- Mute button and achievement icon -->
-    <div id="icons">
-      <img id="mute" src="images/mute.png" alt="mute">
-    </div>
       <div id="title">
         
         <!-- Cloud image for the main menu -->
@@ -73,6 +72,8 @@
           <button id="difficulty-button" class="button">Start Game</button> 
           <button class="button leaderboard-button">Leaderboard</button>      
           <button id="achievement-button" class="button">Achievements</button>
+          <!-- Mute button -->
+            <img class="mute" src="images/unmute.png" alt="mute">
         </div>
       </div>
     </div>
@@ -150,9 +151,6 @@
       </table>
       <button class="button main-menu-button">Back</button>
     </div>
-    
-    <!-- This is the pause screen darken effect -->
-    <div id="pause-menu-screen-darken"></div>
      
      <!-- This is the difficulty menu section (hidden by default) -->
       <div id="difficulty-menu" >
@@ -222,7 +220,7 @@
         <div id="next-board">
           <button class="button next-board">Next</button>
         </div>
-        <div id="achievements-and-back">
+        <div id="back-button">
           <button class="button main-menu-button">Back</button>
         <?php include 'server-logOff.php' ;?>
         </div>

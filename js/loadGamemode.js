@@ -68,7 +68,7 @@ function loadGamemode() {
     document.getElementById("gradient").style = "opacity: 0.5";
     
     // Fade in jungle background for math game
-    $("#math-bg").fadeIn(1000);
+    $("#math-bg").fadeIn(500);
     
     // Play jungle music for math game
     mathMusic.loop(true);

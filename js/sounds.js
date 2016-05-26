@@ -83,13 +83,15 @@ $(document).ready(function () {
   /**
    * Mutes or unmutes the sound.
    */
-  $("#mute").click(function () {
+  $(".mute").click(function () {
     if (!muteSound) {
       Howler.mute();
       muteSound = true;
+      $(".mute").attr("src", "images/mute.png");
     } else {
       Howler.unmute();
       muteSound = false;
+      $(".mute").attr("src", "images/unmute.png");
     }
   });
 });
