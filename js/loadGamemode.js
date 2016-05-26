@@ -10,8 +10,22 @@ $(document).ready(function () {
     $("#pause-menu-screen-darken").css({display: "none"});
     // $("#space-bg").fadeIn(1000);
     loadGamemode();
+    
+    if (gamemode == "spelling") {
+      // Gets words from a file
+      $.get("js/spellingGame/wordList.html", function (data) {
+        addWords(data.toUpperCase().split("\n"));
+      });
+    }
   });
 });
+
+/**
+ * Adds the words from the file to the word list.
+ */
+function addWords(data) {
+  wordList = data;
+}
 
 /**
  * Loads the selected gamemode to play and starts

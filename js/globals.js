@@ -2,8 +2,14 @@
  * Global variables for gamemode.
  */
 var gamemode = "spelling"; // Current gamemode being played (default spelling)
-var currentWord = ""; // Current word to find (spelling gamemode)
-var wordLength = 0; // Length of the word (spelling gamemode)
+
+/**
+ * Global variables for spelling gamemode.
+ * Made global to spawn letters more frequently that are in the current word.
+ */
+var wordList = []; // Array of words to find
+var currentWord = ""; // Current word to find
+var wordLength = 0; // Length of the word
 
 /**
  * Global variables for difficulty.

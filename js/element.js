@@ -5,19 +5,19 @@
  */
 function Element() {
   if (difficulty == 1) { // Easy
-    if (window.innerWidth) {
+    if (window.innerWidth >= 1000) {
       this.speed = 3;
     } else {
-      this.speed = 1;
+      this.speed = 2;
     }
   } else if (difficulty == 3) { // Hard
-    if (window.innerWidth) {
+    if (window.innerWidth >= 1000) {
       this.speed = 8;
     } else {
       this.speed = 6;
     }
   } else { // Medium (default)
-    if (window.innerWidth) {
+    if (window.innerWidth >= 1000) {
       this.speed = 6;
     } else {
       this.speed = 4;
@@ -71,6 +71,7 @@ function newElement(index) {
   elements[index].x = Math.floor(Math.random() * (game.elementCanvas.width - elementWidth));
   elements[index].y = Math.floor(Math.random() * (game.elementCanvas.height + elementHeight) * -1);
   if (gamemode == "spelling") {
+    // Spawn letters that are in the current word more frequently
     var randGen = Math.floor(Math.random() * 30);
     if (randGen % 3 == 0) {
       var randIndex = Math.floor(Math.random() * wordLength);
@@ -78,10 +79,13 @@ function newElement(index) {
     } else {
       var randomLetter = Math.floor(Math.random() * (122 - 97 + 1)) + 97; // Random letter from a-z
     }
+    // Spawn larger letters for larger screen and smaller letters for smaller screen
     if (window.innerWidth >= 550) {
-      elements[index].img.src = "images/spelling/letters/" + String.fromCharCode(randomLetter) + ".png";
+      elements[index].img.src = "images/spelling/letters/"
+        + String.fromCharCode(randomLetter).toLowerCase() + ".png";
     } else {
-      elements[index].img.src = "images/spelling/lettersmobile/" + String.fromCharCode(randomLetter) + ".png";
+      elements[index].img.src = "images/spelling/lettersmobile/"
+        + String.fromCharCode(randomLetter).toLowerCase() + ".png";
     }
     elements[index].character = String.fromCharCode(randomLetter).toUpperCase(); // A-Z
   } else if (gamemode == "math") {
