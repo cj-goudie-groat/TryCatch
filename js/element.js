@@ -78,21 +78,41 @@ function newElement(index) {
     } else {
       var randomLetter = Math.floor(Math.random() * (122 - 97 + 1)) + 97; // Random letter from a-z
     }
-    elements[index].img.src = "images/letters/" + String.fromCharCode(randomLetter) + ".png";
+    if (window.innerWidth >= 550) {
+      elements[index].img.src = "images/spelling/letters/" + String.fromCharCode(randomLetter) + ".png";
+    } else {
+      elements[index].img.src = "images/spelling/lettersmobile/" + String.fromCharCode(randomLetter) + ".png";
+    }
     elements[index].character = String.fromCharCode(randomLetter).toUpperCase(); // A-Z
   } else if (gamemode == "math") {
     var randomNumber = Math.floor(Math.random() * 13); // Random number from 0-12
     if (randomNumber == 10) { // + (add)
-      elements[index].img.src = "images/numbers/+.png";
+      if (window.innerWidth >= 550) {
+        elements[index].img.src = "images/math/numbers/+.png";
+      } else {
+        elements[index].img.src = "images/math/numbersmobile/+.png";
+      }
       elements[index].character = "+";
     } else if (randomNumber == 11) { // - (subtract)
-      elements[index].img.src = "images/numbers/-.png";
+      if (window.innerWidth >= 550) {
+        elements[index].img.src = "images/math/numbers/-.png";
+      } else {
+        elements[index].img.src = "images/math/numbersmobile/-.png";
+      }
       elements[index].character = "-";
     } else if (randomNumber == 12) { // = (equals)
-      elements[index].img.src = "images/numbers/=.png";
+      if (window.innerWidth >= 550) {
+        elements[index].img.src = "images/math/numbers/=.png";
+      } else {
+        elements[index].img.src = "images/math/numbersmobile/=.png";
+      }
       elements[index].character = "=";
     } else { // 0-9
-      elements[index].img.src = "images/numbers/" + randomNumber + ".png";
+      if (window.innerWidth >= 550) {
+        elements[index].img.src = "images/math/numbers/" + randomNumber + ".png";
+      } else {
+        elements[index].img.src = "images/math/numbersmobile/" + randomNumber + ".png";
+      }
       elements[index].character = randomNumber;
     }
   }

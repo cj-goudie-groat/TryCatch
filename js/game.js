@@ -68,20 +68,20 @@ var imageRepository = new function () {
   }
 
   // Set images src
-  this.background1.src = "images/background/layer1.png";
-  this.background2.src = "images/background/layer2.png";
-  this.background3.src = "images/background/layer3.png";
+  this.background1.src = "images/spelling/background/layer1.png";
+  this.background2.src = "images/spelling/background/layer2.png";
+  this.background3.src = "images/spelling/background/layer3.png";
   
   if (window.innerWidth >= 1000) {
-    this.player.src = "images/shipanim/ship0.png";
+    this.player.src = "images/spelling/ship.png";
     this.bonusLevelPlayer.src = "images/special/bonusplayer.png";
   } else {
-    this.player.src = "images/shipanim/mobile/ship0.png";
-    this.bonusLevelPlayer.src = "images/special/bonusplayers.png";
+    this.player.src = "images/spelling/shipmobile.png";
+    this.bonusLevelPlayer.src = "images/special/bonusplayermobile.png";
   }
   
   this.bonusLevelBg.src = "images/special/bonusbg.jpg";
-  this.easterEgg.src = "images/special/easteregg.png"
+  this.easterEgg.src = "images/special/easteregg.png";
 };
 
 /**

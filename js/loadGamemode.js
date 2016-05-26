@@ -54,15 +54,15 @@ function loadGamemode() {
     head.appendChild(script);
     
     // Draw background image for math gamemode
-    imageRepository.background1.src = "images/mathbg/trees.png";
-    imageRepository.background2.src = "images/mathbg/cloudwater.png";
-    imageRepository.background3.src = "images/mathbg/base.png";
+    imageRepository.background1.src = "images/math/background/layer1.png";
+    imageRepository.background2.src = "images/math/background/layer2.png";
+    imageRepository.background3.src = "images/math/background/layer3.png";
     
     // Set player sprite for math gamemode
     if (window.innerWidth >= 1000) {
-      imageRepository.player.src = "images/crab.png";
+      imageRepository.player.src = "images/math/crab.png";
     } else {
-      imageRepository.player.src = "images/crabmobile.png";
+      imageRepository.player.src = "images/math/crabmobile.png";
     }
     
     document.getElementById("gradient").style = "opacity: 0.5";

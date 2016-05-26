@@ -3,8 +3,6 @@ var wordList = []; // Array of words to find
 var answerRow = document.getElementById("answer-row"); // Div that displays the word
 var letterCount = 0; // Current letter position to find
 
-wordList = ["SHIP", "MARS"];
-
 /**
  * Draw a random word at the top to collect.
  */
