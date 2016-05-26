@@ -746,6 +746,7 @@ button .banner {
   animation-duration: 1s;
   animation-fill-mode: forwards;
   box-shadow: 0px 3px 94px 20px rgba(0,0,0,0.38);
+  overflow: hidden;
 }
 
 #achievement-screen h2 {
@@ -864,8 +865,13 @@ button .banner {
   transform: translateX(-50%);
 }
 
-.scores td {
+.scores th {
   padding: 0 35px 0 35px;
+  text-decoration: underline;
+}
+
+.scores td {
+  text-align: center;
 }
 
 #math-scores {
