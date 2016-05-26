@@ -32,6 +32,7 @@ function gameOver() {
   document.getElementById("score").innerHTML = "Your final score was: " + currentScore;
   document.getElementById("final-score").value =  currentScore;
   unlockCheck();
+  unlockTrophy();
 }
 
 /**

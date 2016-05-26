@@ -16,13 +16,7 @@ $name = $_POST["initials"];
 $currentScore = $_POST["final-score"]; 
 $gametype = $_POST["gametype"];
 
-if ($gametype == "spelling") {
-	$sql = "INSERT INTO sp_hs (sp_name, sp_score) VALUES ('$name', '$currentScore')"; 
-} elseif ($gametype == "math") {
-	$sql = "INSERT INTO math_hs (math_name, math_score) VALUES ('$name', '$currentScore')"; 
-} else {
-	$sql = "INSERT INTO sp_hs (sp_name, sp_score) VALUES ('LEK', '69420')"; 
-}
+$sql = "INSERT INTO sp_hs (sp_name, sp_score) VALUES ('$name', '$currentScore')"; 
 
 if ($conn->query($sql) === TRUE) { 
     echo "Score Submitted. "; 
