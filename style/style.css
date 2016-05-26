@@ -767,7 +767,7 @@ h2 {
 /* Leaderboard Styling */
 /***********************/
 
-#achievements-and-back .button {
+#back-button .button {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -985,7 +985,7 @@ h2 {
     margin-top: 15px;
     margin-left: 10px;
   }
-  #achievements-and-back .button {
+  #back-button .button {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
