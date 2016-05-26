@@ -584,6 +584,16 @@ button .banner {
   background: #F1AE3E;
 }
 
+#difficulty-menu .tutorial-button {
+  position: relative;
+  margin-top: 17px;
+  margin-bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);  
+  background-color: #0AAFF1;
+  background: #F1AE3E;
+}
+
 #difficulty-menu .main-menu-button {
   position: relative;
   margin-top: 17px;
