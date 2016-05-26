@@ -15,10 +15,11 @@ function resizeCanvas() {
     // Resize player canvas and redraw player sprite
     game.playerCanvas.width = wrapper.clientWidth;
     
-    if (window.innerWidth < 1000) {
-      game.playerCanvas.height = 119;
-    } else {
+    // Change height of player canvas for mobile
+    if (window.innerWidth >= 550) {
       game.playerCanvas.height = 178;
+    } else {
+      game.playerCanvas.height = 119;
     }
     
     game.player.draw();

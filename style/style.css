@@ -404,22 +404,24 @@ button .banner {
 }
 
 #left-button {
-  width: 70px;
-  height: auto;
+  width: 54px;
+  height: 81px;
   position: absolute;
   left: 0;
   bottom: 0;
-  background: none;
+  background-image: url("../images/leftarrow.png");
+  background-repeat: no-repeat;
   border: none;
 }
 
 #right-button {
-  width: 70px;
-  height: auto;
+  width: 54px;
+  height: 81px;
   position: absolute;
   right: 0;
   bottom: 0;
-  background: none;
+  background-image: url("../images/rightarrow.png");
+  background-repeat: no-repeat;
   border: none;
 }
 
@@ -781,6 +783,7 @@ button .banner {
   vertical-align: top;
   padding-left: 0.5em;
   padding-top: 0.5em;
+  padding-right: 1em;
   padding-bottom: 0;
 }
 
