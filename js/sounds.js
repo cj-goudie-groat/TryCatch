@@ -38,7 +38,7 @@ var bonusSound3 = new Howl ({
 });
 
 var achievementSound = new Howl ({
-	urls: ["sound/achievementsound.mp3"]
+	urls: ["sounds/achievementsound.mp3"]
 });
 
 /**

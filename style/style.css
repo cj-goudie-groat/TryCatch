@@ -33,7 +33,7 @@
   height: 100vh;
   background: #0f162E;
   background-image: radial-gradient(53% 102%, rgba(0, 0, 0, 0) 34%, rgba(0, 0, 0, 0.45) 100%),
-    url(../images/starbackground.png);
+    url(../images/spelling/background/spellingbodybg.png);
   z-index: -10;
 }
 
@@ -46,7 +46,7 @@
   height: 100vh;
   background: #4593DE;
   background-image: radial-gradient(53% 102%, rgba(193, 238, 253, 0.65) 34%,
-    rgba(23, 51, 97, 0.36) 100%), url(../images/mathbodybg.png);
+    rgba(23, 51, 97, 0.36) 100%), url(../images/math/background/mathbodybg.png);
   z-index: -10;
 }
 
@@ -869,13 +869,6 @@ h2 {
 @media screen and (max-width: 530px) {
   #wrapper {
     width: 100%;
-  }
-  
-  body {
-    /* background-image: linear-gradient(-180deg, rgba(193,238,253,0.65) 0%, rgba(23,51,97,0.36) 100%); */
-    background: #0f162e;
-    background-image: radial-gradient(53% 102%, rgba(0, 0, 0, 0) 34%, rgba(0, 0, 0, 0.45) 100%),
-    url(../images/starbackground.png);
   }
   
   #title h1 {
