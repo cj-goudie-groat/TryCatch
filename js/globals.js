@@ -8,8 +8,8 @@ var gamemode = "spelling"; // Current gamemode being played (default spelling)
  * Made global to spawn letters more frequently that are in the current word.
  */
 var wordList = []; // Array of words to find
-var currentWord = ""; // Current word to find
-var wordLength = 0; // Length of the word
+var currentWord; // Current word to find
+var wordLength; // Length of the word
 
 /**
  * Global variables for difficulty.

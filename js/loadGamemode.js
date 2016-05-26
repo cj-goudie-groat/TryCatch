@@ -1,4 +1,10 @@
 $(document).ready(function () {
+  
+  // Gets words from a file
+  $.get("js/spellingGame/wordList.html", function (data) {
+    addWords(data.toUpperCase().split("\n"));
+  });
+  
   /**
    * Calls loadGamemode() when the start button is clicked.
    */
@@ -8,15 +14,8 @@ $(document).ready(function () {
     $("#game").fadeIn(2000);
     $("#difficulty-menu").css({display: "none"});
     $("#pause-menu-screen-darken").css({display: "none"});
-    // $("#space-bg").fadeIn(1000);
-    loadGamemode();
     
-    if (gamemode == "spelling") {
-      // Gets words from a file
-      $.get("js/spellingGame/wordList.html", function (data) {
-        addWords(data.toUpperCase().split("\n"));
-      });
-    }
+    loadGamemode();
   });
 });
 
@@ -61,6 +60,11 @@ function loadGamemode() {
     // Play space music for spelling game
     spellingMusic.loop(true);
     spellingMusic.fadeIn(1, 2000);
+    
+    // Start by drawing word
+    var randomIndex = Math.floor(Math.random() * wordList.length);
+    currentWord = wordList[randomIndex];
+    wordLength = currentWord.length;
   } else if (gamemode == "math") {
     var script = document.createElement("script");
     script.src = "js/mathGame/mathGame.js";
