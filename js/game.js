@@ -23,13 +23,20 @@ var imageRepository = new function () {
   this.background1 = new Image();
   this.background2 = new Image();
   this.background3 = new Image();
+  
+  this.mathBg1 = new Image();
+  this.mathBg2 = new Image();
+  this.mathBg3 = new Image();
+  
   this.player = new Image();
+  this.mathPlayer = new Image();
+  
   this.bonusLevelBg = new Image();
   this.bonusLevelPlayer = new Image();
   this.easterEgg = new Image();
   
   // Ensure all images have loaded before starting the game
-  var numImages = 7;
+  var numImages = 11;
   var numLoaded = 0;
 
   function imageLoaded() {
@@ -51,7 +58,23 @@ var imageRepository = new function () {
     imageLoaded();
   }
   
+  this.mathBg1.onload = function () {
+    imageLoaded();
+  }
+  
+  this.mathBg2.onload = function () {
+    imageLoaded();
+  }
+  
+  this.mathBg3.onload = function () {
+    imageLoaded();
+  }
+  
   this.player.onload = function () {
+    imageLoaded();
+  }
+  
+  this.mathPlayer.onload = function () {
     imageLoaded();
   }
   
@@ -72,11 +95,17 @@ var imageRepository = new function () {
   this.background2.src = "images/spelling/background/layer2.png";
   this.background3.src = "images/spelling/background/layer3.png";
   
+  this.mathBg1.src = "images/math/background/layer1.png";
+  this.mathBg2.src = "images/math/background/layer2.png";
+  this.mathBg3.src = "images/math/background/layer3.png";
+  
   if (window.innerWidth >= 1000) {
     this.player.src = "images/spelling/ship.png";
+    this.mathPlayer.src = "images/math/crab.png";
     this.bonusLevelPlayer.src = "images/special/bonusplayer.png";
   } else {
     this.player.src = "images/spelling/shipmobile.png";
+    this.mathPlayer.src = "images/math/crabmobile.png";
     this.bonusLevelPlayer.src = "images/special/bonusplayermobile.png";
   }
   
