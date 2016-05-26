@@ -72,13 +72,13 @@ function loadGamemode() {
     head.appendChild(script);
     
     // Draw background image for math gamemode
-    imageRepository.background1.src = "images/math/background/layer1.png";
-    imageRepository.background2.src = "images/math/background/layer2.png";
-    imageRepository.background3.src = "images/math/background/layer3.png";
+    imageRepository.background1.src = imageRepository.mathBg1.src;
+    imageRepository.background2.src = imageRepository.mathBg2.src;
+    imageRepository.background3.src = imageRepository.mathBg3.src;
     
     // Set player sprite for math gamemode
     if (window.innerWidth >= 1000) {
-      imageRepository.player.src = "images/math/crab.png";
+      imageRepository.player.src = imageRepository.mathPlayer.src;
     } else {
       imageRepository.player.src = "images/math/crabmobile.png";
     }
