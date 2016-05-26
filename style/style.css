@@ -736,7 +736,7 @@ button .banner {
   transform: translateY(-50%);
   background-color: #CCFFFF;
   width: 400px;
-  height: 550px;
+  height: 650px;
   z-index: 10;
   animation-name: menu-drop-in;
   animation-duration: 1s;
@@ -750,7 +750,11 @@ button .banner {
 
 #achievement-screen .button {
   position: relative;
-  margin-top: 45px;
+<<<<<<< Updated upstream
+  margin-top: 0.5em;
+=======
+  margin-top: 18px;
+>>>>>>> Stashed changes
   left: 50%;
   transform: translateX(-50%);
   background-color: #F1AE3E;
@@ -759,21 +763,40 @@ button .banner {
 #achievements-table {
   box-shadow: 0px 3px 28px 0px rgba(0,0,0,0.38);
   font-family: 'Montserrat', sans-serif;
+<<<<<<< Updated upstream
+  text-shadow: 0px 6px 18px rgba(0, 0, 0, 0.50);
+  color: white;
   width: 95%;
+=======
+  width: 90%;
+>>>>>>> Stashed changes
   position: relative;
   left: 50%;
   transform:translateX(-50%);
   border-collapse: collapse;
+  background: #4593DE;
+  background-image: linear-gradient(-180deg, rgba(193,238,253,0.65) 0%, rgba(23,51,97,0.36) 100%);
 }
 
 #achievements-table td {
   border: solid 5px white;
   vertical-align: top;
+  padding-left: 0.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0;
 }
 
 #achievements-div {
+  margin: auto;
+  width: 90%;
+  box-shadow: 0px 3px 28px 0px rgba(0,0,0,0.38);
+  border: solid 5px white;
   position: relative;
-  height: 75%;
+<<<<<<< Updated upstream
+  height: auto;
+=======
+  height: 58%;
+>>>>>>> Stashed changes
   overflow: auto;
 }
 
@@ -824,6 +847,8 @@ button .banner {
   color: white;
   border-spacing: 10px;
   position: relative;
+  background: #4593DE;
+  background-image: linear-gradient(-180deg, rgba(193,238,253,0.65) 0%, rgba(23,51,97,0.36) 100%);
 }
 
 #math-scores {
@@ -836,6 +861,8 @@ button .banner {
   border-spacing: 10px;
   position: relative;
   display: none;
+  background: #4593DE;
+  background-image: linear-gradient(-180deg, rgba(193,238,253,0.65) 0%, rgba(23,51,97,0.36) 100%);
 }
 
 #leaderboard #next-board .button {
@@ -857,6 +884,7 @@ button .banner {
   margin: .35em, 0, 0, .2em;
   padding-left: 2.5%;
 }
+
 
 @keyframes leaderboard-drop-in {
     from {
@@ -885,6 +913,11 @@ button .banner {
     width: 100%;
   }
   
+  #menu-bg {
+    background: #4593DE;
+    background-image: linear-gradient(-180deg, rgba(193,238,253,0.65) 0%, rgba(23,51,97,0.36) 100%);
+  }
+  
   #title h1 {
     font-size: 3em;
   }
@@ -903,6 +936,15 @@ button .banner {
   .theme-selected {
     width: 100px;
     height: 100px;
+    outline: 5px solid white;
+  }
+  
+  #difficulty-menu .button-selected {
+    margin-top: 17.5px;
+    margin-bottom: 2.5px;
+  }
+  
+  .button-selected {
     outline: 5px solid white;
   }
   
@@ -969,6 +1011,15 @@ button .banner {
   
   #difficulty-menu {
     width: 300px;
+  }
+  
+  #leaderboard {
+    width: 350px;
+  }
+  
+  #achievement-screen {
+    width: 350px;
+    height: 600px;
   }
   
   #pause-menu {
