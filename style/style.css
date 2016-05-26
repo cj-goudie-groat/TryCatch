@@ -742,7 +742,7 @@ h2 {
   transform: translateY(-50%);
   background-color: #CCFFFF;
   width: 400px;
-  height: 550px;
+  height: 650px;
   z-index: 10;
   animation-name: menu-drop-in;
   animation-duration: 1s;
@@ -756,7 +756,7 @@ h2 {
 
 #achievement-screen .button {
   position: relative;
-  margin-top: 1em;
+  margin-top: 0.5em;
   left: 50%;
   transform: translateX(-50%);
   background-color: #F1AE3E;
@@ -779,12 +779,14 @@ h2 {
 #achievements-table td {
   border: solid 5px white;
   vertical-align: top;
-  padding: 0.5em;
+  padding-left: 0.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0;
 }
 
 #achievements-div {
   position: relative;
-  height: 75%;
+  height: auto;
   overflow: auto;
 }
 
@@ -1007,6 +1009,7 @@ h2 {
   
   #achievement-screen {
     width: 350px;
+    height: 600px;
   }
   
   #pause-menu {
