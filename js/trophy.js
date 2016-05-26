@@ -16,6 +16,11 @@ function unlockTrophy() {
     localStorage.setItem("1000Trophy", "Achieved!");
     achievementSound.play();
   }
+
+  if (eggCount > 5 && localStorage.getItem("eggTrophy") != "Achieved!") {
+    localStorage.setItem("eggTrophy", "Achieved!");
+    achievementSound.play();
+  }
 }
 
 /**
@@ -33,5 +38,9 @@ function unlockCheck() {
 
   if (localStorage.getItem("1000Trophy") == "Achieved!") {
     document.getElementById("unlock1000").src = "images/100trophy.png";
+  }
+
+  if (localStorage.getItem("eggTrophy") == "Achieved!") {
+    document.getElementById("unlockEgg").src = "images/special/bonusplayer.png";
   }
 }
