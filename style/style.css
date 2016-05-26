@@ -386,7 +386,7 @@ button .banner {
   color: #FFFFFF;
   width: 80px;
   height: 80px;
-  box-shadow: 0px 0px 20px 5px rgba(255, 255, 255, 0.30);
+  box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.30);
 }
 
 #answer-row td:last-of-type {
@@ -592,6 +592,16 @@ button .banner {
   background: #F1AE3E;
 }
 
+#difficulty-menu .tutorial-button {
+  position: relative;
+  margin-top: 17px;
+  margin-bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);  
+  background-color: #0AAFF1;
+  background: #F1AE3E;
+}
+
 #difficulty-menu .main-menu-button {
   position: relative;
   margin-top: 17px;
@@ -685,20 +695,33 @@ h2 {
   transform: translateY(-50%);
   background-color: #CCFFFF;
   width: 400px;
-  height: 100%;
+  height: 600px;
   z-index: 11;
   animation-name: menu-drop-in;
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
+
+#tutorial-screen img {
+  height: 425px;
+  width: auto;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.math-tutorial {
+  display: none;
+}
+
 #tutorial-screen h2 {
-  font-size: 2em;
+  font-size: 1.3em;
 }
 
 #tutorial-screen .button {
   position: relative;
-  margin-top: 20px;
   left: 50%;
+  margin-top: 10px;
   transform: translateX(-50%);
   background-color: #F1AE3E;
 }
@@ -958,6 +981,16 @@ h2 {
     width: 300px;
   }
   
+  .equation-answer {
+    width: 40px;
+    height: 40px;
+    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.30);
+  }
+  
+  #answer-table {
+    width: 350px;
+  }
+  
   #game-over {
     width: 300px;
     animation-name: game-over-fade-in;
@@ -985,7 +1018,7 @@ h2 {
   }
   
   #main-menu {
-    top: 45%;
+    top: 47%;
   }
 }
 
