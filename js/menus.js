@@ -4,6 +4,7 @@ $(document).ready(function () {
    */
   $("#difficulty-button").click(function() {
     $("#difficulty-menu").css({display: "block"});
+    $("#pause-menu-screen-darken").css({opacity: "0.01", display: "block"});
   });
   /**
    * Brings the leaderboard menu up.
@@ -11,6 +12,7 @@ $(document).ready(function () {
   $(".leaderboard-button").click(function() {
     $("#leaderboard").css({display: "block"});
     $("#achievement-screen").css({display: "none"});
+    $("#pause-menu-screen-darken").css({opacity: "0.01", display: "block"});
   });
   
   /**
@@ -32,10 +34,18 @@ $(document).ready(function () {
   });
   
   /**
+   * Removes overlayed tutorial screen.
+   */
+  $(".close-tutorial").click(function() {
+    $("#tutorial-screen").css({display: "none"});
+  });
+  
+  /**
    * Brings the achievement screen up.
    */
   $("#achievement-button").click(function() {
     $("#achievement-screen").css({display: "block"});
+    $("#pause-menu-screen-darken").css({opacity: "0.01", display: "block"});
   });
   
   /**
