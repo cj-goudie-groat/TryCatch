@@ -386,7 +386,7 @@ button .banner {
   color: #FFFFFF;
   width: 80px;
   height: 80px;
-  box-shadow: 0px 0px 20px 5px rgba(255, 255, 255, 0.30);
+  box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.30);
 }
 
 #answer-row td:last-of-type {
@@ -944,6 +944,16 @@ h2 {
     width: 300px;
   }
   
+  .equation-answer {
+    width: 40px;
+    height: 40px;
+    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.30);
+  }
+  
+  #answer-table {
+    width: 350px;
+  }
+  
   #game-over {
     width: 300px;
     animation-name: game-over-fade-in;
@@ -971,7 +981,7 @@ h2 {
   }
   
   #main-menu {
-    top: 45%;
+    top: 47%;
   }
 }
 
