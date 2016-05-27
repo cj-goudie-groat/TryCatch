@@ -29,7 +29,7 @@ $(document).ready(function () {
   /**
    * Brings the tutorial screen up.
    */
-  $(".tutorial-button").click(function() {
+  $("#tutorial-button").click(function() {
     $("#tutorial-screen").css({display: "block"});
   });
   

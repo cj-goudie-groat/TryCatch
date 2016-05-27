@@ -1,0 +1,289 @@
+/************/
+/* Canvases */
+/************/
+canvas {
+  position: absolute;
+  background: transparent;
+}
+
+#background {
+  z-index: 0;
+  background-color: #1F2B42;
+}
+
+#elements {
+  z-index: 1;
+}
+
+#player {
+  bottom: 0;
+  z-index: 3;
+}
+
+#gradient {
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(-180deg, rgba(0,0,0,0.35) 10%, rgba(0,0,0,0.00) 35%),
+    linear-gradient(0deg, rgba(0,0,0,0.35) 5%, rgba(0,0,0,0.00) 33%);
+}
+
+/*************************/
+/* Game Body Backgrounds */
+/*************************/
+#spelling-bg {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #0f162E;
+  background-image: radial-gradient(53% 102%, rgba(0, 0, 0, 0) 34%, rgba(0, 0, 0, 0.45) 100%),
+    url(../images/spelling/background/spellingbodybg.png);
+  z-index: -10;
+}
+
+#math-bg {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #4593DE;
+  background-image: radial-gradient(53% 102%, rgba(193, 238, 253, 0.65) 34%,
+    rgba(23, 51, 97, 0.36) 100%), url(../images/math/background/mathbodybg.png);
+  z-index: -10;
+}
+
+/***********/
+/* Game UI */
+/***********/
+#game {
+  display: none;
+  position: relative;
+  height: 100%;
+  top: 0;
+}
+
+/************/
+/* Top Menu */
+/************/
+#top-menu {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  height: 10%;
+}
+
+#left {
+  position: absolute;
+  left: 0;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(../images/menubar.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#right {
+  position: absolute;
+  right: 0;
+  text-align: right;
+}
+
+#pause-button {
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 1.5em;
+  background: none;
+  border: none;
+  margin: 0;
+  color: #C9C1C1;
+  text-shadow: 0px 1px 15px rgba(0,0,0,0.50);
+  z-index: 9;
+}
+
+#pause-button:hover {
+  text-shadow: 0px 5px 15px rgba(0,0,0,0.90);
+}
+
+#menu-pause {
+  margin: 0.8em 0 2em -6em;
+}
+
+#level-counter {
+  position: relative;
+  margin: 0.2em 0 0.2em -3em;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 1.5em;
+  color: #C9C1C1;
+  text-shadow: 0px 1px 15px rgba(0,0,0,0.50);
+}
+
+#score-counter {
+  margin: -15px 15px 15px 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 5em;
+  color: white;
+}
+
+/******************/
+/* Answer Section */
+/******************/
+#answer-section {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  font-size: 1.5em;
+  z-index: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#answer-table {
+  margin: auto;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 3em;
+  color: #1B2338;
+  text-shadow:
+    -1px -1px 0 #fff,  
+    1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+    1px 1px 0 #fff,
+    0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+.equation-answer {
+  text-align: center;
+  color: #FFFFFF;
+  width: 80px;
+  height: 80px;
+  box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.30);
+}
+
+#answer-row td:last-of-type {
+  box-shadow: none;
+}
+
+/******************/
+/* Mobile Buttons */
+/******************/
+#mobile-buttons {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 60px;
+  bottom: 0;
+  z-index: 3;
+}
+
+#left-button {
+  width: 54px;
+  height: 81px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-image: url("../images/leftarrow.png");
+  background-repeat: no-repeat;
+  border: none;
+}
+
+#right-button {
+  width: 54px;
+  height: 81px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-image: url("../images/rightarrow.png");
+  background-repeat: no-repeat;
+  border: none;
+}
+
+/**********************************************/
+/* Move Answer Section Down When Under 1000px */
+/**********************************************/
+@media screen and (max-width: 1000px) {
+  #answer-section {
+    top: 80px;
+  }
+}
+
+/**********************/
+/* For Mobile Devices */
+/**********************/
+@media screen and (max-width: 530px) {
+  /************/
+  /* Top Menu */
+  /************/
+  #left {
+    width: 50%;
+  }
+
+  #right {
+    width: 50%;
+  }
+  
+  #level-counter {
+    font-size: 1.2em;
+    margin: 0.4em 0 0.1em -1.3em;
+  }
+  
+  #pause-button {
+    font-size: 1.2em;
+    margin: 0.1em 0 0 1.5em;
+  }
+  
+  #lives-table img {
+    width: 75%;
+    height: auto;
+  }
+  
+  #score-counter {
+    font-size: 4em;
+  }
+
+  /******************/
+  /* Answer Section */
+  /******************/
+  #answer-row td {
+    font-size: 0.75em;
+  }
+  
+  .equation-answer {
+    width: 40px;
+    height: 40px;
+    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.30);
+  }
+  
+  /******************/
+  /* Mobile Buttons */
+  /******************/
+  #mobile-buttons {
+    display: block;
+  }
+}
+
+/***********************/
+/* For Smaller Devices */
+/***********************/
+@media screen and (max-width: 375px) {
+  /************/
+  /* Top Menu */
+  /************/
+  #left {
+    font-size: 0.85em;
+  }
+  
+  #score-counter {
+    font-size: 3.5em;
+  }
+}
