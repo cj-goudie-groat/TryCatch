@@ -5,19 +5,19 @@
  */
 function Element() {
   if (difficulty == 1) { // Easy
-    if (window.innerWidth >= 1000) {
+    if (window.innerWidth >= 550) {
       this.speed = 3;
     } else {
       this.speed = 2;
     }
   } else if (difficulty == 3) { // Hard
-    if (window.innerWidth >= 1000) {
+    if (window.innerWidth >= 550) {
       this.speed = 8;
     } else {
       this.speed = 6;
     }
   } else { // Medium (default)
-    if (window.innerWidth >= 1000) {
+    if (window.innerWidth >= 550) {
       this.speed = 6;
     } else {
       this.speed = 4;

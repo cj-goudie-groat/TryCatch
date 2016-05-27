@@ -217,6 +217,15 @@ canvas {
   }
 }
 
+/************************************************/
+/* Display Touch Buttons At 770px - Ipad Support*/
+/************************************************/
+@media screen and (max-width: 770px) {
+  #mobile-buttons {
+    display: block;
+  }
+}
+
 /**********************/
 /* For Mobile Devices */
 /**********************/
@@ -262,13 +271,6 @@ canvas {
     width: 40px;
     height: 40px;
     box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.30);
-  }
-  
-  /******************/
-  /* Mobile Buttons */
-  /******************/
-  #mobile-buttons {
-    display: block;
   }
 }
 

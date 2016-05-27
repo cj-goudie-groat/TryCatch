@@ -79,7 +79,7 @@ function loadGamemode() {
     imageRepository.background3.src = imageRepository.mathBg3.src;
     
     // Set player sprite for math gamemode
-    if (window.innerWidth >= 1000) {
+    if (window.innerWidth >= 550) {
       imageRepository.player.src = imageRepository.mathPlayer.src;
     } else {
       imageRepository.player.src = "images/math/crabmobile.png";

@@ -63,7 +63,6 @@ function Player() {
       } else if (KEY_STATUS.right) {
         this.x += this.speed
         
-        // this.animTimer = setInterval(this.drawRight(), 1000);
         if (this.x >= this.canvasWidth - this.width) {
           this.x = this.canvasWidth - this.width;
         }
