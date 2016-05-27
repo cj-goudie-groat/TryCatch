@@ -41,6 +41,6 @@ function unlockCheck() {
   }
 
   if (localStorage.getItem("eggTrophy") == "Achieved!") {
-    document.getElementById("unlockEgg").src = "images/special/bonusplayer.png";
+    document.getElementById("unlockEgg").src = "images/eggtrophy.png";
   }
 }
