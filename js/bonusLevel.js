@@ -22,7 +22,7 @@ function bonusLevel() {
   // Update player model
   game.player.draw();
   // Wait for [bonusLength]ms to end bonus level
-  setTimeout(function() {
+  bonusTimer = new Timer(function() {
     stopBonusLevel();
   }, bonusLength);
 }

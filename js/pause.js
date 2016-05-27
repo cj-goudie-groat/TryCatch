@@ -23,6 +23,9 @@ function pause() {
   }
   
   paused = true;
+  if (bonusActive) {
+    bonusTimer.pause();
+  }
   document.getElementById("pause-menu").style.display = "block";
     $("#pause-menu-screen-darken").css({display: "block", opacity: ".5"});
 }
@@ -36,6 +39,9 @@ function resume() {
   }
   
   paused = false;
+  if (bonusActive) {
+    bonusTimer.resume();
+  }
   document.getElementById("pause-menu").style.display = "none";
     $("#pause-menu-screen-darken").css({display: "none"});
 }

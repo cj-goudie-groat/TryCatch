@@ -79,6 +79,7 @@ var bonusActive = false; // Bonus level active or not
 var bonusLength = 10000; // Bonus level active in ms
 var bonusWidth = 70; // Width of the bonus elements
 var bonusHeight = 70; // Height of the bonus elements
+var bonusTimer; // Timer for bonus level
 
 /**
  * Global variables for achievements.
