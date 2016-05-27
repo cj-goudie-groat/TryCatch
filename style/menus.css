@@ -227,13 +227,7 @@ button .banner {
   margin-bottom: 5px;
   left: 50%;
   transform: translateX(-50%);
-<<<<<<< HEAD:style/style.css
-  width: 50px;
-  height: 50px;
-  margin-top: 5px;
-=======
   background-color: #18306E;
->>>>>>> f3988c958e3a59fdca544ea3943569d835ee01fe:style/menus.css
 }
 
 #difficulty-menu .button-selected {
@@ -256,21 +250,9 @@ button .banner {
   background: #F1AE3E;
 }
 
-<<<<<<< HEAD:style/style.css
-/***********/
-/* Game UI */
-/***********/
-#top-menu {
-  position: absolute;
-  top: 0;
-  z-index: 4;
-  width: 100%;
-  height: 10%;
-=======
 #difficulty-menu .main-menu-button {
   background-color: #0AAFF1;
   background: #F1AE3E;
->>>>>>> f3988c958e3a59fdca544ea3943569d835ee01fe:style/menus.css
 }
 
 /*******************/
@@ -314,19 +296,10 @@ button .banner {
   font-size: 2em;
 }
 
-<<<<<<< HEAD:style/style.css
-#answer-section {
-  position: absolute;
-  top: 0px;
-  width: 100%;
-  font-size: 1.5em;
-  z-index: 3;
-=======
 #achievement-screen .button {
   position: relative;
   margin-top: 0.5em;
   margin-top: 18px;
->>>>>>> f3988c958e3a59fdca544ea3943569d835ee01fe:style/menus.css
   left: 50%;
   transform: translateX(-50%);
   background-color: #F1AE3E;
@@ -572,7 +545,7 @@ button .banner {
   transform: translateY(-50%);
   background-color: #CCFFFF;
   width: 400px;
-  height: 350px;
+  height: 450px;
   z-index: 10;
 }
 
@@ -592,7 +565,7 @@ button .banner {
   position: relative;
   left: 43%;
   transform: tranlateX(-50%);
-  margin-top: 5px;
+  margin-top: 20px;
   width: 50px;
   height: 50px;
 }
