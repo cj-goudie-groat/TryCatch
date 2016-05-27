@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="minimal-ui, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>TryCatch - Home</title>
   <link href="style/style.css" rel="stylesheet" type="text/css" />
   <link href='https://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
@@ -84,8 +84,8 @@
       <canvas id="gradient"></canvas>
       <canvas id="player" height="178"></canvas>
       <div id="mobile-buttons">
-        <button id="left-button"><img src="images/leftarrow.png"></button>
-        <button id="right-button"><img src="images/rightarrow.png"></button>
+        <div id="left-button"></div>
+        <div id="right-button"></div>
       </div>
       <!-- Top menu UI for game section -->
       <div id="top-menu">
@@ -141,16 +141,16 @@
       <div id="achievements-div">
         <table id="achievements-table">
           <tr>
-            <td><img id="unlock100" src="images/lock.png"></td>
-            <td colspan="2">Earn 100 points in any game mode.</td>
-          </tr>
-          <tr>
-            <td><img id="unlock500" src="images/lock.png"></td>
-            <td colspan="2">Earn 500 points in any game mode.</td>
-          </tr>
-          <tr>
             <td><img id="unlock1000" src="images/lock.png"></td>
             <td colspan="2">Earn 1000 points in any game mode.</td>
+          </tr>
+          <tr>
+            <td><img id="unlock5000" src="images/lock.png"></td>
+            <td colspan="2">Earn 5000 points in any game mode.</td>
+          </tr>
+          <tr>
+            <td><img id="unlock10000" src="images/lock.png"></td>
+            <td colspan="2">Earn 10000 points in any game mode.</td>
           </tr>
           <tr>
             <td><img id="unlockEgg" src="images/lock.png"></td>
@@ -187,7 +187,7 @@
                   <th>Name</th>
                   <th>Score</th>
                 </tr>
-                <tr colspan="2">
+                <tr>
                   <td>
                     <?php include 'php/server-listPosition.php'; ?>
                   </td>
@@ -210,9 +210,7 @@
                 </tr>
                 <tr>
                   <td>
-                    <p> 
-                      <?php include 'php/server-listPosition.php'; ?>
-                    </p>
+                    <?php include 'php/server-listPosition.php'; ?>
                   </td>
                   <td>  
                     <?php include 'php/math_listNames.php'; ?>

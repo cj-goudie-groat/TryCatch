@@ -54,7 +54,7 @@ h2 {
   text-align: center;
   padding-top: 1em;
   padding-bottom: 1em;
-  margin: 0 0 1em 0;
+  margin: 0 0 0.3em 0;
   background: #F1AE3E;
   background-color: #0088CB;
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.40);
@@ -303,14 +303,21 @@ button .banner {
 }
 
 #left {
-  float: left;
+  position: absolute;
+  left: 0;
+  width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 30%;
   background-image: url(../images/menubar.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
+}
+
+#right {
+  position: absolute;
+  right: 0;
+  text-align: right;
 }
 
 #pause-button {
@@ -344,11 +351,6 @@ button .banner {
   text-shadow: 0px 1px 15px rgba(0,0,0,0.50);
 }
 
-#right {
-  float: right;
-  text-align: right;
-}
-
 #score-counter {
   margin: -15px 15px 15px 0;
   font-family: 'Montserrat', sans-serif;
@@ -360,14 +362,15 @@ button .banner {
 #answer-section {
   position: absolute;
   top: 0px;
-  width: auto;
+  width: 100%;
   font-size: 1.5em;
-  z-index: 4;
+  z-index: 0;
   left: 50%;
   transform: translateX(-50%);
 }
 
 #answer-table {
+  margin: auto;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 3em;
@@ -378,8 +381,6 @@ button .banner {
     -1px 1px 0 #fff,
     1px 1px 0 #fff,
     0 0 40px rgba(0, 0, 0, 0.5);
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .equation-answer {
@@ -404,22 +405,24 @@ button .banner {
 }
 
 #left-button {
-  width: 70px;
-  height: auto;
+  width: 54px;
+  height: 81px;
   position: absolute;
   left: 0;
   bottom: 0;
-  background: none;
+  background-image: url("../images/leftarrow.png");
+  background-repeat: no-repeat;
   border: none;
 }
 
 #right-button {
-  width: 70px;
-  height: auto;
+  width: 54px;
+  height: 81px;
   position: absolute;
   right: 0;
   bottom: 0;
-  background: none;
+  background-image: url("../images/rightarrow.png");
+  background-repeat: no-repeat;
   border: none;
 }
 
@@ -639,6 +642,7 @@ button .banner {
   height: 450px;
   z-index: 10;
 }
+
 #pause-menu h2 {
   font-size: 2em;
 }
@@ -742,6 +746,7 @@ button .banner {
   animation-duration: 1s;
   animation-fill-mode: forwards;
   box-shadow: 0px 3px 94px 20px rgba(0,0,0,0.38);
+  overflow: hidden;
 }
 
 #achievement-screen h2 {
@@ -750,11 +755,8 @@ button .banner {
 
 #achievement-screen .button {
   position: relative;
-<<<<<<< Updated upstream
   margin-top: 0.5em;
-=======
   margin-top: 18px;
->>>>>>> Stashed changes
   left: 50%;
   transform: translateX(-50%);
   background-color: #F1AE3E;
@@ -763,13 +765,10 @@ button .banner {
 #achievements-table {
   box-shadow: 0px 3px 28px 0px rgba(0,0,0,0.38);
   font-family: 'Montserrat', sans-serif;
-<<<<<<< Updated upstream
   text-shadow: 0px 6px 18px rgba(0, 0, 0, 0.50);
   color: white;
   width: 95%;
-=======
   width: 90%;
->>>>>>> Stashed changes
   position: relative;
   left: 50%;
   transform:translateX(-50%);
@@ -778,25 +777,34 @@ button .banner {
   background-image: linear-gradient(-180deg, rgba(193,238,253,0.65) 0%, rgba(23,51,97,0.36) 100%);
 }
 
+#achievements-table tr {
+  border-top: solid 5px white;
+  border-bottom: solid 5px white;
+}
+
 #achievements-table td {
-  border: solid 5px white;
   vertical-align: top;
   padding-left: 0.5em;
   padding-top: 0.5em;
+  padding-right: 1em;
   padding-bottom: 0;
+}
+
+#achievements-table tr:first-child {
+  border-top: 0;
+}
+
+#achievements-table tr:last-child {
+  border-bottom: 0;
 }
 
 #achievements-div {
   margin: auto;
+  padding-top: 5%;
   width: 90%;
-  box-shadow: 0px 3px 28px 0px rgba(0,0,0,0.38);
-  border: solid 5px white;
   position: relative;
-<<<<<<< Updated upstream
   height: auto;
-=======
-  height: 58%;
->>>>>>> Stashed changes
+  height: 60%;
   overflow: auto;
 }
 
@@ -856,8 +864,14 @@ button .banner {
   left: 50%;
   transform: translateX(-50%);
 }
-.scores td {
+
+.scores th {
   padding: 0 35px 0 35px;
+  text-decoration: underline;
+}
+
+.scores td {
+  text-align: center;
 }
 
 #math-scores {
@@ -912,6 +926,10 @@ button .banner {
   #wrapper {
     width: 100%;
   }
+  
+  #answer-section {
+    top: 80px;
+  }
 }
 
 /**********************/
@@ -932,7 +950,7 @@ button .banner {
   }
   
   #title svg {
-	  width: 360px;
+    width: 360px;
     height: 135px;
   }
   
@@ -1006,10 +1024,6 @@ button .banner {
     font-size: 4em;
   }
   
-  #answer-section {
-    top: 80px;
-  }
-  
   #answer-table {
     font-size: 2em;
   }
@@ -1019,7 +1033,11 @@ button .banner {
   }
   
   #difficulty-menu {
-    width: 300px;
+    width: 350px;
+  }
+  
+  #tutorial-screen {
+    width: 350px;
   }
   
   #leaderboard {
@@ -1042,7 +1060,7 @@ button .banner {
   }
   
   #answer-table {
-    width: 350px;
+    margin: auto;
   }
   
   #game-over {
@@ -1053,22 +1071,24 @@ button .banner {
   }
   
   #leaderboard #next-board .button {
-  width: 120px;
-  float: right;
-  margin-top: 15px;
-  margin-right: 10px;
+    width: 120px;
+    float: right;
+    margin-top: 15px;
+    margin-right: 10px;
   }
+  
   #leaderboard #previous-board .button {
     width: 120px;
     float: left;
     margin-top: 15px;
     margin-left: 10px;
   }
+  
   #back-button .button {
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 173px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 173px;
   }
   
   #main-menu {
@@ -1079,7 +1099,7 @@ button .banner {
 /*********************/
 /* For small devices */
 /*********************/
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 375px) {
   #title h1 {
     font-size: 3.5em;
   }
@@ -1088,6 +1108,7 @@ button .banner {
     width: 200px;
     height: 125px;
   }
+  
   .theme {
     height: 75px;
     width: 75px;
@@ -1098,12 +1119,45 @@ button .banner {
     height: 75px;
   }
   
+  #difficulty-menu {
+    width: 100%;
+    height: 100%;
+  }
+  
+  #tutorial-screen {
+    width: 100%;
+    height: 100%;
+  }
+  
+  #tutorial-screen img {
+    width: 300px;
+    height: 400px;
+  }
+  
+  #leaderboard {
+    width: 100%;
+    height: 100%;
+  }
+  
+  #achievement-screen {
+    width: 100%;
+    height: 100%;
+  }
+  
   #spelling-ship {
     transform: rotate(-45deg);
     margin-left: -10px;
     margin-top: -13px;
     width: 65px;
     height: 95px;
+  }
+  
+  #left {
+    font-size: 0.85em;
+  }
+  
+  #score-counter {
+    font-size: 3.5em;
   }
   
   #word-table {
@@ -1123,8 +1177,8 @@ button .banner {
     height: 20px;
     box-shadow: 0px 3px 16px 0px rgba(0,0,0,0.38);
   }
+  
   #main-menu {
     top: 47%;
   }
-  
 }

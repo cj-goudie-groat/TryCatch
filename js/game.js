@@ -34,9 +34,10 @@ var imageRepository = new function () {
   this.bonusLevelBg = new Image();
   this.bonusLevelPlayer = new Image();
   this.easterEgg = new Image();
+  this.extralife = new Image();
   
   // Ensure all images have loaded before starting the game
-  var numImages = 11;
+  var numImages = 12;
   var numLoaded = 0;
 
   function imageLoaded() {
@@ -86,7 +87,11 @@ var imageRepository = new function () {
     imageLoaded();
   }
   
-  this.easterEgg.online = function () {
+  this.easterEgg.onload = function () {
+    imageLoaded();
+  }
+  
+  this.extralife.onload = function () {
     imageLoaded();
   }
 
@@ -99,7 +104,7 @@ var imageRepository = new function () {
   this.mathBg2.src = "images/math/background/layer2.png";
   this.mathBg3.src = "images/math/background/layer3.png";
   
-  if (window.innerWidth >= 1000) {
+  if (window.innerWidth >= 550) {
     this.player.src = "images/spelling/ship.png";
     this.mathPlayer.src = "images/math/crab.png";
     this.bonusLevelPlayer.src = "images/special/bonusplayer.png";
@@ -111,6 +116,7 @@ var imageRepository = new function () {
   
   this.bonusLevelBg.src = "images/special/bonusbg.jpg";
   this.easterEgg.src = "images/special/easteregg.png";
+  this.extralife.src = "images/special/extralife.png";
 };
 
 /**
