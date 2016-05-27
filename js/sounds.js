@@ -101,13 +101,16 @@ $(document).ready(function () {
       menuMusic.stop();
       spellingMusic.stop();
       mathMusic.stop();
+      bonusMusic.stop();
       $(".mute").attr("src", "images/mute.png");
     } else {
       localStorage.setItem("Mute", "unmuted");
       Howler.unmute();
       if (!gameActive) {
         menuMusic.play();
-        console.log(gameActive);
+      } else if (bonusActive) {
+        bonusMusic.loop(true);
+        bonusMusic.play();
       } else if (gamemode == "spelling") {
         spellingMusic.loop(true);
         spellingMusic.play();

@@ -14,8 +14,10 @@ function bonusLevel() {
   }
   
   // Plays the bonus level music
-  bonusMusic.loop(true);
-  bonusMusic.fadeIn(1, 2000);
+  if (localStorage.getItem("Mute") != "muted") {
+    bonusMusic.loop(true);
+    bonusMusic.fadeIn(1, 2000);
+  }
   
   // Update player model
   game.player.draw();
@@ -36,12 +38,14 @@ function stopBonusLevel() {
   bonusMusic.fadeOut(0, 1000);
   
   // Checks the gamemode and plays the music
-  if (gamemode == "spelling") {
-    spellingMusic.loop(true);
-    spellingMusic.fadeIn(1, 2000);
-  } else if (gamemode == "math") {
-    mathMusic.loop(true);
-    mathMusic.fadeIn(1, 2000);
+  if (localStorage.getItem("Mute") != "muted") {
+    if (gamemode == "spelling") {
+      spellingMusic.loop(true);
+      spellingMusic.fadeIn(1, 2000);
+    } else if (gamemode == "math") {
+      mathMusic.loop(true);
+      mathMusic.fadeIn(1, 2000);
+    }
   }
   
   game.elementContext.clearRect(0, 0, game.elementCanvas.width, game.elementCanvas.height);
