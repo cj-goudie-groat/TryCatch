@@ -2,6 +2,7 @@
  * Global variables for gamemode.
  */
 var gamemode = "spelling"; // Current gamemode being played (default spelling)
+var gameActive = false; // Where the game is currently being played
 
 /**
  * Global variables for spelling gamemode.
@@ -32,11 +33,6 @@ var scoreMult = 0.75; // Score multiplier (default medium)
  */
 var paused = false; // Game is paused or not
 var canPause = false; // Whether player can pause or not
-
-/**
- * Global variable for muting sound.
- */
- var muteSound = false;
 
 /**
  * Global variables for falling elements

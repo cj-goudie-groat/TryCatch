@@ -57,9 +57,11 @@ function loadGamemode() {
     // Fade in space background for spelling game
     $("#spelling-bg").fadeIn(500);
     
-    // Play space music for spelling game
-    spellingMusic.loop(true);
-    spellingMusic.fadeIn(1, 2000);
+    if (localStorage.getItem("Mute") != "muted") {
+      // Play space music for spelling game
+      spellingMusic.loop(true);
+      spellingMusic.fadeIn(1, 1800);
+    }
     
     // Start by drawing word
     var randomIndex = Math.floor(Math.random() * wordList.length);
@@ -88,9 +90,11 @@ function loadGamemode() {
     // Fade in jungle background for math game
     $("#math-bg").fadeIn(500);
     
-    // Play jungle music for math game
-    mathMusic.loop(true);
-    mathMusic.fadeIn(1, 1800);
+    if (localStorage.getItem("Mute") != "muted") {
+      // Play jungle music for math game
+      mathMusic.loop(true);
+      mathMusic.fadeIn(1, 1800);
+    }
   }
   
   // Display score at the top right
@@ -100,6 +104,7 @@ function loadGamemode() {
   createElements();
   animate();
   resizeCanvas();
+  gameActive = true;
 }
 
 /**

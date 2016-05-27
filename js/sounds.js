@@ -47,7 +47,6 @@ var achievementSound = new Howl ({
 var menuMusic = new Howl ({
   urls: ["sounds/mainmenusound.mp3"],
   loop: true,
-  autoplay: true
 });
 
 var spellingMusic = new Howl ({
@@ -57,14 +56,26 @@ var spellingMusic = new Howl ({
 
 var mathMusic = new Howl ({
   urls: ["sounds/junglebg.mp3"],
-  loop: true
 });
 
 var bonusMusic = new Howl ({
   urls: ["sounds/bonuslevelsound.mp3"]
 });
 
-$(document).ready(function () {  
+
+$(document).ready(function () {
+  /**
+   * Checks if the sound is muted when the page loads.
+   */
+  if (localStorage.getItem("Mute") == "muted") {
+    Howler.mute();
+    $(".mute").attr("src", "images/mute.png");
+  } else {
+    Howler.unmute();
+    menuMusic.play();
+    $(".mute").attr("src", "images/unmute.png");
+  }
+  
   /**
    * Plays menu button sound.
    */
@@ -81,16 +92,29 @@ $(document).ready(function () {
   });
   
   /**
-   * Mutes or unmutes the sound.
+   * Mute or unmute the sound when mute icon is clicked.
    */
   $(".mute").click(function () {
-    if (!muteSound) {
+    if (localStorage.getItem("Mute") != "muted") {
+      localStorage.setItem("Mute", "muted");
       Howler.mute();
-      muteSound = true;
+      menuMusic.stop();
+      spellingMusic.stop();
+      mathMusic.stop();
       $(".mute").attr("src", "images/mute.png");
     } else {
+      localStorage.setItem("Mute", "unmuted");
       Howler.unmute();
-      muteSound = false;
+      if (!gameActive) {
+        menuMusic.play();
+        console.log(gameActive);
+      } else if (gamemode == "spelling") {
+        spellingMusic.loop(true);
+        spellingMusic.play();
+      } else if (gamemode == "math") {
+        mathMusic.loop(true);
+        mathMusic.play();
+      }
       $(".mute").attr("src", "images/unmute.png");
     }
   });
