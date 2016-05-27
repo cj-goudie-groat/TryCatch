@@ -56,7 +56,7 @@ function clearSpecial() {
  */
 function newSpecialItem() {
   var index = Math.floor(Math.random() * specialAmount);
-  specialElement.x = Math.floor(Math.random() * (game.elementCanvas.width - specialWidth));
+  specialElement.x = Math.floor(Math.random() * (game.elementCanvas.width - specialWidth * 3)) + specialWidth;
   specialElement.y = Math.floor(Math.random() * (game.elementCanvas.height - specialHeight) * -1);
   if (index == 0) { // Easter egg
     specialElement.img.src = "images/special/easteregg.png";

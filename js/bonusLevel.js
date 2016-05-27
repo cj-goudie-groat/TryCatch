@@ -38,13 +38,17 @@ function stopBonusLevel() {
   bonusMusic.fadeOut(0, 1000);
   
   // Checks the gamemode and plays the music
-  if (localStorage.getItem("Mute") != "muted") {
-    if (gamemode == "spelling") {
-      spellingMusic.loop(true);
-      spellingMusic.fadeIn(1, 2000);
-    } else if (gamemode == "math") {
-      mathMusic.loop(true);
-      mathMusic.fadeIn(1, 2000);
+  if (gamemode == "spelling") {
+    spellingMusic.loop(true);
+    spellingMusic.fadeIn(1, 2000);
+    if (localStorage.getItem("Mute") == "muted") {
+      spellingMusic.stop();
+    }
+  } else if (gamemode == "math") {
+    mathMusic.loop(true);
+    mathMusic.fadeIn(1, 2000);
+    if (localStorage.getItem("Mute") == "muted") {
+      mathMusic.stop();
     }
   }
   
