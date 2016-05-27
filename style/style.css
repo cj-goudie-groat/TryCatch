@@ -264,6 +264,7 @@ button .banner {
   transform: translateX(-50%);
   width: 50px;
   height: 50px;
+  margin-top: 5px;
 }
 
 /************/
@@ -297,7 +298,7 @@ button .banner {
 #top-menu {
   position: absolute;
   top: 0;
-  z-index: 2;
+  z-index: 4;
   width: 100%;
   height: 10%;
 }
@@ -364,7 +365,7 @@ button .banner {
   top: 0px;
   width: 100%;
   font-size: 1.5em;
-  z-index: 0;
+  z-index: 3;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -639,7 +640,7 @@ button .banner {
   transform: translateY(-50%);
   background-color: #CCFFFF;
   width: 400px;
-  height: 450px;
+  height: 350px;
   z-index: 10;
 }
 
@@ -659,7 +660,7 @@ button .banner {
   position: relative;
   left: 43%;
   transform: tranlateX(-50%);
-  margin-top: 20px;
+  margin-top: 5px;
   width: 50px;
   height: 50px;
 }
