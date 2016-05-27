@@ -49,6 +49,7 @@
   transform: translateX(-50%);
   width: 50px;
   height: 50px;
+  margin-top: 5px;
 }
 
 /*******************/
@@ -545,7 +546,7 @@ button .banner {
   transform: translateY(-50%);
   background-color: #CCFFFF;
   width: 400px;
-  height: 450px;
+  height: 350px;
   z-index: 10;
 }
 
@@ -565,7 +566,7 @@ button .banner {
   position: relative;
   left: 43%;
   transform: tranlateX(-50%);
-  margin-top: 20px;
+  margin-top: 5px;
   width: 50px;
   height: 50px;
 }
