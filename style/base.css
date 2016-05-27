@@ -1,0 +1,64 @@
+/*************/
+/* Reset CSS */
+/*************/
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/*******************/
+/* General Styling */
+/*******************/
+h2 {
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin: 0 0 0.3em 0;
+  background: #F1AE3E;
+  background-color: #0088CB;
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.40);
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.5em;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 24px rgba(0, 0, 0, 0.50);
+  background-image: radial-gradient(50% 99%, rgba(193,238,253,0.65) 0%, rgba(23,51,97,0.36) 100%);
+}
+
+button {
+  outline: none;
+}
+
+button:hover {
+    text-shadow: 0px 8px 24px rgba(0, 0, 0, 0.70);
+    box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.60);
+}
+
+button:active {
+  text-shadow: 0px 2px 24px rgba(0, 0, 0, 0.70);
+}
+
+#wrapper {
+  position: relative;
+  width: 1000px;
+  height: 100vh;
+  margin: auto;
+  top: 0;
+}
+
+p {
+  margin: 0;
+}
+
+/**********************************/
+/* Fill Wrapper When Under 1000px */
+/**********************************/
+@media screen and (max-width: 1000px) {
+  #wrapper {
+    width: 100%;
+  }
+}
